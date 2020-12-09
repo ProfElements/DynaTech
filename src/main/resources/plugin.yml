@@ -1,17 +1,17 @@
 ## CHANGE this to the name of your plugin.
-name: SlimefunAddon
+name: ExtraStuff
 
 ## CHANGE this to your username.
-author: CHANGEME
+author: ProfElements
 
 ## CHANGE this to a meaninful but short description of your plugin.
-description: A generic Slimefun4-Addon
+description: A slimefun addon that add random stuff I want
 
 ## CHANGE this to the path of the class that extends JavaPlugin.
-main: me.CHANGEME.slimefunaddon.ExampleAddon
+main: me.profelements.extrastuff.ExtraStuff
 
 ## You can change this to link to your website or repository. You can also remove this line if you want to.
-website: https://github.com/TheBusyBiscuit/Slimefun4-Addon
+website: https://github.com/ProfElements/ExtraStuff
 
 ## This is required and marks Slimefun as a plugin dependency.
 depend: [Slimefun]
