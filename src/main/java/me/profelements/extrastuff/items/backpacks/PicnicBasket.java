@@ -9,15 +9,18 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.w3c.dom.stylesheets.LinkStyle;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class PicnicBasket extends SlimefunBackpack {
 
-    private final Set<Material> defaultBlacklist = new HashSet<>();
+    private final List<Material> defaultBlacklist = new ArrayList<>();
 
-    private final ItemSetting<Set<String>> blacklistedMaterials = new ItemSetting<>("blacklistedMaterials", ToStringSet(getDefaultBlacklist()));
+    private final ItemSetting<List<String>> blacklistedMaterials = new ItemSetting<>("blacklisted-materials", ToStringList(getDefaultBlacklist()));
 
     public PicnicBasket(int size, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(size, category, item, recipeType, recipe);
@@ -32,7 +35,7 @@ public class PicnicBasket extends SlimefunBackpack {
         return item.getType().isEdible() && !blacklistedMaterials.getValue().contains(item.getType().toString()); //!blacklistedMaterials.getValue().contains(item.getType());
     }
 
-    private Set<Material> getDefaultBlacklist() {
+    private List<Material> getDefaultBlacklist() {
         defaultBlacklist.add(Material.PUFFERFISH);
         defaultBlacklist.add(Material.POISONOUS_POTATO);
         defaultBlacklist.add(Material.SPIDER_EYE);
@@ -50,8 +53,8 @@ public class PicnicBasket extends SlimefunBackpack {
         return defaultBlacklist;
     }
 
-    private Set<String> ToStringSet(Set<Material> mats) {
-        Set<String> materials = new HashSet<>();
+    private List<String> ToStringList(List<Material> mats) {
+        List<String> materials = new ArrayList<>();
 
         for (Material mat : mats) {
             materials.add(mat.toString());
