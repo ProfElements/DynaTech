@@ -84,6 +84,11 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>com.github.thebusybiscuit</groupId>
+            <artifactId>exoticgarden</artifactId>
+            <version>b7dfe8c35b</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
             <version>2.0.1</version>
