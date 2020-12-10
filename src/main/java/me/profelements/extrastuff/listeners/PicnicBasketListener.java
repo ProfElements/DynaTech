@@ -1,8 +1,12 @@
 package me.profelements.extrastuff.listeners;
 
+import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerBackpack;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
+
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.Slimefun;
+import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.profelements.extrastuff.ExtraStuff;
 import me.profelements.extrastuff.events.PicnicBasketFeedPlayerEvent;
 import me.profelements.extrastuff.items.backpacks.PicnicBasket;
@@ -19,7 +23,10 @@ import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
 
+import java.util.logging.Level;
+
 import static io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin.runSync;
+import static org.bukkit.Bukkit.getLogger;
 
 public class PicnicBasketListener implements Listener {
 
@@ -82,7 +89,7 @@ public class PicnicBasketListener implements Listener {
         for (int i = 0; i < inv.getSize(); i++) {
             ItemStack item = inv.getItem(i);
 
-            if (item != null && item.getType().isEdible()) {
+            if (item != null) {
                 slot = i;
             }
         }
@@ -92,65 +99,81 @@ public class PicnicBasketListener implements Listener {
             PicnicBasketFeedPlayerEvent event = new PicnicBasketFeedPlayerEvent(p, picnicBasket, picnicBasketItem, item);
             plugin.getServer().getPluginManager().callEvent(event);
 
+
+
             if(!event.isCancelled()) {
                 boolean itemConsumed = false;
 
                 p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, 1F, 1F);
                 p.setSaturation(4F);
 
-                Material material = item.getType();
-                if (material == Material.COOKED_PORKCHOP || material == Material.PUMPKIN_PIE || material == Material.COOKED_BEEF) {
+                if (SlimefunItem.getByItem(item) != null) {
+                    SlimefunItem sfItem = SlimefunItem.getByItem(item);
+                    if (sfItem instanceof CustomFood) {
+                        CustomFood cfItem = (CustomFood) sfItem;
+                        
+                        if (cfItem.getFoodValue() + p.getFoodLevel() <= 20) {
+                            getLogger().log(Level.INFO, "WORKS SOMEHOW");
 
-                    if (p.getFoodLevel() <= 12 ) {
-                        p.setFoodLevel(p.getFoodLevel() + 8);
-                        itemConsumed = true;
+                            p.setFoodLevel(p.getFoodLevel()+ cfItem.getFoodValue());
+                            itemConsumed = true;
+
+                        }
                     }
-                }else if (material == Material.COOKED_CHICKEN  || material == Material.COOKED_MUTTON || material == Material.COOKED_SALMON ||
-                        material == Material.GOLDEN_CARROT) {
+                } else {
+                    Material material = item.getType();
+                    if (material == Material.COOKED_PORKCHOP || material == Material.PUMPKIN_PIE || material == Material.COOKED_BEEF) {
 
-                    if (p.getFoodLevel() <= 14 ) {
-                        p.setFoodLevel(p.getFoodLevel() + 6);
-                        itemConsumed = true;
-                    }
+                        if (p.getFoodLevel() <= 12 ) {
+                            p.setFoodLevel(p.getFoodLevel() + 8);
+                            itemConsumed = true;
+                        }
+                    }else if (material == Material.COOKED_CHICKEN  || material == Material.COOKED_MUTTON || material == Material.COOKED_SALMON ||
+                            material == Material.GOLDEN_CARROT) {
 
+                        if (p.getFoodLevel() <= 14 ) {
+                            p.setFoodLevel(p.getFoodLevel() + 6);
+                            itemConsumed = true;
+                        }
 
+                    }else if (material == Material.BAKED_POTATO || material == Material.COOKED_RABBIT || material == Material.COOKED_COD ||
+                            material == Material.BREAD) {
+                        if (p.getFoodLevel() <= 15 ){
+                            p.setFoodLevel(p.getFoodLevel() + 5);
+                            itemConsumed = true;
+                        }
 
-                }else if (material == Material.BAKED_POTATO || material == Material.COOKED_RABBIT || material == Material.COOKED_COD ||
-                        material == Material.BREAD) {
-                    if (p.getFoodLevel() <= 15 ){
-                        p.setFoodLevel(p.getFoodLevel() + 5);
-                        itemConsumed = true;
-                    }
+                    } else if (material == Material.APPLE) {
 
-                } else if (material == Material.APPLE) {
+                        if (p.getFoodLevel() <= 16) {
+                            p.setFoodLevel(p.getFoodLevel() + 4);
+                            itemConsumed = true;
+                        }
+                    } else if (material == Material.CARROT || material == Material.BEEF || material == Material.PORKCHOP ||
+                            material == Material.RABBIT) {
 
-                    if (p.getFoodLevel() <= 16) {
-                        p.setFoodLevel(p.getFoodLevel() + 4);
-                        itemConsumed = true;
-                    }
-                } else if (material == Material.CARROT || material == Material.BEEF || material == Material.PORKCHOP ||
-                        material == Material.RABBIT) {
+                        if (p.getFoodLevel() <= 17) {
+                            p.setFoodLevel(p.getFoodLevel() + 3);
+                            itemConsumed = true;
+                        }
+                    }else if (material == Material.COOKIE || material == Material.MELON_SLICE || material == Material.CHICKEN ||
+                            material == Material.COD || material == Material.MUTTON || material == Material.SALMON ||
+                            material == Material.SWEET_BERRIES) {
 
-                    if (p.getFoodLevel() <= 17) {
-                        p.setFoodLevel(p.getFoodLevel() + 3);
-                        itemConsumed = true;
-                    }
-                }else if (material == Material.COOKIE || material == Material.MELON_SLICE || material == Material.CHICKEN ||
-                        material == Material.COD || material == Material.MUTTON || material == Material.SALMON ||
-                        material == Material.SWEET_BERRIES) {
+                        if (p.getFoodLevel() <= 18) {
+                            p.setFoodLevel(p.getFoodLevel() + 2);
+                            itemConsumed = true;
+                        }
+                    } else if (material == Material.BEETROOT || material == Material.DRIED_KELP || material == Material.POTATO ||
+                            material == Material.TROPICAL_FISH) {
 
-                    if (p.getFoodLevel() <= 18) {
-                        p.setFoodLevel(p.getFoodLevel() + 2);
-                        itemConsumed = true;
-                    }
-                } else if (material == Material.BEETROOT || material == Material.DRIED_KELP || material == Material.POTATO ||
-                        material == Material.TROPICAL_FISH) {
-
-                    if (p.getFoodLevel() <= 19) {
-                        p.setFoodLevel(p.getFoodLevel() + 1);
-                        itemConsumed = true;
+                        if (p.getFoodLevel() <= 19) {
+                            p.setFoodLevel(p.getFoodLevel() + 1);
+                            itemConsumed = true;
+                        }
                     }
                 }
+
 
 
                 if (item.getAmount() > 1 && itemConsumed) {

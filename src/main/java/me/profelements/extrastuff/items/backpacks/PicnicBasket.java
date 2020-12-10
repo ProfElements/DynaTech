@@ -1,12 +1,15 @@
 package me.profelements.extrastuff.items.backpacks;
 
+import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import io.github.thebusybiscuit.slimefun4.implementation.items.backpacks.SlimefunBackpack;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
+import me.profelements.extrastuff.ExtraStuff;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.w3c.dom.stylesheets.LinkStyle;
@@ -32,7 +35,14 @@ public class PicnicBasket extends SlimefunBackpack {
 
     @Override
     public boolean isItemAllowed(ItemStack item, SlimefunItem itemAsSlimefunItem) {
-        return item.getType().isEdible() && !blacklistedMaterials.getValue().contains(item.getType().toString()); //!blacklistedMaterials.getValue().contains(item.getType());
+        if (ExtraStuff.getInstance().getServer().getPluginManager().isPluginEnabled("ExoticGarden")) {
+            if (itemAsSlimefunItem instanceof CustomFood) {
+                return true;
+            } else {
+                return item.getType().isEdible() && !blacklistedMaterials.getValue().contains(item.getType().toString());
+            }
+        }
+        return item.getType().isEdible() && !blacklistedMaterials.getValue().contains(item.getType().toString());
     }
 
     private List<Material> getDefaultBlacklist() {
