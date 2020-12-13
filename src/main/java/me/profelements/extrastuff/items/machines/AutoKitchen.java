@@ -1,20 +1,17 @@
 package me.profelements.extrastuff.items.machines;
 
 import io.github.thebusybiscuit.exoticgarden.ExoticGarden;
-import io.github.thebusybiscuit.exoticgarden.ExoticGardenRecipeTypes;
 import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 
-import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
-import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
@@ -29,7 +26,6 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
@@ -128,18 +124,18 @@ public class AutoKitchen extends AContainer {
 
     protected void constructMenu(BlockMenuPreset preset) {
         for (int slot : border ) {
-            preset.addItem(slot, new CustomItem(Material.GRAY_STAINED_GLASS_PANE, ""), ChestMenuUtils.getEmptyClickHandler() );
+            preset.addItem(slot, new CustomItem(Material.GRAY_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler() );
         }
 
         for (int slot : input_border ) {
-            preset.addItem(slot, new CustomItem(Material.CYAN_STAINED_GLASS_PANE, ""), ChestMenuUtils.getEmptyClickHandler() );
+            preset.addItem(slot, new CustomItem(Material.CYAN_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler() );
         }
 
         for (int slot : output_border ) {
-            preset.addItem(slot, new CustomItem(Material.ORANGE_STAINED_GLASS_PANE, ""), ChestMenuUtils.getEmptyClickHandler() );
+            preset.addItem(slot, new CustomItem(Material.ORANGE_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler() );
         }
 
-        preset.addItem(13, new CustomItem(Material.BLACK_STAINED_GLASS_PANE, ""), ChestMenuUtils.getEmptyClickHandler() );
+        preset.addItem(13, new CustomItem(Material.BLACK_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler() );
 
         for (int slot : getOutputSlots()) {
             preset.addMenuClickHandler(slot, new ChestMenu.AdvancedMenuClickHandler() {
@@ -180,6 +176,12 @@ public class AutoKitchen extends AContainer {
     }
 
     private void registerRecipes() {
+
+        //This works
+        registerRecipe(15, new ItemStack[] { new ItemStack(Material.POTATO)}, new ItemStack[] { new ItemStack(Material.BAKED_POTATO)});
+
+
+        //This doesnt work.
         List<ItemStack[]> inputs = RecipeType.getRecipeInputList((MultiBlockMachine) ExoticGarden.getKitchen());
 
         for (ItemStack[] input : inputs) {
