@@ -103,9 +103,6 @@ public class PicnicBasketListener implements Listener {
             if (!event.isCancelled()) {
                 boolean itemConsumed = false;
 
-                p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, 1F, 1F);
-                p.setSaturation(4F);
-
                 if (ExtraStuff.isIsExoticGardenInstalled()) {
                     if (SlimefunItem.getByItem(item) != null) {
                         SlimefunItem sfItem = SlimefunItem.getByItem(item);
@@ -174,9 +171,13 @@ public class PicnicBasketListener implements Listener {
 
                     if (item.getAmount() > 1 && itemConsumed) {
                         item.setAmount(item.getAmount() - 1);
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, 1F, 1F);
+                        p.setSaturation(p.getSaturation()+4F);
 
                     } else if (itemConsumed) {
                         inv.setItem(slot, null);
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, 1F, 1F);
+                        p.setSaturation(p.getSaturation()+4F);
                     }
 
                     backpack.markDirty();
