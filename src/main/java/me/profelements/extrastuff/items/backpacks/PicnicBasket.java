@@ -10,6 +10,7 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
 import me.profelements.extrastuff.ExtraStuff;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.w3c.dom.stylesheets.LinkStyle;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static me.profelements.extrastuff.ExtraStuff.isIsExoticGardenInstalled;
 
 public class PicnicBasket extends SlimefunBackpack {
 
@@ -35,7 +38,7 @@ public class PicnicBasket extends SlimefunBackpack {
 
     @Override
     public boolean isItemAllowed(ItemStack item, SlimefunItem itemAsSlimefunItem) {
-        if (ExtraStuff.getInstance().getServer().getPluginManager().isPluginEnabled("ExoticGarden")) {
+        if (isIsExoticGardenInstalled()) {
             if (itemAsSlimefunItem instanceof CustomFood) {
                 return true;
             } else {
