@@ -1,23 +1,20 @@
-package me.profelements.extrastuff;
+package me.profelements.extrastuff.setup;
 
-import io.github.thebusybiscuit.exoticgarden.ExoticGarden;
-import io.github.thebusybiscuit.exoticgarden.items.Kitchen;
+
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
+import me.profelements.extrastuff.ExtraStuff;
+import me.profelements.extrastuff.ExtraStuffItems;
 import me.profelements.extrastuff.items.backpacks.PicnicBasket;
 import me.profelements.extrastuff.items.machines.AutoKitchen;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+
 
 public class ExtraStuffItemsSetup {
 
@@ -30,9 +27,8 @@ public class ExtraStuffItemsSetup {
                 new ItemStack[] {
                     new ItemStack(Material.IRON_INGOT), SlimefunItems.IRON_DUST, SlimefunItems.ZINC_DUST,
                         null, null, null,
-                        null, null, null
-                }
-        );
+                        null, null, null,
+                }).register(plugin);
 
         //Backpacks
         new PicnicBasket(27, ExtraStuffItems.extraStuff, ExtraStuffItems.PICNIC_BASKET, RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -56,7 +52,6 @@ public class ExtraStuffItemsSetup {
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        loadAutoKitchenRecipes();
     }
 
 
