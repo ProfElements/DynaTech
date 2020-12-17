@@ -1,5 +1,8 @@
 package me.profelements.extrastuff;
 
+import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
+import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
+import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
@@ -42,7 +45,11 @@ public class ExtraStuffItems {
             "",
             "&fAutomatically makes Kitchen recipes",
             "",
-            "&f&oSmells like cookies"
+            "&f&oSmells like cookies",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(1),
+            LoreBuilder.powerPerSecond(16)
     );
 
 
