@@ -47,7 +47,7 @@ public class ExtraStuffItemsSetup {
                         new ItemStack(Material.TERRACOTTA), new ItemStack(Material.TERRACOTTA), new ItemStack(Material.TERRACOTTA)
 
                 })
-                .setCapacity(128)
+                .setEnergyCapacity(512)
                 .setEnergyConsumption(16)
                 .setProcessingSpeed(1)
                 .register(plugin);
