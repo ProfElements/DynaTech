@@ -3,10 +3,8 @@ package me.profelements.extrastuff.listeners;
 import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerBackpack;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
-
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.Slimefun;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.profelements.extrastuff.ExtraStuff;
 import me.profelements.extrastuff.events.PicnicBasketFeedPlayerEvent;
 import me.profelements.extrastuff.items.backpacks.PicnicBasket;
@@ -17,16 +15,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
-
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
 
-import java.util.logging.Level;
-
 import static io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin.runSync;
-import static org.bukkit.Bukkit.getLogger;
 
 public class PicnicBasketListener implements Listener {
 

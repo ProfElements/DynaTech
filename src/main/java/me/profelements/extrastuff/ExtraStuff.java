@@ -5,12 +5,10 @@ import me.profelements.extrastuff.listeners.PicnicBasketListener;
 import me.profelements.extrastuff.setup.ExtraStuffItemsSetup;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
 
 import javax.annotation.Nonnull;
-
 
 public class ExtraStuff extends JavaPlugin implements SlimefunAddon {
 
