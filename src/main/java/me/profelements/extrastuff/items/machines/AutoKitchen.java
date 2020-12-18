@@ -41,7 +41,6 @@ public class AutoKitchen extends AMachine {
     private void craftIfValid(Block block) {
         BlockMenu menu = BlockStorage.getInventory(block);
 
-        // Make sure at least 1 slot is free
         for (int outSlot : getOutputSlots()) {
             ItemStack outItem = menu.getItemInSlot(outSlot);
             if (outItem == null || outItem.getAmount() < outItem.getMaxStackSize()) {
@@ -51,7 +50,6 @@ public class AutoKitchen extends AMachine {
             }
         }
 
-        // Find matching recipe
         for (ItemStack[] input : RecipeType.getRecipeInputList(mblock)) {
             if (isCraftable(menu, input)) {
                 ItemStack output = RecipeType.getRecipeOutputList(mblock, input).clone();
@@ -60,9 +58,6 @@ public class AutoKitchen extends AMachine {
                 return;
             }
         }
-        // we're only executing the last possible shaped recipe
-        // we don't want to allow this to be pressed instead of the default timer-based
-        // execution to prevent abuse and auto clickers
     }
 
     private boolean isCraftable(BlockMenu inv, ItemStack[] recipe) {
