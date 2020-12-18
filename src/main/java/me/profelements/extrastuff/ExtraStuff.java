@@ -22,11 +22,11 @@ public class ExtraStuff extends JavaPlugin implements SlimefunAddon {
     public void onEnable() {
 
         instance = this;
-        Config cfg = new Config(this);
+        Config cfg = new Config(getInstance());
 
         if (cfg.getBoolean("options.auto-update")) {}
 
-        ExtraStuffItemsSetup.setup(this);
+        ExtraStuffItemsSetup.setup(getInstance());
         new PicnicBasketListener(this, (PicnicBasket) ExtraStuffItems.PICNIC_BASKET.getItem());
 
     }
