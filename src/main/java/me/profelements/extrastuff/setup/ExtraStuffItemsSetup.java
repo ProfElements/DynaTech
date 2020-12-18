@@ -10,6 +10,9 @@ import me.profelements.extrastuff.ExtraStuffItems;
 import me.profelements.extrastuff.items.backpacks.PicnicBasket;
 import me.profelements.extrastuff.items.machines.AutoKitchen;
 
+import me.profelements.extrastuff.items.machines.DragonEggGenerator;
+import me.profelements.extrastuff.items.machines.GrowthChamber;
+import me.profelements.extrastuff.items.machines.HydroGenerator;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -28,6 +31,13 @@ public class ExtraStuffItemsSetup {
                     new ItemStack(Material.IRON_INGOT), SlimefunItems.IRON_DUST, SlimefunItems.ZINC_DUST,
                         null, null, null,
                         null, null, null,
+                }).register(plugin);
+
+        new SlimefunItem(ExtraStuffItems.extraStuff, ExtraStuffItems.STAINLESS_STEEL_ROTOR, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        null, ExtraStuffItems.STAINLESS_STEEL, null,
+                        ExtraStuffItems.STAINLESS_STEEL, new ItemStack(Material.IRON_BLOCK), ExtraStuffItems.STAINLESS_STEEL,
+                        null, ExtraStuffItems.STAINLESS_STEEL, null
                 }).register(plugin);
 
         //Backpacks
@@ -51,6 +61,35 @@ public class ExtraStuffItemsSetup {
                 .setEnergyConsumption(16)
                 .setProcessingSpeed(1)
                 .register(plugin);
+
+        new GrowthChamber(ExtraStuffItems.extraStuff, ExtraStuffItems.GROWTH_CHAMBER, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.HARDENED_GLASS,SlimefunItems.HARDENED_GLASS,SlimefunItems.HARDENED_GLASS,
+                        new ItemStack(Material.BONE_BLOCK),new ItemStack(Material.GRASS_BLOCK),new ItemStack(Material.BONE_BLOCK),
+                        ExtraStuffItems.STAINLESS_STEEL,new ItemStack(Material.BONE_BLOCK),ExtraStuffItems.STAINLESS_STEEL
+
+                })
+                .setEnergyCapacity(512)
+                .setEnergyConsumption(32)
+                .setProcessingSpeed(1)
+                .register(plugin);
+
+
+        new HydroGenerator(ExtraStuffItems.extraStuff, ExtraStuffItems.HYDRO_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.ALUMINUM_INGOT, SlimefunItems.SULFATE, SlimefunItems.ALUMINUM_INGOT,
+                        SlimefunItems.ALUMINUM_INGOT, SlimefunItems.ENERGY_CONNECTOR, SlimefunItems.ALUMINUM_INGOT,
+                        new ItemStack(Material.WHITE_CONCRETE), null, new ItemStack(Material.WHITE_CONCRETE)
+                }).register(plugin);
+
+        new DragonEggGenerator(ExtraStuffItems.extraStuff, ExtraStuffItems.DRAGON_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        new ItemStack(Material.CRYING_OBSIDIAN), new ItemStack(Material.END_STONE), new ItemStack(Material.CRYING_OBSIDIAN),
+                        new ItemStack(Material.CRYING_OBSIDIAN), SlimefunItems.LEAD_INGOT, new ItemStack(Material.CRYING_OBSIDIAN),
+                        SlimefunItems.LEAD_INGOT, SlimefunItems.MEDIUM_CAPACITOR, SlimefunItems.LEAD_INGOT
+
+
+                }).register(plugin);
 
     }
 
