@@ -2,14 +2,12 @@ package me.profelements.extrastuff.setup;
 
 
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.profelements.extrastuff.ExtraStuff;
 import me.profelements.extrastuff.ExtraStuffItems;
 import me.profelements.extrastuff.items.backpacks.PicnicBasket;
 import me.profelements.extrastuff.items.machines.AutoKitchen;
-
 import me.profelements.extrastuff.items.machines.DragonEggGenerator;
 import me.profelements.extrastuff.items.machines.GrowthChamber;
 import me.profelements.extrastuff.items.machines.HydroGenerator;
@@ -17,7 +15,6 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
-
 
 public class ExtraStuffItemsSetup {
 
@@ -75,7 +72,7 @@ public class ExtraStuffItemsSetup {
                 .register(plugin);
 
 
-        new HydroGenerator(ExtraStuffItems.extraStuff, ExtraStuffItems.HYDRO_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE,
+        new HydroGenerator(ExtraStuffItems.extraStuff, ExtraStuffItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         SlimefunItems.ALUMINUM_INGOT, SlimefunItems.SULFATE, SlimefunItems.ALUMINUM_INGOT,
                         SlimefunItems.ALUMINUM_INGOT, SlimefunItems.ENERGY_CONNECTOR, SlimefunItems.ALUMINUM_INGOT,

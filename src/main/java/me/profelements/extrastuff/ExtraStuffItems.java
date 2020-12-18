@@ -67,7 +67,7 @@ public class ExtraStuffItems {
             );
 
 
-    public static final SlimefunItemStack HYDRO_GENERATOR = new SlimefunItemStack("HYDRO_GENERATOR",
+    public static final SlimefunItemStack WATER_MILL = new SlimefunItemStack("WATER_MILL",
             Material.COBBLESTONE_WALL,
             "&6Hydro Generator",
             "",
