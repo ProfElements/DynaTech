@@ -49,6 +49,14 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
     private int energyCapacity = -1;
     private int processingSpeed = -1;
 
+    private static final int[] BORDER = new int[] {0,1,2,3,4,5,6,7,8,13,31,36,37,38,39,40,41,42,43,44};
+    private static final int[] BORDER_IN = new int[] {9,10,11,12,18,21,27,28,29,30};
+    private static final int[] BORDER_OUT = new int[] {14,15,16,17,23,26,32,33,34,35};
+    private static final int PROGRESS_BAR_SLOT = 22;
+
+    private static final int[] INPUT_SLOTS = new int[] {19,20};
+    private static final int[] OUTPUT_SLOTS = new int[] {24,25};
+
     @ParametersAreNonnullByDefault
     public AMachine(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
@@ -144,15 +152,15 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
 
     public List<int[]> getBorders() {
         List<int[]> borders = new ArrayList<>();
-        borders.add(new int[] {}); //BORDER
-        borders.add(new int[] {}); //BORDER_IN
-        borders.add(new int[] {}); //BORDER_OUT
+        borders.add(BORDER); //BORDER
+        borders.add(BORDER_IN); //BORDER_IN
+        borders.add(BORDER_OUT); //BORDER_OUT
 
         return borders;
     }
 
     public int getProgressBarSlot() {
-        return 22;
+        return PROGRESS_BAR_SLOT;
     }
 
 
@@ -315,11 +323,11 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
     public abstract ItemStack getProgressBar();
 
     public int[] getInputSlots() {
-        return new int[] {};
+        return INPUT_SLOTS;
     }
 
     public int[] getOutputSlots() {
-        return new int[] {};
+        return OUTPUT_SLOTS;
     }
 
 
