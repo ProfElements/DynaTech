@@ -3,6 +3,8 @@ package me.profelements.extrastuff;
 import me.profelements.extrastuff.items.backpacks.PicnicBasket;
 import me.profelements.extrastuff.listeners.PicnicBasketListener;
 import me.profelements.extrastuff.setup.ExtraStuffItemsSetup;
+
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
@@ -21,6 +23,7 @@ public class ExtraStuff extends JavaPlugin implements SlimefunAddon {
 
         instance = this;
         Config cfg = new Config(getInstance());
+        final Metrics metrics = new Metrics(getInstance(), 9689);
 
         if (cfg.getBoolean("options.auto-update")) {}
 
