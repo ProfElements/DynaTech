@@ -22,12 +22,12 @@ public class ExtraStuff extends JavaPlugin implements SlimefunAddon {
     public void onEnable() {
 
         instance = this;
-        Config cfg = new Config(getInstance());
-        final Metrics metrics = new Metrics(getInstance(), 9689);
+        Config cfg = new Config(this);
+        final Metrics metrics = new Metrics(this, 9689);
 
         if (cfg.getBoolean("options.auto-update")) {}
 
-        ExtraStuffItemsSetup.setup(getInstance());
+        ExtraStuffItemsSetup.setup(this);
         new PicnicBasketListener(this, (PicnicBasket) ExtraStuffItems.PICNIC_BASKET.getItem());
 
     }
