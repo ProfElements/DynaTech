@@ -34,11 +34,12 @@ public class ExtraStuff extends JavaPlugin implements SlimefunAddon {
 
     @Override
     public void onDisable() {
+        instance = null;
     }
 
     @Override
     public String getBugTrackerURL() {
-        return null;
+        return "https://github.com/ProfElements/ExtraStuff/issues";
     }
 
     @Override
