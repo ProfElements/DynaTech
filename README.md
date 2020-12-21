@@ -5,6 +5,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 ## Machines
 - **Auto-Kitchen** - If you have ExoticGarden installed, this machine will become available. It automatically crafts any Kitchen recipe inserted into it.
 - **Growth Chamber** - Automatically grow some plants, including sapling, cactus and sugarcane and bamboo!
+- **Antigravity Bubble** - Temporary creative flight within a 45 block area when powered.
 
 ## Generators
 - **Hydro Generator** - Generates energy from flowing water (Waterlog the generator)
