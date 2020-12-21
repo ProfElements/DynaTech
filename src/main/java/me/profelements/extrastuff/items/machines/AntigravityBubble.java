@@ -1,10 +1,15 @@
 package me.profelements.extrastuff.items.machines;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -12,8 +17,10 @@ import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
+
 public class AntigravityBubble extends AMachine {
 
+    private List<UUID> enabledPlayers = new ArrayList<>();
 
     private static int[] BORDER     = new int[] {1,2,6,7,9,10,11,15,16,17,19,20,24,25};
     private static int[] BORDER_IN  = new int[] {3,4,5,12,14,21,22,23};
@@ -33,20 +40,33 @@ public class AntigravityBubble extends AMachine {
         if (getCharge(block.getLocation()) < getEnergyConsumption()) {
         return;
         }
-        
+
         for (Player p : block.getWorld().getPlayers()) {
             double distance = block.getLocation().distance(p.getLocation());
-            if (distance < 45) {
-                    
-            p.setAllowFlight(true);
-            removeCharge(block.getLocation(), getEnergyConsumption());
-            } else if ((distance >= 45 && p.getAllowFlight())) {
-                
-                //Figure out a way this doesnt interfere with plugins that use flight other ways
-                p.setAllowFlight(false);
-                p.setFlying(false);
-                p.setFallDistance(0f);
+            List<UUID> plrsToRemove = new ArrayList<>();
+
+            if (!enabledPlayers.contains(p.getUniqueId()) && distance < 22.5 && !p.getAllowFlight()) {
+                    p.setAllowFlight(true);
+                    enabledPlayers.add(p.getUniqueId());
+                    removeCharge(block.getLocation(), getEnergyConsumption());
+                } 
+            
+            for (UUID playerUUID : enabledPlayers) {
+                Player plr = Bukkit.getPlayer(playerUUID);
+                double distance2 = block.getLocation().distance(plr.getLocation());
+                if (distance2 >= 22.5) {
+                    plrsToRemove.add(plr.getUniqueId());
+                }
             }
+
+            for(UUID playerToRemove : plrsToRemove) {
+                Player plyr = Bukkit.getPlayer(playerToRemove);
+                plyr.setFlying(false);
+                plyr.setAllowFlight(false);
+                plyr.setFallDistance(0.0f);
+                enabledPlayers.remove(playerToRemove);
+            }
+            plrsToRemove.clear();
         }        
     };
 
