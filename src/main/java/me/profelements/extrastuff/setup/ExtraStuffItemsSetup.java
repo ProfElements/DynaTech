@@ -46,15 +46,6 @@ public class ExtraStuffItemsSetup {
                         SlimefunItems.HEATING_COIL, new ItemStack(Material.BAMBOO), SlimefunItems.COOLING_UNIT
                 }).register(plugin);
         
-        //Tools
-        new SlimefunItem(ExtraStuffItems.extraStuff, ExtraStuffItems.ANTIGRAVITY_CONTROLLER, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        null,SlimefunItems.HARDENED_METAL_INGOT,null,
-                        SlimefunItems.HARDENED_METAL_INGOT,new ItemStack(Material.NETHER_STAR), SlimefunItems.HARDENED_METAL_INGOT,
-                        SlimefunItems.SYNTHETIC_SAPPHIRE, SlimefunItems.HARDENED_METAL_INGOT,SlimefunItems.SYNTHETIC_SAPPHIRE
-                }).register(plugin);
-        
-
         //Machines
         new AutoKitchen(ExtraStuffItems.extraStuff, ExtraStuffItems.AUTO_KITCHEN, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {

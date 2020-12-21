@@ -37,21 +37,18 @@ public class AntigravityBubble extends AMachine {
         
         for (Player p : block.getWorld().getPlayers()) {
             double distance = block.getLocation().distance(p.getLocation());
-     
-            if(p.getInventory().getItemInOffHand() != null && SlimefunItem.getByItem(p.getInventory().getItemInOffHand()) != null) {
-                if (distance < 45 && SlimefunItem.getByItem(p.getInventory().getItemInOffHand()).getId() == "ANTIGRAVITY_CONTROLLER") {
+            if (distance < 45) {
                     
-                p.setAllowFlight(true);
-                removeCharge(block.getLocation(), getEnergyConsumption());
-                } else if (p.getInventory().getItemInOffHand() == null ||p.getInventory().getItemInOffHand().getType() == Material.AIR || (distance >= 45 && p.getAllowFlight())) {
-                    
-                    p.setAllowFlight(false);
-                    p.setFlying(false);
-                    p.setFallDistance(0f);
-                }
-            }
-        }
+            p.setAllowFlight(true);
+            removeCharge(block.getLocation(), getEnergyConsumption());
+            } else if ((distance >= 45 && p.getAllowFlight())) {
                 
+                //Figure out a way this doesnt interfere with plugins that use flight other ways
+                p.setAllowFlight(false);
+                p.setFlying(false);
+                p.setFallDistance(0f);
+            }
+        }        
     };
 
     @Override
