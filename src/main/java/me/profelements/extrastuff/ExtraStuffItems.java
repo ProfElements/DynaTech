@@ -39,6 +39,14 @@ public class ExtraStuffItems {
             "&eRight Click &7to open."
     );
 
+    //Tools
+    public static final SlimefunItemStack ANTIGRAVITY_CONTROLLER = new SlimefunItemStack("ANTIGRAVITY_CONTROLLER",
+            new CustomItem(SkullItem.fromHash("4d42bb3391b3964de266d9bebe7ccf7ef3c390626eb7a845612ad90f3fa42c12")),
+            "&6Antigravity Controller",
+            "",
+            "&6Controls the Antigravity Bubble when bound"
+    );
+
     //Machines
     public static final SlimefunItemStack AUTO_KITCHEN = new SlimefunItemStack("AUTO_KITCHEN",
             Material.SMOKER,
@@ -66,6 +74,15 @@ public class ExtraStuffItems {
             LoreBuilder.powerPerSecond(32)
             );
 
+    public static final SlimefunItemStack ANTIGRAVITY_BUBBLE = new SlimefunItemStack("ANTIGRAVITY_BUBBLE",
+            Material.OBSIDIAN,
+            "&6Antigravity Bubble",
+            "",
+            "&f Creative Flight within an 45 block area",
+            "",
+            LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
+            LoreBuilder.powerPerSecond(128)
+            );
 
     public static final SlimefunItemStack WATER_MILL = new SlimefunItemStack("WATER_MILL",
             Material.COBBLESTONE_WALL,

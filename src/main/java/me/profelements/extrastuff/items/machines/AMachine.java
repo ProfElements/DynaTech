@@ -42,7 +42,7 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
 
     public static Map<Block, MachineRecipe> processing = new HashMap<>();
     public static Map<Block, Integer> progress = new HashMap<>();
-
+    
     protected final List<MachineRecipe> recipes = new ArrayList<>();
 
     private int energyConsumedPerTick = -1;
@@ -60,39 +60,43 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
     @ParametersAreNonnullByDefault
     public AMachine(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
+        if (isGraphical()) {
+            new BlockMenuPreset(getMachineIdentifier(), getInventoryTitle()) {
 
-        new BlockMenuPreset(getMachineIdentifier(), getInventoryTitle()) {
-
-            @Override
-            public void init() {
-                constructMenu(this);
-            }
-
-            @Override
-            public void newInstance(BlockMenu menu, Block b) {}
-
-            @Override
-            public boolean canOpen(Block b, Player p) {
-                return p.hasPermission("slimefun.inventory.bypass") ||
-                        SlimefunPlugin.getProtectionManager().hasPermission(p, b.getLocation(), ProtectableAction.INTERACT_BLOCK);
-            }
-
-            @Override
-            public int[] getSlotsAccessedByItemTransport(ItemTransportFlow flow) {
-                return new int[0];
-            }
-
-            @Override
-            public int[] getSlotsAccessedByItemTransport(DirtyChestMenu menu, ItemTransportFlow flow, ItemStack item) {
-                if (flow == ItemTransportFlow.INSERT) {
-                    return getInputSlots();
-                } else {
-                    return getOutputSlots();
+                @Override
+                public void init() {
+                    constructMenu(this);
                 }
-            }
-
-        };
-
+    
+                @Override
+                public void newInstance(BlockMenu menu, Block b) {
+                        newMachineInstance(menu, b);
+    
+                }
+    
+                @Override
+                public boolean canOpen(Block b, Player p) {
+                    return p.hasPermission("slimefun.inventory.bypass") ||
+                            SlimefunPlugin.getProtectionManager().hasPermission(p, b.getLocation(), ProtectableAction.INTERACT_BLOCK);
+                }
+    
+                @Override
+                public int[] getSlotsAccessedByItemTransport(ItemTransportFlow flow) {
+                    return new int[0];
+                }
+    
+                @Override
+                public int[] getSlotsAccessedByItemTransport(DirtyChestMenu menu, ItemTransportFlow flow, ItemStack item) {
+                    if (flow == ItemTransportFlow.INSERT) {
+                        return getInputSlots();
+                    } else {
+                        return getOutputSlots();
+                    }
+                }
+    
+            };
+        }
+        
         registerBlockHandler(item.getItemId(), (p, b, tool, reason) -> {
             BlockMenu inv = BlockStorage.getInventory(b);
 
@@ -110,6 +114,9 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
 
         registerDefaultRecipes();
     }
+
+    public void newMachineInstance(BlockMenu menu, Block b) {
+    };
 
     @ParametersAreNonnullByDefault
     public AMachine(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, ItemStack recipeOutput) {
@@ -148,6 +155,10 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
             });
 
         }
+    }
+
+    public boolean isGraphical() {
+        return true;
     }
 
     public List<int[]> getBorders() {

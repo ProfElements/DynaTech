@@ -1,16 +1,17 @@
 package me.profelements.extrastuff.setup;
 
-
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.profelements.extrastuff.ExtraStuff;
 import me.profelements.extrastuff.ExtraStuffItems;
 import me.profelements.extrastuff.items.backpacks.PicnicBasket;
+import me.profelements.extrastuff.items.machines.AntigravityBubble;
 import me.profelements.extrastuff.items.machines.AutoKitchen;
 import me.profelements.extrastuff.items.machines.DragonEggGenerator;
 import me.profelements.extrastuff.items.machines.GrowthChamber;
 import me.profelements.extrastuff.items.machines.HydroGenerator;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -44,7 +45,15 @@ public class ExtraStuffItemsSetup {
                         new ItemStack(Material.BAMBOO), SlimefunItems.COOLER, new ItemStack(Material.BAMBOO),
                         SlimefunItems.HEATING_COIL, new ItemStack(Material.BAMBOO), SlimefunItems.COOLING_UNIT
                 }).register(plugin);
-
+        
+        //Tools
+        new SlimefunItem(ExtraStuffItems.extraStuff, ExtraStuffItems.ANTIGRAVITY_CONTROLLER, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        null,SlimefunItems.HARDENED_METAL_INGOT,null,
+                        SlimefunItems.HARDENED_METAL_INGOT,new ItemStack(Material.NETHER_STAR), SlimefunItems.HARDENED_METAL_INGOT,
+                        SlimefunItems.SYNTHETIC_SAPPHIRE, SlimefunItems.HARDENED_METAL_INGOT,SlimefunItems.SYNTHETIC_SAPPHIRE
+                }).register(plugin);
+        
 
         //Machines
         new AutoKitchen(ExtraStuffItems.extraStuff, ExtraStuffItems.AUTO_KITCHEN, RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -71,6 +80,16 @@ public class ExtraStuffItemsSetup {
                 .setProcessingSpeed(1)
                 .register(plugin);
 
+        new AntigravityBubble(ExtraStuffItems.extraStuff, ExtraStuffItems.ANTIGRAVITY_BUBBLE, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.BLISTERING_INGOT_3, new ItemStack(Material.DIAMOND_BLOCK), SlimefunItems.BLISTERING_INGOT_3,
+                        SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.BIG_CAPACITOR , SlimefunItems.REINFORCED_ALLOY_INGOT,
+                        SlimefunItems.REINFORCED_ALLOY_INGOT, ExtraStuffItems.STAINLESS_STEEL, SlimefunItems.REINFORCED_ALLOY_INGOT, 
+                })
+                .setEnergyCapacity(1024)
+                .setEnergyConsumption(128)
+                .setProcessingSpeed(1)
+                .register(plugin);
 
         new HydroGenerator(ExtraStuffItems.extraStuff, ExtraStuffItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
