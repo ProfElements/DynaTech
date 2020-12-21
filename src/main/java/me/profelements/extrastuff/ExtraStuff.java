@@ -4,13 +4,17 @@ import me.profelements.extrastuff.items.backpacks.PicnicBasket;
 import me.profelements.extrastuff.listeners.PicnicBasketListener;
 import me.profelements.extrastuff.setup.ExtraStuffItemsSetup;
 
+import org.apache.commons.lang.Validate;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
+
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class ExtraStuff extends JavaPlugin implements SlimefunAddon {
 
@@ -54,5 +58,16 @@ public class ExtraStuff extends JavaPlugin implements SlimefunAddon {
 
     public static boolean isIsExoticGardenInstalled() {
         return Bukkit.getServer().getPluginManager().isPluginEnabled("ExoticGarden");
+    }
+
+    @Nullable
+    public static BukkitTask runSync(@Nonnull Runnable runnable) {
+        Validate.notNull(runnable, "Cannot run null");
+
+        if (instance == null || !instance.isEnabled()) {
+            return null;
+        }
+
+        return instance.getServer().getScheduler().runTask(getInstance(), runnable);
     }
 }

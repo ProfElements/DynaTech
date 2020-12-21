@@ -20,7 +20,6 @@ import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
 
-import static io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin.runSync;
 
 public class PicnicBasketListener implements Listener {
 
@@ -70,7 +69,7 @@ public class PicnicBasketListener implements Listener {
     private void takeFoodFromPicnicBasket(@Nonnull Player p, @Nonnull ItemStack picnicBasket) {
         PlayerProfile.getBackpack(picnicBasket, backpack -> {
             if (backpack != null) {
-                runSync(() -> consumeFood(p, picnicBasket, backpack));
+                ExtraStuff.runSync(() -> consumeFood(p, picnicBasket, backpack));
             }
         });
 
