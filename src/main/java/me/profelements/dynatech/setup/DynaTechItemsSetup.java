@@ -11,6 +11,7 @@ import me.profelements.dynatech.items.machines.AutoKitchen;
 import me.profelements.dynatech.items.machines.DragonEggGenerator;
 import me.profelements.dynatech.items.machines.GrowthChamber;
 import me.profelements.dynatech.items.machines.HydroGenerator;
+import me.profelements.dynatech.items.machines.WeatherController;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -36,6 +37,13 @@ public class DynaTechItemsSetup {
                         null, DynaTechItems.STAINLESS_STEEL, null,
                         DynaTechItems.STAINLESS_STEEL, new ItemStack(Material.IRON_BLOCK), DynaTechItems.STAINLESS_STEEL,
                         null, DynaTechItems.STAINLESS_STEEL, null
+                }).register(plugin);
+        
+        new SlimefunItem(DynaTechItems.DynaTechGeneral, DynaTechItems.ANCIENT_MACHINE_CORE, RecipeType.MAGIC_WORKBENCH,
+                new ItemStack[] {
+                        SlimefunItems.LEAD_INGOT, SlimefunItems.MAGIC_LUMP_1, SlimefunItems.LEAD_INGOT,
+                        SlimefunItems.MAGIC_LUMP_1, new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.MAGIC_LUMP_1,
+                        SlimefunItems.LEAD_INGOT, SlimefunItems.MAGIC_LUMP_1, SlimefunItems.LEAD_INGOT
                 }).register(plugin);
 
         //Backpacks
@@ -81,6 +89,18 @@ public class DynaTechItemsSetup {
                 .setEnergyConsumption(128)
                 .setProcessingSpeed(1)
                 .register(plugin);
+        
+        new WeatherController(DynaTechItems.DynaTechGeneral, DynaTechItems.WEATHER_CONTROLLER, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        null,SlimefunItems.HARDENED_METAL_INGOT,null,
+                        new ItemStack(Material.WATER_BUCKET), DynaTechItems.ANCIENT_MACHINE_CORE, new ItemStack(Material.LAVA_BUCKET),
+                        DynaTechItems.STAINLESS_STEEL, new ItemStack(Material.CRYING_OBSIDIAN), DynaTechItems.STAINLESS_STEEL
+                })
+                .setEnergyCapacity(512)
+                .setEnergyConsumption(32)
+                .setProcessingSpeed(1)
+                .register(plugin);
+
 
         new HydroGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {

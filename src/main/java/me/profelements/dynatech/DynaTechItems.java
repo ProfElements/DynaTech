@@ -15,13 +15,14 @@ public class DynaTechItems {
     private DynaTechItems() {}
 
     public static final Category DynaTechGeneral = new Category(new NamespacedKey(DynaTech.getInstance(),
-            "extrastuff"),
-            new CustomItem(Material.CONDUIT, "&2Extra Stuff")
+            "dynatech"),
+            new CustomItem(Material.CONDUIT, "&bDynaTech")
     );
 
     //Materials
     public static final SlimefunItemStack STAINLESS_STEEL = new SlimefunItemStack("STAINLESS_STEEL", Material.IRON_INGOT, "&6Stainless Steel Ingot");
     public static final SlimefunItemStack STAINLESS_STEEL_ROTOR = new SlimefunItemStack("STAINLESS_STEEL_ROTOR", Material.IRON_BLOCK, "&6Stainless Steel Rotor");
+    public static final SlimefunItemStack ANCIENT_MACHINE_CORE = new SlimefunItemStack("ANCIENT_MACHINE_CORE", Material.LAPIS_BLOCK, "&6Ancient Machine Core");
 
     //Backpacks
     public static final SlimefunItemStack PICNIC_BASKET = new SlimefunItemStack("PICNIC_BASKET",
@@ -76,6 +77,16 @@ public class DynaTechItems {
             LoreBuilder.powerPerSecond(128)
             );
 
+    public static final SlimefunItemStack WEATHER_CONTROLLER = new SlimefunItemStack("WEATHER_CONTROLLER",
+            Material.BLUE_STAINED_GLASS,
+            "&6Weather Controller",
+            "",
+            "&fControls the weather when given a key item.",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.powerPerSecond(32)
+            );
+  
     public static final SlimefunItemStack WATER_MILL = new SlimefunItemStack("WATER_MILL",
             Material.COBBLESTONE_WALL,
             "&6Hydro Generator",
