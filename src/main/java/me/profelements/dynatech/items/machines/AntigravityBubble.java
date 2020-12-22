@@ -1,4 +1,4 @@
-package me.profelements.extrastuff.items.machines;
+package me.profelements.dynatech.items.machines;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,13 +1,14 @@
-package me.profelements.extrastuff.listeners;
+package me.profelements.dynatech.listeners;
 
 import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerBackpack;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.Slimefun;
-import me.profelements.extrastuff.ExtraStuff;
-import me.profelements.extrastuff.events.PicnicBasketFeedPlayerEvent;
-import me.profelements.extrastuff.items.backpacks.PicnicBasket;
+import me.profelements.dynatech.DynaTech;
+import me.profelements.dynatech.events.PicnicBasketFeedPlayerEvent;
+import me.profelements.dynatech.items.backpacks.PicnicBasket;
+
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -23,10 +24,10 @@ import javax.annotation.Nonnull;
 
 public class PicnicBasketListener implements Listener {
 
-    private final ExtraStuff plugin;
+    private final DynaTech plugin;
     private final PicnicBasket picnicBasket;
 
-    public PicnicBasketListener(@Nonnull ExtraStuff plugin, @Nonnull PicnicBasket picnicBasket) {
+    public PicnicBasketListener(@Nonnull DynaTech plugin, @Nonnull PicnicBasket picnicBasket) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
 
         this.plugin = plugin;
@@ -69,7 +70,7 @@ public class PicnicBasketListener implements Listener {
     private void takeFoodFromPicnicBasket(@Nonnull Player p, @Nonnull ItemStack picnicBasket) {
         PlayerProfile.getBackpack(picnicBasket, backpack -> {
             if (backpack != null) {
-                ExtraStuff.runSync(() -> consumeFood(p, picnicBasket, backpack));
+                DynaTech.runSync(() -> consumeFood(p, picnicBasket, backpack));
             }
         });
 
@@ -96,7 +97,7 @@ public class PicnicBasketListener implements Listener {
             if (!event.isCancelled()) {
                 boolean itemConsumed = false;
 
-                if (ExtraStuff.isIsExoticGardenInstalled()) {
+                if (DynaTech.isIsExoticGardenInstalled()) {
                     if (SlimefunItem.getByItem(item) != null) {
                         SlimefunItem sfItem = SlimefunItem.getByItem(item);
                         if (sfItem instanceof CustomFood) {

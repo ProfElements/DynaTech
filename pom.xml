@@ -4,7 +4,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.profelements</groupId>
-    <artifactId>ExtraStuff</artifactId>
+    <artifactId>DynaTech</artifactId>
     <version>1.0.0</version>
 
     <properties>
@@ -59,7 +59,7 @@
                     <relocations>
                         <relocation>
                             <pattern>org.bstats</pattern>
-                            <shadedPattern>me.profelements.extrastuff</shadedPattern>
+                            <shadedPattern>me.profelements.dyantech</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>

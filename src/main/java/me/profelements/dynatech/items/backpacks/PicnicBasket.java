@@ -1,4 +1,4 @@
-package me.profelements.extrastuff.items.backpacks;
+package me.profelements.dynatech.items.backpacks;
 
 import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
@@ -10,11 +10,10 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import static me.profelements.dynatech.DynaTech.isIsExoticGardenInstalled;
+
 import java.util.ArrayList;
 import java.util.List;
-
-
-import static me.profelements.extrastuff.ExtraStuff.isIsExoticGardenInstalled;
 
 public class PicnicBasket extends SlimefunBackpack {
 

@@ -1,4 +1,4 @@
-package me.profelements.extrastuff;
+package me.profelements.dynatech;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
@@ -10,11 +10,11 @@ import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 
-public class ExtraStuffItems {
+public class DynaTechItems {
 
-    private ExtraStuffItems() {}
+    private DynaTechItems() {}
 
-    public static final Category extraStuff = new Category(new NamespacedKey(ExtraStuff.getInstance(),
+    public static final Category DynaTechGeneral = new Category(new NamespacedKey(DynaTech.getInstance(),
             "extrastuff"),
             new CustomItem(Material.CONDUIT, "&2Extra Stuff")
     );

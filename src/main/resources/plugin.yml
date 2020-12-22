@@ -1,5 +1,5 @@
 ## CHANGE this to the name of your plugin.
-name: ExtraStuff
+name: DynaTech
 
 ## CHANGE this to your username.
 author: ProfElements
@@ -8,10 +8,10 @@ author: ProfElements
 description: A slimefun addon that add random stuff I want
 
 ## CHANGE this to the path of the class that extends JavaPlugin.
-main: me.profelements.extrastuff.ExtraStuff
+main: me.profelements.dynatech.DynaTech
 
 ## You can change this to link to your website or repository. You can also remove this line if you want to.
-website: https://github.com/ProfElements/ExtraStuff
+website: https://github.com/ProfElements/DynaTech
 
 ## This is required and marks Slimefun as a plugin dependency.
 depend: [Slimefun]

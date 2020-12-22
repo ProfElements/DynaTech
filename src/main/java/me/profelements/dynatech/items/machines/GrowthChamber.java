@@ -1,4 +1,4 @@
-package me.profelements.extrastuff.items.machines;
+package me.profelements.dynatech.items.machines;
 
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;

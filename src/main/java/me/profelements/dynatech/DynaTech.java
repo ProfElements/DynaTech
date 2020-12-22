@@ -1,8 +1,4 @@
-package me.profelements.extrastuff;
-
-import me.profelements.extrastuff.items.backpacks.PicnicBasket;
-import me.profelements.extrastuff.listeners.PicnicBasketListener;
-import me.profelements.extrastuff.setup.ExtraStuffItemsSetup;
+package me.profelements.dynatech;
 
 import org.apache.commons.lang.Validate;
 import org.bstats.bukkit.Metrics;
@@ -12,15 +8,18 @@ import org.bukkit.scheduler.BukkitTask;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
+import me.profelements.dynatech.items.backpacks.PicnicBasket;
+import me.profelements.dynatech.listeners.PicnicBasketListener;
+import me.profelements.dynatech.setup.DynaTechItemsSetup;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class ExtraStuff extends JavaPlugin implements SlimefunAddon {
+public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
 
 
-    private static ExtraStuff instance;
+    private static DynaTech instance;
 
     @Override
     public void onEnable() {
@@ -31,8 +30,8 @@ public class ExtraStuff extends JavaPlugin implements SlimefunAddon {
 
         if (cfg.getBoolean("options.auto-update")) {}
 
-        ExtraStuffItemsSetup.setup(this);
-        new PicnicBasketListener(this, (PicnicBasket) ExtraStuffItems.PICNIC_BASKET.getItem());
+        DynaTechItemsSetup.setup(this);
+        new PicnicBasketListener(this, (PicnicBasket) DynaTechItems.PICNIC_BASKET.getItem());
 
     }
 
@@ -52,7 +51,7 @@ public class ExtraStuff extends JavaPlugin implements SlimefunAddon {
     }
 
     @Nonnull
-    public static ExtraStuff getInstance() {
+    public static DynaTech getInstance() {
         return instance;
     }
 

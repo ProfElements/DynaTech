@@ -1,4 +1,4 @@
-package me.profelements.extrastuff.items.machines;
+package me.profelements.dynatech.items.machines;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
