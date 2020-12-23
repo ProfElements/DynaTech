@@ -13,6 +13,7 @@ import me.profelements.dynatech.items.machines.GrowthChamber;
 import me.profelements.dynatech.items.machines.HydroGenerator;
 import me.profelements.dynatech.items.machines.WeatherController;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
+import me.profelements.dynatech.items.tools.InventoryFilter;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -55,6 +56,13 @@ public class DynaTechItemsSetup {
                         SlimefunItems.HEATING_COIL, new ItemStack(Material.BAMBOO), SlimefunItems.COOLING_UNIT
                 }).register(plugin);
         
+        new InventoryFilter(DynaTechItems.DynaTechGeneral, DynaTechItems.INVENTORY_FILTER, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.REINFORCED_CLOTH, new ItemStack(Material.IRON_BARS), SlimefunItems.REINFORCED_CLOTH,
+                        new ItemStack(Material.IRON_BARS), null, new ItemStack(Material.IRON_BARS),
+                        SlimefunItems.REINFORCED_CLOTH, new ItemStack(Material.IRON_BARS), SlimefunItems.REINFORCED_CLOTH
+                }).register(plugin);
+
         new ElectricalStimulator(DynaTechItems.DynaTechGeneral, DynaTechItems.ELECTRICAL_STIMULATOR, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         DynaTechItems.STAINLESS_STEEL, null, DynaTechItems.STAINLESS_STEEL,

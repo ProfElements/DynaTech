@@ -15,3 +15,4 @@ Most of these could possibly be overpowered or heavily underpowered.
 ## Tools
 - **Picnic Basket** - Its an upgraded Cooler. It can eat any ExoticGarden custom foods, or just regular vanilla foods, it has a configurable blacklist in the items.yml
 - **Electrical Stimulator** - Feed the player for energy. 
+- **Inventory Filter** - Upon pickup, remove any items in your inventory that are the same as in the Inventory Filter's inventory.

@@ -40,6 +40,17 @@ public class DynaTechItems {
             "&eRight Click &7to open."
     );
 
+    public static final SlimefunItemStack INVENTORY_FILTER = new SlimefunItemStack("INVENTORY_FILTER",
+            Material.IRON_BARS,
+            "&6Inventory Filter",
+            "",
+            "&fFilters out items on the floor that are in it's inventory",
+            "",
+            "&7ID: <ID>",
+            "",
+            "&eRight Click &7to open."
+    );
+
     public static final SlimefunItemStack ELECTRICAL_STIMULATOR = new SlimefunItemStack("ELECTRICAL_STIMULATOR",
             new CustomItem(SkullItem.fromHash("82a319cf66a4de12e3330e8bc4c82c985ccc3cb2230868c336a88fc4a22082a")),
             "&6Electrical Stimulator",
