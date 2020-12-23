@@ -9,6 +9,8 @@ import org.bukkit.scheduler.BukkitTask;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
+import me.profelements.dynatech.items.tools.ElectricalStimulator;
+import me.profelements.dynatech.listeners.ElectricalStimulatorListener;
 import me.profelements.dynatech.listeners.PicnicBasketListener;
 import me.profelements.dynatech.setup.DynaTechItemsSetup;
 
@@ -32,6 +34,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
         DynaTechItemsSetup.setup(this);
         new PicnicBasketListener(this, (PicnicBasket) DynaTechItems.PICNIC_BASKET.getItem());
+        new ElectricalStimulatorListener(this, (ElectricalStimulator) DynaTechItems.ELECTRICAL_STIMULATOR.getItem());
 
     }
 

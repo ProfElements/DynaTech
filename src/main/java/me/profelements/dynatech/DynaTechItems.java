@@ -40,6 +40,17 @@ public class DynaTechItems {
             "&eRight Click &7to open."
     );
 
+    public static final SlimefunItemStack ELECTRICAL_STIMULATOR = new SlimefunItemStack("ELECTRICAL_STIMULATOR",
+            new CustomItem(SkullItem.fromHash("82a319cf66a4de12e3330e8bc4c82c985ccc3cb2230868c336a88fc4a22082a")),
+            "&6Electrical Stimulator",
+            "",
+            "&fAutomatically feed you for energy",
+            "",
+            "&f&oStimulate your senses.",
+            "",
+            LoreBuilder.powerCharged(0, 1024)
+    );
+
     //Machines
     public static final SlimefunItemStack AUTO_KITCHEN = new SlimefunItemStack("AUTO_KITCHEN",
             Material.SMOKER,
