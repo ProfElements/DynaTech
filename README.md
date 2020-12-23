@@ -16,3 +16,16 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Picnic Basket** - Its an upgraded Cooler. It can eat any ExoticGarden custom foods, or just regular vanilla foods, it has a configurable blacklist in the items.yml
 - **Electrical Stimulator** - Feed the player for energy. 
 - **Inventory Filter** - Upon pickup, remove any items in your inventory that are the same as in the Inventory Filter's inventory.
+
+## Credits
+ [NCBPFluffyBear](https://github.com/ncbpfluffybear) for their autocrafter code since it helped alot with the Auto-Kitchen.
+
+ [Mooy1](https://github.com/mooy1) for their hydro generator code so I could figure out how to do waterlogging right.
+
+ [Seggan](https://github.com/seggan) for showing me how to make a good container class instead of using Slimefun's default.
+
+ [WalshyDev](https://github.com/WalshyDev) for answering my spam in the programming help channel.
+
+ [Slimefun Discord](https://slimefun.dev/discord) for putting up with my outright spam of the programming help channel.
+
+ [Slimefun](https://github.com/slimefun/slimefun4) for being incredibly intuitive to make an addon for and overall being generally helpful when needing examples.
