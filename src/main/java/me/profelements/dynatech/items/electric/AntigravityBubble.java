@@ -1,4 +1,4 @@
-package me.profelements.dynatech.items.machines;
+package me.profelements.dynatech.items.electric;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.profelements.dynatech.items.electric.abstracts.AMachine;
 
 
 public class AntigravityBubble extends AMachine {

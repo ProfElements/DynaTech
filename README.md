@@ -11,7 +11,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 ## Generators
 - **Hydro Generator** - Generates energy from flowing water (Waterlog the generator)
 - **Dragon Egg Generator** - Generates energy from the warmth of a dragon egg. (Place the dragon egg on top)
-
+- **Chipping Generator** - Generates energy from damaged and or durability based items
 ## Tools
 - **Picnic Basket** - Its an upgraded Cooler. It can eat any ExoticGarden custom foods, or just regular vanilla foods, it has a configurable blacklist in the items.yml
 - **Electrical Stimulator** - Feed the player for energy. 

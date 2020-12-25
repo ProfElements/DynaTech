@@ -1,4 +1,4 @@
-package me.profelements.dynatech.items.machines;
+package me.profelements.dynatech.items.electric;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,7 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.profelements.dynatech.DynaTech;
+import me.profelements.dynatech.items.electric.abstracts.AMachine;
 
 public class WeatherController extends AMachine {
 

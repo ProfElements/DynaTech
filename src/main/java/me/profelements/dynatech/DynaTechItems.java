@@ -117,7 +117,7 @@ public class DynaTechItems {
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.GENERATOR),
             LoreBuilder.powerBuffer(128),
-            LoreBuilder.powerPerSecond(32)
+            LoreBuilder.powerPerSecond(16)
     );
 
     public static final SlimefunItemStack DRAGON_GENERATOR = new SlimefunItemStack("DRAGON_GENERATOR",
@@ -131,6 +131,15 @@ public class DynaTechItems {
             LoreBuilder.powerPerSecond(32)
     );
 
-
+    public static final SlimefunItemStack CHIPPING_GENERATOR = new SlimefunItemStack("CHIPPING_GENERATOR",
+            Material.SPRUCE_WOOD,
+            "&6Chipping Generator",
+            "",
+            "&fCreates energy from broken items (items that have durability)",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.GENERATOR),
+            LoreBuilder.powerBuffer(256),
+            LoreBuilder.power(2, "per durability point")
+    );
 
 }

@@ -1,4 +1,4 @@
-package me.profelements.dynatech.items.machines;
+package me.profelements.dynatech.items.electric;
 
 import io.github.thebusybiscuit.exoticgarden.ExoticGardenRecipeTypes;
 import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
@@ -8,6 +8,8 @@ import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+import me.profelements.dynatech.items.electric.abstracts.AMachine;
+
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;

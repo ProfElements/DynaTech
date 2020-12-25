@@ -6,12 +6,13 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
-import me.profelements.dynatech.items.machines.AntigravityBubble;
-import me.profelements.dynatech.items.machines.AutoKitchen;
-import me.profelements.dynatech.items.machines.DragonEggGenerator;
-import me.profelements.dynatech.items.machines.GrowthChamber;
-import me.profelements.dynatech.items.machines.HydroGenerator;
-import me.profelements.dynatech.items.machines.WeatherController;
+import me.profelements.dynatech.items.electric.AntigravityBubble;
+import me.profelements.dynatech.items.electric.AutoKitchen;
+import me.profelements.dynatech.items.electric.GrowthChamber;
+import me.profelements.dynatech.items.electric.WeatherController;
+import me.profelements.dynatech.items.electric.generators.ChippingGenerator;
+import me.profelements.dynatech.items.electric.generators.DragonEggGenerator;
+import me.profelements.dynatech.items.electric.generators.HydroGenerator;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
 import me.profelements.dynatech.items.tools.InventoryFilter;
 
@@ -123,7 +124,10 @@ public class DynaTechItemsSetup {
                         SlimefunItems.ALUMINUM_INGOT, SlimefunItems.SULFATE, SlimefunItems.ALUMINUM_INGOT,
                         SlimefunItems.ALUMINUM_INGOT, SlimefunItems.ENERGY_CONNECTOR, SlimefunItems.ALUMINUM_INGOT,
                         new ItemStack(Material.WHITE_CONCRETE), null, new ItemStack(Material.WHITE_CONCRETE)
-                }).register(plugin);
+                })
+                .setEnergyCapacity(256)
+                .setEnergyProduction(16)
+                .register(plugin);
 
         new DragonEggGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.DRAGON_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
@@ -132,11 +136,21 @@ public class DynaTechItemsSetup {
                         SlimefunItems.LEAD_INGOT, SlimefunItems.MEDIUM_CAPACITOR, SlimefunItems.LEAD_INGOT
 
 
-                }).register(plugin);
+                })
+                .setEnergyCapacity(512)
+                .setEnergyProduction(32)
+                .register(plugin);
 
-    }
+        new ChippingGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.CHIPPING_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE, 
+                new ItemStack[] {
+                        DynaTechItems.STAINLESS_STEEL, DynaTechItems.STAINLESS_STEEL, DynaTechItems.STAINLESS_STEEL,
+                        new ItemStack(Material.DIAMOND_AXE), DynaTechItems.ANCIENT_MACHINE_CORE,new ItemStack(Material.DIAMOND_AXE),
+                        DynaTechItems.STAINLESS_STEEL, DynaTechItems.STAINLESS_STEEL, DynaTechItems.STAINLESS_STEEL
+                })
+                .setEnergyCapacity(256)
+                .setEnergyProduction(2)
+                .register(plugin);
 
-
-
+        }
 
 }

@@ -32,7 +32,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         final Metrics metrics = new Metrics(this, 9689);
 
         if (cfg.getBoolean("options.auto-update")) {
-            new GitHubBuildsUpdater(this, getFile(), "ProfElements/DynaTech/master").start();
+            //new GitHubBuildsUpdater(this, getFile(), "ProfElements/DynaTech/master").start();
         }
 
         DynaTechItemsSetup.setup(this);

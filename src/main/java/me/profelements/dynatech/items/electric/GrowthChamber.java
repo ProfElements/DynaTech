@@ -1,8 +1,10 @@
-package me.profelements.dynatech.items.machines;
+package me.profelements.dynatech.items.electric;
 
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.profelements.dynatech.items.electric.abstracts.AMachine;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
