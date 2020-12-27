@@ -142,4 +142,15 @@ public class DynaTechItems {
             LoreBuilder.power(2, "per durability point")
     );
 
+    public static final SlimefunItemStack CULINARY_GENERATOR = new SlimefunItemStack("CULINARY_GENERATOR",
+            Material.BLAST_FURNACE,
+            "&6Culinary Generator",
+            "",
+            "&fCreates energy from food energy",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.GENERATOR),
+            LoreBuilder.powerBuffer(256),
+            LoreBuilder.powerPerSecond(8)
+    );
+
 }

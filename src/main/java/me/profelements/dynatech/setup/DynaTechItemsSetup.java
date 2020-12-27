@@ -11,6 +11,7 @@ import me.profelements.dynatech.items.electric.AutoKitchen;
 import me.profelements.dynatech.items.electric.GrowthChamber;
 import me.profelements.dynatech.items.electric.WeatherController;
 import me.profelements.dynatech.items.electric.generators.ChippingGenerator;
+import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
 import me.profelements.dynatech.items.electric.generators.DragonEggGenerator;
 import me.profelements.dynatech.items.electric.generators.HydroGenerator;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
@@ -149,6 +150,16 @@ public class DynaTechItemsSetup {
                 })
                 .setEnergyCapacity(256)
                 .setEnergyProduction(2)
+                .register(plugin);
+
+        new CulinaryGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.CULINARY_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.ALUMINUM_BRASS_INGOT,SlimefunItems.ALUMINUM_BRASS_INGOT,SlimefunItems.ALUMINUM_BRASS_INGOT,
+                        SlimefunItems.LEAD_DUST, SlimefunItems.SMALL_CAPACITOR, SlimefunItems.LEAD_DUST,
+                        new ItemStack(Material.CAMPFIRE),new ItemStack(Material.CAMPFIRE),new ItemStack(Material.CAMPFIRE)
+                })
+                .setEnergyCapacity(256)
+                .setEnergyProduction(16)
                 .register(plugin);
 
         }
