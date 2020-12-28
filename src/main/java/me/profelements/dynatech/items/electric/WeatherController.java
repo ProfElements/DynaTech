@@ -48,7 +48,7 @@ public class WeatherController extends AMachine {
                 if(b.getWorld().hasStorm()) {
                     return;
                 }
-                b.getWorld().setStorm(true);
+                DynaTech.runSync(()->b.getWorld().setStorm(true));
                 b.getWorld().setWeatherDuration(60*20);
                 removeCharge(b.getLocation(), getEnergyConsumption());
             }
