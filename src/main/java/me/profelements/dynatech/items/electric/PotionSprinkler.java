@@ -1,0 +1,127 @@
+package me.profelements.dynatech.items.electric;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.potion.PotionData;
+import org.bukkit.potion.PotionEffect;
+
+import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.api.BlockStorage;
+import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+import me.profelements.dynatech.DynaTech;
+import me.profelements.dynatech.items.electric.abstracts.AMachine;
+
+public class PotionSprinkler extends AMachine {
+
+    private final Set<UUID> enabledPlayers = new HashSet<>();
+    private int plyrsApplied = 0;
+    private final int maxPotionAppliedAmount = 8;
+
+    private static final int[] BORDER = new int[] { 1, 2, 6, 7, 9, 10, 11, 15, 16, 17, 19, 20, 24, 25 };
+    private static final int[] BORDER_IN = new int[] { 3, 4, 5, 12, 14, 21, 22, 23 };
+    private static final int[] BORDER_OUT = new int[] { 0, 8, 18, 26 };
+
+    public PotionSprinkler(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+        super(category, item, recipeType, recipe);
+    }
+
+    @Override
+    public void tick(Block b) {
+        if (getCharge(b.getLocation()) < getEnergyConsumption()) {
+            return;
+        }
+
+        Set<UUID> plyrsToRemove = new HashSet<>();
+
+        BlockMenu menu = BlockStorage.getInventory(b);
+        ItemStack item = menu.getItemInSlot(getInputSlots()[0]);
+
+        if (item != null && item.getType() == Material.POTION && item.hasItemMeta()) {
+            PotionMeta potionMeta = (PotionMeta) item.getItemMeta();
+            if (potionMeta.getBasePotionData() != null) {
+                PotionData pd = potionMeta.getBasePotionData();
+                for (Player p : b.getWorld().getPlayers()) {
+                    double distance = b.getLocation().distance(p.getLocation());
+                    if (distance < 10 && !enabledPlayers.contains(p.getUniqueId())) {
+                        int amplifier = pd.isUpgraded() ? 1 : 0;
+                        int duration = pd.isExtended() ? 9600 : 3600;
+                        PotionEffect pe = new PotionEffect(pd.getType().getEffectType(), duration, amplifier);
+                        DynaTech.runSync(() -> applyPotionEffect(pe, p));
+                        enabledPlayers.add(p.getUniqueId());
+                    }
+                }
+            }
+            if (plyrsApplied > maxPotionAppliedAmount) {
+                menu.consumeItem(getInputSlots()[0]);
+                plyrsApplied = 0;
+            }
+        }
+
+        for (UUID plyrUUID : enabledPlayers) {
+            Player plyr = Bukkit.getPlayer(plyrUUID);
+            if (plyr.getActivePotionEffects().isEmpty()) {
+                plyrsToRemove.add(plyr.getUniqueId());
+            }
+        }
+
+        for (UUID plyrUUID : plyrsToRemove) {
+            enabledPlayers.remove(plyrUUID);
+        }
+    }
+
+    private void applyPotionEffect(PotionEffect pe, LivingEntity livingEntity) {
+        pe.apply(livingEntity);
+        plyrsApplied++;
+    }
+
+    @Override
+    public String getMachineIdentifier() {
+        return "POTION_SPRINKLER";
+    }
+
+    @Override
+    public List<int[]> getBorders() {
+        List<int[]> borders = new ArrayList<>();
+        borders.add(BORDER);
+        borders.add(BORDER_IN);
+        borders.add(BORDER_OUT);
+        
+        return borders;
+    }
+    
+    @Override
+    public int[] getInputSlots() {
+        return new int[] {13};
+    }
+
+    @Override
+    public int[] getOutputSlots() {
+        return new int[] {13};
+    }
+
+    @Override
+    public ItemStack getProgressBar() {
+        return new ItemStack(Material.GLASS_BOTTLE);
+    }
+    
+    @Override
+    public int getProgressBarSlot() {
+        return 4;
+    }
+
+   
+    
+}

@@ -9,6 +9,7 @@ import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.electric.AntigravityBubble;
 import me.profelements.dynatech.items.electric.AutoKitchen;
 import me.profelements.dynatech.items.electric.GrowthChamber;
+import me.profelements.dynatech.items.electric.PotionSprinkler;
 import me.profelements.dynatech.items.electric.WeatherController;
 import me.profelements.dynatech.items.electric.generators.ChippingGenerator;
 import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
@@ -118,7 +119,17 @@ public class DynaTechItemsSetup {
                 .setEnergyConsumption(32)
                 .setProcessingSpeed(1)
                 .register(plugin);
-
+        
+        new PotionSprinkler(DynaTechItems.DynaTechGeneral, DynaTechItems.POTION_SPRINKLER, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        new ItemStack(Material.BREWING_STAND), null, new ItemStack(Material.BREWING_STAND),
+                        new ItemStack(Material.IRON_BARS), DynaTechItems.ANCIENT_MACHINE_CORE, new ItemStack(Material.IRON_BARS),
+                        SlimefunItems.FERROSILICON, SlimefunItems.FERROSILICON, SlimefunItems.FERROSILICON
+                })
+                .setEnergyCapacity(256)
+                .setEnergyConsumption(32)
+                .setProcessingSpeed(1)
+                .register(plugin);
 
         new HydroGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
