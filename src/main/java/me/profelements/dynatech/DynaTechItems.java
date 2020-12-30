@@ -40,6 +40,7 @@ public class DynaTechItems {
             "&eRight Click &7to open."
     );
 
+    //Tools
     public static final SlimefunItemStack INVENTORY_FILTER = new SlimefunItemStack("INVENTORY_FILTER",
             Material.IRON_BARS,
             "&6Inventory Filter",
@@ -118,7 +119,18 @@ public class DynaTechItems {
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
             LoreBuilder.powerPerSecond(32)
             );
-
+    
+    public static final SlimefunItemStack BARBED_WIRE = new SlimefunItemStack("BARBED_WIRE",
+            new CustomItem(SkullItem.fromHash("b2ac6c219004d82dfa627ffab664f29c53ecc112d91c9d7a9c915c426832412")),
+            "&6Barbed Wire",
+            "",
+            "&fPushes mobs away in a radius.",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.powerPerSecond(16)
+            );        
+            
+    //Generators
     public static final SlimefunItemStack WATER_MILL = new SlimefunItemStack("WATER_MILL",
             Material.COBBLESTONE_WALL,
             "&6Hydro Generator",
