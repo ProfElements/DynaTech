@@ -108,12 +108,16 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
 
             processing.remove(b);
             progress.remove(b);
+            blockExtras(b);
             return true;
 
         });
 
         registerDefaultRecipes();
     }
+
+    public void blockExtras(Block b) {
+    };
 
     public void newMachineInstance(BlockMenu menu, Block b) {
     };
