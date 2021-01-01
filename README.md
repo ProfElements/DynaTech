@@ -20,6 +20,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Picnic Basket** - Its an upgraded Cooler. It can eat any ExoticGarden custom foods, or just regular vanilla foods, it has a configurable blacklist in the items.yml
 - **Electrical Stimulator** - Feed the player for energy. 
 - **Inventory Filter** - Upon item pickup, if item is the same as one in the Inventory Filter's filter it voids the item.
+- **Angel Gem** - Permanent Creative Flight, it has some speed settings.
 
 ## Credits
  [NCBPFluffyBear](https://github.com/ncbpfluffybear) for their autocrafter code since it helped alot with the Auto-Kitchen.

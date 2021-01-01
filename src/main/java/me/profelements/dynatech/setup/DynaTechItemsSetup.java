@@ -3,6 +3,8 @@ package me.profelements.dynatech.setup;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
+import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
@@ -16,6 +18,8 @@ import me.profelements.dynatech.items.electric.generators.ChippingGenerator;
 import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
 import me.profelements.dynatech.items.electric.generators.DragonEggGenerator;
 import me.profelements.dynatech.items.electric.generators.HydroGenerator;
+import me.profelements.dynatech.items.misc.VexGem;
+import me.profelements.dynatech.items.tools.AngelGem;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
 import me.profelements.dynatech.items.tools.InventoryFilter;
 
@@ -52,6 +56,13 @@ public class DynaTechItemsSetup {
                         SlimefunItems.LEAD_INGOT, SlimefunItems.MAGIC_LUMP_1, SlimefunItems.LEAD_INGOT
                 }).register(plugin);
 
+        new VexGem(DynaTechItems.DynaTechGeneral, DynaTechItems.VEX_GEM, RecipeType.MOB_DROP, 
+                new ItemStack[] {
+                        null, null, null,
+                        null, new CustomItem(SkullItem.fromHash("c2ec5a516617ff1573cd2f9d5f3969f56d5575c4ff4efefabd2a18dc7ab98cd"), "&aVex"), null,
+                        null, null, null
+                }).register(plugin);
+
         //Backpacks
         new PicnicBasket(27, DynaTechItems.DynaTechGeneral, DynaTechItems.PICNIC_BASKET, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
@@ -73,6 +84,13 @@ public class DynaTechItemsSetup {
                         DynaTechItems.STAINLESS_STEEL, null, DynaTechItems.STAINLESS_STEEL,
                         DynaTechItems.STAINLESS_STEEL, SlimefunItems.FOOD_FABRICATOR, DynaTechItems.STAINLESS_STEEL,
                         SlimefunItems.PLASTIC_SHEET, SlimefunItems.PLASTIC_SHEET, SlimefunItems.PLASTIC_SHEET
+                }).register(plugin);
+
+        new AngelGem(DynaTechItems.DynaTechGeneral, DynaTechItems.ANGEL_GEM, RecipeType.ANCIENT_ALTAR,
+                new ItemStack[] {
+                        null, SlimefunItems.NUCLEAR_REACTOR, null,
+                        SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.VEX_GEM, SlimefunItems.GOLD_24K_BLOCK,
+                        SlimefunItems.BLISTERING_INGOT_3, DynaTechItems.STAINLESS_STEEL_ROTOR, SlimefunItems.BLISTERING_INGOT_3
                 }).register(plugin);
 
         //Machines
