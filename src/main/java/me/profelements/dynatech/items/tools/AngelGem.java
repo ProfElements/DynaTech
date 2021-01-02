@@ -2,10 +2,13 @@ package me.profelements.dynatech.items.tools;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerDropItemEvent;
@@ -22,8 +25,9 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
 public class AngelGem extends SlimefunItem {
 
+    private boolean enabledPlayer = false;
+
     private float flySpeed = 0.1f;
-    private boolean flightEnabled = false;
 
     public AngelGem(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
@@ -36,10 +40,13 @@ public class AngelGem extends SlimefunItem {
 
             @Override
             public boolean onItemDrop(PlayerDropItemEvent e, Player p, Item item) {
-                p.setFlying(false);
-                p.setAllowFlight(false);
-                p.setFlySpeed(0.1f);
-                p.setFallDistance(0.0f);
+                if (enabledPlayer && e.getPlayer().getGameMode() != GameMode.CREATIVE) {
+                    e.getPlayer().setFlying(false);
+                    e.getPlayer().setAllowFlight(false);
+                    e.getPlayer().setFlySpeed(0.1f);
+                    e.getPlayer().setFallDistance(0.0f);
+                    enabledPlayer = false;
+                }
                 return true;
             }
 
@@ -50,17 +57,19 @@ public class AngelGem extends SlimefunItem {
         return new ItemUseHandler() {
             @Override
             public void onRightClick(PlayerRightClickEvent e) {
-                if (e.getPlayer().isSneaking() && e.getPlayer().getAllowFlight()) {
+                if (e.getPlayer().isSneaking()) {
                     e.getPlayer().setFlying(false);
                     e.getPlayer().setAllowFlight(false);
                     e.getPlayer().setFallDistance(0f);
                     e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
+                    enabledPlayer = false;
                 }
                 if (!e.getPlayer().getAllowFlight()) {
                     e.getPlayer().setAllowFlight(true);
                     setFlySpeed(0.10f);
                     e.getPlayer().setFlySpeed(getFlySpeed());
                     e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
+                    enabledPlayer = true;
                 } else {
                     if (getFlySpeed() < 1f) {
                         setFlySpeed(getFlySpeed() + 0.10f);
