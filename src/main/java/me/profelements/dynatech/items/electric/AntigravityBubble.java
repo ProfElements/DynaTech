@@ -40,8 +40,7 @@ public class AntigravityBubble extends AMachine {
     private void clearFlightFromPlayer(Block block) {
         Location l = new Location(block.getWorld(), block.getX(), block.getY(), block.getZ());
         for (Player p : l.getWorld().getPlayers()) {
-            double distance = l.distance(p.getLocation());
-            if (distance <= 50) {
+            if (enabledPlayers.contains(p.getUniqueId())) {
                 p.setFlying(false);
                 p.setAllowFlight(false);
                 p.setFallDistance(0.0f);

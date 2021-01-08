@@ -88,7 +88,7 @@ public class DynaTechItemsSetup {
 
         new AngelGem(DynaTechItems.DynaTechGeneral, DynaTechItems.ANGEL_GEM, RecipeType.ANCIENT_ALTAR,
                 new ItemStack[] {
-                        null, SlimefunItems.NUCLEAR_REACTOR, null,
+                        new ItemStack(Material.NETHERITE_INGOT), SlimefunItems.NUCLEAR_REACTOR, new ItemStack(Material.NETHERITE_INGOT),
                         SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.VEX_GEM, SlimefunItems.GOLD_24K_BLOCK,
                         SlimefunItems.BLISTERING_INGOT_3, DynaTechItems.STAINLESS_STEEL_ROTOR, SlimefunItems.BLISTERING_INGOT_3
                 }).register(plugin);
