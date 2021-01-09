@@ -1,12 +1,18 @@
 package me.profelements.dynatech.items.electric.generators;
 
+import java.util.Map;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineFuel;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
 
 public class CulinaryGenerator extends AMachineGenerator {
@@ -63,6 +69,26 @@ public class CulinaryGenerator extends AMachineGenerator {
         registerFuel(new MachineFuel(36, new ItemStack(Material.COOKED_BEEF)));
         registerFuel(new MachineFuel(36, new ItemStack(Material.PUMPKIN_PIE)));
     }
+
+    @Override
+    public MachineFuel findRecipe(BlockMenu inv, Map<Integer, Integer> found) {
+        if (DynaTech.isIsExoticGardenInstalled()) {
+            for (int inputSlot : getInputSlots()) {
+                ItemStack item = inv.getItemInSlot(inputSlot);
+                if (item != null && SlimefunItem.getByItem(item) != null) {
+                    SlimefunItem sfItem = SlimefunItem.getByItem(item);
+                    if (sfItem instanceof CustomFood) {
+                        CustomFood cfItem = (CustomFood) sfItem;
+                        MachineFuel fuel = new MachineFuel(cfItem.getFoodValue()*4, sfItem.getItem());    
+                        inv.consumeItem(inputSlot);                
+                        return fuel;
+                    }            
+                }
+            }
+        }
+        return super.findRecipe(inv, found); 
+    }    
+             
 
     @Override
     public String getMachineIdentifier() {
