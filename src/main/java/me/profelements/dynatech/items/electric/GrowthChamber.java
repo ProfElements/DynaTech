@@ -2,7 +2,11 @@ package me.profelements.dynatech.items.electric;
 
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 
 import org.bukkit.Material;
@@ -42,6 +46,47 @@ public class GrowthChamber extends AMachine {
         registerRecipe(40, new ItemStack[] {new ItemStack(Material.ACACIA_SAPLING)}, new ItemStack[] {new ItemStack(Material.ACACIA_SAPLING, 3), new ItemStack(Material.ACACIA_LOG, 6)});
 
     }
+    
+    @Override
+    public MachineRecipe findNextRecipe(BlockMenu inv) {
+        if (DynaTech.isIsExoticGardenInstalled()) {
+            for (int inputSlot : getInputSlots()) {
+                ItemStack item = inv.getItemInSlot(inputSlot);
+                if (item != null && SlimefunItem.getByItem(item) != null) {
+                    SlimefunItem sfItem = SlimefunItem.getByItem(item);
+                    if (sfItem.getId().contains("_BUSH") || sfItem.getId().contains("_PLANT") || sfItem.getId().contains("_SAPLING")) {
+                        if (sfItem.getId().contains("_BUSH")) {
+                            ItemStack fruit = SlimefunItem.getByID(sfItem.getId().replace("_BUSH", "")).getItem();
+                            MachineRecipe recipe = new MachineRecipe(10, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {sfItem.getItem(), fruit});
+                            
+                            inv.consumeItem(inputSlot);
+
+                            return recipe;
+                        } else 
+                        if (sfItem.getId().contains("_PLANT")) {
+                            ItemStack fruit = SlimefunItem.getByID(sfItem.getId().replace("_PLANT", "")).getItem();
+                            MachineRecipe recipe = new MachineRecipe(10, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {sfItem.getItem(), fruit});
+                            
+                            inv.consumeItem(inputSlot);
+
+                            return recipe;
+                        } else
+                        if (sfItem.getId().contains("_SAPLING")) {
+                            ItemStack fruit = SlimefunItem.getByID(sfItem.getId().replace("_SAPLING", "")).getItem();
+                            MachineRecipe recipe = new MachineRecipe(60, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {sfItem.getItem(), fruit});
+                            
+                            inv.consumeItem(inputSlot);
+                            
+                            return recipe;
+                        }          
+                        
+                    }
+                }
+            }
+        }
+        return super.findNextRecipe(inv);
+        
+    } 
 
     @Override
     public ItemStack getProgressBar() {
