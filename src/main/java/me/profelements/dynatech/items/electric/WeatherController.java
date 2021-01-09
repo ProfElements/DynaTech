@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import me.mrCookieSlime.CSCoreLibPlugin.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
@@ -16,7 +17,7 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 
-public class WeatherController extends AMachine {
+public class WeatherController extends AMachine implements RecipeDisplayItem {
 
     private static final int[] BORDER = new int[] {1,2,6,7,9,10,11,15,16,17,19,20,24,25};
     private static final int[] BORDER_IN = new int[] {3,4,5,12,14,21,22,23};
@@ -68,13 +69,13 @@ public class WeatherController extends AMachine {
     public List<ItemStack> getDisplayRecipes() {
         List<ItemStack> items = new ArrayList<>();
         items.add(new ItemStack(Material.SUNFLOWER));
-        items.add(new CustomItem(Material.DIAMOND, "Makes its sunny in philadelphia."));
+        items.add(new CustomItem(Material.DIAMOND, "&fMakes its sunny in philadelphia."));
 
         items.add(new ItemStack(Material.LILAC));
-        items.add(new CustomItem(Material.DIAMOND, "Makes its rain while the old man snores"));
+        items.add(new CustomItem(Material.DIAMOND, "&fMakes its rain while the old man snores"));
 
         items.add(new ItemStack(Material.CREEPER_HEAD));
-        items.add(new CustomItem(Material.DIAMOND, "Makes it thunder."));
+        items.add(new CustomItem(Material.DIAMOND, "&fMakes it thunder."));
 
         return items;
     }
