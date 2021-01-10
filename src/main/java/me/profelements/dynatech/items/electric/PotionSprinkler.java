@@ -72,7 +72,7 @@ public class PotionSprinkler extends AMachine {
 
         for (UUID plyrUUID : enabledPlayers) {
             Player plyr = Bukkit.getPlayer(plyrUUID);
-            if (plyr.getActivePotionEffects().isEmpty()) {
+            if (plyr != null && plyr.getActivePotionEffects().isEmpty()) {
                 plyrsToRemove.add(plyr.getUniqueId());
             }
         }
