@@ -57,7 +57,7 @@ public class GrowthChamber extends AMachine {
                     if (sfItem.getId().contains("_BUSH") || sfItem.getId().contains("_PLANT") || sfItem.getId().contains("_SAPLING")) {
                         if (sfItem.getId().contains("_BUSH")) {
                             ItemStack fruit = SlimefunItem.getByID(sfItem.getId().replace("_BUSH", "")).getItem();
-                            MachineRecipe recipe = new MachineRecipe(10, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {sfItem.getItem(), fruit});
+                            MachineRecipe recipe = new MachineRecipe(20, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {sfItem.getItem(), fruit});
                             
                             inv.consumeItem(inputSlot);
 
@@ -73,6 +73,7 @@ public class GrowthChamber extends AMachine {
                         } else
                         if (sfItem.getId().contains("_SAPLING")) {
                             ItemStack fruit = SlimefunItem.getByID(sfItem.getId().replace("_SAPLING", "")).getItem();
+                            fruit.setAmount(3);
                             MachineRecipe recipe = new MachineRecipe(60, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {sfItem.getItem(), fruit});
                             
                             inv.consumeItem(inputSlot);
