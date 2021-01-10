@@ -64,7 +64,7 @@ public class GrowthChamber extends AMachine {
                             return recipe;
                         } else 
                         if (sfItem.getId().contains("_PLANT")) {
-                            ItemStack fruit = SlimefunItem.getByID(sfItem.getId().replace("_PLANT", "")).getItem();
+                            ItemStack fruit = SlimefunItem.getByID(sfItem.getId().replace("_PLANT", "")) != null ? SlimefunItem.getByID(sfItem.getId().replace("_PLANT", "")).getItem() : SlimefunItem.getByID(sfItem.getId().replace("_PLANT", "_ESSENCE")).getItem();
                             MachineRecipe recipe = new MachineRecipe(10, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {sfItem.getItem(), fruit});
                             
                             inv.consumeItem(inputSlot);
