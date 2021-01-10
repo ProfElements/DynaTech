@@ -205,6 +205,9 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
     }
 
     protected void tick(Block b) {
+        if (getCharge(b.getLocation()) < getEnergyConsumption()) {
+            return;
+        }
         BlockMenu inv = BlockStorage.getInventory(b);
 
         if (isProcessing(b)) {
