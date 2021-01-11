@@ -4,7 +4,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 
 ## Machines
 - **Auto-Kitchen** - If you have ExoticGarden installed, this machine will become available. It automatically crafts any Kitchen recipe inserted into it.
-- **Growth Chamber** - Automatically grow some plants, including sapling, cactus and sugarcane and bamboo!
+- **Growth Chamber** - Automatically grow some plants, including sapling, cactus and sugarcane and bamboo, supports Exotic Garden saplings, plants, and bushes.
 - **Antigravity Bubble** - Temporary creative flight within a 45 block area when powered.
 - **Weather Controller** - Controls the weather when given a key item (Sunflower > Clear, Lilac > Rain, Creeper Head > Thunder).
 - **Potion Sprinkler** - A ranged potion applier, the potions have durability basically.
@@ -14,7 +14,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Hydro Generator** - Generates energy from flowing water (Waterlog the generator)
 - **Dragon Egg Generator** - Generates energy from the warmth of a dragon egg. (Place the dragon egg on top)
 - **Chipping Generator** - Generates energy from damaged and or durability based items
-- **Culinary Generator** - Generates energy from food energy (except poisonous and bowl based food substances)
+- **Culinary Generator** - Generates energy from food energy, suports Exotic Garden Food in the Food Category.
 
 ## Tools
 - **Picnic Basket** - Its an upgraded Cooler. It can eat any ExoticGarden custom foods, or just regular vanilla foods, it has a configurable blacklist in the items.yml

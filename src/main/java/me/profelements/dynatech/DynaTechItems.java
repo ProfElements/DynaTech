@@ -80,7 +80,8 @@ public class DynaTechItems {
             Material.NETHERITE_BLOCK, 
             "&6Flight Gem",
             "",
-            "&fPermanent Creative Flight. Has some speed adjustment settings.",
+            "&fPermanent Creative Flight.",
+            "&fHas some speed adjustment settings.",
             "",
             "&f&oFly just like a bird~",
             "",
@@ -197,7 +198,7 @@ public class DynaTechItems {
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.GENERATOR),
             LoreBuilder.powerBuffer(256),
-            LoreBuilder.power(2, "per durability point")
+            LoreBuilder.power(2, " per durability point")
             );
 
     public static final SlimefunItemStack CULINARY_GENERATOR = new SlimefunItemStack("CULINARY_GENERATOR",
