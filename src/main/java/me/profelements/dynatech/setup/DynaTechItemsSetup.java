@@ -94,17 +94,20 @@ public class DynaTechItemsSetup {
                 }).register(plugin);
 
         //Machines
-        new AutoKitchen(DynaTechItems.DynaTechGeneral, DynaTechItems.AUTO_KITCHEN, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
+        if (DynaTech.isIsExoticGardenInstalled()) {
+                new AutoKitchen(DynaTechItems.DynaTechGeneral, DynaTechItems.AUTO_KITCHEN, RecipeType.ENHANCED_CRAFTING_TABLE,
+                        new ItemStack[] {
                         new ItemStack(Material.BRICK), SlimefunItems.ELECTRIC_FURNACE, new ItemStack(Material.BRICK),
                         DynaTechItems.STAINLESS_STEEL, SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.STAINLESS_STEEL,
                         new ItemStack(Material.TERRACOTTA), new ItemStack(Material.TERRACOTTA), new ItemStack(Material.TERRACOTTA)
 
-                })
-                .setEnergyCapacity(512)
-                .setEnergyConsumption(16)
-                .setProcessingSpeed(1)
-                .register(plugin);
+                        })
+                        .setEnergyCapacity(512)
+                        .setEnergyConsumption(16)
+                        .setProcessingSpeed(1)
+                        .register(plugin);
+        }
+       
 
         new GrowthChamber(DynaTechItems.DynaTechGeneral, DynaTechItems.GROWTH_CHAMBER, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
