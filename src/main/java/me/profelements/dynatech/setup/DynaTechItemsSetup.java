@@ -24,6 +24,7 @@ import me.profelements.dynatech.items.misc.VexGem;
 import me.profelements.dynatech.items.tools.AngelGem;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
 import me.profelements.dynatech.items.tools.InventoryFilter;
+import me.profelements.dynatech.items.tools.Scoop;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -132,6 +133,13 @@ public class DynaTechItemsSetup {
                         new ItemStack(Material.NETHERITE_INGOT), SlimefunItems.NUCLEAR_REACTOR, new ItemStack(Material.NETHERITE_INGOT),
                         SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.VEX_GEM, SlimefunItems.GOLD_24K_BLOCK,
                         SlimefunItems.BLISTERING_INGOT_3, DynaTechItems.STAINLESS_STEEL_ROTOR, SlimefunItems.BLISTERING_INGOT_3
+                }).register(plugin);
+
+        new Scoop(DynaTechItems.DynaTechGeneral, DynaTechItems.SCOOP, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        new ItemStack(Material.WHITE_WOOL), new ItemStack(Material.WHITE_WOOL), new ItemStack(Material.WHITE_WOOL),
+                        new ItemStack(Material.WHITE_WOOL), SlimefunItems.BATTERY, new ItemStack(Material.WHITE_WOOL),
+                        null, new ItemStack(Material.STICK), null
                 }).register(plugin);
 
         //Machines

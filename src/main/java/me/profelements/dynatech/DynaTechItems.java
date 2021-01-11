@@ -88,6 +88,17 @@ public class DynaTechItems {
             "&7Flight Speed: <speed>"
             );
 
+    public static final SlimefunItemStack SCOOP = new SlimefunItemStack("SCOOP", 
+            Material.IRON_SHOVEL,
+            "&6Scoop",
+            "",
+            "&fUsed to capture bees.",
+            "",
+            "&f&oMake sure not to get stung",
+            "",
+            LoreBuilder.powerCharged(0, 512)
+            );
+
     //Machines
     public static final SlimefunItemStack AUTO_KITCHEN = new SlimefunItemStack("AUTO_KITCHEN",
             Material.SMOKER,
