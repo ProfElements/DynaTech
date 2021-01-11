@@ -1,8 +1,6 @@
 package me.profelements.dynatech.items.tools;
 
-import org.bukkit.GameMode;
 import org.bukkit.Sound;
-import org.bukkit.SoundCategory;
 import org.bukkit.entity.Bee;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
