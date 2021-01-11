@@ -3,6 +3,7 @@ package me.profelements.dynatech.setup;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import me.profelements.dynatech.DynaTech;
@@ -18,6 +19,7 @@ import me.profelements.dynatech.items.electric.generators.ChippingGenerator;
 import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
 import me.profelements.dynatech.items.electric.generators.DragonEggGenerator;
 import me.profelements.dynatech.items.electric.generators.HydroGenerator;
+import me.profelements.dynatech.items.misc.Bee;
 import me.profelements.dynatech.items.misc.VexGem;
 import me.profelements.dynatech.items.tools.AngelGem;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
@@ -55,6 +57,20 @@ public class DynaTechItemsSetup {
                         SlimefunItems.MAGIC_LUMP_1, new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.MAGIC_LUMP_1,
                         SlimefunItems.LEAD_INGOT, SlimefunItems.MAGIC_LUMP_1, SlimefunItems.LEAD_INGOT
                 }).register(plugin);
+        
+        new SlimefunItem(DynaTechItems.DynaTechGeneral, DynaTechItems.MACHINE_SCRAP, RecipeType.GRIND_STONE,
+                new ItemStack[] {
+                        SlimefunItems.PROGRAMMABLE_ANDROID, null, null,
+                        null, null, null,
+                        null, null, null,
+                }, new SlimefunItemStack(DynaTechItems.MACHINE_SCRAP, 8)).register(plugin); 
+                
+        new SlimefunItem(DynaTechItems.DynaTechGeneral, DynaTechItems.ADVANCED_MACHINE_SCRAP, RecipeType.GRIND_STONE,
+                new ItemStack[] {
+                        SlimefunItems.PROGRAMMABLE_ANDROID_2, null, null,
+                        null, null, null,
+                        null, null, null,
+                }, new SlimefunItemStack(DynaTechItems.ADVANCED_MACHINE_SCRAP, 8)).register(plugin);
 
         new VexGem(DynaTechItems.DynaTechGeneral, DynaTechItems.VEX_GEM, RecipeType.MOB_DROP, 
                 new ItemStack[] {
@@ -62,6 +78,31 @@ public class DynaTechItemsSetup {
                         null, new CustomItem(SkullItem.fromHash("c2ec5a516617ff1573cd2f9d5f3969f56d5575c4ff4efefabd2a18dc7ab98cd"), "&aVex"), null,
                         null, null, null
                 }).register(plugin);
+
+        //Bees
+        new Bee(DynaTechItems.DynaTechGeneral, DynaTechItems.BEE, DynaTechItems.DynaTechScoop,
+                new ItemStack[] {
+                        null, null, null,
+                        null, new CustomItem(SkullItem.fromHash("12724a9a4cdd68ba49415560e5be40b4a1c47cb5be1d66aedb52a30e62ef2d47"), "&aAny Bee"), null,
+                        null, null, null
+                }, 2
+                ).register(plugin);
+
+        new Bee(DynaTechItems.DynaTechGeneral, DynaTechItems.ROBOTIC_BEE, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE,
+                        DynaTechItems.VEX_GEM, DynaTechItems.MACHINE_SCRAP, DynaTechItems.VEX_GEM,
+                        SlimefunItems.REINFORCED_PLATE, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.REINFORCED_PLATE
+                }, 2
+                ).register(plugin);
+
+        new Bee(DynaTechItems.DynaTechGeneral, DynaTechItems.ADVANCED_ROBOTIC_BEE, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE,
+                DynaTechItems.ANGEL_GEM, DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.ANGEL_GEM,
+                SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.GOLD_24K_BLOCK
+                }, 4
+                ).register(plugin);
 
         //Backpacks
         new PicnicBasket(27, DynaTechItems.DynaTechGeneral, DynaTechItems.PICNIC_BASKET, RecipeType.ENHANCED_CRAFTING_TABLE,
