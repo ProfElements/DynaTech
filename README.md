@@ -9,7 +9,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Weather Controller** - Controls the weather when given a key item (Sunflower > Clear, Lilac > Rain, Creeper Head > Thunder).
 - **Potion Sprinkler** - A ranged potion applier, the potions have durability basically. Has a 10 block range.
 - **Barbed Wire** - Pushes mob back in a radius. Has a 9 block range, perfect for mob farms.
-- **Material Hive** - An infinite resource generator requires Bees and a stack of the output items. Supported Materials are [here](https://github.com/ProfElements/DynaTech/blob/1b6aee96937da31c7bdb84df284392530149ce63/src/main/java/me/profelements/dynatech/items/electric/MaterialHive.java#L169).
+- **Material Hive** - An infinite resource generator, requires Bees and a stack of the output items. Supported Materials are [here](https://github.com/ProfElements/DynaTech/blob/1b6aee96937da31c7bdb84df284392530149ce63/src/main/java/me/profelements/dynatech/items/electric/MaterialHive.java#L169).
 
 ## Generators
 - **Hydro Generator** - Generates energy from flowing water (Waterlog the generator)
