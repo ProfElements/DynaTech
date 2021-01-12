@@ -128,7 +128,7 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
         this.recipeOutput = recipeOutput;
     }
 
-    protected void constructMenu(BlockMenuPreset preset) {
+    public void constructMenu(BlockMenuPreset preset) {
         for (int i : getBorders().get(0)) {
             preset.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
         }
