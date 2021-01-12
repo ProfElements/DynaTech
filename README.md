@@ -7,8 +7,9 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Growth Chamber** - Automatically grow some plants, including sapling, cactus and sugarcane and bamboo, supports Exotic Garden saplings, plants, and bushes.
 - **Antigravity Bubble** - Temporary creative flight within a 45 block area when powered.
 - **Weather Controller** - Controls the weather when given a key item (Sunflower > Clear, Lilac > Rain, Creeper Head > Thunder).
-- **Potion Sprinkler** - A ranged potion applier, the potions have durability basically.
-- **Barbed Wire** - Pushes mob back in a radius 
+- **Potion Sprinkler** - A ranged potion applier, the potions have durability basically. Has a 10 block range.
+- **Barbed Wire** - Pushes mob back in a radius. Has a 9 block range, perfect for mob farms.
+- **Material Hive** - An infinite resource generator requires Bees and a stack of the output items. Supported Materials are [here](https://github.com/ProfElements/DynaTech/blob/1b6aee96937da31c7bdb84df284392530149ce63/src/main/java/me/profelements/dynatech/items/electric/MaterialHive.java#L169).
 
 ## Generators
 - **Hydro Generator** - Generates energy from flowing water (Waterlog the generator)
@@ -21,6 +22,12 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Electrical Stimulator** - Feed the player for energy. 
 - **Inventory Filter** - Upon item pickup, if item is the same as one in the Inventory Filter's filter it voids the item.
 - **Angel Gem** - Permanent Creative Flight, it has some speed settings.
+- **Scoop** - The only way to get naturals Bees. Scoop them into item form.
+
+## Bees 
+- **Bee** - A Natural Bee, for each one -2 seconds to resource creation time in Material Hive.
+- **Robotic Bee** - A Robotic bee made of magic and scrap parts. -2 seconds to resource creation time in Material Hive.
+- **Advanced Robotic Bee** - An Advanced version of the Robotic Bee. -4 seconds to resource creation time in Material Hive.
 
 ## Credits
  [NCBPFluffyBear](https://github.com/ncbpfluffybear) for their autocrafter code since it helped alot with the Auto-Kitchen.
