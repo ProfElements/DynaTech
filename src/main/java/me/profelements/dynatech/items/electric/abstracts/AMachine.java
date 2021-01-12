@@ -128,7 +128,7 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
         this.recipeOutput = recipeOutput;
     }
 
-    protected void constructMenu(BlockMenuPreset preset) {
+    public void constructMenu(BlockMenuPreset preset) {
         for (int i : getBorders().get(0)) {
             preset.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
         }
@@ -276,9 +276,10 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
                         return null;
                     }
                 }
-
-                for (Map.Entry<Integer, Integer> entry : found.entrySet()) {
-                    inv.consumeItem(entry.getKey(), entry.getValue());
+                if (isInputConsumed()) {
+                    for (Map.Entry<Integer, Integer> entry : found.entrySet()) {
+                        inv.consumeItem(entry.getKey(), entry.getValue());
+                    }
                 }
 
                 return recipe;
@@ -289,6 +290,9 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
         return null;
     }
 
+    public boolean isInputConsumed() {
+        return true;
+    }
 
     //Recipe Related Shenanigans
     protected void registerDefaultRecipes() {}

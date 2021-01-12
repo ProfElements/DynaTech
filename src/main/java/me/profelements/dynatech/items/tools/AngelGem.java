@@ -2,9 +2,7 @@ package me.profelements.dynatech.items.tools;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.ChatColor;
