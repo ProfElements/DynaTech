@@ -13,6 +13,7 @@ import me.profelements.dynatech.items.electric.AntigravityBubble;
 import me.profelements.dynatech.items.electric.AutoKitchen;
 import me.profelements.dynatech.items.electric.BarbedWire;
 import me.profelements.dynatech.items.electric.GrowthChamber;
+import me.profelements.dynatech.items.electric.MaterialHive;
 import me.profelements.dynatech.items.electric.PotionSprinkler;
 import me.profelements.dynatech.items.electric.WeatherController;
 import me.profelements.dynatech.items.electric.generators.ChippingGenerator;
@@ -213,6 +214,17 @@ public class DynaTechItemsSetup {
                 .setEnergyConsumption(16)
                 .setProcessingSpeed(1)
                 .register(plugin);
+        
+        new MaterialHive(DynaTechItems.DynaTechGeneral, DynaTechItems.MATERIAL_HIVE, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                    SlimefunItems.REINFORCED_PLATE, SlimefunItems.BOOSTED_URANIUM, SlimefunItems.REINFORCED_PLATE,
+                    SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.BEEHIVE), SlimefunItems.REINFORCED_PLATE,
+                    DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.MACHINE_SCRAP, DynaTechItems.ADVANCED_MACHINE_SCRAP
+                })
+                .setEnergyCapacity(8192)
+                .setEnergyConsumption(1024)
+                .setProcessingSpeed(1)
+                .register(plugin);       
 
         //Generators
         new HydroGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,
