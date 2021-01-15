@@ -62,7 +62,7 @@ public class MaterialHive extends AMachine implements Radioactive {
                         secondRemovalAmount += dtBee2.getSpeedMultipler() * (bee2.getAmount() - 1); 
                     }
 
-                    if (bee1.getAmount() == 64 & bee2.getAmount() == 64) {
+                    if (bee1 != null && bee1.getAmount() == 64 && bee2 != null && bee2.getAmount() == 64) {
                         SlimefunItem sfBee1 = SlimefunItem.getByItem(bee1);
                         SlimefunItem sfBee2 = SlimefunItem.getByItem(bee2);
 
