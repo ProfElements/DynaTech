@@ -66,7 +66,7 @@ public class MaterialHive extends AMachine implements Radioactive {
                         SlimefunItem sfBee1 = SlimefunItem.getByItem(bee1);
                         SlimefunItem sfBee2 = SlimefunItem.getByItem(bee2);
 
-                        if (sfBee1.getId() == sfBee2.getId()) {
+                        if ( sfBee1 != null && sfBee2 != null && sfBee1.getId() == sfBee2.getId()) {
                             switch (sfBee1.getId()) {
                                 case "BEE":
                                     return new MachineRecipe(1500, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
