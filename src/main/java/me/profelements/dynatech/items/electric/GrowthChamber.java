@@ -49,7 +49,7 @@ public class GrowthChamber extends AMachine {
     
     @Override
     public MachineRecipe findNextRecipe(BlockMenu inv) {
-        if (DynaTech.isIsExoticGardenInstalled()) {
+        if (DynaTech.isExoticGardenInstalled()) {
             for (int inputSlot : getInputSlots()) {
                 ItemStack item = inv.getItemInSlot(inputSlot);
                 if (item != null && SlimefunItem.getByItem(item) != null) {

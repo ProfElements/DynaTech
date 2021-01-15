@@ -7,10 +7,10 @@ import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.profelements.dynatech.DynaTech;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-
-import static me.profelements.dynatech.DynaTech.isIsExoticGardenInstalled;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ public class PicnicBasket extends SlimefunBackpack {
 
     @Override
     public boolean isItemAllowed(ItemStack item, SlimefunItem itemAsSlimefunItem) {
-        if (isIsExoticGardenInstalled()) {
+        if (DynaTech.isExoticGardenInstalled()) {
             if (itemAsSlimefunItem instanceof CustomFood) {
                 return true;
             } else {

@@ -72,7 +72,7 @@ public class CulinaryGenerator extends AMachineGenerator {
 
     @Override
     public MachineFuel findRecipe(BlockMenu inv, Map<Integer, Integer> found) {
-        if (DynaTech.isIsExoticGardenInstalled()) {
+        if (DynaTech.isExoticGardenInstalled()) {
             for (int inputSlot : getInputSlots()) {
                 ItemStack item = inv.getItemInSlot(inputSlot);
                 if (item != null && SlimefunItem.getByItem(item) != null) {

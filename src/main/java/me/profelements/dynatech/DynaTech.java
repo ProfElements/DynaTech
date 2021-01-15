@@ -61,7 +61,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         return instance;
     }
 
-    public static boolean isIsExoticGardenInstalled() {
+    public static boolean isExoticGardenInstalled() {
         return Bukkit.getServer().getPluginManager().isPluginEnabled("ExoticGarden");
     }
 

@@ -144,7 +144,7 @@ public class DynaTechItemsSetup {
                 }).register(plugin);
 
         //Machines
-        if (DynaTech.isIsExoticGardenInstalled()) {
+        if (DynaTech.isExoticGardenInstalled()) {
                 new AutoKitchen(DynaTechItems.DynaTechGeneral, DynaTechItems.AUTO_KITCHEN, RecipeType.ENHANCED_CRAFTING_TABLE,
                         new ItemStack[] {
                         new ItemStack(Material.BRICK), SlimefunItems.ELECTRIC_FURNACE, new ItemStack(Material.BRICK),
