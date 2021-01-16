@@ -9,7 +9,9 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Weather Controller** - Controls the weather when given a key item (Sunflower > Clear, Lilac > Rain, Creeper Head > Thunder).
 - **Potion Sprinkler** - A ranged potion applier, the potions have durability basically. Has a 10 block range.
 - **Barbed Wire** - Pushes mob back in a radius. Has a 9 block range, perfect for mob farms.
-- **Material Hive** - An infinite resource generator, requires Bees and a stack of the output items. Supported Materials are [here](https://github.com/ProfElements/DynaTech/blob/1b6aee96937da31c7bdb84df284392530149ce63/src/main/java/me/profelements/dynatech/items/electric/MaterialHive.java#L169).
+- **Material Hive** - An infinite resource generator, requires Bees and a stack of the output items. Supported Materials are [here](https://github.com/ProfElements/DynaTech/blob/1b6aee96937da31c7bdb84df284392530149ce63/src/main/java/me/profelements/dynatech/items/electric/MaterialHive.java#L169). For the Material Hive, each bee you put in minuses the amount of time it takes to produce the material, so 128 bees is better then 1 bee, please note each type of bee has a different seconds minus amount. Check bee section for more info.
+
+
 
 ## Generators
 - **Hydro Generator** - Generates energy from flowing water (Waterlog the generator)
@@ -28,7 +30,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 ## Bees 
 - **Bee** - A Natural Bee, for each one -2 seconds to resource creation time in Material Hive.
 - **Robotic Bee** - A Robotic bee made of magic and scrap parts. -2 seconds to resource creation time in Material Hive.
-- **Advanced Robotic Bee** - An Advanced version of the Robotic Bee. -4 seconds to resource creation time in Material Hive.
+- **Advanced Robotic Bee** - An Advanced version of the Robotic Bee. -10 seconds to resource creation time in Material Hive.
 
 ## Credits
  [NCBPFluffyBear](https://github.com/ncbpfluffybear) for their autocrafter code since it helped alot with the Auto-Kitchen.
