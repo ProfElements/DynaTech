@@ -71,7 +71,7 @@ public class MaterialHive extends AMachine implements Radioactive {
                                 case "BEE":
                                     return new MachineRecipe(1500, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
                                 case "ROBOTIC_BEE":
-                                    return new MachineRecipe(1500, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
+                                    return new MachineRecipe(900, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
                                 
                                 case "ADVANCED_ROBOTIC_BEE":
                                     return new MachineRecipe(600, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
