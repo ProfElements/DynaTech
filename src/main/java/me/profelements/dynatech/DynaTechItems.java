@@ -183,7 +183,7 @@ public class DynaTechItems {
             Material.BEEHIVE,
             "&6Material Hive",
             "",
-            "&fUsing power and bees, slowly generates material honeycombs.",
+            "&fUsing power and bees, slowly generates materials.",
             "",
             LoreBuilder.radioactive(Radioactivity.HIGH),
             "",
