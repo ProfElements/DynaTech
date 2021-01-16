@@ -101,6 +101,17 @@ public class DynaTechItems {
             LoreBuilder.powerCharged(0, 512)
             );
 
+    public static final SlimefunItemStack DIMENSIONAL_HOME = new SlimefunItemStack("DIMENSIONAL_HOME",
+            new CustomItem(SkullItem.fromHash("eb18cf9e1bf7ec57304ae92f2b00d91643cf0b65067dead34fb48baf18e3c385")),
+            "&6Dimensional Home",
+            "",
+            "&fTeleports you to a seperate dimensional home and back",
+            "",
+            "&f&oHome Sweet Home",
+            "",
+            "&7CHUNK ID: <id>"
+            );
+    
     //Machines
     public static final SlimefunItemStack AUTO_KITCHEN = new SlimefunItemStack("AUTO_KITCHEN",
             Material.SMOKER,

@@ -23,6 +23,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Inventory Filter** - Upon item pickup, if item is the same as one in the Inventory Filter's filter it voids the item.
 - **Angel Gem** - Permanent Creative Flight, it has some speed settings.
 - **Scoop** - The only way to get naturals Bees. Scoop them into item form.
+- **Dimensional Home** - Gives you a small home in another dimension to teleport to and from. (it sends to you back to your bed spawn if you are in the dimension.)
 
 ## Bees 
 - **Bee** - A Natural Bee, for each one -2 seconds to resource creation time in Material Hive.

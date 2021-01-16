@@ -3,6 +3,7 @@ package me.profelements.dynatech;
 import org.apache.commons.lang.Validate;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
+import org.bukkit.WorldCreator;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -10,6 +11,7 @@ import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
 import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
+import me.profelements.dynatech.items.misc.DimensionalHomeDimension;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
 import me.profelements.dynatech.items.tools.InventoryFilter;
 import me.profelements.dynatech.listeners.ElectricalStimulatorListener;
@@ -26,6 +28,9 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
     @Override
     public void onEnable() {
+        WorldCreator worldCreator = new WorldCreator("dimensionalhome");
+        worldCreator.generator(new DimensionalHomeDimension());
+        worldCreator.createWorld();
 
         instance = this;
         Config cfg = new Config(this);

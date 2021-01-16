@@ -23,6 +23,7 @@ import me.profelements.dynatech.items.electric.generators.HydroGenerator;
 import me.profelements.dynatech.items.misc.Bee;
 import me.profelements.dynatech.items.misc.VexGem;
 import me.profelements.dynatech.items.tools.AngelGem;
+import me.profelements.dynatech.items.tools.DimensionalHome;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
 import me.profelements.dynatech.items.tools.InventoryFilter;
 import me.profelements.dynatech.items.tools.Scoop;
@@ -143,6 +144,13 @@ public class DynaTechItemsSetup {
                         null, new ItemStack(Material.STICK), null
                 }).register(plugin);
 
+        new DimensionalHome(DynaTechItems.DynaTechGeneral, DynaTechItems.DIMENSIONAL_HOME, RecipeType.MAGIC_WORKBENCH,
+                new ItemStack[] {
+                    null, null, SlimefunItems.GOLD_24K_BLOCK,
+                    SlimefunItems.BRONZE_INGOT, new ItemStack(Material.BLAZE_ROD), null,
+                    SlimefunItems.SYNTHETIC_SAPPHIRE, SlimefunItems.BRONZE_INGOT, null
+                }).register(plugin);
+        
         //Machines
         if (DynaTech.isExoticGardenInstalled()) {
                 new AutoKitchen(DynaTechItems.DynaTechGeneral, DynaTechItems.AUTO_KITCHEN, RecipeType.ENHANCED_CRAFTING_TABLE,
