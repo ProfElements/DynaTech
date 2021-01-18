@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemDropHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
@@ -23,12 +24,17 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
 public class AngelGem extends SlimefunItem {
 
+    private ItemSetting<Float> maxFlightSpeed = new ItemSetting<Float>("max-flight-speed", 1.0f);
+    private ItemSetting<Boolean> hasMaxFlightSpeed = new ItemSetting<Boolean>("has-max-flight-speed", false);
+
     private boolean enabledPlayer = false;
 
     private float flySpeed = 0.1f;
 
     public AngelGem(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
+
+        addItemSetting(maxFlightSpeed);
 
         addItemHandler(onRightClick(), onItemDrop());
     }
@@ -69,14 +75,30 @@ public class AngelGem extends SlimefunItem {
                     e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
                     enabledPlayer = true;
                 } else {
-                    if (getFlySpeed() < 1f) {
-                        setFlySpeed(getFlySpeed() + 0.10f);
-                        e.getPlayer().setFlySpeed(getFlySpeed());
-                        e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
+                    if (hasMaxFlightSpeed.getValue()) {
+                        if (getFlySpeed() < maxFlightSpeed.getValue()) {
+                            if (getFlySpeed() + 0.10f > maxFlightSpeed.getValue()) {
+                                setFlySpeed(maxFlightSpeed.getValue());
+                            } else {
+                                setFlySpeed(getFlySpeed() + 0.10f);
+                            }
+                            e.getPlayer().setFlySpeed(getFlySpeed());
+                            e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
+                        } else {
+                            setFlySpeed(0.10f);
+                            e.getPlayer().setFlySpeed(getFlySpeed());
+                            e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
+                        }
                     } else {
-                        setFlySpeed(0.10f);
-                        e.getPlayer().setFlySpeed(getFlySpeed());
-                        e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
+                        if (getFlySpeed() < 1f) {
+                            setFlySpeed(getFlySpeed() + 0.10f);
+                            e.getPlayer().setFlySpeed(getFlySpeed());
+                            e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
+                        } else {
+                            setFlySpeed(0.10f);
+                            e.getPlayer().setFlySpeed(getFlySpeed());
+                            e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
+                        }
                     }
                 }
                 e.cancel();
