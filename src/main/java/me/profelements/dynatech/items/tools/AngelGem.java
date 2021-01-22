@@ -34,7 +34,7 @@ public class AngelGem extends SlimefunItem {
     public AngelGem(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
 
-        addItemSetting(maxFlightSpeed);
+        addItemSetting(maxFlightSpeed, hasMaxFlightSpeed);
 
         addItemHandler(onRightClick(), onItemDrop());
     }
