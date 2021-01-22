@@ -16,6 +16,7 @@ import me.profelements.dynatech.items.electric.GrowthChamber;
 import me.profelements.dynatech.items.electric.MaterialHive;
 import me.profelements.dynatech.items.electric.PotionSprinkler;
 import me.profelements.dynatech.items.electric.WeatherController;
+import me.profelements.dynatech.items.electric.WirelessCharger;
 import me.profelements.dynatech.items.electric.generators.ChippingGenerator;
 import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
 import me.profelements.dynatech.items.electric.generators.DragonEggGenerator;
@@ -233,6 +234,18 @@ public class DynaTechItemsSetup {
                 .setEnergyConsumption(1024)
                 .setProcessingSpeed(1)
                 .register(plugin);       
+
+        new WirelessCharger(DynaTechItems.DynaTechGeneral, DynaTechItems.WIRELESS_CHARGER, RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[] {
+                null, SlimefunItems.GPS_TRANSMITTER, null,
+                SlimefunItems.GOLD_24K, SlimefunItems.CHARGING_BENCH, SlimefunItems.GOLD_24K,
+                null, SlimefunItems.SMALL_CAPACITOR, null
+            }, 10
+            )
+            .setEnergyCapacity(1024)
+            .setEnergyConsumption(16)
+            .setProcessingSpeed(1)
+            .register(plugin);
 
         //Generators
         new HydroGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,

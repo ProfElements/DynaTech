@@ -191,6 +191,16 @@ public class DynaTechItems {
             LoreBuilder.powerPerSecond(1024)
             );
 
+    public static final SlimefunItemStack WIRELESS_CHARGER = new SlimefunItemStack("WIRELESS_CHARGER",
+            Material.CLAY,
+            "&6Wireless Charger",
+            "",
+            "&fWireless charge items in your inventory",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.powerPerSecond(16)
+            );
+
     //Generators
     public static final SlimefunItemStack WATER_MILL = new SlimefunItemStack("WATER_MILL",
             Material.COBBLESTONE_WALL,
