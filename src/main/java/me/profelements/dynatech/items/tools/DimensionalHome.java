@@ -1,6 +1,5 @@
 package me.profelements.dynatech.items.tools;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
