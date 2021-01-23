@@ -24,7 +24,7 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
 public class AngelGem extends SlimefunItem {
 
-    private ItemSetting<Float> maxFlightSpeed = new ItemSetting<Float>("max-flight-speed", 1.0f);
+    private ItemSetting<Double> maxFlightSpeed = new ItemSetting<Double>("max-flight-speed", 1.0d);
     private ItemSetting<Boolean> hasMaxFlightSpeed = new ItemSetting<Boolean>("has-max-flight-speed", false);
 
     private boolean enabledPlayer = false;
@@ -78,7 +78,7 @@ public class AngelGem extends SlimefunItem {
                     if (hasMaxFlightSpeed.getValue()) {
                         if (getFlySpeed() < maxFlightSpeed.getValue()) {
                             if (getFlySpeed() + 0.10f > maxFlightSpeed.getValue()) {
-                                setFlySpeed(maxFlightSpeed.getValue());
+                                setFlySpeed(maxFlightSpeed.getValue().floatValue());
                             } else {
                                 setFlySpeed(getFlySpeed() + 0.10f);
                             }
