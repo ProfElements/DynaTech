@@ -12,10 +12,16 @@ import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
+
 public class GrowthChamber extends AMachine {
+
+    private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>("exotic-garden-integration", true);
 
     public GrowthChamber(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
+
+        addItemSetting(exoticGardenIntegration);
     }
 
     @Override
@@ -49,7 +55,7 @@ public class GrowthChamber extends AMachine {
     
     @Override
     public MachineRecipe findNextRecipe(BlockMenu inv) {
-        if (DynaTech.isExoticGardenInstalled()) {
+        if (DynaTech.isExoticGardenInstalled() && exoticGardenIntegration.getValue()) {
             for (int inputSlot : getInputSlots()) {
                 ItemStack item = inv.getItemInSlot(inputSlot);
                 if (item != null && SlimefunItem.getByItem(item) != null) {

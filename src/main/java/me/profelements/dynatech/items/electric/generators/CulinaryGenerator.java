@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -17,8 +18,12 @@ import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
 
 public class CulinaryGenerator extends AMachineGenerator {
 
+    private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>("exotic-garden-integration", true);
+
     public CulinaryGenerator(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
+
+        addItemSetting(exoticGardenIntegration);
     }
 
 
@@ -72,7 +77,7 @@ public class CulinaryGenerator extends AMachineGenerator {
 
     @Override
     public MachineFuel findRecipe(BlockMenu inv, Map<Integer, Integer> found) {
-        if (DynaTech.isExoticGardenInstalled()) {
+        if (DynaTech.isExoticGardenInstalled() && exoticGardenIntegration.getValue()) {
             for (int inputSlot : getInputSlots()) {
                 ItemStack item = inv.getItemInSlot(inputSlot);
                 if (item != null && SlimefunItem.getByItem(item) != null) {
