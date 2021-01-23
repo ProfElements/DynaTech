@@ -10,7 +10,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Potion Sprinkler** - A ranged potion applier, the potions have durability basically. Has a 10 block range.
 - **Barbed Wire** - Pushes mob back in a radius. Has a 9 block range, perfect for mob farms.
 - **Material Hive** - An infinite resource generator, requires Bees and a stack of the output items. Supported Materials are [here](https://github.com/ProfElements/DynaTech/blob/1b6aee96937da31c7bdb84df284392530149ce63/src/main/java/me/profelements/dynatech/items/electric/MaterialHive.java#L169). For the Material Hive, each bee you put in minuses the amount of time it takes to produce the material, so 128 bees is better then 1 bee, please note each type of bee has a different seconds minus amount. Check bee section for more info.
-- **Wireless Charger** - Charges Rechargeable Items in a Players inventory in a 10 block radius around it
+- **Wireless Charger** - Charges Rechargeable Items in a Players inventory in a 16 block radius around it
 
 
 

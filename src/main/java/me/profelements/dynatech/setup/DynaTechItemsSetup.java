@@ -240,7 +240,7 @@ public class DynaTechItemsSetup {
                 null, SlimefunItems.GPS_TRANSMITTER, null,
                 SlimefunItems.GOLD_24K, SlimefunItems.CHARGING_BENCH, SlimefunItems.GOLD_24K,
                 null, SlimefunItems.SMALL_CAPACITOR, null
-            }, 10
+            }, 16
             )
             .setEnergyCapacity(1024)
             .setEnergyConsumption(16)
