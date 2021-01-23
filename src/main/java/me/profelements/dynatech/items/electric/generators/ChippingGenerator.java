@@ -15,6 +15,8 @@ import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
 
 public class ChippingGenerator extends AMachineGenerator {
 
+    private static final int PowerPerDurability = 8;
+
     public ChippingGenerator(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
     }
@@ -31,7 +33,7 @@ public class ChippingGenerator extends AMachineGenerator {
                 Damageable im = (Damageable) item.getItemMeta();
                 if (!im.hasDamage()) {
                     
-                    julesAmount = item.getType().getMaxDurability()*2;
+                    julesAmount = item.getType().getMaxDurability()*PowerPerDurability;
                     if (julesAmount != 0) {
                         inv.consumeItem(slot);
                         return julesAmount;
