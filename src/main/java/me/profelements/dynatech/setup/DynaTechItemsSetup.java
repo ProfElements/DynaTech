@@ -21,7 +21,9 @@ import me.profelements.dynatech.items.electric.generators.ChippingGenerator;
 import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
 import me.profelements.dynatech.items.electric.generators.DragonEggGenerator;
 import me.profelements.dynatech.items.electric.generators.HydroGenerator;
+import me.profelements.dynatech.items.electric.generators.StardustReactor;
 import me.profelements.dynatech.items.misc.Bee;
+import me.profelements.dynatech.items.misc.StarDustMeteor;
 import me.profelements.dynatech.items.misc.VexGem;
 import me.profelements.dynatech.items.tools.AngelGem;
 import me.profelements.dynatech.items.tools.DimensionalHome;
@@ -82,6 +84,21 @@ public class DynaTechItemsSetup {
                         null, new CustomItem(SkullItem.fromHash("c2ec5a516617ff1573cd2f9d5f3969f56d5575c4ff4efefabd2a18dc7ab98cd"), "&aVex"), null,
                         null, null, null
                 }).register(plugin);
+        
+        RecipeType.MAGIC_WORKBENCH.register(new ItemStack[] {
+            null, SlimefunItems.SYNTHETIC_SAPPHIRE, null,
+            new ItemStack(Material.PHANTOM_MEMBRANE), SlimefunItems.MAGIC_LUMP_3, new ItemStack(Material.PHANTOM_MEMBRANE),
+            DynaTechItems.STAR_DUST, DynaTechItems.STAR_DUST, DynaTechItems.STAR_DUST
+        }, DynaTechItems.VEX_GEM);
+
+        new SlimefunItem(DynaTechItems.DynaTechGeneral, DynaTechItems.STAR_DUST, RecipeType.GRIND_STONE,
+                new ItemStack[] {
+                    null, null, null,
+                    null, StarDustMeteor.STARDUST_METEOR, null,
+                    null, null, null
+                }).register(plugin);
+            
+        new StarDustMeteor(DynaTechItems.DynaTechGeneral).register(plugin);
 
         //Bees
         new Bee(DynaTechItems.DynaTechGeneral, DynaTechItems.BEE, DynaTechItems.DynaTechScoop,
@@ -289,7 +306,14 @@ public class DynaTechItemsSetup {
                 .setEnergyCapacity(256)
                 .setEnergyProduction(16)
                 .register(plugin);
+        
+        new StardustReactor(DynaTechItems.DynaTechGeneral, DynaTechItems.STARDUST_REACTOR, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                    new ItemStack(Material.FIRE_CHARGE), new ItemStack(Material.FIRE_CHARGE),new ItemStack(Material.FIRE_CHARGE),
+                    null, SlimefunItems.NUCLEAR_REACTOR, null,
+                    DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.ANCIENT_MACHINE_CORE, DynaTechItems.ADVANCED_MACHINE_SCRAP
 
+                }).register(plugin);
         }
 
 }
