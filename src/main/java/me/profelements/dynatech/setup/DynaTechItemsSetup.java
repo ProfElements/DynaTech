@@ -15,6 +15,7 @@ import me.profelements.dynatech.items.electric.BarbedWire;
 import me.profelements.dynatech.items.electric.GrowthChamber;
 import me.profelements.dynatech.items.electric.MaterialHive;
 import me.profelements.dynatech.items.electric.PotionSprinkler;
+import me.profelements.dynatech.items.electric.SeedPlucker;
 import me.profelements.dynatech.items.electric.WeatherController;
 import me.profelements.dynatech.items.electric.WirelessCharger;
 import me.profelements.dynatech.items.electric.generators.ChippingGenerator;
@@ -263,6 +264,18 @@ public class DynaTechItemsSetup {
             .setEnergyConsumption(16)
             .setProcessingSpeed(1)
             .register(plugin);
+
+        new SeedPlucker(DynaTechItems.DynaTechGeneral, DynaTechItems.SEED_PLUCKER, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                    SlimefunItems.HARDENED_GLASS,DynaTechItems.STAINLESS_STEEL ,SlimefunItems.HARDENED_GLASS,
+                    new ItemStack(Material.BONE_BLOCK),null,new ItemStack(Material.BONE_BLOCK),
+                    DynaTechItems.STAINLESS_STEEL,new ItemStack(Material.SHEARS) ,DynaTechItems.STAINLESS_STEEL                
+                } 
+        )
+        .setEnergyCapacity(512)
+        .setEnergyConsumption(32)
+        .setProcessingSpeed(1)
+        .register(plugin);
 
         //Generators
         new HydroGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,

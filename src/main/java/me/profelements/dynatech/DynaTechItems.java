@@ -206,6 +206,15 @@ public class DynaTechItems {
             LoreBuilder.powerPerSecond(16)
             );
 
+    public static final SlimefunItemStack SEED_PLUCKER = new SlimefunItemStack("SEED_PLUCKER",
+            Material.ORANGE_STAINED_GLASS,
+            "&6Seed Plucker",
+            "",
+            "&fPull seeds out of plant based items.",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.powerPerSecond(32)
+            );
     //Generators
     public static final SlimefunItemStack WATER_MILL = new SlimefunItemStack("WATER_MILL",
             Material.COBBLESTONE_WALL,
