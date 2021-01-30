@@ -22,7 +22,7 @@ public class DimensionalHome extends SlimefunItem {
     
     private NamespacedKey chunkId = new NamespacedKey(DynaTech.getInstance(), "chunk-id");
 
-    private int id = 0;
+    private int id = 1;
 
 
     public DimensionalHome(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
