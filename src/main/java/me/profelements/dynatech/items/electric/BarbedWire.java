@@ -47,8 +47,10 @@ public class BarbedWire extends AMachine {
                 if (NumberConversions.isFinite(tempV2.getX()) && NumberConversions.isFinite(tempV2.getY()) && NumberConversions.isFinite(tempV2.getZ())) {
                     e.setVelocity(tempV2);
                     shotEntities.add(e);  
-                } else {
+                } else if (NumberConversions.isFinite(tempV.getX()) && NumberConversions.isFinite(tempV.getY()) && NumberConversions.isFinite(tempV.getZ())) {
                     e.setVelocity(tempV);
+                } else {
+                    e.setVelocity(new Vector(0, 0, 0));
                 }
 
             }
