@@ -28,13 +28,17 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
     @Override
     public void onEnable() {
-        WorldCreator worldCreator = new WorldCreator("dimensionalhome");
-        worldCreator.generator(new DimensionalHomeDimension());
-        worldCreator.createWorld();
-
         instance = this;
         Config cfg = new Config(this);
         final Metrics metrics = new Metrics(this, 9689);
+
+        if (!cfg.getBoolean("options.disable-dimensionalhome-world")) {
+            WorldCreator worldCreator = new WorldCreator("dimensionalhome");
+            worldCreator.generator(new DimensionalHomeDimension());
+            worldCreator.createWorld();
+        }
+        
+
 
         if (cfg.getBoolean("options.auto-update")) {
             new GitHubBuildsUpdater(this, getFile(), "ProfElements/DynaTech/master").start();
