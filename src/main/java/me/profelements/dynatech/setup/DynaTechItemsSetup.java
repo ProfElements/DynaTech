@@ -94,8 +94,8 @@ public class DynaTechItemsSetup {
 
         new SlimefunItem(DynaTechItems.DynaTechGeneral, DynaTechItems.STAR_DUST, RecipeType.GRIND_STONE,
                 new ItemStack[] {
+                    StarDustMeteor.STARDUST_METEOR, null, null,
                     null, null, null,
-                    null, StarDustMeteor.STARDUST_METEOR, null,
                     null, null, null
                 }).register(plugin);
             
