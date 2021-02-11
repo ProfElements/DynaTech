@@ -30,7 +30,7 @@ public class SeedPlucker extends AMachine {
         registerRecipe(10, new ItemStack[] {new ItemStack(Material.WHEAT)}, new ItemStack[] {new ItemStack(Material.WHEAT_SEEDS)});
         registerRecipe(10, new ItemStack[] {new ItemStack(Material.BEETROOT)}, new ItemStack[] {new ItemStack(Material.BEETROOT_SEEDS)});
         registerRecipe(10, new ItemStack[] {new ItemStack(Material.PUMPKIN)}, new ItemStack[] {new ItemStack(Material.PUMPKIN_SEEDS)});
-        registerRecipe(10, new ItemStack[] {new ItemStack(Material.MELON)}, new ItemStack[] {new ItemStack(Material.MELON_SEEDS)});
+        registerRecipe(10, new ItemStack[] {new ItemStack(Material.MELON_SLICE)}, new ItemStack[] {new ItemStack(Material.MELON_SEEDS)});
     }
     
     @Override
