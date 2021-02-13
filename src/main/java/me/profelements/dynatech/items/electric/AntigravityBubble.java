@@ -70,18 +70,25 @@ public class AntigravityBubble extends AMachine {
             
             for (UUID playerUUID : enabledPlayers) {
                 Player plr = Bukkit.getPlayer(playerUUID);
-                double distance2 = block.getLocation().distance(plr.getLocation());
-                if (distance2 >= 22.5) {
-                    plrsToRemove.add(plr.getUniqueId());
+
+                if (plr != null) {
+                    double distance2 = block.getLocation().distance(plr.getLocation());
+                    if (distance2 >= 22.5) {
+                        plrsToRemove.add(plr.getUniqueId());
+                    }
                 }
             }
 
             for(UUID playerToRemove : plrsToRemove) {
                 Player plyr = Bukkit.getPlayer(playerToRemove);
-                plyr.setFlying(false);
-                plyr.setAllowFlight(false);
-                plyr.setFallDistance(0.0f);
-                enabledPlayers.remove(playerToRemove);
+
+                if (plyr != null) {
+                    plyr.setFlying(false);
+                    plyr.setAllowFlight(false);
+                    plyr.setFallDistance(0.0f);
+                    enabledPlayers.remove(playerToRemove);
+                }
+                
             }
             plrsToRemove.clear();
         }        
