@@ -65,7 +65,7 @@ public class DimensionalHome extends SlimefunItem {
         for (int line = 0; line < lore.size(); line++ ) {
             if (lore.get(line).contains("CHUNK ID: <id>")) {
                 id++;
-                lore.set(line, lore.get(line).replace("<id>", String.valueOf(getChunkId())));
+                lore.set(line, lore.get(line).replace("<id>", String.valueOf(id)));
                 PersistentDataAPI.setInt(this.getItem().getItemMeta(), chunkId, id);
                 
 
