@@ -35,6 +35,7 @@ public class DimensionalHome extends SlimefunItem {
 
 			@Override
 			public void onRightClick(PlayerRightClickEvent e) {
+                e.cancel();
 
                 if(e.getPlayer().getWorld() == Bukkit.getServer().getWorld("world")) {
                     e.getPlayer().teleport(new Location(Bukkit.getServer().getWorld("dimensionalhome"), 16 * PersistentDataAPI.getInt(e.getItem().getItemMeta(), chunkId) + 8, 65, 16 * 0 + 8));
