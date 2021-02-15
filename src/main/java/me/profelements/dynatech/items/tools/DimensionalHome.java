@@ -37,10 +37,10 @@ public class DimensionalHome extends SlimefunItem {
 			public void onRightClick(PlayerRightClickEvent e) {
                 e.cancel();
 
-                if(e.getPlayer().getWorld() == Bukkit.getServer().getWorld("world")) {
+                if(e.getPlayer().getWorld() != Bukkit.getServer().getWorld("dimensionalhome")) {
                     e.getPlayer().teleport(new Location(Bukkit.getServer().getWorld("dimensionalhome"), 16 * PersistentDataAPI.getInt(e.getItem().getItemMeta(), chunkId) + 8, 65, 16 * 0 + 8));
                 } else {
-                    Location teleport = e.getPlayer().getBedSpawnLocation() == null ? Bukkit.getServer().getWorld("world").getSpawnLocation() : e.getPlayer().getBedSpawnLocation();
+                    Location teleport = e.getPlayer().getBedSpawnLocation() == null ? e.getPlayer().getBedSpawnLocation() : Bukkit.getServer().getWorld("world").getSpawnLocation();
                     e.getPlayer().teleport(teleport);
                 }
 				e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
@@ -64,9 +64,10 @@ public class DimensionalHome extends SlimefunItem {
 
         for (int line = 0; line < lore.size(); line++ ) {
             if (lore.get(line).contains("CHUNK ID: <id>")) {
+                id++;
                 lore.set(line, lore.get(line).replace("<id>", String.valueOf(getChunkId())));
                 PersistentDataAPI.setInt(this.getItem().getItemMeta(), chunkId, id);
-                id++;
+                
 
             }
 
