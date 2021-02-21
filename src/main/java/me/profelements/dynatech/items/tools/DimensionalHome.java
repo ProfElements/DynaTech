@@ -37,17 +37,19 @@ public class DimensionalHome extends SlimefunItem {
 
 			@Override
 			public void onRightClick(PlayerRightClickEvent e) {
-                e.cancel();
+                
                 if (!idSet) { 
                     e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer())); 
                     idSet = true;
                 }
 
                 if(e.getPlayer().getWorld() != Bukkit.getServer().getWorld("dimensionalhome")) {
-                    e.getPlayer().teleport(new Location(Bukkit.getServer().getWorld("dimensionalhome"), 16 * PersistentDataAPI.getInt(e.getItem().getItemMeta(), chunkId) + 8, 65, 16 * 0 + 8));
+                    PaperLib.teleportAsync(e.getPlayer(), new Location(Bukkit.getServer().getWorld("dimensionalhome"), 16 * PersistentDataAPI.getInt(e.getItem().getItemMeta(), chunkId) + 8, 65, 16 * 0 + 8));
                 } else {
                     PaperLib.teleportAsync(e.getPlayer(), e.getPlayer().getBedSpawnLocation() == null ? e.getPlayer().getBedSpawnLocation() : Bukkit.getServer().getWorld("world").getSpawnLocation());
                 }
+
+                e.cancel();
 			}
         };
     }
