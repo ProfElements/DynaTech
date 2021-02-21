@@ -11,6 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -45,8 +46,7 @@ public class DimensionalHome extends SlimefunItem {
                 if(e.getPlayer().getWorld() != Bukkit.getServer().getWorld("dimensionalhome")) {
                     e.getPlayer().teleport(new Location(Bukkit.getServer().getWorld("dimensionalhome"), 16 * PersistentDataAPI.getInt(e.getItem().getItemMeta(), chunkId) + 8, 65, 16 * 0 + 8));
                 } else {
-                    Location teleport = e.getPlayer().getBedSpawnLocation() == null ? e.getPlayer().getBedSpawnLocation() : Bukkit.getServer().getWorld("world").getSpawnLocation();
-                    e.getPlayer().teleport(teleport);
+                    PaperLib.teleportAsync(e.getPlayer(), e.getPlayer().getBedSpawnLocation() == null ? e.getPlayer().getBedSpawnLocation() : Bukkit.getServer().getWorld("world").getSpawnLocation());
                 }
 			}
         };

@@ -18,6 +18,10 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Autocrafter of Kitchen related recipes. Took heavy reference from FluffyMachines Autocrafters.
+ * @author ProfElements https://github.com/ProfElements
+ * @author NCBPFluffyBear https://github.com/NCBPFluffyBear
+*/
 public class AutoKitchen extends AMachine {
 
     private static final MultiBlockMachine mblock = (MultiBlockMachine) ExoticGardenRecipeTypes.KITCHEN.getMachine();
