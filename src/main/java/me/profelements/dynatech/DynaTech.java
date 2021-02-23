@@ -18,6 +18,7 @@ import me.profelements.dynatech.listeners.ElectricalStimulatorListener;
 import me.profelements.dynatech.listeners.InventoryFilterListener;
 import me.profelements.dynatech.listeners.PicnicBasketListener;
 import me.profelements.dynatech.setup.DynaTechItemsSetup;
+import me.profelements.dynatech.tasks.ItemBandTask;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -48,10 +49,15 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         new PicnicBasketListener(this, (PicnicBasket) DynaTechItems.PICNIC_BASKET.getItem());
         new ElectricalStimulatorListener(this, (ElectricalStimulator) DynaTechItems.ELECTRICAL_STIMULATOR.getItem());
         new InventoryFilterListener(this, (InventoryFilter) DynaTechItems.INVENTORY_FILTER.getItem());
+
+        //Tasks
+        getServer().getScheduler().runTaskTimerAsynchronously(DynaTech.getInstance(), new ItemBandTask(), 0L, 5 * 20L);
     }
 
     @Override
     public void onDisable() {
+        Bukkit.getScheduler().cancelTasks(DynaTech.getInstance());
+
         instance = null;
     }
 
@@ -73,6 +79,8 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
     public static boolean isExoticGardenInstalled() {
         return Bukkit.getServer().getPluginManager().isPluginEnabled("ExoticGarden");
     }
+
+
 
     @Nullable
     public static BukkitTask runSync(@Nonnull Runnable runnable) {
