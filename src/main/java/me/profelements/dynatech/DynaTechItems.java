@@ -116,6 +116,15 @@ public class DynaTechItems {
             "",
             "&7CHUNK ID: <id>"
             );
+
+    public static final SlimefunItemStack ITEM_BAND_HEALTH = new SlimefunItemStack("ITEM_BAND_HEALTH",
+            new CustomItem(SkullItem.fromHash("f1e2428cb359988f4c4ff0e61de21385c62269de19a69762d773223b75dd1666")),
+            "&6Healthy Item Band",
+            "",
+            "&fWhen applied to armor or tools, gives you 1 level of Health Boost",
+            "",
+            "&f&oPowerup!"
+            );
     
     //Machines
     public static final SlimefunItemStack AUTO_KITCHEN = new SlimefunItemStack("AUTO_KITCHEN",
@@ -215,6 +224,17 @@ public class DynaTechItems {
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
             LoreBuilder.powerPerSecond(32)
             );
+
+    public static final SlimefunItemStack BANDAID_MANAGER = new SlimefunItemStack("BANDAID_MANAGER",
+            Material.LAPIS_BLOCK,
+            "&6Item Band Manager",
+            "",
+            "&fManages Item Band whethers its applying or ripping off.",
+            "",
+            LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
+            LoreBuilder.powerPerSecond(48)
+            );
+
     //Generators
     public static final SlimefunItemStack WATER_MILL = new SlimefunItemStack("WATER_MILL",
             Material.COBBLESTONE_WALL,

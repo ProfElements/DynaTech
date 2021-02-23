@@ -11,6 +11,7 @@ import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.electric.AntigravityBubble;
 import me.profelements.dynatech.items.electric.AutoKitchen;
+import me.profelements.dynatech.items.electric.BandaidManager;
 import me.profelements.dynatech.items.electric.BarbedWire;
 import me.profelements.dynatech.items.electric.GrowthChamber;
 import me.profelements.dynatech.items.electric.MaterialHive;
@@ -24,6 +25,7 @@ import me.profelements.dynatech.items.electric.generators.DragonEggGenerator;
 import me.profelements.dynatech.items.electric.generators.HydroGenerator;
 import me.profelements.dynatech.items.electric.generators.StardustReactor;
 import me.profelements.dynatech.items.misc.Bee;
+import me.profelements.dynatech.items.misc.ItemBand;
 import me.profelements.dynatech.items.misc.StarDustMeteor;
 import me.profelements.dynatech.items.misc.VexGem;
 import me.profelements.dynatech.items.tools.AngelGem;
@@ -34,6 +36,8 @@ import me.profelements.dynatech.items.tools.Scoop;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import javax.annotation.Nonnull;
 
@@ -170,6 +174,14 @@ public class DynaTechItemsSetup {
                     SlimefunItems.SYNTHETIC_SAPPHIRE, SlimefunItems.BRONZE_INGOT, null
                 }).register(plugin);
         
+        new ItemBand(DynaTechItems.DynaTechGeneral, DynaTechItems.ITEM_BAND_HEALTH, RecipeType.MAGIC_WORKBENCH,
+                new ItemStack[] {
+                    new ItemStack(Material.GOLDEN_CARROT), new ItemStack(Material.NETHER_STAR), new ItemStack(Material.GOLDEN_CARROT),
+                    new ItemStack(Material.NETHER_STAR), DynaTechItems.VEX_GEM, new ItemStack(Material.NETHER_STAR),
+                    new ItemStack(Material.GOLDEN_CARROT), new ItemStack(Material.NETHER_STAR), new ItemStack(Material.GOLDEN_CARROT)
+                }, new PotionEffect[] {new PotionEffect(PotionEffectType.HEALTH_BOOST, 20*15, 1, true) }
+        ).register(plugin);
+
         //Machines
         if (DynaTech.isExoticGardenInstalled()) {
                 new AutoKitchen(DynaTechItems.DynaTechGeneral, DynaTechItems.AUTO_KITCHEN, RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -277,6 +289,18 @@ public class DynaTechItemsSetup {
         .setProcessingSpeed(1)
         .register(plugin);
 
+        new BandaidManager(DynaTechItems.DynaTechGeneral, DynaTechItems.BANDAID_MANAGER, RecipeType.MAGIC_WORKBENCH,
+                new ItemStack[] {
+                    SlimefunItems.BLANK_RUNE, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.BLANK_RUNE,
+                    SlimefunItems.REINFORCED_CLOTH, new ItemStack(Material.ENCHANTING_TABLE), SlimefunItems.REINFORCED_CLOTH,
+                    null, SlimefunItems.WITHER_PROOF_OBSIDIAN, null
+                }
+        )
+        .setEnergyCapacity(1024)
+        .setEnergyConsumption(48)
+        .setProcessingSpeed(1)
+        .register(plugin);
+        
         //Generators
         new HydroGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {

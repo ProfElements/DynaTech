@@ -12,7 +12,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Material Hive** - An infinite resource generator, requires Bees and a stack of the output items. Supported Materials are [here](https://github.com/ProfElements/DynaTech/blob/1b6aee96937da31c7bdb84df284392530149ce63/src/main/java/me/profelements/dynatech/items/electric/MaterialHive.java#L169). For the Material Hive, each bee you put in minuses the amount of time it takes to produce the material, so 128 bees is better then 1 bee, please note each type of bee has a different seconds minus amount. Check bee section for more info.
 - **Wireless Charger** - Charges Rechargeable Items in a Players inventory in a 16 block radius around it
 - **Seed Plucker** - Plucks seed from plant-based material, supports Exotic Garden Fruits, but not essences.
-
+- **Item Band Manager** - Manages the application and ripping of Item Bands.
 
 ## Generators
 - **Hydro Generator** - Generates energy from flowing water (Waterlog the generator)
@@ -20,6 +20,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Chipping Generator** - Generates energy from damaged and or durability based items
 - **Culinary Generator** - Generates energy from food energy, suports Exotic Garden Food in the Food Category.
 - **Stardust Reactor** - Generates energy from Star Dust, and lots of it
+
 ## Tools
 - **Picnic Basket** - Its an upgraded Cooler. It can eat any ExoticGarden custom foods, or just regular vanilla foods, it has a configurable blacklist in the items.yml
 - **Electrical Stimulator** - Feed the player for energy. 
@@ -32,6 +33,9 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Bee** - A Natural Bee, for each one -2 seconds to resource creation time in Material Hive.
 - **Robotic Bee** - A Robotic bee made of magic and scrap parts. -2 seconds to resource creation time in Material Hive.
 - **Advanced Robotic Bee** - An Advanced version of the Robotic Bee. -10 seconds to resource creation time in Material Hive.
+
+## Item Bands 
+- **Healthy Item Band** - When applied to armor or weapons gain 4 hearts while wearing or holding the item in your main hand.
 
 ## Credits
  [NCBPFluffyBear](https://github.com/ncbpfluffybear) for their autocrafter code since it helped alot with the Auto-Kitchen.
