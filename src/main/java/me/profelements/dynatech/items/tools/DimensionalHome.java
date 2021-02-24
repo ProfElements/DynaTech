@@ -37,16 +37,27 @@ public class DimensionalHome extends SlimefunItem {
 
 			@Override
 			public void onRightClick(PlayerRightClickEvent e) {
+                Location playerPrevLocation = e.getPlayer().getLocation();
+            
+                    
                 
-                if (!idSet) { 
-                    e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer())); 
-                    idSet = true;
-                }
+                if (e.getPlayer().getWorld() != Bukkit.getServer().getWorld("dimensionalhome") && idSet) {
+                    playerPrevLocation = e.getPlayer().getLocation();
 
-                if(e.getPlayer().getWorld() != Bukkit.getServer().getWorld("dimensionalhome")) {
+                    if (doesntContainNewChunkID(e.getItem())) {
+                        idSet = false;
+                    }
+
                     PaperLib.teleportAsync(e.getPlayer(), new Location(Bukkit.getServer().getWorld("dimensionalhome"), 16 * PersistentDataAPI.getInt(e.getItem().getItemMeta(), chunkId) + 8, 65, 16 * 0 + 8));
+                } else if (idSet) {
+
+                    if (doesntContainNewChunkID(e.getItem())) {
+                        idSet = false;
+                    }
+
+                    PaperLib.teleportAsync(e.getPlayer(), playerPrevLocation.getWorld() != Bukkit.getServer().getWorld("dimensionalhome") ? playerPrevLocation : e.getPlayer().getBedSpawnLocation() != null ? e.getPlayer().getBedSpawnLocation() : e.getPlayer().getServer().getWorld("world").getSpawnLocation());
                 } else {
-                    PaperLib.teleportAsync(e.getPlayer(), e.getPlayer().getBedSpawnLocation() == null ? e.getPlayer().getBedSpawnLocation() : Bukkit.getServer().getWorld("world").getSpawnLocation());
+                    updateLore(e.getItem(), e.getPlayer());
                 }
 
                 e.cancel();
@@ -54,11 +65,30 @@ public class DimensionalHome extends SlimefunItem {
         };
     }
 
+    protected boolean doesntContainNewChunkID(ItemStack item) {
+        ItemMeta im = item.getItemMeta();
+
+        if (!im.hasLore()) {
+            throw new IllegalArgumentException("This item does not have any lore!");
+        }
+
+        List<String> lore = im.getLore();
+
+        for (int line = 0; line < lore.size(); line++ ) {
+            if (lore.get(line).contains("CHUNK ID: <id>")) {
+                return true;
+            }
+    
+        }
+
+        return false;
+    }
+
     public int getChunkId() {
         return id;
     }
 
-    protected ItemMeta updateLore(ItemStack item, Player p) {
+    protected void updateLore(ItemStack item, Player p) {
         ItemMeta im = item.getItemMeta();
 
         if (!im.hasLore()) {
@@ -71,15 +101,14 @@ public class DimensionalHome extends SlimefunItem {
             if (lore.get(line).contains("CHUNK ID: <id>")) {
                 id++;
                 lore.set(line, lore.get(line).replace("<id>", String.valueOf(id)));
-                PersistentDataAPI.setInt(this.getItem().getItemMeta(), chunkId, id);
-
+                PersistentDataAPI.setInt(im, chunkId, id);
+                        
+                idSet = true;
             }
+    
+        }
 
         im.setLore(lore);
-        
-        }
-        
-        return im;
-     
+        item.setItemMeta(im);
     }
 }
