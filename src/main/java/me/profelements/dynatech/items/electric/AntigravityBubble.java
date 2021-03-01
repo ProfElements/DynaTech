@@ -59,10 +59,14 @@ public class AntigravityBubble extends AMachine {
         }
 
         for (Player p : block.getWorld().getPlayers()) {
+            if (p.getWorld() != block.getWorld()) {
+                continue;
+            }
+
             double distance = block.getLocation().distance(p.getLocation());
             Set<UUID> plrsToRemove = new HashSet<>();
 
-            if (!enabledPlayers.contains(p.getUniqueId()) && distance < 22.5 && !p.getAllowFlight()) {
+            if (!enabledPlayers.contains(p.getUniqueId()) && distance < 22.5  && p.getWorld() == block.getWorld() && !p.getAllowFlight()) {
                     p.setAllowFlight(true);
                     enabledPlayers.add(p.getUniqueId());
                     removeCharge(block.getLocation(), getEnergyConsumption());
@@ -72,6 +76,10 @@ public class AntigravityBubble extends AMachine {
                 Player plr = Bukkit.getPlayer(playerUUID);
 
                 if (plr != null) {
+                    if (plr.getWorld() != block.getWorld()) {
+                        plrsToRemove.add(plr.getUniqueId());
+                        continue;
+                    }
                     double distance2 = block.getLocation().distance(plr.getLocation());
                     if (distance2 >= 22.5) {
                         plrsToRemove.add(plr.getUniqueId());
