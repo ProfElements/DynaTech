@@ -23,6 +23,7 @@ import me.profelements.dynatech.items.electric.generators.ChippingGenerator;
 import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
 import me.profelements.dynatech.items.electric.generators.DragonEggGenerator;
 import me.profelements.dynatech.items.electric.generators.HydroGenerator;
+import me.profelements.dynatech.items.electric.generators.HydroTurbine;
 import me.profelements.dynatech.items.electric.generators.StardustReactor;
 import me.profelements.dynatech.items.misc.Bee;
 import me.profelements.dynatech.items.misc.ItemBand;
@@ -310,6 +311,16 @@ public class DynaTechItemsSetup {
                 })
                 .setEnergyCapacity(256)
                 .setEnergyProduction(16)
+                .register(plugin);
+
+        new HydroTurbine(DynaTechItems.DynaTechGeneral, DynaTechItems.WATER_TURBINE, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.ALUMINUM_INGOT, SlimefunItems.SULFATE, SlimefunItems.ALUMINUM_INGOT,
+                        SlimefunItems.ALUMINUM_INGOT, SlimefunItems.ENERGY_CONNECTOR, SlimefunItems.ALUMINUM_INGOT,
+                        new ItemStack(Material.WHITE_CONCRETE), SlimefunItems.COPPER_INGOT, new ItemStack(Material.WHITE_CONCRETE)
+                })
+                .setEnergyCapacity(512)
+                .setEnergyProduction(64)
                 .register(plugin);
 
         new DragonEggGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.DRAGON_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE,
