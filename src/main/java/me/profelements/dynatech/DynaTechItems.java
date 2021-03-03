@@ -247,6 +247,17 @@ public class DynaTechItems {
             LoreBuilder.powerPerSecond(16)
             );
 
+    public static final SlimefunItemStack WATER_TURBINE = new SlimefunItemStack("WATER_TURBINE",
+            Material.PRISMARINE_WALL,
+            "&6Hydro Turbine",
+            "",
+            "&fCreates energy from flowing water",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.GENERATOR),
+            LoreBuilder.powerBuffer(512),
+            LoreBuilder.powerPerSecond(64)
+            );
+
     public static final SlimefunItemStack DRAGON_GENERATOR = new SlimefunItemStack("DRAGON_GENERATOR",
             Material.GRAY_CONCRETE
             ,"&6Dragon Egg Generator",
