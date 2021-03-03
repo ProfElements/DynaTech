@@ -312,6 +312,16 @@ public class DynaTechItemsSetup {
                 .setEnergyProduction(16)
                 .register(plugin);
 
+        new HydroGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.WATER_TURBINE, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        DynaTechItems.WATER_MILL, DynaTechItems.STAINLESS_STEEL, DynaTechItems.WATER_MILL,
+                        SlimefunItems.SOLDER_INGOT, SlimefunItems.GOLD_8K, SlimefunItems.SOLDER_INGOT,
+                        DynaTechItems.WATER_MILL, DynaTechItems.STAINLESS_STEEL, DynaTechItems.WATER_MILL
+                })
+                .setEnergyCapacity(512)
+                .setEnergyProduction(64)
+                .register(plugin);
+
         new DragonEggGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.DRAGON_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         new ItemStack(Material.CRYING_OBSIDIAN), new ItemStack(Material.END_STONE), new ItemStack(Material.CRYING_OBSIDIAN),
