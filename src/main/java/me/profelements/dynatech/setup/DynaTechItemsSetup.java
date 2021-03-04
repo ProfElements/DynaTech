@@ -182,6 +182,14 @@ public class DynaTechItemsSetup {
                 }, new PotionEffect[] {new PotionEffect(PotionEffectType.HEALTH_BOOST, 20*15, 1, true) }
         ).register(plugin);
 
+        new ItemBand(DynaTechItems.DynaTechGeneral, DynaTechItems.ITEM_BAND_HASTE, RecipeType.MAGIC_WORKBENCH,
+                new ItemStack[] {
+                    SlimefunItems.COBALT_PICKAXE, new ItemStack(Material.NETHER_STAR), SlimefunItems.COBALT_PICKAXE,
+                    new ItemStack(Material.NETHER_STAR), DynaTechItems.VEX_GEM, new ItemStack(Material.NETHER_STAR),
+                    SlimefunItems.COBALT_PICKAXE, new ItemStack(Material.NETHER_STAR), SlimefunItems.COBALT_PICKAXE
+                }, new PotionEffect[] {new PotionEffect(PotionEffectType.FAST_DIGGING, 20*15, 1, true) }    
+        ).register(plugin);
+
         //Machines
         if (DynaTech.isExoticGardenInstalled()) {
                 new AutoKitchen(DynaTechItems.DynaTechGeneral, DynaTechItems.AUTO_KITCHEN, RecipeType.ENHANCED_CRAFTING_TABLE,
