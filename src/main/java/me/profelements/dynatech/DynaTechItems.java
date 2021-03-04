@@ -162,6 +162,19 @@ public class DynaTechItems {
             LoreBuilder.powerPerSecond(32)
             );
 
+    public static final SlimefunItemStack GROWTH_CHAMBER_MK2 = new SlimefunItemStack("GROWTH_CHAMBER_MK2",
+            Material.LIME_STAINED_GLASS,
+            "&6Growth Chamber MK2",
+            "",
+            "&fAutomatically grows some plants.",
+            "",
+            "&f&oIts like a small greenhouse!",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(4),
+            LoreBuilder.powerPerSecond(64)
+            );
+
     public static final SlimefunItemStack ANTIGRAVITY_BUBBLE = new SlimefunItemStack("ANTIGRAVITY_BUBBLE",
             Material.OBSIDIAN,
             "&6Antigravity Bubble",
