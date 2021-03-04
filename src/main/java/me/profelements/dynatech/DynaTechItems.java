@@ -121,7 +121,8 @@ public class DynaTechItems {
             new CustomItem(SkullItem.fromHash("f1e2428cb359988f4c4ff0e61de21385c62269de19a69762d773223b75dd1666")),
             "&6Healthy Item Band",
             "",
-            "&fWhen applied to armor or tools, gives you 2 levels of Health Boost",
+            "&fWhen applied to armor or tools", 
+            "&fgives you 2 levels of Health Boost",
             "",
             "&f&oPowerup!"
             );
@@ -130,7 +131,8 @@ public class DynaTechItems {
             new CustomItem(SkullItem.fromHash("4f01ec6331a3bc30a8204ec56398d08ca38788556bca9b81d776f6238d567367")),
             "&6Hasty Item Band",
             "",
-            "&fWhen applied to armor or tools, gives you 2 levels of Haste",
+            "&fWhen applied to armor or tools",
+            "&fgives you 2 levels of Haste",
             "",
             "&f&oPowerup!"
             );
