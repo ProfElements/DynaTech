@@ -58,7 +58,7 @@ public abstract class AMachineMK2 extends SlimefunItem implements EnergyNetCompo
     private static final int[] OUTPUT_SLOTS = new int[] {27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53};
 
     @ParametersAreNonnullByDefault
-    public AMachine(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public AMachineMK2(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
         if (isGraphical()) {
             new BlockMenuPreset(getMachineIdentifier(), getInventoryTitle()) {
@@ -123,7 +123,7 @@ public abstract class AMachineMK2 extends SlimefunItem implements EnergyNetCompo
     };
 
     @ParametersAreNonnullByDefault
-    public AMachine(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, ItemStack recipeOutput) {
+    public AMachineMK2(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, ItemStack recipeOutput) {
         super(category, item, recipeType, recipe);
         this.recipeOutput = recipeOutput;
     }
@@ -185,7 +185,7 @@ public abstract class AMachineMK2 extends SlimefunItem implements EnergyNetCompo
 
             @Override
             public void tick(Block b, SlimefunItem  sfItem, Config data) {
-                AMachine.this.tick(b);
+                AMachineMK2.this.tick(b);
             }
 
             @Override
@@ -366,7 +366,7 @@ public abstract class AMachineMK2 extends SlimefunItem implements EnergyNetCompo
         return processingSpeed;
     }
 
-    public final AMachine setEnergyCapacity(int capacity) {
+    public final AMachineMK2 setEnergyCapacity(int capacity) {
         Validate.isTrue(capacity > 0, "Energy capacity must be greater then 0");
 
         if(getState() == ItemState.UNREGISTERED) {
@@ -378,7 +378,7 @@ public abstract class AMachineMK2 extends SlimefunItem implements EnergyNetCompo
 
     }
 
-    public final AMachine setEnergyConsumption(int energyConsumption) {
+    public final AMachineMK2 setEnergyConsumption(int energyConsumption) {
         Validate.isTrue(energyConsumption > 0, "Energy consumption must be greater then 0");
         Validate.isTrue(energyCapacity > 0, "Energy capacity must be specified before energy consumption");
         Validate.isTrue(energyConsumption <= energyCapacity, "Energy consumption can not be greater the energy capacity.");
@@ -388,7 +388,7 @@ public abstract class AMachineMK2 extends SlimefunItem implements EnergyNetCompo
 
     }
 
-    public final AMachine setProcessingSpeed(int processingSpeed) {
+    public final AMachineMK2 setProcessingSpeed(int processingSpeed) {
         Validate.isTrue(processingSpeed > 0, "Processing speed must be greater then 0");
 
         this.processingSpeed = processingSpeed;
