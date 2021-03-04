@@ -15,10 +15,14 @@ import org.bukkit.inventory.ItemStack;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 
 public class GrowthChamberMK2 extends AMachine {
-
+    
+    private static int[] BORDER = new int[] {};
+    private static int[] BORDER_IN = new int[] {9,10,11,12,14,15,16,17};
+    private static int[] BORDER_OUT = new int[] {18,19,20,21,22,23,24,25,26,53};
+    
     private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>("exotic-garden-integration", true);
 
-    public GrowthChamber(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public GrowthChamberMK2(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
 
         addItemSetting(exoticGardenIntegration);
@@ -122,7 +126,7 @@ public class GrowthChamberMK2 extends AMachine {
     }
     @Override
     public int[] getOutputSlots() {
-        return new int[] {27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53};
+        return new int[] {27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52};
     }
 
     @Override
