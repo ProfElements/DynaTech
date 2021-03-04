@@ -16,15 +16,12 @@ import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 
 public class GrowthChamberMK2 extends AMachine {
 
-    private Set<UUID> enabledPlayers = new HashSet<>();
+    private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>("exotic-garden-integration", true);
 
-    private static int[] BORDER = new int[] {};
-    private static int[] BORDER_IN = new int[] {9,10,11,12,14,15,16,17};
-    private static int[] BORDER_OUT = new int[] {18,19,20,21,22,23,24,25,26};
-
-    public GrowthChamberMK2(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public GrowthChamber(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
 
+        addItemSetting(exoticGardenIntegration);
     }
 
     @Override
