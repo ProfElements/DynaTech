@@ -38,7 +38,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class AMachine extends SlimefunItem implements EnergyNetComponent {
+public abstract class AMachineMK2 extends SlimefunItem implements EnergyNetComponent {
 
     public static Map<Block, MachineRecipe> processing = new HashMap<>();
     public static Map<Block, Integer> progress = new HashMap<>();
