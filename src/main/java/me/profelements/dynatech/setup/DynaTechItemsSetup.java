@@ -14,6 +14,7 @@ import me.profelements.dynatech.items.electric.AutoKitchen;
 import me.profelements.dynatech.items.electric.BandaidManager;
 import me.profelements.dynatech.items.electric.BarbedWire;
 import me.profelements.dynatech.items.electric.GrowthChamber;
+import me.profelements.dynatech.items.electric.GrowthChamberMK2;
 import me.profelements.dynatech.items.electric.MaterialHive;
 import me.profelements.dynatech.items.electric.PotionSprinkler;
 import me.profelements.dynatech.items.electric.SeedPlucker;
@@ -216,6 +217,18 @@ public class DynaTechItemsSetup {
                 .setEnergyCapacity(512)
                 .setEnergyConsumption(32)
                 .setProcessingSpeed(1)
+                .register(plugin);
+
+        new GrowthChamberMK2(DynaTechItems.DynaTechGeneral, DynaTechItems.GROWTH_CHAMBER_MK2, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.STEEL_PLATE,new ItemStack(Material.LIME_STAINED_GLASS),SlimefunItems.STEEL_PLATE,
+                        new ItemStack(Material.BONE_BLOCK),new ItemStack(Material.GRASS_BLOCK),new ItemStack(Material.BONE_BLOCK),
+                        DynaTechItems.STAINLESS_STEEL_ROTOR,DynaTechItems.GROWTH_CHAMBER,DynaTechItems.STAINLESS_STEEL_ROTOR
+
+                })
+                .setEnergyCapacity(1024)
+                .setEnergyConsumption(64)
+                .setProcessingSpeed(4)
                 .register(plugin);
 
         new AntigravityBubble(DynaTechItems.DynaTechGeneral, DynaTechItems.ANTIGRAVITY_BUBBLE, RecipeType.ENHANCED_CRAFTING_TABLE,
