@@ -22,6 +22,7 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
+import me.mrCookieSlime.Slimefun.cscorelib2.inventory.InvUtils;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.protection.ProtectableAction;
 import org.apache.commons.lang.Validate;
@@ -272,7 +273,7 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
 
             if (found.size() == recipe.getInput().length) {
                 for (int slot : getOutputSlots() ) {
-                    if (inv.getItemInSlot(slot) != null) {
+                    if (!InvUtils.fitAll(inv.toInventory(), recipe.getOutput(), getOutputSlots())) {
                         return null;
                     }
                 }
