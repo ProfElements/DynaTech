@@ -272,10 +272,9 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
             }
 
             if (found.size() == recipe.getInput().length) {
-                for (int slot : getOutputSlots() ) {
-                    if (!InvUtils.fitAll(inv.toInventory(), recipe.getOutput(), getOutputSlots())) {
-                        return null;
-                    }
+                if (!InvUtils.fitAll(inv.toInventory(), recipe.getOutput(), getOutputSlots())) {
+                    return null;
+                }
                 }
                 if (isInputConsumed()) {
                     for (Map.Entry<Integer, Integer> entry : found.entrySet()) {
