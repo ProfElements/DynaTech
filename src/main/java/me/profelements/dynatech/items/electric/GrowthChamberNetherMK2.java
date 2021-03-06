@@ -73,7 +73,7 @@ public class GrowthChamberNetherMK2 extends AMachine {
 
     @Override
     public ItemStack getProgressBar() {
-        return new ItemStack(Material.CONDUIT);
+        return new ItemStack(Material.NETHERRACK);
     }
     
     @Override
