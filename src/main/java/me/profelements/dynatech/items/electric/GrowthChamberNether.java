@@ -22,15 +22,15 @@ public class GrowthChamberNether extends AMachine {
     @Override
     protected void registerDefaultRecipes() {
 
-        registerRecipe(20, new ItemStack(Material.NETHER_WART), new ItemStack(Material.NETHER_WART, 4));
-        registerRecipe(20, new ItemStack(Material.WEEPING_VINES), new ItemStack(Material.WEEPING_VINES, 4));
-        registerRecipe(20, new ItemStack(Material.TWISTING_VINES), new ItemStack(Material.TWISTING_VINES, 4));
-        registerRecipe(20, new ItemStack(Material.CRIMSON_ROOTS), new ItemStack(Material.CRIMSON_ROOTS, 4));
-        registerRecipe(20, new ItemStack(Material.WARPED_ROOTS), new ItemStack(Material.WARPED_ROOTS, 4));
-        registerRecipe(20, new ItemStack(Material.NETHER_SPROUTS), new ItemStack(Material.NETHER_SPROUTS, 4));
+        registerRecipe(12, new ItemStack(Material.NETHER_WART), new ItemStack(Material.NETHER_WART, 4));
+        registerRecipe(9, new ItemStack(Material.WEEPING_VINES), new ItemStack(Material.WEEPING_VINES, 4));
+        registerRecipe(9, new ItemStack(Material.TWISTING_VINES), new ItemStack(Material.TWISTING_VINES, 4));
+        registerRecipe(9, new ItemStack(Material.CRIMSON_ROOTS), new ItemStack(Material.CRIMSON_ROOTS, 4));
+        registerRecipe(9, new ItemStack(Material.WARPED_ROOTS), new ItemStack(Material.WARPED_ROOTS, 4));
+        registerRecipe(9, new ItemStack(Material.NETHER_SPROUTS), new ItemStack(Material.NETHER_SPROUTS, 4));
 
-        registerRecipe(40, new ItemStack[] {new ItemStack(Material.CRIMSON_FUNGUS)}, new ItemStack[] {new ItemStack(Material.CRIMSON_FUNGUS, 2), new ItemStack(Material.CRIMSON_STEM, 6)});
-        registerRecipe(40, new ItemStack[] {new ItemStack(Material.WARPED_FUNGUS)}, new ItemStack[] {new ItemStack(Material.WARPED_FUNGUS, 2), new ItemStack(Material.WARPED_STEM, 6)});
+        registerRecipe(30, new ItemStack[] {new ItemStack(Material.CRIMSON_FUNGUS)}, new ItemStack[] {new ItemStack(Material.CRIMSON_FUNGUS, 2), new ItemStack(Material.CRIMSON_STEM, 6)});
+        registerRecipe(30, new ItemStack[] {new ItemStack(Material.WARPED_FUNGUS)}, new ItemStack[] {new ItemStack(Material.WARPED_FUNGUS, 2), new ItemStack(Material.WARPED_STEM, 6)});
 
     }
     
