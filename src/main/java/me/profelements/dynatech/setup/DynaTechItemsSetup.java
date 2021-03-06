@@ -221,13 +221,13 @@ public class DynaTechItemsSetup {
 
         new GrowthChamberMK2(DynaTechItems.DynaTechGeneral, DynaTechItems.GROWTH_CHAMBER_MK2, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        SlimefunItems.STEEL_PLATE,new ItemStack(Material.LIME_STAINED_GLASS),SlimefunItems.STEEL_PLATE,
-                        new ItemStack(Material.BONE_BLOCK),new ItemStack(Material.GRASS_BLOCK),new ItemStack(Material.BONE_BLOCK),
-                        DynaTechItems.STAINLESS_STEEL_ROTOR,DynaTechItems.GROWTH_CHAMBER,DynaTechItems.STAINLESS_STEEL_ROTOR
+                        SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER,SlimefunItems.STEEL_PLATE,
+                        new ItemStack(Material.WATER_BUCKET),new ItemStack(Material.LIME_STAINED_GLASS),new ItemStack(Material.NETHERRACK),
+                        SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER,SlimefunItems.STEEL_PLATE
 
                 })
-                .setEnergyCapacity(1024)
-                .setEnergyConsumption(64)
+                .setEnergyCapacity(512)
+                .setEnergyConsumption(80)
                 .setProcessingSpeed(4)
                 .register(plugin);
 
