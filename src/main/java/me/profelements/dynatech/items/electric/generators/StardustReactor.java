@@ -21,9 +21,9 @@ public class StardustReactor extends Reactor {
 
     @Override
     public int getEnergyProduction() {
-        return 1024;
+        return 512;
     }
-
+    
     @Override
     public int getCapacity() {
         return 32768;
