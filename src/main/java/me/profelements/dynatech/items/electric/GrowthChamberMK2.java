@@ -157,11 +157,5 @@ public class GrowthChamberMK2 extends AMachine {
     public int getProgressBarSlot() {
         return 13;
     }
-
-    //Hacky workaround that I want to avoid eventually
-    @Override
-    public int getSpeed() {
-        return 4;
-    }
     
 }

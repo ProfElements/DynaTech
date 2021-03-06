@@ -113,8 +113,6 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
             return true;
 
         });
-
-        registerDefaultRecipes();
     }
 
     public void blockExtras(Block b) {
@@ -414,6 +412,8 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
             warn("The processing speed has not been configured correctly. The Item was disabled.");
             warn("Make sure to call '" + getClass().getSimpleName() + "#setProcessingSpeed(...)' before registering!");
         }
+
+        registerDefaultRecipes();
 
         if (getCapacity() > 0 && getEnergyConsumption() > 0 && getSpeed() > 0) {
             super.register(addon);

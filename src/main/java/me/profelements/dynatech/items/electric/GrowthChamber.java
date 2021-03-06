@@ -105,10 +105,4 @@ public class GrowthChamber extends AMachine {
         return "GROWTH_CHAMBER";
     }
 
-    //Hacky workaround that I want to avoid eventually
-    @Override
-    public int getSpeed() {
-        return 1;
-    }
-
 }
