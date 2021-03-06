@@ -29,51 +29,51 @@ public class GrowthChamberOceanMK2 extends AMachine {
     @Override
     protected void registerDefaultRecipes() {
 
-        registerRecipe(20, new ItemStack(Material.LILY_PAD), new ItemStack(Material.LILY_PAD, 9));
-        registerRecipe(20, new ItemStack(Material.SEA_PICKLE), new ItemStack(Material.SEA_PICKLE, 9));
-        registerRecipe(20, new ItemStack(Material.SEAGRASS), new ItemStack(Material.SEAGRASS, 12));
-        registerRecipe(0, new ItemStack(Material.KELP), new ItemStack(Material.KELP, 9));
+        registerRecipe(9, new ItemStack(Material.LILY_PAD), new ItemStack(Material.LILY_PAD, 9));
+        registerRecipe(9, new ItemStack(Material.SEA_PICKLE), new ItemStack(Material.SEA_PICKLE, 9));
+        registerRecipe(12, new ItemStack(Material.SEAGRASS), new ItemStack(Material.SEAGRASS, 12));
+        registerRecipe(9, new ItemStack(Material.KELP), new ItemStack(Material.KELP, 9));
     // Coral blocks
         // Brings dead coral blocks back to life!
-        registerRecipe(20, new ItemStack(Material.DEAD_TUBE_CORAL_BLOCK), new ItemStack(Material.TUBE_CORAL_BLOCK, 3));
-        registerRecipe(20, new ItemStack(Material.DEAD_BRAIN_CORAL_BLOCK), new ItemStack(Material.BRAIN_CORAL_BLOCK, 3));
-        registerRecipe(20, new ItemStack(Material.DEAD_BUBBLE_CORAL_BLOCK), new ItemStack(Material.BUBBLE_CORAL_BLOCK, 3));
-        registerRecipe(20, new ItemStack(Material.DEAD_FIRE_CORAL_BLOCK), new ItemStack(Material.FIRE_CORAL_BLOCK, 3));
-        registerRecipe(20, new ItemStack(Material.DEAD_HORN_CORAL_BLOCK), new ItemStack(Material.HORN_CORAL_BLOCK, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_TUBE_CORAL_BLOCK), new ItemStack(Material.TUBE_CORAL_BLOCK, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_BRAIN_CORAL_BLOCK), new ItemStack(Material.BRAIN_CORAL_BLOCK, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_BUBBLE_CORAL_BLOCK), new ItemStack(Material.BUBBLE_CORAL_BLOCK, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_FIRE_CORAL_BLOCK), new ItemStack(Material.FIRE_CORAL_BLOCK, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_HORN_CORAL_BLOCK), new ItemStack(Material.HORN_CORAL_BLOCK, 3));
         // Block duplication
-        registerRecipe(20, new ItemStack(Material.TUBE_CORAL_BLOCK), new ItemStack(Material.TUBE_CORAL_BLOCK, 6));
-        registerRecipe(20, new ItemStack(Material.BRAIN_CORAL_BLOCK), new ItemStack(Material.BRAIN_CORAL_BLOCK, 6));
-        registerRecipe(20, new ItemStack(Material.BUBBLE_CORAL_BLOCK), new ItemStack(Material.BUBBLE_CORAL_BLOCK, 6));
-        registerRecipe(20, new ItemStack(Material.FIRE_CORAL_BLOCK), new ItemStack(Material.FIRE_CORAL_BLOCK, 6));
-        registerRecipe(20, new ItemStack(Material.HORN_CORAL_BLOCK), new ItemStack(Material.HORN_CORAL_BLOCK, 6));
+        registerRecipe(12, new ItemStack(Material.TUBE_CORAL_BLOCK), new ItemStack(Material.TUBE_CORAL_BLOCK, 6));
+        registerRecipe(12, new ItemStack(Material.BRAIN_CORAL_BLOCK), new ItemStack(Material.BRAIN_CORAL_BLOCK, 6));
+        registerRecipe(12, new ItemStack(Material.BUBBLE_CORAL_BLOCK), new ItemStack(Material.BUBBLE_CORAL_BLOCK, 6));
+        registerRecipe(12, new ItemStack(Material.FIRE_CORAL_BLOCK), new ItemStack(Material.FIRE_CORAL_BLOCK, 6));
+        registerRecipe(12, new ItemStack(Material.HORN_CORAL_BLOCK), new ItemStack(Material.HORN_CORAL_BLOCK, 6));
 
     // Coral
         // Revive for coral
-        registerRecipe(20, new ItemStack(Material.DEAD_TUBE_CORAL), new ItemStack(Material.TUBE_CORAL, 3));
-        registerRecipe(20, new ItemStack(Material.DEAD_BRAIN_CORAL), new ItemStack(Material.BRAIN_CORAL, 3));
-        registerRecipe(20, new ItemStack(Material.DEAD_BUBBLE_CORAL), new ItemStack(Material.BUBBLE_CORAL, 3));
-        registerRecipe(20, new ItemStack(Material.DEAD_FIRE_CORAL), new ItemStack(Material.FIRE_CORAL, 3));
-        registerRecipe(20, new ItemStack(Material.DEAD_HORN_CORAL), new ItemStack(Material.HORN_CORAL, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_TUBE_CORAL), new ItemStack(Material.TUBE_CORAL, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_BRAIN_CORAL), new ItemStack(Material.BRAIN_CORAL, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_BUBBLE_CORAL), new ItemStack(Material.BUBBLE_CORAL, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_FIRE_CORAL), new ItemStack(Material.FIRE_CORAL, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_HORN_CORAL), new ItemStack(Material.HORN_CORAL, 3));
         // Coral duplication
-        registerRecipe(20, new ItemStack(Material.TUBE_CORAL), new ItemStack(Material.TUBE_CORAL, 6));
-        registerRecipe(20, new ItemStack(Material.BRAIN_CORAL), new ItemStack(Material.BRAIN_CORAL, 6));
-        registerRecipe(20, new ItemStack(Material.BUBBLE_CORAL), new ItemStack(Material.BUBBLE_CORAL, 6));
-        registerRecipe(20, new ItemStack(Material.FIRE_CORAL), new ItemStack(Material.FIRE_CORAL, 6));
-        registerRecipe(20, new ItemStack(Material.HORN_CORAL), new ItemStack(Material.HORN_CORAL, 6));
+        registerRecipe(12, new ItemStack(Material.TUBE_CORAL), new ItemStack(Material.TUBE_CORAL, 6));
+        registerRecipe(12, new ItemStack(Material.BRAIN_CORAL), new ItemStack(Material.BRAIN_CORAL, 6));
+        registerRecipe(12, new ItemStack(Material.BUBBLE_CORAL), new ItemStack(Material.BUBBLE_CORAL, 6));
+        registerRecipe(12, new ItemStack(Material.FIRE_CORAL), new ItemStack(Material.FIRE_CORAL, 6));
+        registerRecipe(12, new ItemStack(Material.HORN_CORAL), new ItemStack(Material.HORN_CORAL, 6));
 
     // Coral fans
         // Medical attention for the fans
-        registerRecipe(20, new ItemStack(Material.DEAD_TUBE_CORAL_FAN), new ItemStack(Material.TUBE_CORAL_FAN, 3));
-        registerRecipe(20, new ItemStack(Material.DEAD_BRAIN_CORAL_FAN), new ItemStack(Material.BRAIN_CORAL_FAN, 3));
-        registerRecipe(20, new ItemStack(Material.DEAD_BUBBLE_CORAL_FAN), new ItemStack(Material.BUBBLE_CORAL_FAN, 3));
-        registerRecipe(20, new ItemStack(Material.DEAD_FIRE_CORAL_FAN), new ItemStack(Material.FIRE_CORAL_FAN, 3));
-        registerRecipe(20, new ItemStack(Material.DEAD_HORN_CORAL_FAN), new ItemStack(Material.HORN_CORAL_FAN, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_TUBE_CORAL_FAN), new ItemStack(Material.TUBE_CORAL_FAN, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_BRAIN_CORAL_FAN), new ItemStack(Material.BRAIN_CORAL_FAN, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_BUBBLE_CORAL_FAN), new ItemStack(Material.BUBBLE_CORAL_FAN, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_FIRE_CORAL_FAN), new ItemStack(Material.FIRE_CORAL_FAN, 3));
+        registerRecipe(9, new ItemStack(Material.DEAD_HORN_CORAL_FAN), new ItemStack(Material.HORN_CORAL_FAN, 3));
         // Fan duplication
-        registerRecipe(20, new ItemStack(Material.TUBE_CORAL_FAN), new ItemStack(Material.TUBE_CORAL_FAN, 6));
-        registerRecipe(20, new ItemStack(Material.BRAIN_CORAL_FAN), new ItemStack(Material.BRAIN_CORAL_FAN, 6));
-        registerRecipe(20, new ItemStack(Material.BUBBLE_CORAL_FAN), new ItemStack(Material.BUBBLE_CORAL_FAN, 6));
-        registerRecipe(20, new ItemStack(Material.FIRE_CORAL_FAN), new ItemStack(Material.FIRE_CORAL_FAN, 6));
-        registerRecipe(20, new ItemStack(Material.HORN_CORAL_FAN), new ItemStack(Material.HORN_CORAL_FAN, 6));
+        registerRecipe(12, new ItemStack(Material.TUBE_CORAL_FAN), new ItemStack(Material.TUBE_CORAL_FAN, 6));
+        registerRecipe(12, new ItemStack(Material.BRAIN_CORAL_FAN), new ItemStack(Material.BRAIN_CORAL_FAN, 6));
+        registerRecipe(12, new ItemStack(Material.BUBBLE_CORAL_FAN), new ItemStack(Material.BUBBLE_CORAL_FAN, 6));
+        registerRecipe(12, new ItemStack(Material.FIRE_CORAL_FAN), new ItemStack(Material.FIRE_CORAL_FAN, 6));
+        registerRecipe(12, new ItemStack(Material.HORN_CORAL_FAN), new ItemStack(Material.HORN_CORAL_FAN, 6));
 
     }
 
