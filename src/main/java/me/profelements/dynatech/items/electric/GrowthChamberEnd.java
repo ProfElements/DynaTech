@@ -22,7 +22,7 @@ public class GrowthChamberEnd extends AMachine {
     @Override
     protected void registerDefaultRecipes() {
 
-        registerRecipe(20, new ItemStack[] {new ItemStack(Material.CHORUS_FLOWER)}, new ItemStack[] {new ItemStack(Material.CHORUS_FLOWER , 2), new ItemStack(Material.CHORUS_FRUIT, 8)});
+        registerRecipe(9, new ItemStack[] {new ItemStack(Material.CHORUS_FLOWER)}, new ItemStack[] {new ItemStack(Material.CHORUS_FLOWER , 2), new ItemStack(Material.CHORUS_FRUIT, 8)});
 
     } 
 
