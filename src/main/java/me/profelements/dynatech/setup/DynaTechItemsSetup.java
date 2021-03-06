@@ -228,7 +228,7 @@ public class DynaTechItemsSetup {
                 })
                 .setEnergyCapacity(1024)
                 .setEnergyConsumption(64)
-                .setProcessingSpeed(1)
+                .setProcessingSpeed(4)
                 .register(plugin);
 
         new AntigravityBubble(DynaTechItems.DynaTechGeneral, DynaTechItems.ANTIGRAVITY_BUBBLE, RecipeType.ENHANCED_CRAFTING_TABLE,
