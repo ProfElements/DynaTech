@@ -12,6 +12,8 @@ import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Waterlogged;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
+
 import javax.annotation.Nonnull;
 
 public class HydroGenerator extends AMachineGenerator {
@@ -22,7 +24,7 @@ public class HydroGenerator extends AMachineGenerator {
 
     @Override
     public int getGeneratedOutput(@Nonnull Location location, @Nonnull Config config) {
-        BlockData blockData = location.getBlock().getBlockData();
+        BlockData blockData = PaperLib.getBlockState(location.getBlock(), false).getState().getBlockData();
 
         if (blockData != null && blockData instanceof Waterlogged) {
             Waterlogged data = (Waterlogged) blockData;
