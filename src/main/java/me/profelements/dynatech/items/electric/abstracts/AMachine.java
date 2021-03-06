@@ -318,7 +318,7 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
     }
 
     public void registerRecipe(MachineRecipe recipe) {
-        recipe.setTicks(recipe.getTicks() / getSpeed());
+        recipe.setTicks(recipe.getTicks() / this.getSpeed());
         recipes.add(recipe);
     }
 
@@ -363,7 +363,7 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
     }
 
     public int getSpeed() {
-        return processingSpeed;
+        return this.processingSpeed;
     }
 
     public final AMachine setEnergyCapacity(int capacity) {

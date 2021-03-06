@@ -174,7 +174,7 @@ public class DynaTechItems {
             "&f&oIts like a small greenhouse!",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
-            LoreBuilder.speed(1),
+            LoreBuilder.speed(4),
             LoreBuilder.powerPerSecond(80)
             );
 
