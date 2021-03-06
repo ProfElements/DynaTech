@@ -8,6 +8,7 @@ import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Waterlogged;
 import org.bukkit.inventory.ItemStack;
 
@@ -21,8 +22,10 @@ public class HydroGenerator extends AMachineGenerator {
 
     @Override
     public int getGeneratedOutput(@Nonnull Location location, @Nonnull Config config) {
-        if (location.getBlock().getBlockData() instanceof Waterlogged) {
-            Waterlogged data = (Waterlogged) location.getBlock().getBlockData();
+        BlockData blockData = location.getBlock().getBlockData();
+
+        if (blockData != null && blockData instanceof Waterlogged) {
+            Waterlogged data = (Waterlogged) blockData;
             if (data.isWaterlogged()) {
                 return getEnergyProduction();
             }
