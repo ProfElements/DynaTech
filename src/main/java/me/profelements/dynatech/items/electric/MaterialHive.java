@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactive;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
@@ -34,8 +35,14 @@ public class MaterialHive extends AMachine implements Radioactive {
 
     private static final int[] INPUT_SLOTS = new int[] {19,20,4};
 
+    public static final ItemSetting<List<String>> vanillaItemsAccepted = new ItemSetting<>("vanilla-items-accepted", getDefaultAllowedVanillaItems());
+    public static final ItemSetting<List<String>> slimefunItemsAccepted = new ItemSetting<>("slimefun-items-accepted", getDefaultAllowedSlimefunItems());
+    
     public MaterialHive(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
+
+        addItemSetting(vanillaItemsAccepted);
+        addItemSetting(slimefunItemsAccepted);
     }
 
     @Override
@@ -43,7 +50,7 @@ public class MaterialHive extends AMachine implements Radioactive {
         ItemStack key = inv.getItemInSlot(getInputSlots()[2]);
         if (key != null && key.getAmount() == 64) {
             int secondRemovalAmount = 0;
-            if ((SlimefunItem.getByItem(key) == null && getAllowedVanillaItems().contains(key.getType())) || getAllowedSlimefunItems().contains(SlimefunItem.getByItem(key).getId())) {
+            if ((SlimefunItem.getByItem(key) == null && vanillaItemsAccepted.getValue().contains(key.getType().toString())) || slimefunItemsAccepted.getValue().contains(SlimefunItem.getByItem(key).getId())) {
                 
                 boolean isSlimefunItem = SlimefunItem.getByItem(key) != null ? true :  false;
                 
@@ -166,23 +173,23 @@ public class MaterialHive extends AMachine implements Radioactive {
         return false;
     }
 
-    private List<Material> getAllowedVanillaItems() {
-        List<Material> materialsAllowed = new ArrayList<>();
+    private static List<String> getDefaultAllowedVanillaItems() {
+        List<String> materialsAllowed = new ArrayList<>();
 
-        materialsAllowed.add(Material.IRON_INGOT);
-        materialsAllowed.add(Material.GOLD_INGOT);
-        materialsAllowed.add(Material.NETHERITE_INGOT);
-        materialsAllowed.add(Material.DIAMOND);
-        materialsAllowed.add(Material.EMERALD);
-        materialsAllowed.add(Material.LAPIS_LAZULI);
-        materialsAllowed.add(Material.QUARTZ);
-        materialsAllowed.add(Material.REDSTONE);
-        materialsAllowed.add(Material.COAL);
+        materialsAllowed.add("IRON_INGOT");
+        materialsAllowed.add("GOLD_INGOT");
+        materialsAllowed.add("NETHERITE_INGOT");
+        materialsAllowed.add("DIAMOND");
+        materialsAllowed.add("EMERALD");
+        materialsAllowed.add("LAPIS_LAZULI");
+        materialsAllowed.add("QUARTZ");
+        materialsAllowed.add("REDSTONE");
+        materialsAllowed.add("COAL");
 
         return materialsAllowed;
     }
 
-    private List<String> getAllowedSlimefunItems() {
+    private static List<String> getDefaultAllowedSlimefunItems() {
         List<String> sfItemsAllowed = new ArrayList<>();
 
         //Ingots
