@@ -1,18 +1,16 @@
 package me.profelements.dynatech.items.electric.generators;
 
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import io.github.thebusybiscuit.slimefun4.implementation.items.electric.reactors.Reactor;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineFuel;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.profelements.dynatech.DynaTechItems;
+import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
 
-public class StardustReactor extends Reactor {
+public class StardustReactor extends AMachineGenerator {
 
     public StardustReactor(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
@@ -20,28 +18,8 @@ public class StardustReactor extends Reactor {
     }
 
     @Override
-    public int getEnergyProduction() {
-        return 512;
-    }
-    
-    @Override
-    public int getCapacity() {
-        return 32768;
-    }
-
-    @Override
     protected void registerDefaultFuelTypes() {
         registerFuel(new MachineFuel(32, DynaTechItems.STAR_DUST));
-    }
-    
-    @Override
-    public ItemStack getCoolant() {
-        return SlimefunItems.REACTOR_COOLANT_CELL;
-    }
-
-    @Override
-    public ItemStack getFuelIcon() {
-        return DynaTechItems.STAR_DUST;
     }
 
     @Override
@@ -50,8 +28,8 @@ public class StardustReactor extends Reactor {
     }
 
     @Override
-    public void extraTick(Location l) {
-    
+    public String getMachineIdentifier() {
+        return "STARDUST_REACTOR";
     }
 
 }

@@ -381,7 +381,10 @@ public class DynaTechItemsSetup {
                     null, SlimefunItems.NUCLEAR_REACTOR, null,
                     DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.ANCIENT_MACHINE_CORE, DynaTechItems.ADVANCED_MACHINE_SCRAP
 
-                }).register(plugin);
+                })
+                .setEnergyCapacity(32676)
+                .setEnergyProduction(1024)
+                .register(plugin);
         }
 
 }
