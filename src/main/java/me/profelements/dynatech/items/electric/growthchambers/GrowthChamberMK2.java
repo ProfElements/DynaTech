@@ -1,4 +1,4 @@
-package me.profelements.dynatech.items.electric;
+package me.profelements.dynatech.items.electric.growthchambers;
 
 import java.util.ArrayList;
 import java.util.List;

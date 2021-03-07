@@ -1,12 +1,8 @@
-package me.profelements.dynatech.items.electric;
+package me.profelements.dynatech.items.electric.growthchambers;
 
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
-import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 
 import org.bukkit.Material;
