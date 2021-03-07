@@ -20,7 +20,6 @@ public class DragonEggGenerator extends AMachineGenerator {
         super(category, item, recipeType, recipe);
     }
 
-
     @Override
     public int getGeneratedOutput(@Nonnull Location location, @Nonnull Config config) {
         Block dragonEgg = location.getBlock().getRelative(BlockFace.UP);
@@ -40,6 +39,7 @@ public class DragonEggGenerator extends AMachineGenerator {
         return "DRAGON_GENERATOR";
     }
 
+    @Nonnull
     @Override
     public ItemStack getProgressBar() {
         return new ItemStack(Material.DRAGON_EGG);

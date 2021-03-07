@@ -15,14 +15,11 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class ElectricalStimulatorListener implements Listener {
-
-    private final DynaTech plugin;
+    
     private final ElectricalStimulator electricalStimulator;
 
     public ElectricalStimulatorListener(@Nonnull DynaTech plugin, @Nonnull ElectricalStimulator electricalStimulator) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
-        
-        this.plugin = plugin;
         this.electricalStimulator = electricalStimulator;
     }
 
@@ -40,7 +37,6 @@ public class ElectricalStimulatorListener implements Listener {
     public void onHungerDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player && e.getCause() == EntityDamageEvent.DamageCause.STARVATION) {
             feedPlayer((Player) e.getEntity());
-            
         }
     }
 
@@ -61,7 +57,7 @@ public class ElectricalStimulatorListener implements Listener {
         }
     }
 
-    private void givePlayerFood(Player p) {
+    private static void givePlayerFood(Player p) {
         p.setFoodLevel(20);
         p.setSaturation(20f);
         p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, 1F , 1F);

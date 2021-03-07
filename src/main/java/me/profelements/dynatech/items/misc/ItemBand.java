@@ -19,7 +19,7 @@ import me.profelements.dynatech.DynaTech;
 
 public class ItemBand extends SlimefunItem {
 
-    public static final NamespacedKey key = new NamespacedKey(DynaTech.getInstance(), "item_band");
+    public static final NamespacedKey KEY = new NamespacedKey(DynaTech.getInstance(), "item_band");
     private final PotionEffect[] potionEffects;
 
     public ItemBand(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, PotionEffect[] potionEffects) {
@@ -33,8 +33,8 @@ public class ItemBand extends SlimefunItem {
     }
 
     public static boolean containsItemBand(ItemStack item) {
-        if (item != null && item.getType() != Material.AIR) {
-            return PersistentDataAPI.getString(item.getItemMeta(), key) != null;
+        if (item != null && item.getType() != Material.AIR && item.hasItemMeta()) {
+            return PersistentDataAPI.getString(item.getItemMeta(), KEY) != null;
         } else {
             return false;
         }
@@ -48,7 +48,7 @@ public class ItemBand extends SlimefunItem {
             List<String> lore = im.hasLore() ? im.getLore() : new ArrayList<>();
             
             lore.add(ChatColor.WHITE + "Bandaid: " + getPotionEffects()[0].getType().getName());
-            PersistentDataAPI.setString(im, key, this.getId());
+            PersistentDataAPI.setString(im, KEY, this.getId());
 
             im.setLore(lore);
             item.setItemMeta(im);
@@ -62,7 +62,7 @@ public class ItemBand extends SlimefunItem {
             ItemMeta im = item.getItemMeta();
             List<String> lore = im.getLore();
             
-            im.getPersistentDataContainer().remove(key);
+            im.getPersistentDataContainer().remove(KEY);
             
 
             for (int line = 0; line < lore.size(); line++ ) {

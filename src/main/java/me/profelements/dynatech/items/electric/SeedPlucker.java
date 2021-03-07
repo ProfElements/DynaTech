@@ -17,7 +17,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 
 public class SeedPlucker extends AMachine {
 
-    private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>("exotic-garden-integration", true);
+    private final ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>("exotic-garden-integration", true);
 
     public SeedPlucker(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
@@ -37,30 +37,27 @@ public class SeedPlucker extends AMachine {
     public MachineRecipe findNextRecipe(BlockMenu inv) {
         if (DynaTech.isExoticGardenInstalled() && exoticGardenIntegration.getValue()) {
             for (int inputSlot : getInputSlots()) {
-                ItemStack item = inv.getItemInSlot(inputSlot);
-                if (item != null && SlimefunItem.getByItem(item) != null) {
-                    SlimefunItem sfItem = SlimefunItem.getByItem(item);
-                    
-                    if (sfItem instanceof ExoticGardenFruit) {
-
-                        if (SlimefunItem.getByID(sfItem.getId().concat("_BUSH")) != null) {
-                            inv.consumeItem(inputSlot);
-                            return new MachineRecipe(10, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {SlimefunItem.getByID(sfItem.getId().concat("_BUSH")).getItem()});
-                        } else if (SlimefunItem.getByID(sfItem.getId().concat("_SAPLING")) != null) {
-                            inv.consumeItem(inputSlot);
-                            return new MachineRecipe(10, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {SlimefunItem.getByID(sfItem.getId().concat("_SAPLING")).getItem()});
-                        } else if (SlimefunItem.getByID(sfItem.getId().concat("_PLANT")) != null) {
-                            inv.consumeItem(inputSlot);
-                            return new MachineRecipe(10, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {SlimefunItem.getByID(sfItem.getId().concat("_PLANT")).getItem()});
-                        }
-                        
-                        
+                SlimefunItem item = SlimefunItem.getByItem(inv.getItemInSlot(inputSlot));
+                if (item instanceof ExoticGardenFruit) {
+                    SlimefunItem out = SlimefunItem.getByID(item.getId().concat("_BUSH"));
+                    if (out != null) {
+                        inv.consumeItem(inputSlot);
+                        return new MachineRecipe(10, new ItemStack[] {item.getItem()}, new ItemStack[] {out.getItem()});
+                    }
+                    out = SlimefunItem.getByID(item.getId().concat("_SAPLING"));
+                    if (out != null) {
+                        inv.consumeItem(inputSlot);
+                        return new MachineRecipe(10, new ItemStack[] {item.getItem()}, new ItemStack[] {out.getItem()});
+                    }
+                    out = SlimefunItem.getByID(item.getId().concat("_PLANT"));
+                    if (out != null) {
+                        inv.consumeItem(inputSlot);
+                        return new MachineRecipe(10, new ItemStack[] {item.getItem()}, new ItemStack[] {out.getItem()});
                     }
                 }
             }
         }
         return super.findNextRecipe(inv);
-        
     } 
 
     @Override
@@ -72,7 +69,5 @@ public class SeedPlucker extends AMachine {
     public String getMachineIdentifier() {
         return "SEED_PLUCKER";
     }
-
-
-
+    
 }

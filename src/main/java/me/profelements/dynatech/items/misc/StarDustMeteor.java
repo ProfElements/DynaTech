@@ -14,6 +14,8 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import me.profelements.dynatech.DynaTech;
 
+import javax.annotation.Nonnull;
+
 public class StarDustMeteor extends SlimefunItem implements NotPlaceable, GEOResource {
 
     public static final SlimefunItemStack STARDUST_METEOR = new SlimefunItemStack(
@@ -27,18 +29,19 @@ public class StarDustMeteor extends SlimefunItem implements NotPlaceable, GEORes
     private final NamespacedKey key = new NamespacedKey(DynaTech.getInstance(), "stardust_meteor");
   
     public StarDustMeteor(Category category) {
-        super(category, STARDUST_METEOR, RecipeType.GEO_MINER, null);
+        super(category, STARDUST_METEOR, RecipeType.GEO_MINER, new ItemStack[0]);
         register();
     }
     
+    @Nonnull
     @Override
     public NamespacedKey getKey() {
       return key;
     }
     
+    @Nonnull
     @Override
     public ItemStack getItem() {
-
       return STARDUST_METEOR.clone();
     }
   
@@ -53,14 +56,12 @@ public class StarDustMeteor extends SlimefunItem implements NotPlaceable, GEORes
     }
     
     @Override
-    public int getDefaultSupply(Environment environment, Biome biome) {
-      
-      if (biome == Biome.MOUNTAINS || biome == Biome.BADLANDS) {
-        return 16;
-      }
-      else {
-        return 0;
-      }
+    public int getDefaultSupply(@Nonnull Environment environment, @Nonnull Biome biome) {
+        if (biome == Biome.MOUNTAINS || biome == Biome.BADLANDS) {
+            return 16;
+        } else {
+            return 0;
+        }
     }
     
     @Override

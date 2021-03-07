@@ -17,6 +17,8 @@ import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 
+import javax.annotation.Nonnull;
+
 public class WeatherController extends AMachine implements RecipeDisplayItem {
 
     private static final int[] BORDER = new int[] {1,2,6,7,9,10,11,15,16,17,19,20,24,25};
@@ -41,7 +43,7 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
                 if (b.getWorld().isClearWeather()) {
                     return;
                 } 
-                b.getWorld().setClearWeatherDuration(60*20);
+                b.getWorld().setClearWeatherDuration(1200);
                 removeCharge(b.getLocation(), getEnergyConsumption());
             }
             
@@ -50,7 +52,7 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
                     return;
                 }
                 DynaTech.runSync(()->b.getWorld().setStorm(true));
-                b.getWorld().setWeatherDuration(60*20);
+                b.getWorld().setWeatherDuration(1200);
                 removeCharge(b.getLocation(), getEnergyConsumption());
             }
 
@@ -59,12 +61,13 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
                     return;
                 }
                 DynaTech.runSync(()->b.getWorld().setThundering(true));
-                b.getWorld().setThunderDuration(60*20);
+                b.getWorld().setThunderDuration(1200);
                 removeCharge(b.getLocation(), getEnergyConsumption());
             }
         }
     }
 
+    @Nonnull
     @Override
     public List<ItemStack> getDisplayRecipes() {
         List<ItemStack> items = new ArrayList<>();

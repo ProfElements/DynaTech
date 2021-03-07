@@ -13,6 +13,8 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
 
+import javax.annotation.Nonnull;
+
 public class ChippingGenerator extends AMachineGenerator {
 
     private static final int PowerPerDurability = 8;
@@ -61,6 +63,7 @@ public class ChippingGenerator extends AMachineGenerator {
         return "CHIPPING_GENERATOR";
     }
 
+    @Nonnull
     @Override
     public ItemStack getProgressBar() {
         return new ItemStack(Material.WOODEN_AXE);

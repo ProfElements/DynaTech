@@ -24,8 +24,8 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
 public class AngelGem extends SlimefunItem {
 
-    private ItemSetting<Double> maxFlightSpeed = new ItemSetting<Double>("max-flight-speed", 1.0d);
-    private ItemSetting<Boolean> hasMaxFlightSpeed = new ItemSetting<Boolean>("has-max-flight-speed", false);
+    private ItemSetting<Double> maxFlightSpeed = new ItemSetting<>("max-flight-speed", 1.0d);
+    private ItemSetting<Boolean> hasMaxFlightSpeed = new ItemSetting<>("has-max-flight-speed", false);
 
     private boolean enabledPlayer = false;
 
@@ -40,69 +40,57 @@ public class AngelGem extends SlimefunItem {
     }
 
     private ItemDropHandler onItemDrop() {
-        return new ItemDropHandler() {
-
-            @Override
-            public boolean onItemDrop(PlayerDropItemEvent e, Player p, Item item) {
-                if (enabledPlayer && e.getPlayer().getGameMode() != GameMode.CREATIVE) {
-                    e.getPlayer().setFlying(false);
-                    e.getPlayer().setAllowFlight(false);
-                    e.getPlayer().setFlySpeed(0.1f);
-                    e.getPlayer().setFallDistance(0.0f);
-                    enabledPlayer = false;
-                }
-                return true;
+        return (e, p, item) -> {
+            if (enabledPlayer && e.getPlayer().getGameMode() != GameMode.CREATIVE) {
+                e.getPlayer().setFlying(false);
+                e.getPlayer().setAllowFlight(false);
+                e.getPlayer().setFlySpeed(0.1f);
+                e.getPlayer().setFallDistance(0.0f);
+                enabledPlayer = false;
             }
-
+            return true;
         };
     }
 
     private ItemUseHandler onRightClick() {
-        return new ItemUseHandler() {
-            @Override
-            public void onRightClick(PlayerRightClickEvent e) {
-                if (e.getPlayer().isSneaking()) {
-                    e.getPlayer().setFlying(false);
-                    e.getPlayer().setAllowFlight(false);
-                    e.getPlayer().setFallDistance(0f);
-                    e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
-                    enabledPlayer = false;
-                }
-                if (!e.getPlayer().getAllowFlight()) {
-                    e.getPlayer().setAllowFlight(true);
-                    setFlySpeed(0.10f);
-                    e.getPlayer().setFlySpeed(getFlySpeed());
-                    e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
-                    enabledPlayer = true;
-                } else {
-                    if (hasMaxFlightSpeed.getValue()) {
-                        if (getFlySpeed() < maxFlightSpeed.getValue()) {
-                            if (getFlySpeed() + 0.10f > maxFlightSpeed.getValue()) {
-                                setFlySpeed(maxFlightSpeed.getValue().floatValue());
-                            } else {
-                                setFlySpeed(getFlySpeed() + 0.10f);
-                            }
-                            e.getPlayer().setFlySpeed(getFlySpeed());
-                            e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
+        return e -> {
+            if (e.getPlayer().isSneaking()) {
+                e.getPlayer().setFlying(false);
+                e.getPlayer().setAllowFlight(false);
+                e.getPlayer().setFallDistance(0f);
+                e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
+                enabledPlayer = false;
+            }
+            if (!e.getPlayer().getAllowFlight()) {
+                e.getPlayer().setAllowFlight(true);
+                setFlySpeed(0.10f);
+                e.getPlayer().setFlySpeed(getFlySpeed());
+                e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
+                enabledPlayer = true;
+            } else {
+                if (hasMaxFlightSpeed.getValue()) {
+                    if (getFlySpeed() < maxFlightSpeed.getValue()) {
+                        if (getFlySpeed() + 0.10f > maxFlightSpeed.getValue()) {
+                            setFlySpeed(maxFlightSpeed.getValue().floatValue());
                         } else {
-                            setFlySpeed(0.10f);
-                            e.getPlayer().setFlySpeed(getFlySpeed());
-                            e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
+                            setFlySpeed(getFlySpeed() + 0.10f);
                         }
                     } else {
-                        if (getFlySpeed() < 1f) {
-                            setFlySpeed(getFlySpeed() + 0.10f);
-                            e.getPlayer().setFlySpeed(getFlySpeed());
-                            e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
-                        } else {
-                            setFlySpeed(0.10f);
-                            e.getPlayer().setFlySpeed(getFlySpeed());
-                            e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
-                        }
+                        setFlySpeed(0.10f);
                     }
+                    e.getPlayer().setFlySpeed(getFlySpeed());
+                    e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
+                } else {
+                    if (getFlySpeed() < 1f) {
+                        setFlySpeed(getFlySpeed() + 0.10f);
+                    } else {
+                        setFlySpeed(0.10f);
+                    }
+                    e.getPlayer().setFlySpeed(getFlySpeed());
+                    e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
                 }
-                e.cancel();
-            }   
+            }
+            e.cancel();
         };
     }
 

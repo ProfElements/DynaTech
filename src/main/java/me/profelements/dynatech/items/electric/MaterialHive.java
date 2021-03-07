@@ -26,6 +26,8 @@ import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import me.profelements.dynatech.items.misc.Bee;
 
+import javax.annotation.Nonnull;
+
 public class MaterialHive extends AMachine implements Radioactive {
 
     private static final int[] BORDER = new int[] {0,1,2,6,7,8,31,36,37,38,39,40,41,42,43,44};
@@ -40,63 +42,52 @@ public class MaterialHive extends AMachine implements Radioactive {
     
     public MaterialHive(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
-
-        addItemSetting(vanillaItemsAccepted);
-        addItemSetting(slimefunItemsAccepted);
+        addItemSetting(vanillaItemsAccepted, slimefunItemsAccepted);
     }
 
     @Override
     public MachineRecipe findNextRecipe(BlockMenu inv) {
         ItemStack key = inv.getItemInSlot(getInputSlots()[2]);
-        if (key != null && key.getAmount() == 64) {
-            int secondRemovalAmount = 0;
-            if ((SlimefunItem.getByItem(key) == null && vanillaItemsAccepted.getValue().contains(key.getType().toString())) || slimefunItemsAccepted.getValue().contains(SlimefunItem.getByItem(key).getId())) {
-                
-                boolean isSlimefunItem = SlimefunItem.getByItem(key) != null ? true :  false;
-                
-                ItemStack output = isSlimefunItem ? SlimefunItem.getByItem(key).getItem().clone() : new ItemStack(key.getType(), 1);
-                ItemStack keyInput = isSlimefunItem ? SlimefunItem.getByItem(key).getItem().clone() : new ItemStack(key.getType(), 64);
-                keyInput.setAmount(64);
-                 
-                ItemStack bee1 = inv.getItemInSlot(getInputSlots()[0]);
-                ItemStack bee2 = inv.getItemInSlot(getInputSlots()[1]);  
-                if (isBee(bee1)) {
-                    Bee dtBee = (Bee) SlimefunItem.getByItem(bee1);
-                    secondRemovalAmount += dtBee.getSpeedMultipler() * (bee1.getAmount() - 1);
-
-                    if (isBee(bee2)) {
-                        Bee dtBee2 = (Bee) SlimefunItem.getByItem(bee2);
-                        secondRemovalAmount += dtBee2.getSpeedMultipler() * (bee2.getAmount() - 1); 
-                    }
-
-                    if (bee1 != null && bee1.getAmount() == 64 && bee2 != null && bee2.getAmount() == 64) {
-                        SlimefunItem sfBee1 = SlimefunItem.getByItem(bee1);
-                        SlimefunItem sfBee2 = SlimefunItem.getByItem(bee2);
-
-                        if ( sfBee1 != null && sfBee2 != null && sfBee1.getId() == sfBee2.getId()) {
-                            switch (sfBee1.getId()) {
-                                case "BEE":
-                                    return new MachineRecipe(1500, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
-                                case "ROBOTIC_BEE":
-                                    return new MachineRecipe(900, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
-                                
-                                case "ADVANCED_ROBOTIC_BEE":
-                                    return new MachineRecipe(600, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
-                                
-                                default:
-                                    break;
-                            }
-                        } else {
-                            return new MachineRecipe(1800 - secondRemovalAmount, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
-                        }
-                    } else {
-                        return new MachineRecipe(1800 - secondRemovalAmount, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
-                    }
-                }
-            }
-            secondRemovalAmount = 0;
+        if (key == null || key.getAmount() != 64) {
+            return null;
         }
-        return null;
+        ItemStack output = null;
+        
+        if (vanillaItemsAccepted.getValue().contains(key.getType().toString())) {
+            output = new ItemStack(key.getType());
+        } else {
+            SlimefunItem sfItem = SlimefunItem.getByItem(key);
+            
+            if (sfItem != null && slimefunItemsAccepted.getValue().contains(sfItem.getId())) {
+                output = sfItem.getItem().clone();
+            }
+        }
+        
+        if (output == null) {
+            return null;
+        }
+        
+        int seconds = 1800;
+
+        ItemStack b1 = inv.getItemInSlot(getInputSlots()[0]);
+        
+        if (b1 != null) {
+            SlimefunItem bee1 = SlimefunItem.getByItem(b1);
+            if (bee1 instanceof Bee) {
+                seconds -= ((Bee) bee1).getSpeedMultipler() * b1.getAmount();
+            }
+        }
+        
+        ItemStack b2 = inv.getItemInSlot(getInputSlots()[1]);
+        
+        if (b2 != null) {
+            SlimefunItem bee2 = SlimefunItem.getByItem(b2);
+            if (bee2 instanceof Bee) {
+                seconds -= ((Bee) bee2).getSpeedMultipler() * b2.getAmount();
+            }
+        }
+
+        return new MachineRecipe(seconds, new ItemStack[] {DynaTechItems.BEE, key}, new ItemStack[] {output});
     }
 
     @Override
@@ -129,7 +120,7 @@ public class MaterialHive extends AMachine implements Radioactive {
 
                 @Override
                 public boolean onClick(InventoryClickEvent e, Player p, int slot, ItemStack cursor, ClickAction action) {
-                    return cursor == null || cursor.getType() == null || cursor.getType() == Material.AIR;
+                    return cursor == null || cursor.getType() == Material.AIR;
                 }
 
             });
@@ -153,6 +144,7 @@ public class MaterialHive extends AMachine implements Radioactive {
         return INPUT_SLOTS;
     }
 
+    @Nonnull
     @Override
     public Radioactivity getRadioactivity() {
         return Radioactivity.HIGH;
@@ -225,16 +217,6 @@ public class MaterialHive extends AMachine implements Radioactive {
         sfItemsAllowed.add("CARBONADO");
 
         return sfItemsAllowed;
-    }
-
-    private boolean isBee(ItemStack item) {
-        if (item != null && item.getType() != Material.AIR) {
-            SlimefunItem sfItem = SlimefunItem.getByItem(item);
-            if (sfItem != null && sfItem instanceof Bee) {
-                return true;
-            }
-        }
-        return false;
     }
     
 }

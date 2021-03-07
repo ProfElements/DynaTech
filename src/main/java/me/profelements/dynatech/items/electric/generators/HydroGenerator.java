@@ -26,7 +26,7 @@ public class HydroGenerator extends AMachineGenerator {
     public int getGeneratedOutput(@Nonnull Location location, @Nonnull Config config) {
         BlockData blockData = PaperLib.getBlockState(location.getBlock(), false).getState().getBlockData();
 
-        if (blockData != null && blockData instanceof Waterlogged) {
+        if (blockData instanceof Waterlogged) {
             Waterlogged data = (Waterlogged) blockData;
             if (data.isWaterlogged()) {
                 return getEnergyProduction();
@@ -46,6 +46,7 @@ public class HydroGenerator extends AMachineGenerator {
         return "WATER_MILL";
     }
 
+    @Nonnull
     @Override
     public ItemStack getProgressBar() {
         return new ItemStack(Material.DRAGON_EGG);

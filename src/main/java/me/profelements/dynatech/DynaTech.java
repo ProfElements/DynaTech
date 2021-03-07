@@ -26,11 +26,17 @@ import javax.annotation.Nullable;
 public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
     private static DynaTech instance;
-
+    private static boolean exoticGardenInstalled;
+    
     @Override
     public void onEnable() {
         instance = this;
+        exoticGardenInstalled = Bukkit.getServer().getPluginManager().isPluginEnabled("ExoticGarden");
+        
+        saveDefaultConfig();
+        
         Config cfg = new Config(this);
+        
         final Metrics metrics = new Metrics(this, 9689);
 
         if (!cfg.getBoolean("options.disable-dimensionalhome-world")) {
@@ -39,8 +45,6 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
             worldCreator.createWorld();
         }
         
-
-
         if (cfg.getBoolean("options.auto-update")) {
             new GitHubBuildsUpdater(this, getFile(), "ProfElements/DynaTech/master").start();
         }
@@ -56,7 +60,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
     @Override
     public void onDisable() {
-        Bukkit.getScheduler().cancelTasks(DynaTech.getInstance());
+        Bukkit.getScheduler().cancelTasks(this);
 
         instance = null;
     }
@@ -66,6 +70,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         return "https://github.com/ProfElements/ExtraStuff/issues";
     }
 
+    @Nonnull
     @Override
     public JavaPlugin getJavaPlugin() {
         return this;
@@ -77,10 +82,8 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
     }
 
     public static boolean isExoticGardenInstalled() {
-        return Bukkit.getServer().getPluginManager().isPluginEnabled("ExoticGarden");
+        return exoticGardenInstalled;
     }
-
-
 
     @Nullable
     public static BukkitTask runSync(@Nonnull Runnable runnable) {
@@ -92,4 +95,5 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
         return instance.getServer().getScheduler().runTask(getInstance(), runnable);
     }
+    
 }

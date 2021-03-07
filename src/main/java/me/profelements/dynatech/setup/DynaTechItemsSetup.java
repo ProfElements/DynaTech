@@ -13,6 +13,7 @@ import me.profelements.dynatech.items.electric.AntigravityBubble;
 import me.profelements.dynatech.items.electric.AutoKitchen;
 import me.profelements.dynatech.items.electric.BandaidManager;
 import me.profelements.dynatech.items.electric.BarbedWire;
+import me.profelements.dynatech.items.electric.GrowthChamber;
 import me.profelements.dynatech.items.electric.MaterialHive;
 import me.profelements.dynatech.items.electric.PotionSprinkler;
 import me.profelements.dynatech.items.electric.SeedPlucker;
@@ -23,7 +24,6 @@ import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
 import me.profelements.dynatech.items.electric.generators.DragonEggGenerator;
 import me.profelements.dynatech.items.electric.generators.HydroGenerator;
 import me.profelements.dynatech.items.electric.generators.StardustReactor;
-import me.profelements.dynatech.items.electric.growthchambers.GrowthChamber;
 import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberEnd;
 import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberEndMK2;
 import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberMK2;
@@ -52,7 +52,7 @@ public class DynaTechItemsSetup {
 
     private DynaTechItemsSetup() {}
 
-    public static final void setup(@Nonnull DynaTech plugin) {
+    public static void setup(@Nonnull DynaTech plugin) {
 
         //Materials
         new SlimefunItem(DynaTechItems.DynaTechGeneral, DynaTechItems.STAINLESS_STEEL, RecipeType.SMELTERY,

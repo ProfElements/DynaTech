@@ -46,7 +46,7 @@ public class BandaidManager extends AMachine {
                     
                 }
             } else if (ItemBand.containsItemBand(target)) {
-                String id = PersistentDataAPI.getString(target.getItemMeta(), ItemBand.key);
+                String id = PersistentDataAPI.getString(target.getItemMeta(), ItemBand.KEY);
                 if (SlimefunItem.getByID(id) != null) {
                     SlimefunItem sfItem = SlimefunItem.getByID(id);
                     ItemStack result = ItemBand.removeFromItem(target).clone();
