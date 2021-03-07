@@ -303,7 +303,7 @@ public class DynaTechItemsSetup {
                         SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER_OCEAN,SlimefunItems.STEEL_PLATE
 
                 })
-                .setEnergyCapacity(512)
+                .setEnergyCapacity(1024)
                 .setEnergyConsumption(128)
                 .setProcessingSpeed(3)
                 .register(plugin);
