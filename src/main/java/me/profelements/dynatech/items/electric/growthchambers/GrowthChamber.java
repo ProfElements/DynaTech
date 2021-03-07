@@ -1,4 +1,4 @@
-package me.profelements.dynatech.items.electric;
+package me.profelements.dynatech.items.electric.growthchambers;
 
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
