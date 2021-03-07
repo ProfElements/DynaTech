@@ -180,7 +180,7 @@ public class DynaTechItems {
             );
 
     public static final SlimefunItemStack GROWTH_CHAMBER_END = new SlimefunItemStack("GROWTH_CHAMBER_END",
-            Material.GREEN_STAINED_GLASS,
+            Material.MAGENTA_STAINED_GLASS,
             "&dEnd Growth Chamber",
             "",
             "&fAutomatically grows &dchorus flowers.",
@@ -191,7 +191,7 @@ public class DynaTechItems {
             );
 
     public static final SlimefunItemStack GROWTH_CHAMBER_END_MK2 = new SlimefunItemStack("GROWTH_CHAMBER_END_MK2",
-            Material.LIME_STAINED_GLASS,
+            Material.PURPLE_STAINED_GLASS,
             "&dEnd Growth Chamber MK2",
             "",
             "&fAutomatically grows &dchorus flowers.",
@@ -203,7 +203,7 @@ public class DynaTechItems {
             );
 
     public static final SlimefunItemStack GROWTH_CHAMBER_NETHER = new SlimefunItemStack("GROWTH_CHAMBER_NETHER",
-            Material.GREEN_STAINED_GLASS,
+            Material.RED_STAINED_GLASS,
             "&cNether Growth Chamber",
             "",
             "&fAutomatically grows &cnether &fplants.",
@@ -214,7 +214,7 @@ public class DynaTechItems {
             );
 
     public static final SlimefunItemStack GROWTH_CHAMBER_NETHER_MK2 = new SlimefunItemStack("GROWTH_CHAMBER_NETHER_MK2",
-            Material.LIME_STAINED_GLASS,
+            Material.RED_STAINED_GLASS,
             "&cNether Growth Chamber MK2",
             "",
             "&fAutomatically grows &cnether &fplants.",
@@ -226,7 +226,7 @@ public class DynaTechItems {
             );
 
     public static final SlimefunItemStack GROWTH_CHAMBER_OCEAN = new SlimefunItemStack("GROWTH_CHAMBER_OCEAN",
-            Material.GREEN_STAINED_GLASS,
+            Material.CYAN_STAINED_GLASS,
             "&bOcean Growth Chamber",
             "",
             "&fAutomatically grows &9water &fplants.",
@@ -238,7 +238,7 @@ public class DynaTechItems {
             );
 
     public static final SlimefunItemStack GROWTH_CHAMBER_OCEAN_MK2 = new SlimefunItemStack("GROWTH_CHAMBER_OCEAN_MK2",
-            Material.LIME_STAINED_GLASS,
+            Material.LIGHT_BLUE_STAINED_GLASS,
             "&bOcean Growth Chamber MK2",
             "",
             "&fAutomatically grows &9water &fplants.",
