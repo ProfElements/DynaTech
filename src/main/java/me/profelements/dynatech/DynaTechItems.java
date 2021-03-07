@@ -242,7 +242,7 @@ public class DynaTechItems {
             "&bOcean Growth Chamber MK2",
             "",
             "&fAutomatically grows &9water &fplants.",
-            "Can revive dead coral!"
+            "Can revive dead coral!",
             "",
             "&c3x production.",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
