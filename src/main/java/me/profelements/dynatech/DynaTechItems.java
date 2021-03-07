@@ -156,7 +156,7 @@ public class DynaTechItems {
             Material.GREEN_STAINED_GLASS,
             "&6Growth Chamber",
             "",
-            "&fAutomatically grows some plants.",
+            "&fAutomatically grows &eplants&f.",
             "",
             "&f&oIts like a small greenhouse!",
             "",
@@ -169,13 +169,85 @@ public class DynaTechItems {
             Material.LIME_STAINED_GLASS,
             "&6Growth Chamber MK2",
             "",
-            "&fAutomatically grows most plants.",
-            "&c3x production",
+            "&fAutomatically grows &eplants&f.",
+            "",
             "&f&oIts like a small greenhouse!",
             "",
+            "&c3x production.",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
-            LoreBuilder.speed(4),
-            LoreBuilder.powerPerSecond(80)
+            LoreBuilder.speed(3),
+            LoreBuilder.powerPerSecond(128)
+            );
+
+    public static final SlimefunItemStack GROWTH_CHAMBER_END = new SlimefunItemStack("GROWTH_CHAMBER_END",
+            Material.GREEN_STAINED_GLASS,
+            "&dEnd Growth Chamber",
+            "",
+            "&fAutomatically grows &dchorus flowers.",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(1),
+            LoreBuilder.powerPerSecond(32)
+            );
+
+    public static final SlimefunItemStack GROWTH_CHAMBER_END_MK2 = new SlimefunItemStack("GROWTH_CHAMBER_END_MK2",
+            Material.LIME_STAINED_GLASS,
+            "&dEnd Growth Chamber MK2",
+            "",
+            "&fAutomatically grows &dchorus flowers.",
+            "",
+            "&c3x production.",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(3),
+            LoreBuilder.powerPerSecond(128)
+            );
+
+    public static final SlimefunItemStack GROWTH_CHAMBER_NETHER = new SlimefunItemStack("GROWTH_CHAMBER_NETHER",
+            Material.GREEN_STAINED_GLASS,
+            "&cNether Growth Chamber",
+            "",
+            "&fAutomatically grows &cnether &fplants.",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(1),
+            LoreBuilder.powerPerSecond(32)
+            );
+
+    public static final SlimefunItemStack GROWTH_CHAMBER_NETHER_MK2 = new SlimefunItemStack("GROWTH_CHAMBER_NETHER_MK2",
+            Material.LIME_STAINED_GLASS,
+            "&cNether Growth Chamber MK2",
+            "",
+            "&fAutomatically grows &cnether &fplants.",
+            "",
+            "&c3x production.",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(3),
+            LoreBuilder.powerPerSecond(128)
+            );
+
+    public static final SlimefunItemStack GROWTH_CHAMBER_OCEAN = new SlimefunItemStack("GROWTH_CHAMBER_OCEAN",
+            Material.GREEN_STAINED_GLASS,
+            "&bOcean Growth Chamber",
+            "",
+            "&fAutomatically grows &9water &fplants.",
+            "Can revive dead coral!",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(1),
+            LoreBuilder.powerPerSecond(32)
+            );
+
+    public static final SlimefunItemStack GROWTH_CHAMBER_OCEAN_MK2 = new SlimefunItemStack("GROWTH_CHAMBER_OCEAN_MK2",
+            Material.LIME_STAINED_GLASS,
+            "&bOcean Growth Chamber MK2",
+            "",
+            "&fAutomatically grows &9water &fplants.",
+            "Can revive dead coral!"
+            "",
+            "&c3x production.",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(3),
+            LoreBuilder.powerPerSecond(128)
             );
 
     public static final SlimefunItemStack ANTIGRAVITY_BUBBLE = new SlimefunItemStack("ANTIGRAVITY_BUBBLE",
