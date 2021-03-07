@@ -227,7 +227,7 @@ public class DynaTechItemsSetup {
         new GrowthChamberMK2(DynaTechItems.DynaTechGeneral, DynaTechItems.GROWTH_CHAMBER_MK2, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER,SlimefunItems.STEEL_PLATE,
-                        new ItemStack(Material.GRASS_BLOCK,new ItemStack(Material.LIME_STAINED_GLASS),new ItemStack(Material.SAND),
+                        new ItemStack(Material.GRASS_BLOCK),new ItemStack(Material.LIME_STAINED_GLASS),new ItemStack(Material.SAND),
                         SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER,SlimefunItems.STEEL_PLATE
 
                 })
@@ -275,7 +275,7 @@ public class DynaTechItemsSetup {
         new GrowthChamberNetherMK2(DynaTechItems.DynaTechGeneral, DynaTechItems.GROWTH_CHAMBER_NETHER_MK2, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER_NETHER,SlimefunItems.STEEL_PLATE,
-                        new ItemStack(Material.CRIMSON_NYLIUM,new ItemStack(Material.SOUL_SAND),new ItemStack(Material.WARPED_NYLIUM),
+                        new ItemStack(Material.CRIMSON_NYLIUM),new ItemStack(Material.SOUL_SAND),new ItemStack(Material.WARPED_NYLIUM),
                         SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER_NETHER,SlimefunItems.STEEL_PLATE
 
                 })
@@ -299,7 +299,7 @@ public class DynaTechItemsSetup {
         new GrowthChamberOceanMK2(DynaTechItems.DynaTechGeneral, DynaTechItems.GROWTH_CHAMBER_OCEAN_MK2, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER_OCEAN,SlimefunItems.STEEL_PLATE,
-                        new ItemStack(Material.GRAVEL,new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS),new ItemStack(Material.DIRT),
+                        new ItemStack(Material.GRAVEL),new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS),new ItemStack(Material.DIRT),
                         SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER_OCEAN,SlimefunItems.STEEL_PLATE
 
                 })
