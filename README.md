@@ -4,7 +4,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 
 ## Machines
 - **Auto-Kitchen** - If you have ExoticGarden installed, this machine will become available. It automatically crafts any Kitchen recipe inserted into it.
-- **Growth Chamber** - Automatically grow some plants, including sapling, cactus and sugarcane and bamboo, supports Exotic Garden saplings, plants, and bushes.
+- **Growth Chambers** - Automatically grow some plants. We have multiple variants for all your needs. Supports Exotic Garden saplings, plants, and bushes.
 - **Antigravity Bubble** - Temporary creative flight within a 45 block area when powered.
 - **Weather Controller** - Controls the weather when given a key item (Sunflower > Clear, Lilac > Rain, Creeper Head > Thunder).
 - **Potion Sprinkler** - A ranged potion applier, the potions have durability basically. Has a 10 block range.
