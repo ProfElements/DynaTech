@@ -24,13 +24,13 @@ public class BarbedWire extends AMachine {
     public BarbedWire(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
     }
-
-
+    
     @Override
     public void tick(Block b) {
         if (getCharge(b.getLocation()) < getEnergyConsumption())  {
             return;
         }
+        
         DynaTech.runSync(()->sendEntitiesFlying(b.getLocation(), b.getWorld()));
         removeCharge(b.getLocation(), getEnergyConsumption());
 

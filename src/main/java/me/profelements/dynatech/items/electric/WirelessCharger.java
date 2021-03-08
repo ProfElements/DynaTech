@@ -14,7 +14,7 @@ import me.profelements.dynatech.items.electric.abstracts.AMachine;
 
 public class WirelessCharger extends AMachine {
 
-    private double radius = 0;
+    private final double radius;
 
     public WirelessCharger(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, double radius) {
         super(category, item, recipeType, recipe);
@@ -32,19 +32,17 @@ public class WirelessCharger extends AMachine {
 
             if (distance <= radius) {
                 for (ItemStack item : p.getInventory()) {
-                    if (item != null && item.getType() != Material.AIR && SlimefunItem.getByItem(item) != null) {
-                        SlimefunItem sfItem = SlimefunItem.getByItem(item);
+                    SlimefunItem sfItem = SlimefunItem.getByItem(item);
 
-                        if (sfItem instanceof Rechargeable) {
-                            Rechargeable rcItem = (Rechargeable) sfItem;
+                    if (sfItem instanceof Rechargeable) {
+                        Rechargeable rcItem = (Rechargeable) sfItem;
+                        
+                        if (rcItem.getItemCharge(item) != rcItem.getMaxItemCharge(item)) {
                             
-                            if (rcItem.getItemCharge(item) != rcItem.getMaxItemCharge(item)) {
-                                
-                                removeCharge(b.getLocation(), getEnergyConsumption());
-                                rcItem.addItemCharge(item, getEnergyConsumption());
-                                p.updateInventory();
+                            removeCharge(b.getLocation(), getEnergyConsumption());
+                            rcItem.addItemCharge(item, getEnergyConsumption());
+                            p.updateInventory();
 
-                            }
                         }
                     }
                 }

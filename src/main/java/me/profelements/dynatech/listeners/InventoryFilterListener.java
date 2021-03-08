@@ -1,7 +1,9 @@
 package me.profelements.dynatech.listeners;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Nonnull;
 
@@ -19,15 +21,12 @@ import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.tools.InventoryFilter;
 
 public class InventoryFilterListener implements Listener {
-
-    private final DynaTech plugin;
+    
     private final InventoryFilter inventoryFilter;
-    private List<Material> blacklistedMaterials = new ArrayList<>();
+    private Set<Material> blacklistedMaterials = EnumSet.noneOf(Material.class);
 
     public InventoryFilterListener(@Nonnull DynaTech plugin, @Nonnull InventoryFilter inventoryFilter) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
-
-        this.plugin = plugin;
         this.inventoryFilter = inventoryFilter;
     }
 
@@ -51,9 +50,7 @@ public class InventoryFilterListener implements Listener {
     }
 
     private void filterItems(@Nonnull Player p, @Nonnull ItemStack inventoryFilter) {
-        PlayerProfile.getBackpack(inventoryFilter, backpack -> {
-            DynaTech.runSync(() -> filterInventory(p, backpack));
-        });
+        PlayerProfile.getBackpack(inventoryFilter, backpack -> DynaTech.runSync(() -> filterInventory(p, backpack)));
     }
 
     private void filterInventory(@Nonnull Player p, @Nonnull PlayerBackpack backpack) {
@@ -71,7 +68,6 @@ public class InventoryFilterListener implements Listener {
             if (item != null && blacklistedMaterials.contains(item.getType())) {
                     item.setAmount(0);
             }
-
         }
     }
     

@@ -6,10 +6,13 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
 
+import javax.annotation.Nonnull;
+
 public class DimensionalHomeDimension extends ChunkGenerator {
 
+    @Nonnull
     @Override
-    public ChunkData generateChunkData(World world, Random random, int chunkx, int chunkz, BiomeGrid biomeGrid) {
+    public ChunkData generateChunkData(@Nonnull World world, @Nonnull Random random, int chunkx, int chunkz, @Nonnull BiomeGrid biomeGrid) {
         ChunkData chunkData = createChunkData(world);
 
         chunkData.setRegion(0, 59, 0, 16, 60, 16, Material.BEDROCK);
@@ -31,25 +34,5 @@ public class DimensionalHomeDimension extends ChunkGenerator {
         }
         return chunkData;
     } 
-
-    @Override
-    public boolean shouldGenerateCaves() {
-        return false;
-    }
-
-    @Override
-    public boolean shouldGenerateDecorations() {
-        return false;
-    }
-
-    @Override
-    public boolean shouldGenerateStructures() {
-        return false;
-    }
-
-    @Override
-    public boolean shouldGenerateMobs() {
-        return false;
-    }
 
 }

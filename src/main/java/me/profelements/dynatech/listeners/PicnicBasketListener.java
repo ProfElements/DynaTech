@@ -76,7 +76,7 @@ public class PicnicBasketListener implements Listener {
 
     }
 
-    private boolean consumeFood(Player p, ItemStack picnicBasketItem, PlayerBackpack backpack) {
+    private void consumeFood(Player p, ItemStack picnicBasketItem, PlayerBackpack backpack) {
         Inventory inv = backpack.getInventory();
         int slot = -1;
 
@@ -175,13 +175,10 @@ public class PicnicBasketListener implements Listener {
                     }
 
                     backpack.markDirty();
-                    return true;
                 } else {
-                    return false;
                 }
             }
 
         }
-        return false;
     }
 }

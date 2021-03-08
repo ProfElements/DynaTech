@@ -1,5 +1,6 @@
 package me.profelements.dynatech.items.tools;
 
+import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import org.bukkit.Sound;
 import org.bukkit.entity.Bee;
 import org.bukkit.entity.Entity;

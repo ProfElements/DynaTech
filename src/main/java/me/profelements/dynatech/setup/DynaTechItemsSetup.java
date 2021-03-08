@@ -52,7 +52,7 @@ public class DynaTechItemsSetup {
 
     private DynaTechItemsSetup() {}
 
-    public static final void setup(@Nonnull DynaTech plugin) {
+    public static void setup(@Nonnull DynaTech plugin) {
 
         //Materials
         new SlimefunItem(DynaTechItems.DynaTechGeneral, DynaTechItems.STAINLESS_STEEL, RecipeType.SMELTERY,
@@ -126,7 +126,7 @@ public class DynaTechItemsSetup {
                         SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE,
                         DynaTechItems.VEX_GEM, DynaTechItems.MACHINE_SCRAP, DynaTechItems.VEX_GEM,
                         SlimefunItems.REINFORCED_PLATE, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.REINFORCED_PLATE
-                }, 7
+                }, 6
                 ).register(plugin);
 
         new Bee(DynaTechItems.DynaTechGeneral, DynaTechItems.ADVANCED_ROBOTIC_BEE, RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -134,7 +134,7 @@ public class DynaTechItemsSetup {
                 SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE,
                 DynaTechItems.ANGEL_GEM, DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.ANGEL_GEM,
                 SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.GOLD_24K_BLOCK
-                }, 10
+                }, 8
                 ).register(plugin);
 
         //Backpacks

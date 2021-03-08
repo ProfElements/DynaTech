@@ -1,19 +1,9 @@
 package me.profelements.dynatech.items.electric;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.ItemStack;
-
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactive;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
-import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
-import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -21,17 +11,24 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecip
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import me.profelements.dynatech.items.misc.Bee;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MaterialHive extends AMachine implements Radioactive {
 
     private static final int[] BORDER = new int[] {0,1,2,6,7,8,31,36,37,38,39,40,41,42,43,44};
     private static final int[] BORDER_IN = new int[] {9,10,11,12,18,21,27,28,29,30};
     private static final int[] BORDER_OUT = new int[] {14,15,16,17,23,26,32,33,34,35};
+    
     private static final int[] BORDER_KEY = new int[] {3,5,13};
+    private static final SlimefunItemStack UI_KEY = new SlimefunItemStack("_UI_KEY", Material.LIGHT_BLUE_STAINED_GLASS_PANE, " ");
 
     private static final int[] INPUT_SLOTS = new int[] {19,20,4};
 
@@ -40,101 +37,73 @@ public class MaterialHive extends AMachine implements Radioactive {
     
     public MaterialHive(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
-
-        addItemSetting(vanillaItemsAccepted);
-        addItemSetting(slimefunItemsAccepted);
+        addItemSetting(vanillaItemsAccepted, slimefunItemsAccepted);
     }
 
     @Override
     public MachineRecipe findNextRecipe(BlockMenu inv) {
         ItemStack key = inv.getItemInSlot(getInputSlots()[2]);
-        if (key != null && key.getAmount() == 64) {
-            int secondRemovalAmount = 0;
-            if ((SlimefunItem.getByItem(key) == null && vanillaItemsAccepted.getValue().contains(key.getType().toString())) || slimefunItemsAccepted.getValue().contains(SlimefunItem.getByItem(key).getId())) {
+        if (key == null || key.getAmount() != 64) {
+            return null;
+        }
+        ItemStack output = null;
+        
+        // check if its a valid key and get output
+        if (vanillaItemsAccepted.getValue().contains(key.getType().toString())) {
+            output = new ItemStack(key.getType());
+        } else {
+            SlimefunItem sfItem = SlimefunItem.getByItem(key);
+            
+            if (sfItem != null && slimefunItemsAccepted.getValue().contains(sfItem.getId())) {
+                output = sfItem.getItem().clone();
+            }
+        }
+        
+        if (output == null) {
+            return null;
+        }
+        
+        int seconds = 1800;
+
+        ItemStack b1 = inv.getItemInSlot(getInputSlots()[0]);
+        Bee bee1 = null;
+        
+        // check 1st bee
+        if (b1 != null) {
+            SlimefunItem sfItem = SlimefunItem.getByItem(b1);
+            if (sfItem instanceof Bee) {
+                bee1 = (Bee) sfItem;
                 
-                boolean isSlimefunItem = SlimefunItem.getByItem(key) != null ? true :  false;
+                // subtract time
+                seconds -= bee1.getSpeedMultipler() * b1.getAmount();
+            }
+        }
+        
+        ItemStack b2 = inv.getItemInSlot(getInputSlots()[1]);
+        
+        // check 2nd bee
+        if (b2 != null) {
+            SlimefunItem sfItem = SlimefunItem.getByItem(b2);
+            if (sfItem instanceof Bee) {
+                Bee bee2 = (Bee) sfItem;
+
+                // subtract time
+                seconds -= bee2.getSpeedMultipler() * b2.getAmount();
                 
-                ItemStack output = isSlimefunItem ? SlimefunItem.getByItem(key).getItem().clone() : new ItemStack(key.getType(), 1);
-                ItemStack keyInput = isSlimefunItem ? SlimefunItem.getByItem(key).getItem().clone() : new ItemStack(key.getType(), 64);
-                keyInput.setAmount(64);
-                 
-                ItemStack bee1 = inv.getItemInSlot(getInputSlots()[0]);
-                ItemStack bee2 = inv.getItemInSlot(getInputSlots()[1]);  
-                if (isBee(bee1)) {
-                    Bee dtBee = (Bee) SlimefunItem.getByItem(bee1);
-                    secondRemovalAmount += dtBee.getSpeedMultipler() * (bee1.getAmount() - 1);
-
-                    if (isBee(bee2)) {
-                        Bee dtBee2 = (Bee) SlimefunItem.getByItem(bee2);
-                        secondRemovalAmount += dtBee2.getSpeedMultipler() * (bee2.getAmount() - 1); 
-                    }
-
-                    if (bee1 != null && bee1.getAmount() == 64 && bee2 != null && bee2.getAmount() == 64) {
-                        SlimefunItem sfBee1 = SlimefunItem.getByItem(bee1);
-                        SlimefunItem sfBee2 = SlimefunItem.getByItem(bee2);
-
-                        if ( sfBee1 != null && sfBee2 != null && sfBee1.getId() == sfBee2.getId()) {
-                            switch (sfBee1.getId()) {
-                                case "BEE":
-                                    return new MachineRecipe(1500, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
-                                case "ROBOTIC_BEE":
-                                    return new MachineRecipe(900, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
-                                
-                                case "ADVANCED_ROBOTIC_BEE":
-                                    return new MachineRecipe(600, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
-                                
-                                default:
-                                    break;
-                            }
-                        } else {
-                            return new MachineRecipe(1800 - secondRemovalAmount, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
-                        }
-                    } else {
-                        return new MachineRecipe(1800 - secondRemovalAmount, new ItemStack[] {DynaTechItems.BEE, keyInput}, new ItemStack[] {output});
-                    }
+                // if same type and both max stack size, add 32 bees worth of boost
+                if (bee1 == bee2 && b1.getAmount() == 64 && b2.getAmount() == 64) {
+                    seconds -= bee1.getSpeedMultipler() * 32;
                 }
             }
-            secondRemovalAmount = 0;
         }
-        return null;
+
+        return new MachineRecipe(seconds, new ItemStack[] {DynaTechItems.BEE, key}, new ItemStack[] {output});
     }
 
     @Override
     public void constructMenu(BlockMenuPreset preset) {
-        for (int i : getBorders().get(0)) {
-            preset.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
-        }
-
-        for (int i : getBorders().get(1)) {
-            preset.addItem(i, ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
-        }
-
-        for (int i : getBorders().get(2)) {
-            preset.addItem(i, ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
-        }
-
-        for (int i : getBorders().get(3)) {
-            preset.addItem(i, new SlimefunItemStack("_UI_KEY", Material.LIGHT_BLUE_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler());
-        }
-
-        preset.addItem(getProgressBarSlot(), new CustomItem(Material.BLACK_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler());
-
-        for (int i : getOutputSlots()) {
-            preset.addMenuClickHandler(i, new ChestMenu.AdvancedMenuClickHandler() {
-
-                @Override
-                public boolean onClick(Player p, int slot, ItemStack cursor, ClickAction action) {
-                    return false;
-                }
-
-                @Override
-                public boolean onClick(InventoryClickEvent e, Player p, int slot, ItemStack cursor, ClickAction action) {
-                    return cursor == null || cursor.getType() == null || cursor.getType() == Material.AIR;
-                }
-
-            });
-
-        }
+        super.constructMenu(preset);
+        preset.drawBackground(UI_KEY, BORDER_KEY);
     }
     
     @Override
@@ -143,7 +112,6 @@ public class MaterialHive extends AMachine implements Radioactive {
         borders.add(BORDER);
         borders.add(BORDER_IN);
         borders.add(BORDER_OUT);
-        borders.add(BORDER_KEY);
 
         return borders;
     }
@@ -153,6 +121,7 @@ public class MaterialHive extends AMachine implements Radioactive {
         return INPUT_SLOTS;
     }
 
+    @Nonnull
     @Override
     public Radioactivity getRadioactivity() {
         return Radioactivity.HIGH;
@@ -225,16 +194,6 @@ public class MaterialHive extends AMachine implements Radioactive {
         sfItemsAllowed.add("CARBONADO");
 
         return sfItemsAllowed;
-    }
-
-    private boolean isBee(ItemStack item) {
-        if (item != null && item.getType() != Material.AIR) {
-            SlimefunItem sfItem = SlimefunItem.getByItem(item);
-            if (sfItem != null && sfItem instanceof Bee) {
-                return true;
-            }
-        }
-        return false;
     }
     
 }

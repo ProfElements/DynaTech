@@ -5,11 +5,11 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
@@ -21,11 +21,11 @@ import me.profelements.dynatech.DynaTech;
 
 public class DimensionalHome extends SlimefunItem {
     
-    private NamespacedKey chunkId = new NamespacedKey(DynaTech.getInstance(), "chunk-id");
+    private final NamespacedKey chunkId = new NamespacedKey(DynaTech.getInstance(), "chunk-id");
 
     private int id = 1;
     private boolean idSet = false;
-
+    private final World dimHomeWorld = Bukkit.getServer().getWorld("dimensionalhome");
 
     public DimensionalHome(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
@@ -33,68 +33,52 @@ public class DimensionalHome extends SlimefunItem {
     }
 
     public ItemUseHandler onRightClick() {
-        return new ItemUseHandler() {
+        return e -> {
+            Player p = e.getPlayer();
+            Location playerPrevLocation = p.getLocation();
 
-			@Override
-			public void onRightClick(PlayerRightClickEvent e) {
-                Location playerPrevLocation = e.getPlayer().getLocation();
-            
-                    
+            if (e.getPlayer().getWorld() != dimHomeWorld && idSet) {
+
+                if (doesntContainNewChunkID(e.getItem())) {
+                    idSet = false;
+                }
                 
-                if (e.getPlayer().getWorld() != Bukkit.getServer().getWorld("dimensionalhome") && idSet) {
-                    playerPrevLocation = e.getPlayer().getLocation();
+                PaperLib.teleportAsync(p, new Location(dimHomeWorld, 16 * PersistentDataAPI.getInt(e.getItem().getItemMeta(), chunkId) + 8, 65, 8));
+            } else if (idSet) {
 
-                    if (doesntContainNewChunkID(e.getItem())) {
-                        idSet = false;
-                    }
-
-                    PaperLib.teleportAsync(e.getPlayer(), new Location(Bukkit.getServer().getWorld("dimensionalhome"), 16 * PersistentDataAPI.getInt(e.getItem().getItemMeta(), chunkId) + 8, 65, 16 * 0 + 8));
-                } else if (idSet) {
-
-                    if (doesntContainNewChunkID(e.getItem())) {
-                        idSet = false;
-                    }
-
-                    PaperLib.teleportAsync(e.getPlayer(), playerPrevLocation.getWorld() != Bukkit.getServer().getWorld("dimensionalhome") ? playerPrevLocation : e.getPlayer().getBedSpawnLocation() != null ? e.getPlayer().getBedSpawnLocation() : e.getPlayer().getServer().getWorld("world").getSpawnLocation());
-                } else {
-                    updateLore(e.getItem(), e.getPlayer());
+                if (doesntContainNewChunkID(e.getItem())) {
+                    idSet = false;
                 }
 
-                e.cancel();
-			}
+                PaperLib.teleportAsync(p,
+                    p.getWorld() != this.dimHomeWorld
+                        ? playerPrevLocation
+                        : p.getBedSpawnLocation() != null
+                        ? p.getBedSpawnLocation()
+                        : Bukkit.getWorlds().get(0).getSpawnLocation());
+            } else {
+                updateLore(e.getItem());
+            }
+
+            e.cancel();
         };
     }
 
     protected boolean doesntContainNewChunkID(ItemStack item) {
         ItemMeta im = item.getItemMeta();
-
-        if (!im.hasLore()) {
-            throw new IllegalArgumentException("This item does not have any lore!");
-        }
-
         List<String> lore = im.getLore();
 
-        for (int line = 0; line < lore.size(); line++ ) {
-            if (lore.get(line).contains("CHUNK ID: <id>")) {
+        for (String s : lore) {
+            if (s.contains("CHUNK ID: <id>")) {
                 return true;
             }
-    
         }
 
         return false;
     }
 
-    public int getChunkId() {
-        return id;
-    }
-
-    protected void updateLore(ItemStack item, Player p) {
+    private void updateLore(ItemStack item) {
         ItemMeta im = item.getItemMeta();
-
-        if (!im.hasLore()) {
-            throw new IllegalArgumentException("This item does not have any lore!");
-        }
-
         List<String> lore = im.getLore();
 
         for (int line = 0; line < lore.size(); line++ ) {
@@ -111,4 +95,5 @@ public class DimensionalHome extends SlimefunItem {
         im.setLore(lore);
         item.setItemMeta(im);
     }
+    
 }

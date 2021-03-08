@@ -116,10 +116,10 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
     }
 
     public void blockExtras(Block b) {
-    };
+    }
 
     public void newMachineInstance(BlockMenu menu, Block b) {
-    };
+    }
 
     @ParametersAreNonnullByDefault
     public AMachine(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, ItemStack recipeOutput) {
@@ -128,35 +128,17 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
     }
 
     public void constructMenu(BlockMenuPreset preset) {
-        for (int i : getBorders().get(0)) {
-            preset.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
-        }
-
-        for (int i : getBorders().get(1)) {
-            preset.addItem(i, ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
-        }
-
-        for (int i : getBorders().get(2)) {
-            preset.addItem(i, ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
-        }
+        List<int[]> borders = getBorders();
+        
+        preset.drawBackground(borders.get(0));
+        preset.drawBackground(ChestMenuUtils.getInputSlotTexture(), borders.get(1));
+        preset.drawBackground(ChestMenuUtils.getOutputSlotTexture(), borders.get(2));
 
         preset.addItem(getProgressBarSlot(), new CustomItem(Material.BLACK_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler());
 
+        ChestMenu.MenuClickHandler outputSlotHandler = (p, slot, cursor, action) -> cursor == null || cursor.getType() == Material.AIR;
         for (int i : getOutputSlots()) {
-            preset.addMenuClickHandler(i, new ChestMenu.AdvancedMenuClickHandler() {
-
-                @Override
-                public boolean onClick(Player p, int slot, ItemStack cursor, ClickAction action) {
-                    return false;
-                }
-
-                @Override
-                public boolean onClick(InventoryClickEvent e, Player p, int slot, ItemStack cursor, ClickAction action) {
-                    return cursor == null || cursor.getType() == null || cursor.getType() == Material.AIR;
-                }
-
-            });
-
+            preset.addMenuClickHandler(i, outputSlotHandler);
         }
     }
 
