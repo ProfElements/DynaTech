@@ -1,19 +1,9 @@
 package me.profelements.dynatech.items.electric;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.ItemStack;
-
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactive;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
-import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
-import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -21,19 +11,24 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecip
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import me.profelements.dynatech.items.misc.Bee;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MaterialHive extends AMachine implements Radioactive {
 
     private static final int[] BORDER = new int[] {0,1,2,6,7,8,31,36,37,38,39,40,41,42,43,44};
     private static final int[] BORDER_IN = new int[] {9,10,11,12,18,21,27,28,29,30};
     private static final int[] BORDER_OUT = new int[] {14,15,16,17,23,26,32,33,34,35};
+    
     private static final int[] BORDER_KEY = new int[] {3,5,13};
+    private static final SlimefunItemStack UI_KEY = new SlimefunItemStack("_UI_KEY", Material.LIGHT_BLUE_STAINED_GLASS_PANE, " ");
 
     private static final int[] INPUT_SLOTS = new int[] {19,20,4};
 
@@ -53,6 +48,7 @@ public class MaterialHive extends AMachine implements Radioactive {
         }
         ItemStack output = null;
         
+        // check if its a valid key and get output
         if (vanillaItemsAccepted.getValue().contains(key.getType().toString())) {
             output = new ItemStack(key.getType());
         } else {
@@ -70,20 +66,34 @@ public class MaterialHive extends AMachine implements Radioactive {
         int seconds = 1800;
 
         ItemStack b1 = inv.getItemInSlot(getInputSlots()[0]);
+        Bee bee1 = null;
         
+        // check 1st bee
         if (b1 != null) {
-            SlimefunItem bee1 = SlimefunItem.getByItem(b1);
-            if (bee1 instanceof Bee) {
-                seconds -= ((Bee) bee1).getSpeedMultipler() * b1.getAmount();
+            SlimefunItem sfItem = SlimefunItem.getByItem(b1);
+            if (sfItem instanceof Bee) {
+                bee1 = (Bee) sfItem;
+                
+                // subtract time
+                seconds -= bee1.getSpeedMultipler() * b1.getAmount();
             }
         }
         
         ItemStack b2 = inv.getItemInSlot(getInputSlots()[1]);
         
+        // check 2nd bee
         if (b2 != null) {
-            SlimefunItem bee2 = SlimefunItem.getByItem(b2);
-            if (bee2 instanceof Bee) {
-                seconds -= ((Bee) bee2).getSpeedMultipler() * b2.getAmount();
+            SlimefunItem sfItem = SlimefunItem.getByItem(b2);
+            if (sfItem instanceof Bee) {
+                Bee bee2 = (Bee) sfItem;
+
+                // subtract time
+                seconds -= bee2.getSpeedMultipler() * b2.getAmount();
+                
+                // if same type and both max stack size, add 32 bees worth of boost
+                if (bee1 == bee2 && b1.getAmount() == 64 && b2.getAmount() == 64) {
+                    seconds -= bee1.getSpeedMultipler() * 32;
+                }
             }
         }
 
@@ -92,40 +102,8 @@ public class MaterialHive extends AMachine implements Radioactive {
 
     @Override
     public void constructMenu(BlockMenuPreset preset) {
-        for (int i : getBorders().get(0)) {
-            preset.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
-        }
-
-        for (int i : getBorders().get(1)) {
-            preset.addItem(i, ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
-        }
-
-        for (int i : getBorders().get(2)) {
-            preset.addItem(i, ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
-        }
-
-        for (int i : getBorders().get(3)) {
-            preset.addItem(i, new SlimefunItemStack("_UI_KEY", Material.LIGHT_BLUE_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler());
-        }
-
-        preset.addItem(getProgressBarSlot(), new CustomItem(Material.BLACK_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler());
-
-        for (int i : getOutputSlots()) {
-            preset.addMenuClickHandler(i, new ChestMenu.AdvancedMenuClickHandler() {
-
-                @Override
-                public boolean onClick(Player p, int slot, ItemStack cursor, ClickAction action) {
-                    return false;
-                }
-
-                @Override
-                public boolean onClick(InventoryClickEvent e, Player p, int slot, ItemStack cursor, ClickAction action) {
-                    return cursor == null || cursor.getType() == Material.AIR;
-                }
-
-            });
-
-        }
+        super.constructMenu(preset);
+        preset.drawBackground(UI_KEY, BORDER_KEY);
     }
     
     @Override
@@ -134,7 +112,6 @@ public class MaterialHive extends AMachine implements Radioactive {
         borders.add(BORDER);
         borders.add(BORDER_IN);
         borders.add(BORDER_OUT);
-        borders.add(BORDER_KEY);
 
         return borders;
     }
