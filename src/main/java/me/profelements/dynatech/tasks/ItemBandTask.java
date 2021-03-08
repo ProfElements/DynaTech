@@ -31,7 +31,7 @@ public class ItemBandTask implements Runnable {
     }
     
     private static void testItemBand(Player p, ItemStack item) {
-        if (item.getType() != Material.AIR && item.hasItemMeta()) {
+        if (item != null && item.getType() != Material.AIR && item.hasItemMeta()) {
             String id = PersistentDataAPI.getString(item.getItemMeta(), ItemBand.KEY);
 
             if (id != null) {
