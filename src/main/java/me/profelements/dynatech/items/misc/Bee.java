@@ -3,13 +3,12 @@ package me.profelements.dynatech.items.misc;
 import org.apache.commons.lang.Validate;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
+import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
-public class Bee extends SlimefunItem implements NotPlaceable {
+public class Bee extends UnplaceableBlock {
     
     private int speedMultiplier;
 
