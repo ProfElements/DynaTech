@@ -135,11 +135,6 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
         preset.drawBackground(ChestMenuUtils.getOutputSlotTexture(), borders.get(2));
 
         preset.addItem(getProgressBarSlot(), new CustomItem(Material.BLACK_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler());
-
-        ChestMenu.MenuClickHandler outputSlotHandler = (p, slot, cursor, action) -> cursor == null || cursor.getType() == Material.AIR;
-        for (int i : getOutputSlots()) {
-            preset.addMenuClickHandler(i, outputSlotHandler);
-        }
     }
 
     public boolean isGraphical() {
