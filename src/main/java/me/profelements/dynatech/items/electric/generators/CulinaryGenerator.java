@@ -16,6 +16,8 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
 
+import javax.annotation.Nonnull;
+
 public class CulinaryGenerator extends AMachineGenerator {
 
     private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>("exotic-garden-integration", true);
@@ -97,6 +99,7 @@ public class CulinaryGenerator extends AMachineGenerator {
        return "CULINARY_GENERATOR";
     }
 
+    @Nonnull
     @Override
     public ItemStack getProgressBar() {
         return new ItemStack(Material.IRON_SHOVEL);

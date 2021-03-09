@@ -19,6 +19,8 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.data.PersistentDataAPI;
 import me.profelements.dynatech.DynaTech;
 
+import javax.annotation.Nonnull;
+
 public class DimensionalHome extends SlimefunItem {
     
     private final NamespacedKey chunkId = new NamespacedKey(DynaTech.getInstance(), "chunk-id");
@@ -64,7 +66,7 @@ public class DimensionalHome extends SlimefunItem {
         };
     }
 
-    protected boolean doesntContainNewChunkID(ItemStack item) {
+    protected boolean doesntContainNewChunkID(@Nonnull ItemStack item) {
         ItemMeta im = item.getItemMeta();
         List<String> lore = im.getLore();
 
@@ -77,7 +79,7 @@ public class DimensionalHome extends SlimefunItem {
         return false;
     }
 
-    private void updateLore(ItemStack item) {
+    private void updateLore(@Nonnull ItemStack item) {
         ItemMeta im = item.getItemMeta();
         List<String> lore = im.getLore();
 

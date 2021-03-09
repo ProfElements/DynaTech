@@ -19,6 +19,8 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 
+import javax.annotation.Nonnull;
+
 public class BarbedWire extends AMachine {
 
     public BarbedWire(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -36,7 +38,7 @@ public class BarbedWire extends AMachine {
 
     }
 
-    public void sendEntitiesFlying(Location loc, World w) {
+    public void sendEntitiesFlying(@Nonnull Location loc, @Nonnull World w) {
         List<Entity> shotEntities = new ArrayList<>();
         int waitTime = 0;
         for (Entity e : w.getNearbyEntities(loc, 9, 9, 9)) {

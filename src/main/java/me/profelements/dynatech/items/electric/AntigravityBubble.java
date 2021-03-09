@@ -1,22 +1,16 @@
 package me.profelements.dynatech.items.electric;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-
+import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.profelements.dynatech.items.electric.abstracts.AMachine;
+import java.util.*;
 
 public class AntigravityBubble extends AMachine {
 
@@ -98,7 +92,7 @@ public class AntigravityBubble extends AMachine {
             }
             plrsToRemove.clear();
         }        
-    };
+    }
 
     @Override
     public boolean isGraphical() {
@@ -109,7 +103,6 @@ public class AntigravityBubble extends AMachine {
     public String getMachineIdentifier() {
         return "ANTIGRAVITY_BUBBLE";
     }
-
 
     @Override
     public List<int[]> getBorders() {
@@ -125,6 +118,7 @@ public class AntigravityBubble extends AMachine {
     public int[] getInputSlots() {
         return new int[] {13};
     }
+
     @Override
     public int[] getOutputSlots() {
         return new int[] {13};

@@ -48,7 +48,7 @@ public class PotionSprinkler extends AMachine {
 
         if (item != null && item.getType() == Material.POTION && item.hasItemMeta()) {
             PotionMeta potionMeta = (PotionMeta) item.getItemMeta();
-            if (potionMeta.getBasePotionData() != null) {
+            if (potionMeta != null) {
                 PotionData pd = potionMeta.getBasePotionData();
                 for (Player p : b.getWorld().getPlayers()) {
                     double distance = b.getLocation().distance(p.getLocation());
@@ -115,6 +115,4 @@ public class PotionSprinkler extends AMachine {
         return 4;
     }
 
-   
-    
 }

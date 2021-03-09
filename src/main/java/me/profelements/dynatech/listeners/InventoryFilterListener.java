@@ -1,12 +1,10 @@
 package me.profelements.dynatech.listeners;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.annotation.Nonnull;
-
+import io.github.thebusybiscuit.slimefun4.api.player.PlayerBackpack;
+import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
+import me.mrCookieSlime.Slimefun.api.Slimefun;
+import me.profelements.dynatech.DynaTech;
+import me.profelements.dynatech.items.tools.InventoryFilter;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,16 +12,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.thebusybiscuit.slimefun4.api.player.PlayerBackpack;
-import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
-import me.mrCookieSlime.Slimefun.api.Slimefun;
-import me.profelements.dynatech.DynaTech;
-import me.profelements.dynatech.items.tools.InventoryFilter;
+import javax.annotation.Nonnull;
+import java.util.EnumSet;
+import java.util.Set;
 
 public class InventoryFilterListener implements Listener {
     
     private final InventoryFilter inventoryFilter;
-    private Set<Material> blacklistedMaterials = EnumSet.noneOf(Material.class);
+    private final Set<Material> blacklistedMaterials = EnumSet.noneOf(Material.class);
 
     public InventoryFilterListener(@Nonnull DynaTech plugin, @Nonnull InventoryFilter inventoryFilter) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);

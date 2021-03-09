@@ -10,6 +10,8 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
 
+import javax.annotation.Nonnull;
+
 public class StardustReactor extends AMachineGenerator {
 
     public StardustReactor(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -22,6 +24,7 @@ public class StardustReactor extends AMachineGenerator {
         registerFuel(new MachineFuel(32, DynaTechItems.STAR_DUST));
     }
 
+    @Nonnull
     @Override
     public ItemStack getProgressBar() {
         return new ItemStack(Material.IRON_CHESTPLATE);

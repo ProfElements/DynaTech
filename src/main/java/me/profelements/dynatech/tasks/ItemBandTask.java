@@ -10,11 +10,15 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.data.PersistentDataAPI;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.misc.ItemBand;
+import org.bukkit.potion.PotionEffectType;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class ItemBandTask implements Runnable {
-    
+
     //The value if not null will be a SlIMEFUN_ID that is an Item
-    
+
     public ItemBandTask() {}
 
     @Override
@@ -29,8 +33,8 @@ public class ItemBandTask implements Runnable {
             testItemBand(p, p.getEquipment().getItemInMainHand());
         }
     }
-    
-    private static void testItemBand(Player p, ItemStack item) {
+
+    private static void testItemBand(@Nonnull Player p, @Nullable ItemStack item) {
         if (item != null && item.getType() != Material.AIR && item.hasItemMeta()) {
             String id = PersistentDataAPI.getString(item.getItemMeta(), ItemBand.KEY);
 
@@ -42,13 +46,19 @@ public class ItemBandTask implements Runnable {
 
                     DynaTech.runSync(() -> {
                         for (PotionEffect pe : itemBand.getPotionEffects()) {
-                            p.removePotionEffect(pe.getType());
-                            p.addPotionEffect(pe);
+                            if (pe.getType() == PotionEffectType.HEALTH_BOOST)
+                            {
+                                double health = p.getHealth();
+                                p.addPotionEffect(pe);
+                                p.setHealth(health);
+                            } else {
+                                p.addPotionEffect(pe);
+                            }
                         }
                     });
                 }
             }
         }
     }
-    
+
 }

@@ -1,19 +1,5 @@
 package me.profelements.dynatech.items.tools;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.List;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemDropHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
@@ -21,13 +7,21 @@ import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import org.apache.commons.lang.Validate;
+import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.List;
 
 public class AngelGem extends SlimefunItem {
 
-    private ItemSetting<Double> maxFlightSpeed = new ItemSetting<>("max-flight-speed", 1.0d);
-    private ItemSetting<Boolean> hasMaxFlightSpeed = new ItemSetting<>("has-max-flight-speed", false);
-
-    private boolean enabledPlayer = false;
+    private final ItemSetting<Double> maxFlightSpeed = new ItemSetting<>("max-flight-speed", 1.0d);
+    private final ItemSetting<Boolean> hasMaxFlightSpeed = new ItemSetting<>("has-max-flight-speed", false);
 
     private float flySpeed = 0.1f;
 
@@ -46,7 +40,6 @@ public class AngelGem extends SlimefunItem {
                 e.getPlayer().setAllowFlight(false);
                 e.getPlayer().setFlySpeed(0.1f);
                 e.getPlayer().setFallDistance(0.0f);
-                enabledPlayer = false;
             }
             return true;
         };
@@ -59,14 +52,10 @@ public class AngelGem extends SlimefunItem {
                 e.getPlayer().setAllowFlight(false);
                 e.getPlayer().setFallDistance(0f);
                 e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
-                enabledPlayer = false;
             }
             if (!e.getPlayer().getAllowFlight()) {
                 e.getPlayer().setAllowFlight(true);
                 setFlySpeed(0.10f);
-                e.getPlayer().setFlySpeed(getFlySpeed());
-                e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
-                enabledPlayer = true;
             } else {
                 if (hasMaxFlightSpeed.getValue()) {
                     if (getFlySpeed() < maxFlightSpeed.getValue()) {
@@ -78,18 +67,16 @@ public class AngelGem extends SlimefunItem {
                     } else {
                         setFlySpeed(0.10f);
                     }
-                    e.getPlayer().setFlySpeed(getFlySpeed());
-                    e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
                 } else {
                     if (getFlySpeed() < 1f) {
                         setFlySpeed(getFlySpeed() + 0.10f);
                     } else {
                         setFlySpeed(0.10f);
                     }
-                    e.getPlayer().setFlySpeed(getFlySpeed());
-                    e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
                 }
             }
+            e.getPlayer().setFlySpeed(getFlySpeed());
+            e.getItem().setItemMeta(updateLore(e.getItem(), e.getPlayer()));
             e.cancel();
         };
     }
