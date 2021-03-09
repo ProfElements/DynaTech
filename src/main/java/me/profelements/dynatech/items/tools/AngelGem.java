@@ -41,7 +41,7 @@ public class AngelGem extends SlimefunItem {
 
     private ItemDropHandler onItemDrop() {
         return (e, p, item) -> {
-            if (enabledPlayer && e.getPlayer().getGameMode() != GameMode.CREATIVE) {
+            if (isItem(item.getItemStack())  && e.getPlayer().getGameMode() != GameMode.CREATIVE) {
                 e.getPlayer().setFlying(false);
                 e.getPlayer().setAllowFlight(false);
                 e.getPlayer().setFlySpeed(0.1f);
