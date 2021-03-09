@@ -17,6 +17,8 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.data.PersistentDataAPI;
 import me.profelements.dynatech.DynaTech;
 
+import javax.annotation.Nullable;
+
 public class ItemBand extends SlimefunItem {
 
     public static final NamespacedKey KEY = new NamespacedKey(DynaTech.getInstance(), "item_band");
@@ -40,7 +42,8 @@ public class ItemBand extends SlimefunItem {
         }
     }
 
-    public ItemStack applyToItem(ItemStack item) {
+    @Nullable
+    public ItemStack applyToItem(@Nullable ItemStack item) {
         if (item != null && item.getType() != Material.AIR) {
            
 
@@ -57,26 +60,22 @@ public class ItemBand extends SlimefunItem {
         return null;
     }
 
-    public static ItemStack removeFromItem( ItemStack item) {
+    @Nullable
+    public static ItemStack removeFromItem(@Nullable ItemStack item) {
         if (item != null && item.getType() != Material.AIR) {
             ItemMeta im = item.getItemMeta();
             List<String> lore = im.getLore();
             
             im.getPersistentDataContainer().remove(KEY);
-            
 
-            for (int line = 0; line < lore.size(); line++ ) {
-                if (lore.get(line).contains(ChatColor.WHITE + "Bandaid: ")) {
-                    lore.remove(line);
-                }
-            }
+            lore.removeIf(line -> line.contains(ChatColor.WHITE + "Bandaid: "));
     
             im.setLore(lore);
             item.setItemMeta(im);
 
             return item;
         }
-            return null;
+        return null;
     }
     
 }

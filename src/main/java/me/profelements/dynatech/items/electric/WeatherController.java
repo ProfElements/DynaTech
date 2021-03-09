@@ -83,7 +83,6 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
         return items;
     }
 
-
     @Override
     public String getMachineIdentifier() {
         return "WEATHER_CONTROLLER";
@@ -118,6 +117,5 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
     public int getProgressBarSlot() {
         return 4;
     }
-    
 
 }

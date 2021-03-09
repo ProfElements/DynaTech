@@ -175,7 +175,6 @@ public class PicnicBasketListener implements Listener {
                     }
 
                     backpack.markDirty();
-                } else {
                 }
             }
 

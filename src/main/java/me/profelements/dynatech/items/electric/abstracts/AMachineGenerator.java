@@ -118,7 +118,7 @@ public abstract class AMachineGenerator extends SlimefunItem implements RecipeDi
     }
 
     public void newMachineInstance(BlockMenu menu, Block b) {
-    };
+    }
 
     protected void constructMenu(BlockMenuPreset preset) {
         for (int i : getBorders().get(0)) {
@@ -146,7 +146,7 @@ public abstract class AMachineGenerator extends SlimefunItem implements RecipeDi
 
                 @Override
                 public boolean onClick(InventoryClickEvent e, Player p, int slot, ItemStack cursor, ClickAction action) {
-                    return cursor == null || cursor.getType() == null || cursor.getType() == Material.AIR;
+                    return cursor == null || cursor.getType() == Material.AIR;
                 }
 
             });
@@ -167,7 +167,7 @@ public abstract class AMachineGenerator extends SlimefunItem implements RecipeDi
     }
 
     @Override
-    public int getGeneratedOutput(Location l, Config data) {
+    public int getGeneratedOutput(Location l, @Nonnull Config data) {
         BlockMenu inv = BlockStorage.getInventory(l.getBlock());
 
         if (isProcessing(l.getBlock())) {
@@ -242,7 +242,7 @@ public abstract class AMachineGenerator extends SlimefunItem implements RecipeDi
         return null;
     }
 
-    protected void registerDefaultFuelTypes() {};
+    protected void registerDefaultFuelTypes() {}
     
     public void registerFuel(@Nonnull MachineFuel fuel) {
         Validate.notNull(fuel, "Machine fuel cannot be null.");
@@ -254,6 +254,7 @@ public abstract class AMachineGenerator extends SlimefunItem implements RecipeDi
         return fuelTypes;
     }
 
+    @Nonnull
     @Override
     public List<ItemStack> getDisplayRecipes() {
         List<ItemStack> list =  new ArrayList<>();
@@ -280,6 +281,7 @@ public abstract class AMachineGenerator extends SlimefunItem implements RecipeDi
 
     public abstract String getMachineIdentifier();
 
+    @Nonnull
     @Override
     public EnergyNetComponentType getEnergyComponentType() {
         return EnergyNetComponentType.GENERATOR;

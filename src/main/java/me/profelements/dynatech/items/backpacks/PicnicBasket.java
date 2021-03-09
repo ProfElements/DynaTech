@@ -12,6 +12,8 @@ import me.profelements.dynatech.DynaTech;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class PicnicBasket extends SlimefunBackpack {
     }
 
     @Override
-    public boolean isItemAllowed(ItemStack item, SlimefunItem itemAsSlimefunItem) {
+    public boolean isItemAllowed(@Nonnull ItemStack item, @Nullable SlimefunItem itemAsSlimefunItem) {
         if (DynaTech.isExoticGardenInstalled()) {
             if (itemAsSlimefunItem instanceof CustomFood) {
                 return true;
@@ -68,5 +70,4 @@ public class PicnicBasket extends SlimefunBackpack {
 
         return materials;
     }
-
 }

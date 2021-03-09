@@ -7,12 +7,14 @@ import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 public class DimensionalHomeDimension extends ChunkGenerator {
 
     @Nonnull
     @Override
-    public ChunkData generateChunkData(@Nonnull World world, @Nonnull Random random, int chunkx, int chunkz, @Nonnull BiomeGrid biomeGrid) {
+    @ParametersAreNonnullByDefault
+    public ChunkData generateChunkData(World world, Random random, int chunkx, int chunkz, BiomeGrid biomeGrid) {
         ChunkData chunkData = createChunkData(world);
 
         chunkData.setRegion(0, 59, 0, 16, 60, 16, Material.BEDROCK);
