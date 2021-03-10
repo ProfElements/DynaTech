@@ -46,20 +46,18 @@ public class MaterialHive extends AMachine implements Radioactive {
         if (key == null || key.getAmount() != 64) {
             return null;
         }
-        ItemStack output = null;
+        ItemStack output;
         
         // check if its a valid key and get output
-        if (vanillaItemsAccepted.getValue().contains(key.getType().toString())) {
-            output = new ItemStack(key.getType());
-        } else {
-            SlimefunItem sfItem = SlimefunItem.getByItem(key);
-            
-            if (sfItem != null && slimefunItemsAccepted.getValue().contains(sfItem.getId())) {
-                output = sfItem.getItem().clone();
-            }
-        }
+        SlimefunItem sfItem = SlimefunItem.getByItem(key);
         
-        if (output == null) {
+        if (sfItem != null && slimefunItemsAccepted.getValue().contains(sfItem.getId())) {
+            output = sfItem.getItem().clone();
+            
+        } else if (vanillaItemsAccepted.getValue().contains(key.getType().toString())) {
+            output = new ItemStack(key.getType());
+            
+        } else {
             return null;
         }
         
@@ -70,9 +68,9 @@ public class MaterialHive extends AMachine implements Radioactive {
         
         // check 1st bee
         if (b1 != null) {
-            SlimefunItem sfItem = SlimefunItem.getByItem(b1);
-            if (sfItem instanceof Bee) {
-                bee1 = (Bee) sfItem;
+            SlimefunItem bee = SlimefunItem.getByItem(b1);
+            if (bee instanceof Bee) {
+                bee1 = (Bee) bee;
                 
                 // subtract time
                 seconds -= bee1.getSpeedMultipler() * b1.getAmount();
@@ -83,9 +81,9 @@ public class MaterialHive extends AMachine implements Radioactive {
         
         // check 2nd bee
         if (b2 != null) {
-            SlimefunItem sfItem = SlimefunItem.getByItem(b2);
-            if (sfItem instanceof Bee) {
-                Bee bee2 = (Bee) sfItem;
+            SlimefunItem bee = SlimefunItem.getByItem(b2);
+            if (bee instanceof Bee) {
+                Bee bee2 = (Bee) bee;
 
                 // subtract time
                 seconds -= bee2.getSpeedMultipler() * b2.getAmount();
