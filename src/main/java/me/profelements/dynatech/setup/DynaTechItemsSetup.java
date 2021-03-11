@@ -123,16 +123,16 @@ public class DynaTechItemsSetup {
 
         new Bee(DynaTechItems.DynaTechGeneral, DynaTechItems.ROBOTIC_BEE, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE,
-                        DynaTechItems.VEX_GEM, DynaTechItems.MACHINE_SCRAP, DynaTechItems.VEX_GEM,
-                        SlimefunItems.REINFORCED_PLATE, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.REINFORCED_PLATE
+                        SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.REINFORCED_ALLOY_INGOT,
+                        SlimefunItems.SYNTHETIC_SAPPHIRE, DynaTechItems.MACHINE_SCRAP, SlimefunItems.SYNTHETIC_SAPPHIRE,
+                        SlimefunItems.REINFORCED_ALLOY_INGOT, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.REINFORCED_ALLOY_INGOT
                 }, 6
                 ).register(plugin);
 
         new Bee(DynaTechItems.DynaTechGeneral, DynaTechItems.ADVANCED_ROBOTIC_BEE, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                 SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE,
-                DynaTechItems.ANGEL_GEM, DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.ANGEL_GEM,
+                DynaTechItems.VEX_GEM, DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.VEX_GEM,
                 SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.GOLD_24K_BLOCK
                 }, 8
                 ).register(plugin);
@@ -354,8 +354,8 @@ public class DynaTechItemsSetup {
         
         new MaterialHive(DynaTechItems.DynaTechGeneral, DynaTechItems.MATERIAL_HIVE, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                    SlimefunItems.REINFORCED_PLATE, SlimefunItems.BOOSTED_URANIUM, SlimefunItems.REINFORCED_PLATE,
-                    SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.BEEHIVE), SlimefunItems.REINFORCED_PLATE,
+                    SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.SYNTHETIC_DIAMOND, SlimefunItems.HARDENED_METAL_INGOT,
+                    SlimefunItems.HARDENED_METAL_INGOT, new ItemStack(Material.BEEHIVE), SlimefunItems.HARDENED_METAL_INGOT,
                     DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.MACHINE_SCRAP, DynaTechItems.ADVANCED_MACHINE_SCRAP
                 })
                 .setEnergyCapacity(8192)
