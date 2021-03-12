@@ -45,11 +45,14 @@ public class ElectricalStimulatorListener implements Listener {
             return;
         }
 
-        for (ItemStack item : p.getInventory().getContents()) {
+        for (ItemStack item : p.getInventory().getStorageContents()) {
             if (electricalStimulator.isItem(item)) {
                 if (Slimefun.hasUnlocked(p, item, true)) {
-                    DynaTech.runSync(()->givePlayerFood(p));
+                    p.setFoodLevel(20);
+                    p.setSaturation(20f);
+                    p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, 1F , 1F);
                     electricalStimulator.removeItemCharge(item,  electricalStimulator.getEnergyComsumption());
+                    break;
                 } else {
                     return;
                 }
@@ -57,10 +60,4 @@ public class ElectricalStimulatorListener implements Listener {
         }
     }
 
-    private static void givePlayerFood(Player p) {
-        p.setFoodLevel(20);
-        p.setSaturation(20f);
-        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, 1F , 1F);
-    }
-    
 }

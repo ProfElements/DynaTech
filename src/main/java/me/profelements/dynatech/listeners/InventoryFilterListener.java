@@ -60,9 +60,11 @@ public class InventoryFilterListener implements Listener {
             }
         }
 
-        for (ItemStack item : p.getInventory().getContents()) {
+        //CANT DROP AIR SO HAVE TO ITERATE THROUGH THE INVENTORY
+        for (ItemStack item : p.getInventory().getStorageContents()) {
             if (item != null && blacklistedMaterials.contains(item.getType())) {
                     item.setAmount(0);
+                    break;
             }
         }
     }
