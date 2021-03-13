@@ -46,7 +46,7 @@ public class ElectricalStimulatorListener implements Listener {
         }
 
         for (ItemStack item : p.getInventory().getStorageContents()) {
-            if (item.getType() == electricalStimulator.getItem().getType() && item.hasItemMeta() && electricalStimulator.isItem(item)) {
+            if (item != null && item.getType() == electricalStimulator.getItem().getType() && item.hasItemMeta() && electricalStimulator.isItem(item)) {
                 if (Slimefun.hasUnlocked(p, item, true)) {
                     p.setFoodLevel(20);
                     p.setSaturation(20f);
