@@ -16,7 +16,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Wireless Charger** - Charges Rechargeable Items in a Players inventory in a 16 block radius around it
 - **Seed Plucker** - Plucks seed from plant-based material, supports Exotic Garden Fruits, but not essences.
 - **Item Band Manager** - Manages the application and ripping of Item Bands.
-
+- **Orechid** - Changes Stone and Netherack into Overworld and Nether ores respectively
 ## Generators
 - **Hydro Generator** - Generates energy from flowing water (Waterlog the generator)
 - **Dragon Egg Generator** - Generates energy from the warmth of a dragon egg. (Place the dragon egg on top)

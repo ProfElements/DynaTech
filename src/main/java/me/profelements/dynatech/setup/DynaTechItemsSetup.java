@@ -39,6 +39,7 @@ import me.profelements.dynatech.items.tools.AngelGem;
 import me.profelements.dynatech.items.tools.DimensionalHome;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
 import me.profelements.dynatech.items.tools.InventoryFilter;
+import me.profelements.dynatech.items.tools.Orechid;
 import me.profelements.dynatech.items.tools.Scoop;
 
 import org.bukkit.Material;
@@ -399,6 +400,18 @@ public class DynaTechItemsSetup {
         .setProcessingSpeed(1)
         .register(plugin);
         
+        new Orechid(DynaTechItems.DynaTechGeneral, DynaTechItems.ORECHID, RecipeType.MAGIC_WORKBENCH,
+                new ItemStack[] {
+                    SlimefunItems.ENDER_RUNE, SlimefunItems.ENDER_RUNE, SlimefunItems.ENDER_RUNE,
+                    SlimefunItems.MAGIC_LUMP_3, new ItemStack(Material.WITHER_ROSE), SlimefunItems.MAGIC_LUMP_3,
+                    SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.REINFORCED_PLATE, SlimefunItems.HARDENED_METAL_INGOT
+                }
+        )
+        .setEnergyCapacity(16384)
+        .setEnergyConsumption(1024)
+        .setProcessingSpeed(1)
+        .register(plugin);
+
         //Generators
         new HydroGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {

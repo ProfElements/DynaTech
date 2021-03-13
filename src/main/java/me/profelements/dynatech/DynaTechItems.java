@@ -332,6 +332,16 @@ public class DynaTechItems {
             LoreBuilder.powerPerSecond(48)
             );
 
+    public static final SlimefunItemStack ORECHID = new SlimefunItemStack("ORECHID",
+            Material.WITHER_ROSE,
+            "&6Orechid",
+            "",
+            "&fUsing Stone or Netherack and power, it makes their respective ores.",
+            "",
+            LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
+            LoreBuilder.power(1024, " per block converted.")
+           );
+
     //Generators
     public static final SlimefunItemStack WATER_MILL = new SlimefunItemStack("WATER_MILL",
             Material.COBBLESTONE_WALL,
