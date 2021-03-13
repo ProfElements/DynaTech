@@ -2,17 +2,18 @@ package me.profelements.dynatech.items.tools;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.mooy1.infinitylib.PluginUtils;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.mrCookieSlime.Slimefun.cscorelib2.collections.RandomizedSet;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 
@@ -20,8 +21,8 @@ import me.profelements.dynatech.items.electric.abstracts.AMachine;
 
 public class Orechid extends AMachine implements RecipeDisplayItem {
 
-    private static final List<Material> OVERWORLD_ORES = new ArrayList<>();
-    private static final List<Material> NETHER_ORES = new ArrayList<>();
+    private static final RandomizedSet<Material> OVERWORLD_ORES = new RandomizedSet<Material>();
+    private static final RandomizedSet<Material> NETHER_ORES = new RandomizedSet<Material>();
     //private static final List<Material> END_ORES = new ArrayList<>();
 
     //Somehow setup a RecipeType for this for people to use in addons
@@ -33,54 +34,51 @@ public class Orechid extends AMachine implements RecipeDisplayItem {
 
     @Override
     public void tick(Block b) {
-
-        if (getCharge(b.getLocation()) < getEnergyConsumption()) {
-            return;
-        }
-
-        for (BlockFace relative : BlockFace.values()) {
-            if (relative == BlockFace.UP || relative == BlockFace.DOWN) {
-                continue;
-            }
-
-            Block relBlock = b.getRelative(relative);
-
-            if (relBlock.getType() == Material.STONE) {
-                int overworldOreIndex = ThreadLocalRandom.current().nextInt(getOverWorldOres().size() - 1);
-                DynaTech.runSync(()-> relBlock.setType(getOverWorldOres().get(overworldOreIndex)));
-
-                removeCharge(b.getLocation(), getEnergyConsumption());
-
-            } else if (relBlock.getType() == Material.NETHERRACK) {
-                int netherOreIndex = ThreadLocalRandom.current().nextInt(getNetherOres().size() - 1);
-                DynaTech.runSync(()-> relBlock.setType(getNetherOres().get(netherOreIndex)));
-
-                removeCharge(b.getLocation(), getEnergyConsumption());
-
-            }
+        if (PluginUtils.getCurrentTick() % 10 == 0) {
+            for (BlockFace relative : BlockFace.values()) {
+                if (getCharge(b.getLocation()) < getEnergyConsumption()) {
+                    break;
+                }
+    
+                if (relative == BlockFace.UP || relative == BlockFace.DOWN) {
+                    continue;
+                }
+                
+                Block relBlock = b.getRelative(relative);
+    
+                if (relBlock.getType() == Material.STONE) {
+                    DynaTech.runSync(()-> relBlock.setType(getOverWorldOres().getRandom()));
+                    removeCharge(b.getLocation(), getEnergyConsumption());
+    
+                } else if (relBlock.getType() == Material.NETHERRACK) {
+                    DynaTech.runSync(()-> relBlock.setType(getNetherOres().getRandom()));
+                    removeCharge(b.getLocation(), getEnergyConsumption());
+    
+                }
+            }        
         }
     }
 
 
 
-    private static final List<Material> getOverWorldOres() {
-        OVERWORLD_ORES.add(Material.COAL_ORE);
-        OVERWORLD_ORES.add(Material.IRON_ORE);
-        OVERWORLD_ORES.add(Material.GOLD_ORE);
-        OVERWORLD_ORES.add(Material.DIAMOND_ORE);
-        OVERWORLD_ORES.add(Material.EMERALD_ORE);
-        OVERWORLD_ORES.add(Material.REDSTONE_ORE);
-        OVERWORLD_ORES.add(Material.LAPIS_ORE);
+    private static final RandomizedSet<Material> getOverWorldOres() {
+        OVERWORLD_ORES.add(Material.COAL_ORE, 3);
+        OVERWORLD_ORES.add(Material.IRON_ORE, 2);
+        OVERWORLD_ORES.add(Material.GOLD_ORE, 2);
+        OVERWORLD_ORES.add(Material.DIAMOND_ORE, 1);
+        OVERWORLD_ORES.add(Material.EMERALD_ORE, 1);
+        OVERWORLD_ORES.add(Material.REDSTONE_ORE, 3);
+        OVERWORLD_ORES.add(Material.LAPIS_ORE, 3);
 
         return OVERWORLD_ORES;
     }
 
-    private static final List<Material> getNetherOres() {
-        NETHER_ORES.add(Material.NETHER_QUARTZ_ORE);
-        NETHER_ORES.add(Material.NETHER_GOLD_ORE);
-        NETHER_ORES.add(Material.ANCIENT_DEBRIS);
-        NETHER_ORES.add(Material.BASALT);
-        NETHER_ORES.add(Material.BLACKSTONE);
+    private static final RandomizedSet<Material> getNetherOres() {
+        NETHER_ORES.add(Material.NETHER_QUARTZ_ORE, 3);
+        NETHER_ORES.add(Material.NETHER_GOLD_ORE, 3);
+        NETHER_ORES.add(Material.ANCIENT_DEBRIS, 1);
+        NETHER_ORES.add(Material.BASALT, 5);
+        NETHER_ORES.add(Material.BLACKSTONE, 5);
 
         return NETHER_ORES;
     }
