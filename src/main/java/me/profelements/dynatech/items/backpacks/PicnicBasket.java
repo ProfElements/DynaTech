@@ -21,7 +21,7 @@ public class PicnicBasket extends SlimefunBackpack {
 
     private final List<Material> defaultBlacklist = new ArrayList<>();
 
-    private final ItemSetting<List<String>> blacklistedMaterials = new ItemSetting<>("blacklisted-materials", ToStringList(getDefaultBlacklist()));
+    private final ItemSetting<List<String>> blacklistedMaterials = new ItemSetting<>(this, "blacklisted-materials", ToStringList(getDefaultBlacklist()));
 
     public PicnicBasket(int size, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(size, category, item, recipeType, recipe);

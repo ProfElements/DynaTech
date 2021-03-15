@@ -3,8 +3,10 @@ package me.profelements.dynatech.items.electric.abstracts;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemState;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.handlers.SimpleBlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import io.github.thebusybiscuit.slimefun4.utils.itemstack.ItemStackWrapper;
@@ -95,23 +97,31 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
             };
         }
         
-        registerBlockHandler(item.getItemId(), (p, b, tool, reason) -> {
-            BlockMenu inv = BlockStorage.getInventory(b);
-
-            if (inv != null) {
-                inv.dropItems(b.getLocation(), getInputSlots());
-                inv.dropItems(b.getLocation(), getOutputSlots());
-
-            }
-
-            processing.remove(b);
-            progress.remove(b);
-            blockExtras(b);
-            return true;
-
-        });
+        addItemHandler(onBreak());
+    
     }
 
+    private BlockBreakHandler onBreak() {
+        return new SimpleBlockBreakHandler() {
+
+            @Override
+            public void onBlockBreak(Block b) {
+                BlockMenu inv = BlockStorage.getInventory(b);
+
+                if (inv != null) {
+                    inv.dropItems(b.getLocation(), getInputSlots());
+                    inv.dropItems(b.getLocation(), getOutputSlots());
+    
+                }
+    
+                processing.remove(b);
+                progress.remove(b);
+                blockExtras(b);
+            }
+            
+        };
+    }
+    
     public void blockExtras(Block b) { }
 
     public void newMachineInstance(BlockMenu menu, Block b) { }

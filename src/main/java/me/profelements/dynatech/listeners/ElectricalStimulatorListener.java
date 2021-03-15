@@ -2,7 +2,6 @@ package me.profelements.dynatech.listeners;
 
 import javax.annotation.Nonnull;
 
-import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
 
@@ -13,6 +12,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.inventory.ItemStack;
+
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 
 public class ElectricalStimulatorListener implements Listener {
     
@@ -47,7 +48,7 @@ public class ElectricalStimulatorListener implements Listener {
 
         for (ItemStack item : p.getInventory().getStorageContents()) {
             if (item != null && item.getType() == electricalStimulator.getItem().getType() && item.hasItemMeta() && electricalStimulator.isItem(item)) {
-                if (Slimefun.hasUnlocked(p, item, true)) {
+                if (SlimefunUtils.canPlayerUseItem(p, item, true)) {
                     p.setFoodLevel(20);
                     p.setSaturation(20f);
                     p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, 1F , 1F);

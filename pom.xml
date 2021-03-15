@@ -59,7 +59,7 @@
                     <relocations>
                         <relocation>
                             <pattern>org.bstats</pattern>
-                            <shadedPattern>me.profelements.dyantech</shadedPattern>
+                            <shadedPattern>me.profelements.dynatech</shadedPattern>
                         </relocation>
                     <relocation>
                             <pattern>io.github.mooy1.infinitylib</pattern>
@@ -90,7 +90,7 @@
         <dependency>
             <groupId>com.github.Slimefun</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-20</version>
+            <version>RC-21</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
@@ -103,6 +103,12 @@
             <groupId>com.github.thebusybiscuit</groupId>
             <artifactId>exoticgarden</artifactId>
             <version>b7dfe8c35b</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.mooy1</groupId>
+            <artifactId>InfinityExpansion</artifactId>
+            <version>69b78a0fe6</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>

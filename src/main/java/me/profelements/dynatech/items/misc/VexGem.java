@@ -15,8 +15,8 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
 public class VexGem extends SlimefunItem implements NotPlaceable, RandomMobDrop {
 
-    private final ItemSetting<Boolean> dropSetting = new ItemSetting<>("drop-from-vexs", true);
-    private final ItemSetting<Integer> chance = new IntRangeSetting("vex-drop-chance", 0, 10, 100);
+    private final ItemSetting<Boolean> dropSetting = new ItemSetting<>(this, " drop-from-vexs", true);
+    private final ItemSetting<Integer> chance = new IntRangeSetting(this ,"vex-drop-chance", 0, 10, 100);
 
     public VexGem(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);

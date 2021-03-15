@@ -31,8 +31,8 @@ public class MaterialHive extends AMachine implements Radioactive {
 
     private static final int[] INPUT_SLOTS = new int[] {19,20,4};
 
-    public static final ItemSetting<List<String>> vanillaItemsAccepted = new ItemSetting<>("vanilla-items-accepted", getDefaultAllowedVanillaItems());
-    public static final ItemSetting<List<String>> slimefunItemsAccepted = new ItemSetting<>("slimefun-items-accepted", getDefaultAllowedSlimefunItems());
+    public final ItemSetting<List<String>> vanillaItemsAccepted = new ItemSetting<>(this, "vanilla-items-accepted", getDefaultAllowedVanillaItems());
+    public final ItemSetting<List<String>> slimefunItemsAccepted = new ItemSetting<>(this, "slimefun-items-accepted", getDefaultAllowedSlimefunItems());
     
     public MaterialHive(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);

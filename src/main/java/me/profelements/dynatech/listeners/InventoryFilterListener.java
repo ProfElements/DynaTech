@@ -2,7 +2,7 @@ package me.profelements.dynatech.listeners;
 
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerBackpack;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
-import me.mrCookieSlime.Slimefun.api.Slimefun;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.tools.InventoryFilter;
 import org.bukkit.Material;
@@ -36,8 +36,8 @@ public class InventoryFilterListener implements Listener {
     private void checkAndFilter(Player p) {
         if (inventoryFilter != null && !inventoryFilter.isDisabled()) {
             for (ItemStack item : p.getInventory().getContents()) {
-                if (inventoryFilter.isItem(item)) {
-                    if (Slimefun.hasUnlocked(p, item, true)) {
+                if (item.getType() == inventoryFilter.getItem().getType() && item.hasItemMeta() && inventoryFilter.isItem(item)) {
+                    if (SlimefunUtils.canPlayerUseItem(p, item, true)) {
                         filterItems(p, item);
                     }
                 }

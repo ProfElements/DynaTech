@@ -28,8 +28,8 @@ import java.util.List;
 
 public class AngelGem extends SlimefunItem implements NotPlaceable, Listener {
 
-    private final ItemSetting<Double> maxFlightSpeed = new ItemSetting<>("max-flight-speed", 1.0d);
-    private final ItemSetting<Boolean> hasMaxFlightSpeed = new ItemSetting<>("has-max-flight-speed", false);
+    private final ItemSetting<Double> maxFlightSpeed = new ItemSetting<>(this, "max-flight-speed", 1.0d);
+    private final ItemSetting<Boolean> hasMaxFlightSpeed = new ItemSetting<>(this, "has-max-flight-speed", false);
 
     private float flySpeed = 0.1f;
 

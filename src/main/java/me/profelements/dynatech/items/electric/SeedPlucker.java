@@ -17,7 +17,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 
 public class SeedPlucker extends AMachine {
 
-    private final ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<>("exotic-garden-integration", true);
+    private final ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<>(this, "exotic-garden-integration", true);
 
     public SeedPlucker(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);

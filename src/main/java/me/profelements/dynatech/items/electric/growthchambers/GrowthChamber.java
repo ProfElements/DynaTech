@@ -16,7 +16,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 
 public class GrowthChamber extends AMachine {
 
-    private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>("exotic-garden-integration", true);
+    private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>(this, "exotic-garden-integration", true);
 
     public GrowthChamber(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);

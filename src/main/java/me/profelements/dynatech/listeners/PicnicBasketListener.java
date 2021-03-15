@@ -3,8 +3,8 @@ package me.profelements.dynatech.listeners;
 import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerBackpack;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.events.PicnicBasketFeedPlayerEvent;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
@@ -57,8 +57,8 @@ public class PicnicBasketListener implements Listener {
         }
 
         for (ItemStack item : p.getInventory().getContents()) {
-            if (picnicBasket.isItem(item)) {
-                if (Slimefun.hasUnlocked(p, picnicBasket, true)) {
+            if (item.getType() == picnicBasket.getItem().getType() &&  item.hasItemMeta() && picnicBasket.isItem(item)) {
+                if (SlimefunUtils.canPlayerUseItem(p, picnicBasket.getItem(), true)) {
                     takeFoodFromPicnicBasket(p, item);
                 } else {
                     return;

@@ -24,9 +24,11 @@ import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemState;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.handlers.SimpleBlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.NumberUtils;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
@@ -97,24 +99,31 @@ public abstract class AMachineGenerator extends SlimefunItem implements RecipeDi
                 }
             };
 
-            registerBlockHandler(item.getItemId(), (p, b, tool, reason) -> {
+            addItemHandler(onBreak());
+
+            registerDefaultFuelTypes();
+
+        }
+    }
+
+    private BlockBreakHandler onBreak() {
+        return new SimpleBlockBreakHandler() {
+
+            @Override
+            public void onBlockBreak(Block b) {
                 BlockMenu inv = BlockStorage.getInventory(b);
 
                 if (inv != null) {
                     inv.dropItems(b.getLocation(), getInputSlots());
                     inv.dropItems(b.getLocation(), getOutputSlots());
-
+    
                 }
-
+    
                 processing.remove(b);
                 progress.remove(b);
-                return true;
-
-            });
-
-            registerDefaultFuelTypes();
-
-        }
+            }
+            
+        };
     }
 
     public void newMachineInstance(BlockMenu menu, Block b) {

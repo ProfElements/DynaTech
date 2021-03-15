@@ -20,7 +20,7 @@ import javax.annotation.Nonnull;
 
 public class CulinaryGenerator extends AMachineGenerator {
 
-    private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>("exotic-garden-integration", true);
+    private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>(this, "exotic-garden-integration", true);
 
     public CulinaryGenerator(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);

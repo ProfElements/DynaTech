@@ -23,7 +23,7 @@ public class GrowthChamberMK2 extends AMachine {
     private static int[] BORDER_IN = new int[] {0,8,9,10,11,12,14,15,16,17};
     private static int[] BORDER_OUT = new int[] {18,19,20,21,22,23,24,25,26,27,35,36,44,45,53};
     
-    private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>("exotic-garden-integration", true);
+    private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>(this, "exotic-garden-integration", true);
 
     public GrowthChamberMK2(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
