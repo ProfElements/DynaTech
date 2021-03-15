@@ -36,7 +36,7 @@ public class InventoryFilterListener implements Listener {
     private void checkAndFilter(Player p) {
         if (inventoryFilter != null && !inventoryFilter.isDisabled()) {
             for (ItemStack item : p.getInventory().getContents()) {
-                if (item.getType() == inventoryFilter.getItem().getType() && item.hasItemMeta() && inventoryFilter.isItem(item)) {
+                if (item != null && item.getType() == inventoryFilter.getItem().getType() && item.hasItemMeta() && inventoryFilter.isItem(item)) {
                     if (SlimefunUtils.canPlayerUseItem(p, item, true)) {
                         filterItems(p, item);
                     }

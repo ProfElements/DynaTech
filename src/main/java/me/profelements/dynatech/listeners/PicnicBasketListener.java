@@ -57,7 +57,7 @@ public class PicnicBasketListener implements Listener {
         }
 
         for (ItemStack item : p.getInventory().getContents()) {
-            if (item.getType() == picnicBasket.getItem().getType() &&  item.hasItemMeta() && picnicBasket.isItem(item)) {
+            if (item != null && item.getType() == picnicBasket.getItem().getType() &&  item.hasItemMeta() && picnicBasket.isItem(item)) {
                 if (SlimefunUtils.canPlayerUseItem(p, picnicBasket.getItem(), true)) {
                     takeFoodFromPicnicBasket(p, item);
                 } else {
