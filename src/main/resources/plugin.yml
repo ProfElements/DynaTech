@@ -15,7 +15,7 @@ website: https://github.com/ProfElements/DynaTech
 
 ## This is required and marks Slimefun as a plugin dependency.
 depend: [Slimefun]
-softdepend: [ExoticGarden]
+softdepend: [ExoticGarden, InfinityExpansion]
 
 ## This value is automatically replaced by the version specified in your pom.xml file, do not change this.
 version: ${project.version}

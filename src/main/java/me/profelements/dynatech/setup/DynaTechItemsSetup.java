@@ -1,5 +1,8 @@
 package me.profelements.dynatech.setup;
 
+import io.github.mooy1.infinityexpansion.implementation.mobdata.EmptyDataCard;
+import io.github.mooy1.infinityexpansion.implementation.mobdata.MobDataCard;
+import io.github.mooy1.infinityexpansion.implementation.mobdata.MobDataTier;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -33,6 +36,7 @@ import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberOcean
 import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberOceanMK2;
 import me.profelements.dynatech.items.misc.Bee;
 import me.profelements.dynatech.items.misc.ItemBand;
+import me.profelements.dynatech.items.misc.MobDropItem;
 import me.profelements.dynatech.items.misc.StarDustMeteor;
 import me.profelements.dynatech.items.misc.VexGem;
 import me.profelements.dynatech.items.tools.AngelGem;
@@ -112,6 +116,13 @@ public class DynaTechItemsSetup {
                 }).register(plugin);
             
         new StarDustMeteor(DynaTechItems.DynaTechGeneral).register(plugin);
+
+        new MobDropItem(DynaTechItems.DynaTechGeneral, DynaTechItems.GHOSTLY_ESSENCE, RecipeType.MOB_DROP, 
+        new ItemStack[] {
+                null, null, null,
+                null, new CustomItem(SkullItem.fromHash("c2ec5a516617ff1573cd2f9d5f3969f56d5575c4ff4efefabd2a18dc7ab98cd"), "&aVex"), null,
+                null, null, null
+        }, 80).register(plugin);
 
         //Bees
         new Bee(DynaTechItems.DynaTechGeneral, DynaTechItems.BEE, DynaTechItems.DynaTechScoop,
@@ -197,6 +208,14 @@ public class DynaTechItemsSetup {
                     SlimefunItems.COBALT_PICKAXE, new ItemStack(Material.NETHER_STAR), SlimefunItems.COBALT_PICKAXE
                 }, new PotionEffect[] {new PotionEffect(PotionEffectType.FAST_DIGGING, 20*15, 1, true) }    
         ).register(plugin);
+
+        if (DynaTech.isInfinityExpansionInstalled()) {
+            new MobDataCard("Vex", MobDataTier.HOSTILE, new ItemStack[] {
+                new SlimefunItemStack(DynaTechItems.VEX_GEM, 16), new SlimefunItemStack(DynaTechItems.GHOSTLY_ESSENCE, 16), new SlimefunItemStack(DynaTechItems.VEX_GEM, 16),
+                new SlimefunItemStack(DynaTechItems.GHOSTLY_ESSENCE, 16), EmptyDataCard.ITEM, new SlimefunItemStack(DynaTechItems.GHOSTLY_ESSENCE, 16),
+                new SlimefunItemStack(DynaTechItems.VEX_GEM, 16), new SlimefunItemStack(DynaTechItems.GHOSTLY_ESSENCE, 16), new SlimefunItemStack(DynaTechItems.VEX_GEM, 16)
+            }, DynaTechItems.VEX_GEM, 16, DynaTechItems.GHOSTLY_ESSENCE, 1).register(plugin);
+        }
 
         //Machines
         if (DynaTech.isExoticGardenInstalled()) {
