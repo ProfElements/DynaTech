@@ -44,8 +44,9 @@ public class AngelGem extends SlimefunItem implements NotPlaceable, Listener {
     }
 
     private ItemDropHandler onItemDrop() {
-        return (e, p, item) -> {
-            if (isItem(item.getItemStack())  && e.getPlayer().getGameMode() != GameMode.CREATIVE) {
+        return (e, p, itemEntity) -> {
+            ItemStack item = itemEntity.getItemStack();
+            if (item != null && item.getType() == this.getItem().getType() && item.hasItemMeta() && isItem(item) && e.getPlayer().getGameMode() != GameMode.CREATIVE) {
                 e.getPlayer().setFlying(false);
                 e.getPlayer().setAllowFlight(false);
                 e.getPlayer().setFlySpeed(0.1f);
