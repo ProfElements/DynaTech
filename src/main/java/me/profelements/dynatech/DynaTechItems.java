@@ -334,7 +334,7 @@ public class DynaTechItems {
             );
 
     public static final SlimefunItemStack ORECHID = new SlimefunItemStack("ORECHID",
-            Material.WITHER_ROSE,
+            Material.END_ROD,
             "&6Orechid",
             "",
             "&fUsing Stone or Netherack and power, it makes their respective ores.",
