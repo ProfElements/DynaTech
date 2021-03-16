@@ -20,6 +20,8 @@ import me.profelements.dynatech.listeners.PicnicBasketListener;
 import me.profelements.dynatech.setup.DynaTechItemsSetup;
 import me.profelements.dynatech.tasks.ItemBandTask;
 
+import java.util.logging.Level;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -57,6 +59,12 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
         PluginUtils.setup("DynaTech", this, "ProfElements/DynaTech/master", getFile());
         PluginUtils.startTicker(() -> {});
+
+
+        if (System.getProperty("java.version").startsWith("1.8")) {
+            PluginUtils.log(Level.WARNING, "           DynaTech will be switching to JAVA 11        ");
+            PluginUtils.log(Level.WARNING, "                Please Update to JAVA 11                ");
+        }
     }
 
     @Override
