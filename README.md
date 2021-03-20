@@ -17,6 +17,8 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Seed Plucker** - Plucks seed from plant-based material, supports Exotic Garden Fruits, but not essences.
 - **Item Band Manager** - Manages the application and ripping of Item Bands.
 - **Orechid** - Changes Stone and Netherack into Overworld and Nether ores respectively
+- **Wireless Energy Bank** - Stores energy to be transfer wirelessly Using the Wireless Energy Point
+- **Wireless Energy Point** - Transfers energy wirelessly using the Energy from the Wireless Energy Bank
 ## Generators
 - **Hydro Generator** - Generates energy from flowing water (Waterlog the generator)
 - **Dragon Egg Generator** - Generates energy from the warmth of a dragon egg. (Place the dragon egg on top)
