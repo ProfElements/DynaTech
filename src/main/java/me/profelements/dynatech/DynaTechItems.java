@@ -349,7 +349,7 @@ public class DynaTechItems {
             "",
             "&fTransfers Energy Wirelessly",
             "&ffrom a Wireless Energy Bank",
-            "Right Click an Wireless Energy Bank to connect!",
+            "Right Click on the Wireless Energy Bank to connect!",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
             LoreBuilder.powerBuffer(5120),
