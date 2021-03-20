@@ -34,6 +34,8 @@ import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberNethe
 import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberNetherMK2;
 import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberOcean;
 import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberOceanMK2;
+import me.profelements.dynatech.items.electric.transfer.WirelessEnergyBank;
+import me.profelements.dynatech.items.electric.transfer.WirelessEnergyPoint;
 import me.profelements.dynatech.items.misc.Bee;
 import me.profelements.dynatech.items.misc.ItemBand;
 import me.profelements.dynatech.items.misc.MobDropItem;
@@ -430,6 +432,24 @@ public class DynaTechItemsSetup {
         .setEnergyConsumption(1024)
         .setProcessingSpeed(1)
         .register(plugin);
+                
+        //Make Wireless Energy Bank and Wireless Energy more costly
+        new WirelessEnergyBank(DynaTechItems.DynaTechGeneral, 10240, DynaTechItems.WIRELESS_ENERGY_BANK, RecipeType.ENHANCED_CRAFTING_TABLE, 
+                new ItemStack[] {
+                    DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.WIRELESS_CHARGER, DynaTechItems.ADVANCED_MACHINE_SCRAP, 
+                    DynaTechItems.WIRELESS_CHARGER, SlimefunItems.BIG_CAPACITOR, DynaTechItems.WIRELESS_CHARGER,
+                    DynaTechItems.GHOSTLY_ESSENCE, DynaTechItems.WIRELESS_CHARGER, DynaTechItems.GHOSTLY_ESSENCE
+                }
+        ).register(plugin);
+        
+        new WirelessEnergyPoint(DynaTechItems.DynaTechGeneral, 5120, 1024, DynaTechItems.WIRELESS_ENERGY_POINT, RecipeType.ENHANCED_CRAFTING_TABLE, 
+                new ItemStack[] {
+                    SlimefunItems.ENERGY_CONNECTOR, DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.ENERGY_CONNECTOR,
+                    DynaTechItems.GHOSTLY_ESSENCE, DynaTechItems.ANCIENT_MACHINE_CORE, DynaTechItems.GHOSTLY_ESSENCE,
+                    SlimefunItems.ENERGY_CONNECTOR, DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.ENERGY_CONNECTOR
+                }
+        
+        ).register(plugin);
 
         //Generators
         new HydroGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,

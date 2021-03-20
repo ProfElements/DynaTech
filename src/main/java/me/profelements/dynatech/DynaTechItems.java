@@ -25,9 +25,9 @@ public class DynaTechItems {
             new CustomItem(Material.IRON_SHOVEL, "&bScoop the Bee using a Scoop")
     );
 
-    public static final RecipeType DynaTechStarDustMeteor = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "dt_stardust_meteor"),
-            new CustomItem(Material.FIRE_CHARGE, "&bDrops from a Stardust Meteor that has fallen.")
-    );
+    //public static final RecipeType DynaTechStarDustMeteor = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "dt_stardust_meteor"),
+    //        new CustomItem(Material.FIRE_CHARGE, "&bDrops from a Stardust Meteor that has fallen.")
+    //);
 
     //Materials
     public static final SlimefunItemStack STAINLESS_STEEL = new SlimefunItemStack("STAINLESS_STEEL", Material.IRON_INGOT, "&6Stainless Steel Ingot");
@@ -342,6 +342,32 @@ public class DynaTechItems {
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
             LoreBuilder.power(1024, " per block converted.")
            );
+
+    public static final SlimefunItemStack WIRELESS_ENERGY_POINT = new SlimefunItemStack("WIRELESS_ENERGY_POINT",
+            new CustomItem(SkullItem.fromHash("335a21d95e8597759fb259c951ea68e1ad3374ca41e56ef126ffabfe03c1e0")),
+            "&6Wireless Energy Point",
+            "",
+            "&fTransfers Energy Wirelessly",
+            "&ffrom a Wireless Energy Bank",
+            "Right Click an Wireless Energy Bank to connect!",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.powerBuffer(5120),
+            LoreBuilder.powerPerSecond(1024),
+            ""
+            );
+    public static final SlimefunItemStack WIRELESS_ENERGY_BANK = new SlimefunItemStack("WIRELESS_ENERGY_BANK",
+            Material.SNOW_BLOCK,
+            "&6Wireless Energy Bank",
+            "",
+            "&fStores power for an",
+            "&fWireless Energy Point to use.",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.CAPACITOR),
+            LoreBuilder.powerBuffer(10240),
+            LoreBuilder.powerPerSecond(1024),
+            ""
+            );
 
     //Generators
     public static final SlimefunItemStack WATER_MILL = new SlimefunItemStack("WATER_MILL",
