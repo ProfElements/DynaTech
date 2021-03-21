@@ -19,6 +19,7 @@ import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
@@ -57,6 +58,7 @@ public class WirelessEnergyPoint extends SlimefunItem implements EnergyNetProvid
             Location wirelessEnergyBank = StringToLocation(wirelessBankLocation);
 
             if (wirelessEnergyBank != null && BlockStorage.checkID(wirelessEnergyBank).equals(DynaTechItems.WIRELESS_ENERGY_BANK.getItemId())) {
+                PaperLib.getChunkAtAsync(wirelessEnergyBank);
                 int BankCharge = getCharge(wirelessEnergyBank);
                 
                 if (BankCharge > chargedNeeded) {
