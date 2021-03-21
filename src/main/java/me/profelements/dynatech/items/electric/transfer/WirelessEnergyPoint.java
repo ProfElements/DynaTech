@@ -2,10 +2,12 @@ package me.profelements.dynatech.items.electric.transfer;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
@@ -51,14 +53,22 @@ public class WirelessEnergyPoint extends SlimefunItem implements EnergyNetProvid
     @Override
     public int getGeneratedOutput(Location l, Config data) {
         String wirelessBankLocation = BlockStorage.getLocationInfo(l, "wireless-location");
-        
+    
         int chargedNeeded = getCapacity() - getCharge(l);
-
+    
         if(chargedNeeded != 0 && wirelessBankLocation != null) {
             Location wirelessEnergyBank = StringToLocation(wirelessBankLocation);
-
+    
+            // Note: You should probably also see if the Future from getChunkAtAsync is finished here.
+            // you don't really want to possibly trigger the chunk to load in another thread twice.
+            if (!wirelessEnergyBank.getWorld().isChunkLoaded(wirelessEnergyBank.getBlockX() >> 4, wirelessEnergyBank.getBlockZ() >> 4)) {
+                CompletableFuture<Chunk> chunkLoad = PaperLib.getChunkAtAsync(wirelessEnergyBank);
+                if (chunkLoad.isDone()) {
+                    return 0;
+                } 
+            }
+    
             if (wirelessEnergyBank != null && BlockStorage.checkID(wirelessEnergyBank).equals(DynaTechItems.WIRELESS_ENERGY_BANK.getItemId())) {
-                PaperLib.getChunkAtAsync(wirelessEnergyBank);
                 int BankCharge = getCharge(wirelessEnergyBank);
                 
                 if (BankCharge > chargedNeeded) {
@@ -71,7 +81,7 @@ public class WirelessEnergyPoint extends SlimefunItem implements EnergyNetProvid
                 }
                 
             }
-
+    
         }
         return 0;
     }
