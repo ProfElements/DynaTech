@@ -9,6 +9,7 @@ import org.bukkit.scheduler.BukkitTask;
 
 import io.github.mooy1.infinitylib.PluginUtils;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.misc.DimensionalHomeDimension;
@@ -47,6 +48,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
             WorldCreator worldCreator = new WorldCreator("dimensionalhome");
             worldCreator.generator(new DimensionalHomeDimension());
             worldCreator.createWorld();
+            new BlockStorage(Bukkit.getWorld("dimensionalhome"));
         }
 
         DynaTechItemsSetup.setup(this);
