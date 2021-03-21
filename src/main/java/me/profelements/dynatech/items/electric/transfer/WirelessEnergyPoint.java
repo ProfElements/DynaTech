@@ -63,7 +63,7 @@ public class WirelessEnergyPoint extends SlimefunItem implements EnergyNetProvid
             // you don't really want to possibly trigger the chunk to load in another thread twice.
             if (!wirelessEnergyBank.getWorld().isChunkLoaded(wirelessEnergyBank.getBlockX() >> 4, wirelessEnergyBank.getBlockZ() >> 4)) {
                 CompletableFuture<Chunk> chunkLoad = PaperLib.getChunkAtAsync(wirelessEnergyBank);
-                if (chunkLoad.isDone()) {
+                if (!chunkLoad.isDone()) {
                     return 0;
                 } 
             }
