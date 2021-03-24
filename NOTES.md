@@ -5,7 +5,7 @@
 - **Stave** : A magical staff that changes based on what runes you add to it
 - **Skeletal Bee** : A Bee that sometimes makes material hive output double at the cost of dying // Texture > 7129324c900a58cf34b42ce3f07c1753f9f7523f22bccbc9afc63f191fd1395
 - **Tesseract** : A 2 way teleporting of items and energy
-- **Wireless Energy Hotspot && Wireless Energy Bank** : Same idea as the Tesseract except just with energy and some linking.
+- **Wireless Item Input and Output** : Wireless transfer of Items from one point to the other
 
 ## Steam Revolution
 - **Steam Tank** : A tank that hold steams for all machines in a Steam network can grab and use
