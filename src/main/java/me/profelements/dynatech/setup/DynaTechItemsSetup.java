@@ -36,6 +36,8 @@ import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberOcean
 import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberOceanMK2;
 import me.profelements.dynatech.items.electric.transfer.WirelessEnergyBank;
 import me.profelements.dynatech.items.electric.transfer.WirelessEnergyPoint;
+import me.profelements.dynatech.items.electric.transfer.WirelessItemInput;
+import me.profelements.dynatech.items.electric.transfer.WirelessItemOutput;
 import me.profelements.dynatech.items.misc.Bee;
 import me.profelements.dynatech.items.misc.ItemBand;
 import me.profelements.dynatech.items.misc.MobDropItem;
@@ -449,6 +451,22 @@ public class DynaTechItemsSetup {
                     SlimefunItems.ENERGY_CONNECTOR, DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.ENERGY_CONNECTOR
                 }
         
+        ).register(plugin);
+
+        new WirelessItemInput(DynaTechItems.DynaTechGeneral, 1024, DynaTechItems.WIRELESS_ITEM_INPUT, RecipeType.ENHANCED_CRAFTING_TABLE,
+                  new ItemStack[] {
+                      SlimefunItems.CARGO_INPUT_NODE, DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.CARGO_INPUT_NODE,
+                      DynaTechItems.GHOSTLY_ESSENCE, DynaTechItems.ANCIENT_MACHINE_CORE, DynaTechItems.GHOSTLY_ESSENCE,
+                      SlimefunItems.CARGO_INPUT_NODE, DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.CARGO_INPUT_NODE
+                 }
+        ).register(plugin);
+
+        new WirelessItemOutput(DynaTechItems.DynaTechGeneral, 1024, DynaTechItems.WIRELESS_ITEM_OUTPUT, RecipeType.ENHANCED_CRAFTING_TABLE,
+                  new ItemStack[] {
+                      DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.GHOSTLY_ESSENCE, DynaTechItems.ADVANCED_MACHINE_SCRAP,
+                      DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.BIG_CAPACITOR, DynaTechItems.GHOSTLY_ESSENCE,
+                      SlimefunItems.CARGO_OUTPUT_NODE_2, DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.CARGO_OUTPUT_NODE_2
+                 }
         ).register(plugin);
 
         //Generators
