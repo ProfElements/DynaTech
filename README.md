@@ -19,6 +19,8 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Orechid** - Changes Stone and Netherack into Overworld and Nether ores respectively
 - **Wireless Energy Bank** - Stores energy to be transfer wirelessly Using the Wireless Energy Point
 - **Wireless Energy Point** - Transfers energy wirelessly using the Energy from the Wireless Energy Bank
+- **Wireless Item Input** - Input point for 1 way wireless item transfer 
+- **Wireless Item Output** - Output Point for 1 way wireless item transfer 
 ## Generators
 - **Hydro Generator** - Generates energy from flowing water (Waterlog the generator)
 - **Dragon Egg Generator** - Generates energy from the warmth of a dragon egg. (Place the dragon egg on top)
