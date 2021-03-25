@@ -6,7 +6,6 @@
 - **Skeletal Bee** : A Bee that sometimes makes material hive output double at the cost of dying // Texture > 7129324c900a58cf34b42ce3f07c1753f9f7523f22bccbc9afc63f191fd1395
 - **Tesseract** : A 2 way teleporting of items and energy
 - **Nether Heat Upgrade** : When applied to a solar panel, let them generate half the amount of energy while in the nether.
-- **Wireless Item Input and Output** : Says on the tin wireless input and output
 
 ## Steam Revolution
 - **Steam Tank** : A tank that hold steams for all machines in a Steam network can grab and use
