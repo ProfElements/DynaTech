@@ -68,7 +68,7 @@ public class WirelessEnergyPoint extends SlimefunItem implements EnergyNetProvid
                 } 
             }
     
-            if (wirelessEnergyBank != null && BlockStorage.checkID(wirelessEnergyBank) != null && BlockStorage.checkID(wirelessEnergyBank).equals(DynaTechItems.WIRELESS_ITEM_INPUT.getItemId())) {
+            if (wirelessEnergyBank != null && BlockStorage.checkID(wirelessEnergyBank) != null && BlockStorage.checkID(wirelessEnergyBank).equals(DynaTechItems.WIRELESS_ENERGY_BANK.getItemId())) {
                 int BankCharge = getCharge(wirelessEnergyBank);
                 
                 if (BankCharge > chargedNeeded) {
