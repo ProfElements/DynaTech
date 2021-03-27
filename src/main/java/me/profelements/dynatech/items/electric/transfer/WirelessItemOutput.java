@@ -189,7 +189,7 @@ public class WirelessItemOutput extends SlimefunItem implements EnergyNetCompone
             } 
         }
 
-        if (wirelessItemInput != null && BlockStorage.checkID(wirelessItemInput).equals(DynaTechItems.WIRELESS_ITEM_INPUT.getItemId())) {
+        if (wirelessItemInput != null && BlockStorage.checkID(wirelessItemInput) != null && BlockStorage.checkID(wirelessItemInput).equals(DynaTechItems.WIRELESS_ITEM_INPUT.getItemId())) {
             BlockMenu input = BlockStorage.getInventory(wirelessItemInput);
             BlockMenu output = BlockStorage.getInventory(b);
             
