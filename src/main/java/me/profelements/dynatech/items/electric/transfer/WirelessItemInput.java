@@ -140,11 +140,6 @@ public class WirelessItemInput extends SlimefunItem implements EnergyNetComponen
         return EnergyNetComponentType.CONSUMER;
     }
 
-    private static final Location StringToLocation(String locString) {
-        String[] locComponents = locString.split(";");
-        return new Location(Bukkit.getWorld(locComponents[0]), Double.parseDouble(locComponents[1]), Double.parseDouble(locComponents[2]), Double.parseDouble(locComponents[3]));
-    }
-
 }
 
     
