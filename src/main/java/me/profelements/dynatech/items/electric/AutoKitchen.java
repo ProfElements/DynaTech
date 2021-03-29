@@ -1,6 +1,7 @@
 package me.profelements.dynatech.items.electric;
 
 import io.github.thebusybiscuit.exoticgarden.ExoticGardenRecipeTypes;
+import io.github.thebusybiscuit.slimefun4.core.attributes.NotHopperable;
 import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
@@ -22,7 +23,7 @@ import java.util.List;
  * @author ProfElements https://github.com/ProfElements
  * @author NCBPFluffyBear https://github.com/NCBPFluffyBear
 */
-public class AutoKitchen extends AMachine {
+public class AutoKitchen extends AMachine implements NotHopperable {
 
     private static final MultiBlockMachine mblock = (MultiBlockMachine) ExoticGardenRecipeTypes.KITCHEN.getMachine();
 

@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemStack;
 
 import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
+import io.github.thebusybiscuit.slimefun4.core.attributes.NotHopperable;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -18,7 +19,7 @@ import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
 
 import javax.annotation.Nonnull;
 
-public class CulinaryGenerator extends AMachineGenerator {
+public class CulinaryGenerator extends AMachineGenerator implements NotHopperable {
 
     private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>(this, "exotic-garden-integration", true);
 
