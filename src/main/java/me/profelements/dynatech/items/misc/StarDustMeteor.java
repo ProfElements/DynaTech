@@ -6,7 +6,7 @@ import org.bukkit.block.Biome;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.thebusybiscuit.slimefun4.api.geo.GEOResource;
-import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
+import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -16,7 +16,7 @@ import me.profelements.dynatech.DynaTech;
 
 import javax.annotation.Nonnull;
 
-public class StarDustMeteor extends SlimefunItem implements NotPlaceable, GEOResource {
+public class StarDustMeteor extends UnplaceableBlock implements GEOResource {
 
     public static final SlimefunItemStack STARDUST_METEOR = new SlimefunItemStack(
         "STARDUST_METEOR",
