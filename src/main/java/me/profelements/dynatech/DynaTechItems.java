@@ -388,6 +388,7 @@ public class DynaTechItems {
            "",
            "&fTransfer Items Wirelessly",
            "&ffrom Wireless Item Input",
+           "Right Click on the Wireless Item Output to connect!",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE), 
             LoreBuilder.powerBuffer(1024),
