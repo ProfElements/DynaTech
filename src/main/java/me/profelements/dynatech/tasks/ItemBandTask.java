@@ -2,6 +2,7 @@ package me.profelements.dynatech.tasks;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -50,7 +51,12 @@ public class ItemBandTask implements Runnable {
                             {
                                 double health = p.getHealth();
                                 p.addPotionEffect(pe);
-                                p.setHealth(health);
+                                if (health > p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()) {
+                                    p.setHealth(p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+                                } else {
+                                    p.setHealth(health);
+                                }
+                                
                             } else {
                                 p.addPotionEffect(pe);
                             }
