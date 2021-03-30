@@ -38,15 +38,11 @@ public class InventoryFilterListener implements Listener {
             for (ItemStack item : p.getInventory().getContents()) {
                 if (item != null && item.getType() == inventoryFilter.getItem().getType() && item.hasItemMeta() && inventoryFilter.isItem(item)) {
                     if (SlimefunUtils.canPlayerUseItem(p, item, true)) {
-                        filterItems(p, item);
+                        PlayerProfile.getBackpack(item, backpack -> DynaTech.runSync(() -> filterInventory(p, backpack)));
                     }
                 }
             }
         }
-    }
-
-    private void filterItems(@Nonnull Player p, @Nonnull ItemStack inventoryFilter) {
-        PlayerProfile.getBackpack(inventoryFilter, backpack -> DynaTech.runSync(() -> filterInventory(p, backpack)));
     }
 
     private void filterInventory(@Nonnull Player p, @Nonnull PlayerBackpack backpack) {
