@@ -110,7 +110,7 @@ public class GrowthChamberMK2 extends AMachine {
                         } else
                         if (sfItem.getId().contains("_SAPLING")) {
                             ItemStack fruit = SlimefunItem.getByID(sfItem.getId().replace("_SAPLING", "")).getItem();
-                            fruit.setAmount(9);
+                            
                             MachineRecipe recipe = new MachineRecipe(60, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {sfItem.getItem(), fruit});
 
                             inv.consumeItem(inputSlot);
