@@ -474,14 +474,14 @@ public class DynaTechItemsSetup {
                 new ItemStack[] {
                         SlimefunItems.ALUMINUM_INGOT, SlimefunItems.SULFATE, SlimefunItems.ALUMINUM_INGOT,
                         SlimefunItems.ALUMINUM_INGOT, SlimefunItems.ENERGY_CONNECTOR, SlimefunItems.ALUMINUM_INGOT,
-                        new ItemStack(Material.WHITE_CONCRETE), null, new ItemStack(Material.WHITE_CONCRETE)
+                        DynaTechItems.STAINLESS_STEEL_ROTOR, null, DynaTechItems.STAINLESS_STEEL_ROTOR,
                 }).register(plugin);
 
         new HydroGenerator(DynaTechItems.DynaTechGeneral, 64, 512, DynaTechItems.WATER_TURBINE, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        DynaTechItems.WATER_MILL, DynaTechItems.STAINLESS_STEEL, DynaTechItems.WATER_MILL,
-                        SlimefunItems.SOLDER_INGOT, SlimefunItems.GOLD_8K, SlimefunItems.SOLDER_INGOT,
-                        DynaTechItems.WATER_MILL, DynaTechItems.STAINLESS_STEEL, DynaTechItems.WATER_MILL
+                        DynaTechItems.WATER_MILL, SlimefunItems.REINFORCED_ALLOY_INGOT, DynaTechItems.WATER_MILL,
+                        SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.GOLD_8K, SlimefunItems.REINFORCED_ALLOY_INGOT,
+                        DynaTechItems.WATER_MILL, SlimefunItems.REINFORCED_ALLOY_INGOT, DynaTechItems.WATER_MILL
                 }).register(plugin);
 
         new DragonEggGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.DRAGON_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE,
