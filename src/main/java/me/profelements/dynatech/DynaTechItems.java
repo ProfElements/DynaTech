@@ -140,6 +140,17 @@ public class DynaTechItems {
             "&f&oPowerup!"
             ); 
             
+    public static final SlimefunItemStack TESSERACT_BINDER = new SlimefunItemStack("TESSERACT_BINDER",
+            Material.NETHERITE_HOE,
+            "&6Tesseract Binder",
+            "",
+            "&f Used to bind 2 Tesseract together.",
+            "",
+            "&fRight click to get Location of Tesseract",
+            "&fCrouch Right Click to bind location to Tesseract",
+            ""
+            );
+            
     //Machines
     public static final SlimefunItemStack AUTO_KITCHEN = new SlimefunItemStack("AUTO_KITCHEN",
             Material.SMOKER,
@@ -398,10 +409,8 @@ public class DynaTechItems {
     );
 
     public static final SlimefunItemStack TESSERACT = new SlimefunItemStack("TESSERACT",
-            Material.RESPAWN_ANCHOR, 
+            Material.PURPUR_BLOCK, 
             "&6Tesseract",
-            "",
-            "&4&oCURRENTLY EXPERMENTAL. Very weird to setup",
             "",
             "&fTransfers Items and Energy Wirelessly",
             "&fThese are even 2-way!",

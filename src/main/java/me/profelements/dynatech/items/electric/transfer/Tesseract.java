@@ -19,7 +19,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
-import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
@@ -48,7 +47,7 @@ import me.profelements.dynatech.DynaTechItems;
 import net.md_5.bungee.api.ChatColor;
 
 public class Tesseract extends SlimefunItem implements EnergyNetComponent {
-    protected static final NamespacedKey WIRELESS_LOCATION_KEY = new NamespacedKey(DynaTech.getInstance(), "tesseract-pair-location");
+    public static final NamespacedKey WIRELESS_LOCATION_KEY = new NamespacedKey(DynaTech.getInstance(), "tesseract-pair-location");
 	private final int capacity;
     private final int energyRate;
             
@@ -58,7 +57,7 @@ public class Tesseract extends SlimefunItem implements EnergyNetComponent {
         this.capacity = capacity;
         this.energyRate = energyRate;
 
-        addItemHandler(onBlockBreak(), onBlockPlace(), onRightClick());
+        addItemHandler(onBlockBreak());
         
         new BlockMenuPreset("TESSERACT", "Tesseract") {
 
@@ -107,53 +106,6 @@ public class Tesseract extends SlimefunItem implements EnergyNetComponent {
 
              
        });
-    }
-
-    private ItemHandler onRightClick() {
-        return new ItemUseHandler() {
-
-            @Override
-            public void onRightClick(PlayerRightClickEvent event) {
-
-                Optional<Block> blockClicked = event.getClickedBlock();           
-                Optional<SlimefunItem> sfBlockClicked = event.getSlimefunBlock();
-                if (blockClicked.isPresent() && sfBlockClicked.isPresent()) {
-                    Location blockLoc = blockClicked.get().getLocation();
-                    SlimefunItem sfBlock = sfBlockClicked.get();
-                    ItemStack item = event.getItem();
-
-
-                    if (sfBlock != null && sfBlock.getId().equals(DynaTechItems.TESSERACT.getItemId()) && blockLoc != null) {
-                        event.cancel();
-                        ItemMeta im = item.getItemMeta();
-                        String locationString = LocationToString(blockLoc);
-                        
-                        PersistentDataAPI.setString(im, WIRELESS_LOCATION_KEY, locationString);
-                        item.setItemMeta(im);
-                        setItemLore(item, blockLoc);
-                    }
-                }   
-            } 
-        };
-    }
-
-    private ItemHandler onBlockPlace() {
-        return new BlockPlaceHandler(false) {
-            @Override
-            public void onPlayerPlace(BlockPlaceEvent event) {
-                
-                
-                Location blockLoc = event.getBlockPlaced().getLocation();
-                ItemStack item = event.getItemInHand();
-                String locationString = PersistentDataAPI.getString(item.getItemMeta(), WIRELESS_LOCATION_KEY);
-                
-                if (item != null && item.getType() == DynaTechItems.TESSERACT.getType() && item.hasItemMeta() && locationString != null) {
-                    BlockStorage.addBlockInfo(blockLoc, "tesseract-pair-location", locationString);
-                    
-                }   
-            }
-            
-        };
     }
 
     private ItemHandler onBlockBreak() {
@@ -271,7 +223,7 @@ public class Tesseract extends SlimefunItem implements EnergyNetComponent {
         return energyRate;
     }
 
-    private void setItemLore(ItemStack item, Location l) {
+    public static void setItemLore(ItemStack item, Location l) {
         ItemMeta im = item.getItemMeta();
         List<String> lore = im.getLore();
         for (int i = 0; i < lore.size(); i++) {
@@ -287,11 +239,11 @@ public class Tesseract extends SlimefunItem implements EnergyNetComponent {
         
     }
 
-    private String LocationToString(Location l) {
+    public static String LocationToString(Location l) {
         return l.getWorld().getName()+";"+l.getBlockX()+";"+l.getBlockY()+";"+l.getBlockZ();
     }
 
-    private static final Location StringToLocation(String locString) {
+    public static final Location StringToLocation(String locString) {
         String[] locComponents = locString.split(";");
         return new Location(Bukkit.getWorld(locComponents[0]), Double.parseDouble(locComponents[1]), Double.parseDouble(locComponents[2]), Double.parseDouble(locComponents[3]));
     }

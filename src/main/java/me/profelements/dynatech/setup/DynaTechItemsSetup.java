@@ -50,6 +50,7 @@ import me.profelements.dynatech.items.tools.ElectricalStimulator;
 import me.profelements.dynatech.items.tools.InventoryFilter;
 import me.profelements.dynatech.items.tools.Orechid;
 import me.profelements.dynatech.items.tools.Scoop;
+import me.profelements.dynatech.items.tools.TesseractBinder;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -220,6 +221,14 @@ public class DynaTechItemsSetup {
                     new ItemStack(Material.NETHER_STAR), DynaTechItems.VEX_GEM, new ItemStack(Material.NETHER_STAR),
                     SlimefunItems.COBALT_PICKAXE, new ItemStack(Material.NETHER_STAR), SlimefunItems.COBALT_PICKAXE
                 }, new PotionEffect[] {new PotionEffect(PotionEffectType.FAST_DIGGING, 20*15, 1, true) }    
+        ).register(plugin);
+
+        new TesseractBinder(DynaTechItems.DynaTechGeneral, DynaTechItems.TESSERACT_BINDER, RecipeType.MAGIC_WORKBENCH, 
+                new ItemStack[] {
+                    null, DynaTechItems.TESSERACTING_OBJ, null,
+                    null, DynaTechItems.STAINLESS_STEEL, null,
+                    null, DynaTechItems.STAINLESS_STEEL, null,
+                }
         ).register(plugin);
 
         if (DynaTech.isInfinityExpansionInstalled()) {
