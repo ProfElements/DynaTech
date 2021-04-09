@@ -38,6 +38,7 @@ public class DynaTechItems {
     public static final SlimefunItemStack ADVANCED_MACHINE_SCRAP = new SlimefunItemStack("ADVANCED_MACHINE_SCRAP",SkullItem.fromHash("4b57a4c68d1d2c5de978ea6de4db91ef387ca6c37966bb8e7c8826f937e6c3"), "&6Advanced Machine Scrap");
     public static final SlimefunItemStack STAR_DUST = new SlimefunItemStack("STAR_DUST", Material.NETHER_STAR, "&6Star Dust");
     public static final SlimefunItemStack GHOSTLY_ESSENCE = new SlimefunItemStack("GHOSTLY_ESSENCE", Material.WHITE_DYE, "&6Ghostly Essence");
+    public static final SlimefunItemStack TESSERACTING_OBJ = new SlimefunItemStack("TESSERACTING_OBJ", Material.MUSHROOM_STEM, "&6Tesseracting Object", "&f&oIt shimmers and shifts in your hands");
 
     //Bees
     public static final SlimefunItemStack BEE = new SlimefunItemStack("BEE", SkullItem.fromHash("12724a9a4cdd68ba49415560e5be40b4a1c47cb5be1d66aedb52a30e62ef2d47"), "&6Bee");
@@ -394,6 +395,22 @@ public class DynaTechItems {
             LoreBuilder.powerBuffer(1024),
             LoreBuilder.power(8, " per stack of items"),
             ""
+    );
+
+    public static final SlimefunItemStack TESSERACT = new SlimefunItemStack("TESSERACT",
+            Material.RESPAWN_ANCHOR, 
+            "&6Tesseract",
+            "",
+            "&4&oCURRENTLY EXPERMENTAL. Very weird to setup",
+            "",
+            "&fTransfers Items and Energy Wirelessly",
+            "&fThese are even 2-way!",
+            "Right Click on another Tesseract to connect!",
+            "",
+            LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
+            LoreBuilder.powerBuffer(65535),
+            LoreBuilder.powerPerSecond(1024),
+            ""  
     );
 
     //Generators

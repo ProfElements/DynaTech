@@ -34,6 +34,7 @@ import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberNethe
 import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberNetherMK2;
 import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberOcean;
 import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberOceanMK2;
+import me.profelements.dynatech.items.electric.transfer.Tesseract;
 import me.profelements.dynatech.items.electric.transfer.WirelessEnergyBank;
 import me.profelements.dynatech.items.electric.transfer.WirelessEnergyPoint;
 import me.profelements.dynatech.items.electric.transfer.WirelessItemInput;
@@ -127,6 +128,14 @@ public class DynaTechItemsSetup {
                 null, new CustomItem(SkullItem.fromHash("c2ec5a516617ff1573cd2f9d5f3969f56d5575c4ff4efefabd2a18dc7ab98cd"), "&aVex"), null,
                 null, null, null
         }, 80).register(plugin);
+
+        new SlimefunItem(DynaTechItems.DynaTechGeneral, DynaTechItems.TESSERACTING_OBJ, RecipeType.ANCIENT_ALTAR,
+            new ItemStack[] {
+                DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.ENDER_RUNE, DynaTechItems.VEX_GEM, 
+                SlimefunItems.ENDER_RUNE, new ItemStack(Material.WITHER_ROSE), SlimefunItems.ENDER_RUNE, 
+                DynaTechItems.VEX_GEM, SlimefunItems.ENDER_RUNE, DynaTechItems.GHOSTLY_ESSENCE
+            }
+        ).register(plugin);
 
         //Bees
         new Bee(DynaTechItems.DynaTechGeneral, DynaTechItems.BEE, DynaTechItems.DynaTechScoop,
@@ -467,6 +476,14 @@ public class DynaTechItemsSetup {
                       DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.BIG_CAPACITOR, DynaTechItems.GHOSTLY_ESSENCE,
                       SlimefunItems.CARGO_OUTPUT_NODE_2, DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.CARGO_OUTPUT_NODE_2
                  }
+        ).register(plugin);
+
+        new Tesseract(DynaTechItems.DynaTechGeneral, 65535, 1024, DynaTechItems.TESSERACT, RecipeType.MAGIC_WORKBENCH,
+                new ItemStack[] {
+                    DynaTechItems.WIRELESS_ENERGY_BANK, DynaTechItems.TESSERACTING_OBJ, DynaTechItems.WIRELESS_ITEM_INPUT,
+                    DynaTechItems.TESSERACTING_OBJ, DynaTechItems.GHOSTLY_ESSENCE, DynaTechItems.TESSERACTING_OBJ,
+                    DynaTechItems.WIRELESS_ITEM_OUTPUT, DynaTechItems.TESSERACTING_OBJ, DynaTechItems.WIRELESS_ENERGY_POINT
+                }
         ).register(plugin);
 
         //Generators
