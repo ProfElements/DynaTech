@@ -13,7 +13,10 @@ import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
+
+import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Set;
 
 public class InventoryFilterListener implements Listener {
@@ -46,19 +49,22 @@ public class InventoryFilterListener implements Listener {
     }
 
     private void filterInventory(@Nonnull Player p, @Nonnull PlayerBackpack backpack) {
+        List<String> blacklistedStrings = new ArrayList<String>();
         for (ItemStack item : backpack.getInventory().getContents()) {
             if (item != null && item.getType() != Material.AIR) {
                 blacklistedMaterials.add(item.getType());
+                blacklistedStrings.add(item.getItemMeta().getDisplayName());
             }
 
             if (backpack.getInventory().isEmpty()) {
                 blacklistedMaterials.clear();
+                blacklistedStrings.clear();
             }
         }
 
         //CANT DROP AIR SO HAVE TO ITERATE THROUGH THE INVENTORY
         for (ItemStack item : p.getInventory().getStorageContents()) {
-            if (item != null && blacklistedMaterials.contains(item.getType())) {
+            if (item != null && blacklistedMaterials.contains(item.getType()) && blacklistedStrings.contains(item.getItemMeta().getDisplayName())) {
                     item.setAmount(0);
                     break;
             }
