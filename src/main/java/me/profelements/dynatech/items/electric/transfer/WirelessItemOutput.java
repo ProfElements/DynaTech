@@ -161,6 +161,15 @@ public class WirelessItemOutput extends SlimefunItem implements EnergyNetCompone
 
 			@Override
 			public void onPlayerBreak(BlockBreakEvent event, ItemStack block, List<ItemStack> drops) {
+                BlockMenu inv = BlockStorage.getInventory(event.getBlock());
+                
+                if (inv != null) {
+                    inv.dropItems(event.getBlock().getLocation(), getInputSlots());
+                    inv.dropItems(event.getBlock().getLocation(), getOutputSlots());
+    
+                }
+
+
 				BlockStorage.clearBlockInfo(event.getBlock().getLocation());
 			}
             

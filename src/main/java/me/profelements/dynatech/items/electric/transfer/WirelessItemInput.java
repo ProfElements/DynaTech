@@ -8,11 +8,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
@@ -21,6 +22,7 @@ import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
+import me.mrCookieSlime.Slimefun.Objects.handlers.ItemHandler;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
@@ -40,6 +42,8 @@ public class WirelessItemInput extends SlimefunItem implements EnergyNetComponen
         super(category, item, recipeType, recipe);
 
         this.capacity = capacity;
+
+        addItemHandler(onBlockBreak());
         
         new BlockMenuPreset("WIRELESS_ITEM_INPUT", "Wireless Item Input") {
 
@@ -90,6 +94,25 @@ public class WirelessItemInput extends SlimefunItem implements EnergyNetComponen
        });
     }
 
+    private ItemHandler onBlockBreak() {
+        return new BlockBreakHandler(false, false) {
+
+			@Override
+			public void onPlayerBreak(BlockBreakEvent event, ItemStack block, List<ItemStack> drops) {
+                BlockMenu inv = BlockStorage.getInventory(event.getBlock());
+                
+                if (inv != null) {
+                    inv.dropItems(event.getBlock().getLocation(), getInputSlots());
+                    inv.dropItems(event.getBlock().getLocation(), getOutputSlots());
+    
+                }
+
+
+				BlockStorage.clearBlockInfo(event.getBlock().getLocation());
+			}
+            
+        };
+    }
     protected void tick(Block b) {
             BlockMenu menu = BlockStorage.getInventory(b);
             updateKnowledgePane(menu, getCharge(b.getLocation()));
