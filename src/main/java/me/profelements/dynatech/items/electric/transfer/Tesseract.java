@@ -15,7 +15,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
+import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
@@ -40,7 +40,7 @@ import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
 import net.md_5.bungee.api.ChatColor;
 
-public class Tesseract extends SlimefunItem implements EnergyNetComponent {
+public class Tesseract extends SlimefunItem implements EnergyNetProvider {
     public static final NamespacedKey WIRELESS_LOCATION_KEY = new NamespacedKey(DynaTech.getInstance(), "tesseract-pair-location");
 	private final int capacity;
     private final int energyRate;
@@ -145,7 +145,6 @@ public class Tesseract extends SlimefunItem implements EnergyNetComponent {
         if (tesseractPair != null && BlockStorage.checkID(tesseractPair) != null && BlockStorage.checkID(tesseractPair).equals(DynaTechItems.TESSERACT.getItemId())) {
             BlockMenu input = BlockStorage.getInventory(tesseractPair);
             BlockMenu output = BlockStorage.getInventory(b);
-            int chargedNeeded = getCapacity() - getCharge(b.getLocation());
 
             updateKnowledgePane(output, getCharge(b.getLocation()));
             
@@ -157,23 +156,53 @@ public class Tesseract extends SlimefunItem implements EnergyNetComponent {
                     itemStack.setAmount(0);
                 }
             }
-            if (chargedNeeded != 0) {
-                int BankCharge = getCharge(tesseractPair);
-                
-                if (BankCharge > chargedNeeded) {
-                    if (chargedNeeded > getEnergyRate()) {
-                        removeCharge(tesseractPair, getEnergyRate());
-                       addCharge(b.getLocation(), getEnergyRate());
-                    }
-                    removeCharge(tesseractPair, chargedNeeded);
-                    addCharge(b.getLocation(), chargedNeeded);
-                }
-            }
             
         }
 
     }
- 
+
+    @Override
+    public int getGeneratedOutput(Location l, Config data) {
+        String tesseractPairLocation = BlockStorage.getLocationInfo(l, "tesseract-pair-location");
+    
+        int chargedNeeded = getCapacity() - getCharge(l);
+    
+        if(chargedNeeded != 0 && tesseractPairLocation != null) {
+            Location tesseractPair = StringToLocation(tesseractPairLocation);
+    
+            // Note: You should probably also see if the Future from getChunkAtAsync is finished here.
+            // you don't really want to possibly trigger the chunk to load in another thread twice.
+            if (!tesseractPair.getWorld().isChunkLoaded(tesseractPair.getBlockX() >> 4, tesseractPair.getBlockZ() >> 4)) {
+                CompletableFuture<Chunk> chunkLoad = PaperLib.getChunkAtAsync(tesseractPair);
+                if (!chunkLoad.isDone()) {
+                    return 0;
+                } 
+            }
+    
+            if (tesseractPair != null && BlockStorage.checkID(tesseractPair) != null && BlockStorage.checkID(tesseractPair).equals(DynaTechItems.TESSERACT.getItemId())) {
+                int BankCharge = getCharge(tesseractPair);
+                
+                if (BankCharge > chargedNeeded && BankCharge != 0) {
+                    if (chargedNeeded > getEnergyRate()) {
+                        removeCharge(tesseractPair, getEnergyRate());
+                        return getEnergyRate();
+                    }
+                    removeCharge(tesseractPair, chargedNeeded);
+                    return chargedNeeded;
+                } else {
+                    if (chargedNeeded > getEnergyRate()) {
+                        removeCharge(tesseractPair, getEnergyRate());
+                        return getEnergyRate();
+                    }
+                    removeCharge(tesseractPair, BankCharge);
+                    return BankCharge;
+                }
+                
+            }
+    
+        }
+        return 0;
+    }
     private void updateKnowledgePane(BlockMenu menu, int currentCharge) {
         ItemStack knowledgePane = menu.getItemInSlot(4);
         ItemMeta im = knowledgePane.getItemMeta();
@@ -250,11 +279,4 @@ public class Tesseract extends SlimefunItem implements EnergyNetComponent {
         String[] locComponents = locString.split(";");
         return new Location(Bukkit.getWorld(locComponents[0]), Double.parseDouble(locComponents[1]), Double.parseDouble(locComponents[2]), Double.parseDouble(locComponents[3]));
     }
-
-    @Override
-    public EnergyNetComponentType getEnergyComponentType() {
-        return EnergyNetComponentType.CONSUMER;
-    }
-
-   
 }
