@@ -73,7 +73,7 @@ public class AntigravityBubble extends AMachine {
                         continue;
                     }
                     double distance2 = block.getLocation().distance(plr.getLocation());
-                    if (distance2 >= 22.5) {
+                    if (distance2 >= 22.5 && distance2 <= 50) {
                         plrsToRemove.add(plr.getUniqueId());
                     }
                 }
