@@ -5,11 +5,14 @@ import java.util.List;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.Objects.handlers.ItemHandler;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
@@ -27,6 +30,7 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
 
     public WeatherController(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
+        addItemHandler(onBlockBreak());
     }
 
     @Override
@@ -65,6 +69,16 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
                 removeCharge(b.getLocation(), getEnergyConsumption());
             }
         }
+    }
+
+
+    public ItemHandler onBlockBreak() {
+        return new BlockBreakHandler(false, false) {
+            @Override
+            public void onPlayerBreak(BlockBreakEvent event, ItemStack item, List<ItemStack> drops) {
+              DynaTech.runSync(()->event.getBlock().getWorld().setClearWeatherDuration(1200));
+            }   
+        };
     }
 
     @Nonnull
