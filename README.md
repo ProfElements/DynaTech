@@ -2,6 +2,8 @@
 A set of item and machines that I made to make things easier for me and just for fun.
 Most of these could possibly be overpowered or heavily underpowered.
 
+**THIS PLUGIN REQUIRES JAVA 11**
+
 ### [Download](https://thebusybiscuit.github.io/builds/ProfElements/DynaTech/master/)
 [![Build Status](https://thebusybiscuit.github.io/builds/ProfElements/DynaTech/master/badge.svg)](https://thebusybiscuit.github.io/builds/ProfElements/DynaTech/master)
 
