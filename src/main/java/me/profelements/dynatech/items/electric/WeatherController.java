@@ -76,7 +76,7 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
         return new BlockBreakHandler(false, false) {
             @Override
             public void onPlayerBreak(BlockBreakEvent event, ItemStack item, List<ItemStack> drops) {
-              DynaTech.runSync(()->event.getBlock().getWorld().setClearWeatherDuration(1200));
+              DynaTech.runSync(()->event.getBlock().getWorld().setClearWeatherDuration(60));
             }   
         };
     }

@@ -22,10 +22,12 @@ import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import javax.annotation.Nonnull;
 
 public class BarbedWire extends AMachine {
+    private static final int MAX_DIRECTION_VEL = 10000;
 
     public BarbedWire(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
     }
+    
     
     @Override
     public void tick(Block b) {
@@ -46,6 +48,11 @@ public class BarbedWire extends AMachine {
             if (e.getType() != EntityType.PLAYER  && e.getType() != EntityType.DROPPED_ITEM && !shotEntities.contains(e)) {
                 Vector tempV2 = tempV.multiply(-1).multiply(1.2).add(new Vector(1, 0.7, 1));
                 
+                if (tempV2.getX() >= MAX_DIRECTION_VEL || tempV2.getY() >= MAX_DIRECTION_VEL || tempV2.getZ() >= MAX_DIRECTION_VEL) {
+                    tempV2 = new Vector();
+                }
+
+
                 if (NumberConversions.isFinite(tempV2.getX()) && NumberConversions.isFinite(tempV2.getY()) && NumberConversions.isFinite(tempV2.getZ())) {
                     e.setVelocity(tempV2);
                     shotEntities.add(e);  
