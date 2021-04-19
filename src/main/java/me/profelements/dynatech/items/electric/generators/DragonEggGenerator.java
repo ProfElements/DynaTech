@@ -3,8 +3,8 @@ package me.profelements.dynatech.items.electric.generators;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -12,9 +12,11 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
+
 import javax.annotation.Nonnull;
 
-public class DragonEggGenerator extends AMachineGenerator {
+public class DragonEggGenerator extends SlimefunItem implements EnergyNetProvider {
 
     public DragonEggGenerator(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
@@ -34,19 +36,12 @@ public class DragonEggGenerator extends AMachineGenerator {
         return false;
     }
 
-    @Override
-    public String getMachineIdentifier() {
-        return "DRAGON_GENERATOR";
-    }
-
-    @Nonnull
-    @Override
-    public ItemStack getProgressBar() {
-        return new ItemStack(Material.DRAGON_EGG);
+    public static final int getEnergyProduction() {
+        return 32;
     }
 
     @Override
-    public boolean isGraphical() {
-        return false;
+    public int getCapacity() {
+        return 512;
     }
 }

@@ -506,10 +506,7 @@ public class DynaTechItemsSetup {
                 new ItemStack(Material.CRYING_OBSIDIAN), new ItemStack(Material.END_STONE), new ItemStack(Material.CRYING_OBSIDIAN),
                 new ItemStack(Material.CRYING_OBSIDIAN), SlimefunItems.LEAD_INGOT, new ItemStack(Material.CRYING_OBSIDIAN),
                 SlimefunItems.LEAD_INGOT, SlimefunItems.MEDIUM_CAPACITOR, SlimefunItems.LEAD_INGOT
-        })
-        .setEnergyCapacity(512)
-        .setEnergyProduction(32)
-        .register(plugin);
+        }).register(plugin);
 
         new ChippingGenerator(DynaTechItems.DT_GENERATORS, DynaTechItems.CHIPPING_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE, 
             new ItemStack[] {
