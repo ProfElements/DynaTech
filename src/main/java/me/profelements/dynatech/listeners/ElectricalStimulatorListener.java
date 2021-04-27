@@ -50,8 +50,10 @@ public class ElectricalStimulatorListener implements Listener {
         for (ItemStack item : p.getInventory().getStorageContents()) {
             if (item.getType() == electricalStimulator.getItem().getType() && SlimefunUtils.isItemSimilar(item, DynaTechItems.ELECTRICAL_STIMULATOR, false, false)) {
                 if (SlimefunUtils.canPlayerUseItem(p, item, true)) {
-                    p.setFoodLevel(20);
-                    p.setSaturation(20f);
+                    DynaTech.runSync(()-> {
+                        p.setFoodLevel(20);
+                        p.setSaturation(20f);
+                    });
                     p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, 1F , 1F);
                     electricalStimulator.removeItemCharge(item,  electricalStimulator.getEnergyComsumption());
                     break;
