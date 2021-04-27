@@ -49,7 +49,7 @@ public class AngelGem extends SlimefunItem implements NotPlaceable, Listener {
     private ItemDropHandler onItemDrop() {
         return (e, p, itemEntity) -> {
             ItemStack item = itemEntity.getItemStack();
-            if (SlimefunUtils.isItemSimilar(this.getItem(), DynaTechItems.ANGEL_GEM, false, false) && e.getPlayer().getGameMode() != GameMode.CREATIVE && item.getType() == DynaTechItems.ANGEL_GEM.getType()) {
+            if (e.getPlayer().getGameMode() != GameMode.CREATIVE && item.getType() == DynaTechItems.ANGEL_GEM.getType() && SlimefunUtils.isItemSimilar(item, DynaTechItems.ANGEL_GEM, false, false)) {
                 e.getPlayer().setFlying(false);
                 e.getPlayer().setAllowFlight(false);
                 e.getPlayer().setFlySpeed(0.1f);

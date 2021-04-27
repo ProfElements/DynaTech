@@ -3,6 +3,7 @@ package me.profelements.dynatech.listeners;
 import javax.annotation.Nonnull;
 
 import me.profelements.dynatech.DynaTech;
+import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
 
 import org.bukkit.Sound;
@@ -47,15 +48,13 @@ public class ElectricalStimulatorListener implements Listener {
         }
 
         for (ItemStack item : p.getInventory().getStorageContents()) {
-            if (item != null && item.getType() == electricalStimulator.getItem().getType() && item.hasItemMeta() && electricalStimulator.isItem(item)) {
+            if (item.getType() == electricalStimulator.getItem().getType() && SlimefunUtils.isItemSimilar(item, DynaTechItems.ELECTRICAL_STIMULATOR, false, false)) {
                 if (SlimefunUtils.canPlayerUseItem(p, item, true)) {
                     p.setFoodLevel(20);
                     p.setSaturation(20f);
                     p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, 1F , 1F);
                     electricalStimulator.removeItemCharge(item,  electricalStimulator.getEnergyComsumption());
                     break;
-                } else {
-                    return;
                 }
             }
         }
