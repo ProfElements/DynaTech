@@ -4,16 +4,19 @@ import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemDropHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.profelements.dynatech.DynaTech;
 
+import me.profelements.dynatech.DynaTechItems;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -46,11 +49,13 @@ public class AngelGem extends SlimefunItem implements NotPlaceable, Listener {
     private ItemDropHandler onItemDrop() {
         return (e, p, itemEntity) -> {
             ItemStack item = itemEntity.getItemStack();
-            if (item != null && item.getType() == this.getItem().getType() && item.hasItemMeta() && isItem(item) && e.getPlayer().getGameMode() != GameMode.CREATIVE) {
+            if (SlimefunUtils.isItemSimilar(this.getItem(), DynaTechItems.ANGEL_GEM, false, false) && e.getPlayer().getGameMode() != GameMode.CREATIVE && item.getType() == DynaTechItems.ANGEL_GEM.getType()) {
                 e.getPlayer().setFlying(false);
                 e.getPlayer().setAllowFlight(false);
                 e.getPlayer().setFlySpeed(0.1f);
                 e.getPlayer().setFallDistance(0.0f);
+            } else {
+                return false;
             }
             return true;
         };
