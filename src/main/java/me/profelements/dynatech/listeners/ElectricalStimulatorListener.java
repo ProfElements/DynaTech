@@ -29,8 +29,8 @@ public class ElectricalStimulatorListener implements Listener {
     public void onHungerLoss(FoodLevelChangeEvent e) {
         if (e.getEntity() instanceof Player) {
             Player p = (Player) e.getEntity();
-            if (e.getFoodLevel() < p.getFoodLevel()) {
-                feedPlayer((Player) e.getEntity()); 
+            if (p.getFoodLevel() < 20) {
+                feedPlayer(p); 
             }
         }
     }
