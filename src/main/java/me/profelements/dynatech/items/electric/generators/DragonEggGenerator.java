@@ -32,7 +32,10 @@ public class DragonEggGenerator extends SlimefunItem implements EnergyNetProvide
             if (dragonEgg.getType() == Material.DRAGON_EGG) {
                 BlockStorage.addBlockInfo(location, "egg", String.valueOf(true));
                 return getEnergyProduction();
+            } else {
+                BlockStorage.addBlockInfo(location, "egg", String.valueOf(false));
             }
+
          }else if (BlockStorage.getLocationInfo(location, "egg").equals(String.valueOf(true))){
             return getEnergyProduction();
         }
