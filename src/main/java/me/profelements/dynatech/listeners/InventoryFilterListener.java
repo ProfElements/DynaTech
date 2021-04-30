@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
@@ -50,22 +51,24 @@ public class InventoryFilterListener implements Listener {
 
     private void filterInventory(@Nonnull Player p, @Nonnull PlayerBackpack backpack) {
         List<String> blacklistedStrings = new ArrayList<String>();
+        if (backpack.getInventory().isEmpty()) {
+            blacklistedMaterials.clear();
+            blacklistedStrings.clear();
+        }
+
         for (ItemStack item : backpack.getInventory().getContents()) {
             if (item != null && item.getType() != Material.AIR) {
+                //Leaving this here to dont have to deal with checking if its using a default or custom name ie if they are farming custom items like SfItems.
                 blacklistedMaterials.add(item.getType());
                 blacklistedStrings.add(item.getItemMeta().getDisplayName());
-            }
-
-            if (backpack.getInventory().isEmpty()) {
-                blacklistedMaterials.clear();
-                blacklistedStrings.clear();
             }
         }
 
         //CANT DROP AIR SO HAVE TO ITERATE THROUGH THE INVENTORY
-        for (ItemStack item : p.getInventory().getStorageContents()) {
+        Inventory inv = p.getInventory();
+        for (ItemStack item : inv.getStorageContents()) {
             if (item != null && blacklistedMaterials.contains(item.getType()) && blacklistedStrings.contains(item.getItemMeta().getDisplayName())) {
-                    item.setAmount(0);
+                    inv.remove(item);
                     break;
             }
         }
