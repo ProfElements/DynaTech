@@ -95,12 +95,11 @@ public class PicnicBasketListener implements Listener {
 
             if (!event.isCancelled()) {
                 boolean itemConsumed = false;
-
-                if (DynaTech.isExoticGardenInstalled() && SlimefunItem.getByItem(item) != null) {
-                    SlimefunItem sfItem = SlimefunItem.getByItem(item);
+                
+                SlimefunItem sfItem = SlimefunItem.getByItem(item);
+                if (DynaTech.isExoticGardenInstalled() && sfItem != null) {
                     if (sfItem instanceof CustomFood) {
                         CustomFood cfItem = (CustomFood) sfItem;
-
                         if (cfItem.getFoodValue() + p.getFoodLevel() <= 20) {
                             p.setFoodLevel(p.getFoodLevel() + cfItem.getFoodValue());
                             itemConsumed = true;

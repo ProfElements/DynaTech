@@ -29,8 +29,8 @@ public class ElectricalStimulatorListener implements Listener {
     public void onHungerLoss(FoodLevelChangeEvent e) {
         if (e.getEntity() instanceof Player) {
             Player p = (Player) e.getEntity();
-            if (p.getFoodLevel() < 20) {
-                feedPlayer(p); 
+            if (p.getFoodLevel() < 20 && feedPlayer(p)) {
+                e.setFoodLevel(20); 
             }
         }
     }
@@ -38,28 +38,29 @@ public class ElectricalStimulatorListener implements Listener {
     @EventHandler
     public void onHungerDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player && e.getCause() == EntityDamageEvent.DamageCause.STARVATION) {
-            feedPlayer((Player) e.getEntity());
+            if(feedPlayer((Player) e.getEntity())) {
+                Player p = (Player) e.getEntity();
+                p.setFoodLevel(20);
+                p.setSaturation(20f);
+            }
         }
     }
 
-    private void feedPlayer(Player p) {
+    private boolean feedPlayer(Player p) {
         if (electricalStimulator == null || electricalStimulator.isDisabled()) {
-            return;
-        }
+            return false;
+       }
 
         for (ItemStack item : p.getInventory().getStorageContents()) {
-            if (item.getType() == electricalStimulator.getItem().getType() && SlimefunUtils.isItemSimilar(item, DynaTechItems.ELECTRICAL_STIMULATOR, false, false)) {
+            if (item != null && item.getType() == electricalStimulator.getItem().getType() && SlimefunUtils.isItemSimilar(item, DynaTechItems.ELECTRICAL_STIMULATOR, false, false)) {
                 if (SlimefunUtils.canPlayerUseItem(p, item, true)) {
-                    DynaTech.runSync(()-> {
-                        p.setFoodLevel(20);
-                        p.setSaturation(20f);
-                    });
                     p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, 1F , 1F);
                     electricalStimulator.removeItemCharge(item,  electricalStimulator.getEnergyComsumption());
-                    break;
+                    return true;
                 }
             }
         }
+        return false;
     }
 
 }
