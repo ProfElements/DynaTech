@@ -103,12 +103,13 @@
             <groupId>com.github.thebusybiscuit</groupId>
             <artifactId>exoticgarden</artifactId>
             <version>b7dfe8c35b</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.github.mooy1</groupId>
             <artifactId>InfinityExpansion</artifactId>
             <version>69b78a0fe6</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
