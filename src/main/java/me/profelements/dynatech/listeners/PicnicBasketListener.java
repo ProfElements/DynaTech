@@ -69,7 +69,7 @@ public class PicnicBasketListener implements Listener {
     private void takeFoodFromPicnicBasket(@Nonnull Player p, @Nonnull ItemStack picnicBasket) {
         PlayerProfile.getBackpack(picnicBasket, backpack -> {
             if (backpack != null) {
-                DynaTech.runSync(() -> consumeFood(p, picnicBasket, backpack));
+                DynaTech.inst().runSync(() -> consumeFood(p, picnicBasket, backpack));
             }
         });
 

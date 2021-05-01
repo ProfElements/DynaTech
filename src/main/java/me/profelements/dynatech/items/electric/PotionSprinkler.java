@@ -62,7 +62,7 @@ public class PotionSprinkler extends AMachine {
 
                         if (pet != null) {
                             PotionEffect pe = new PotionEffect(pet, duration, amplifier);
-                            DynaTech.runSync(() -> applyPotionEffect(pe, p));
+                            DynaTech.inst().runSync(() -> applyPotionEffect(pe, p));
                             enabledPlayers.add(p.getUniqueId());
                         }
                         

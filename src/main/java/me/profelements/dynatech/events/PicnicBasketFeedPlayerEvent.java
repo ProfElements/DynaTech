@@ -12,7 +12,7 @@ import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-public class PicnicBasketFeedPlayerEvent extends PlayerEvent implements Cancellable {
+public final class PicnicBasketFeedPlayerEvent extends PlayerEvent implements Cancellable {
 
     public static final HandlerList handlers = new HandlerList();
 
@@ -28,9 +28,7 @@ public class PicnicBasketFeedPlayerEvent extends PlayerEvent implements Cancella
 
         this.picnicBasket = picnicBasket;
         this.picnicBasketItem = picnicBasketItem;
-        this.itemConsumed =itemConsumed;
-
-
+        this.itemConsumed = itemConsumed;
     }
 
     @Nonnull
@@ -75,8 +73,7 @@ public class PicnicBasketFeedPlayerEvent extends PlayerEvent implements Cancella
     public HandlerList getHandlers() {
         return getHandlerList();
     }
-
-
+    
 }
 
 

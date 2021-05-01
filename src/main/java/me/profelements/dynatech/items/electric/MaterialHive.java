@@ -50,10 +50,10 @@ public class MaterialHive extends AMachine implements Radioactive {
         // check if its a valid key and get output
         SlimefunItem sfItem = SlimefunItem.getByItem(key);
         
-        if (sfItem != null && slimefunItemsAccepted.getValue().contains(sfItem.getId())) {
+        if (sfItem != null && this.slimefunItemsAccepted.getValue().contains(sfItem.getId())) {
             output = sfItem.getItem().clone();
             
-        } else if (vanillaItemsAccepted.getValue().contains(key.getType().toString())) {
+        } else if (this.vanillaItemsAccepted.getValue().contains(key.getType().toString())) {
             output = new ItemStack(key.getType());
             
         } else {

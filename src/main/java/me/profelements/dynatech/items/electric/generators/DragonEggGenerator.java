@@ -26,7 +26,7 @@ public class DragonEggGenerator extends SlimefunItem implements EnergyNetProvide
 
     @Override
     public int getGeneratedOutput(@Nonnull Location location, @Nonnull Config config) {
-        if (DynaTech.getInstance().getTickInterval()  % 10 == 0) {
+        if (DynaTech.inst().getGlobalTick()  % 10 == 0) {
             
             Block dragonEgg = location.getBlock().getRelative(BlockFace.UP);
             if (dragonEgg.getType() == Material.DRAGON_EGG) {
@@ -47,7 +47,7 @@ public class DragonEggGenerator extends SlimefunItem implements EnergyNetProvide
         return false;
     }
 
-    public static final int getEnergyProduction() {
+    public static int getEnergyProduction() {
         return 32;
     }
 

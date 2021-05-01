@@ -25,7 +25,7 @@ public class StarDustMeteor extends UnplaceableBlock implements GEOResource {
         "&fGeomined from Mountain or Badlands Biomes"
     );
     
-    private final NamespacedKey key = new NamespacedKey(DynaTech.getInstance(), "stardust_meteor");
+    private final NamespacedKey key = new NamespacedKey(DynaTech.inst(), "stardust_meteor");
   
     public StarDustMeteor(Category category) {
         super(category, STARDUST_METEOR, RecipeType.GEO_MINER, new ItemStack[0]);

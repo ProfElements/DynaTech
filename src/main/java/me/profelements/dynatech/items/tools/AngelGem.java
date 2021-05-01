@@ -42,7 +42,7 @@ public class AngelGem extends SlimefunItem implements NotPlaceable, Listener {
 
         addItemHandler(onRightClick(), onItemDrop());
 
-        Bukkit.getPluginManager().registerEvents(this, DynaTech.getInstance());
+        Bukkit.getPluginManager().registerEvents(this, DynaTech.inst());
     }
 
     private ItemDropHandler onItemDrop() {

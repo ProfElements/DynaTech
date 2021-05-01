@@ -90,7 +90,7 @@
         <dependency>
             <groupId>com.github.Slimefun</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-21</version>
+            <version>RC-22</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
@@ -105,23 +105,27 @@
             <version>b7dfe8c35b</version>
             <scope>provided</scope>
         </dependency>
+        
         <dependency>
             <groupId>io.github.mooy1</groupId>
             <artifactId>InfinityExpansion</artifactId>
             <version>69b78a0fe6</version>
             <scope>provided</scope>
         </dependency>
+        
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
-            <version>2.0.1</version>
+            <version>3.0.2</version>
+            <scope>provided</scope>
         </dependency>
-
+        
         <dependency>
-            <groupId>org.bstats</groupId>
-            <artifactId>bstats-bukkit</artifactId>
-            <version>1.8</version>
+            <groupId>io.github.mooy1</groupId>
+            <artifactId>InfinityLib</artifactId>
+            <version>72b2baa</version>
             <scope>compile</scope>
         </dependency>
-        </dependencies>
+        
+    </dependencies>
 </project>

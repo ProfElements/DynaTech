@@ -40,7 +40,7 @@ import me.profelements.dynatech.DynaTechItems;
 import net.md_5.bungee.api.ChatColor;
 
 public class Tesseract extends SlimefunItem implements EnergyNetProvider {
-    public static final NamespacedKey WIRELESS_LOCATION_KEY = new NamespacedKey(DynaTech.getInstance(), "tesseract-pair-location");
+    public static final NamespacedKey WIRELESS_LOCATION_KEY = new NamespacedKey(DynaTech.inst(), "tesseract-pair-location");
 	private final int capacity;
     private final int energyRate;
             

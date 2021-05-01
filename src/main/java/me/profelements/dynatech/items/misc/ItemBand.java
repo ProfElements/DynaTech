@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 
 public class ItemBand extends SlimefunItem {
 
-    public static final NamespacedKey KEY = new NamespacedKey(DynaTech.getInstance(), "item_band");
+    public static final NamespacedKey KEY = new NamespacedKey(DynaTech.inst(), "item_band");
     private final PotionEffect[] potionEffects;
 
     public ItemBand(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, PotionEffect[] potionEffects) {

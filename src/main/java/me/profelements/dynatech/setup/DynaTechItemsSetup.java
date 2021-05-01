@@ -59,7 +59,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import javax.annotation.Nonnull;
 
-public class DynaTechItemsSetup {
+public final class DynaTechItemsSetup {
 
     private DynaTechItemsSetup() {}
 

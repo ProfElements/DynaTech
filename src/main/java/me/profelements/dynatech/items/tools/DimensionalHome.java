@@ -23,7 +23,7 @@ import javax.annotation.Nonnull;
 
 public class DimensionalHome extends SlimefunItem {
     
-    private final NamespacedKey chunkId = new NamespacedKey(DynaTech.getInstance(), "chunk-id");
+    private final NamespacedKey chunkId = new NamespacedKey(DynaTech.inst(), "chunk-id");
 
     private int id = 1;
     private boolean idSet = false;

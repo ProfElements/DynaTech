@@ -19,24 +19,24 @@ public class DynaTechItems {
     private DynaTechItems() {}
     
     //Categories
-    public static final MultiCategory DT_GENERAL = new MultiCategory(new NamespacedKey(DynaTech.getInstance(), "DT_GENERAL"), new CustomItem(Material.CONDUIT, "&bDynaTech"));
-    public static final SubCategory DT_RESOURCES = new SubCategory(new NamespacedKey(DynaTech.getInstance(), "DT_RESOURCES"), DT_GENERAL, new CustomItem(Material.PUFFERFISH, "&bDynaTech Resources"));
-    public static final SubCategory DT_TOOLS = new SubCategory(new NamespacedKey(DynaTech.getInstance(), "DT_TOOLS"), DT_GENERAL, new CustomItem(Material.DIAMOND_AXE, "&bDynaTech Tools"));
-    public static final SubCategory DT_MACHINES = new SubCategory(new NamespacedKey(DynaTech.getInstance(), "DT_MACHINES"), DT_GENERAL, new CustomItem(Material.SEA_LANTERN, "&bDynaTech Machines"));
-    public static final SubCategory DT_GENERATORS = new SubCategory(new NamespacedKey(DynaTech.getInstance(), "DT_GENERATORS"), DT_GENERAL, new CustomItem(Material.PRISMARINE_BRICKS, "&bDynaTech Generators"));
+    public static final MultiCategory DT_GENERAL = new MultiCategory(new NamespacedKey(DynaTech.inst(), "DT_GENERAL"), new CustomItem(Material.CONDUIT, "&bDynaTech"));
+    public static final SubCategory DT_RESOURCES = new SubCategory(new NamespacedKey(DynaTech.inst(), "DT_RESOURCES"), DT_GENERAL, new CustomItem(Material.PUFFERFISH, "&bDynaTech Resources"));
+    public static final SubCategory DT_TOOLS = new SubCategory(new NamespacedKey(DynaTech.inst(), "DT_TOOLS"), DT_GENERAL, new CustomItem(Material.DIAMOND_AXE, "&bDynaTech Tools"));
+    public static final SubCategory DT_MACHINES = new SubCategory(new NamespacedKey(DynaTech.inst(), "DT_MACHINES"), DT_GENERAL, new CustomItem(Material.SEA_LANTERN, "&bDynaTech Machines"));
+    public static final SubCategory DT_GENERATORS = new SubCategory(new NamespacedKey(DynaTech.inst(), "DT_GENERATORS"), DT_GENERAL, new CustomItem(Material.PRISMARINE_BRICKS, "&bDynaTech Generators"));
 
-    public static final Category DynaTechGeneral = new Category(new NamespacedKey(DynaTech.getInstance(), "dynatech"),
+    public static final Category DynaTechGeneral = new Category(new NamespacedKey(DynaTech.inst(), "dynatech"),
         new CustomItem(Material.CONDUIT, "&bDynaTech")
     );
 
-    public static final RecipeType DynaTechScoop = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "dt_scoop"),
+    public static final RecipeType DynaTechScoop = new RecipeType(new NamespacedKey(DynaTech.inst(), "dt_scoop"),
         new CustomItem(Material.IRON_SHOVEL, "&bScoop the Bee using a Scoop")
     );
 
 
     //RecipeTypes
     // #TODO: Make Orechid use RecipeType + Standard Conversions
-    public static final RecipeType DT_SCOOP = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "DT_SCOOP"), new CustomItem(Material.IRON_SHOVEL, "&bScoop a Bee using a Scoop"));
+    public static final RecipeType DT_SCOOP = new RecipeType(new NamespacedKey(DynaTech.inst(), "DT_SCOOP"), new CustomItem(Material.IRON_SHOVEL, "&bScoop a Bee using a Scoop"));
     //public static final RecipeType DT_ORECHID = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "DT_ORECHID"), new CustomItem(Material.END_ROD, "&BTransmuted using the Orechid"));
 
     //General

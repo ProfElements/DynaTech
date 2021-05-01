@@ -16,7 +16,7 @@ import org.bukkit.potion.PotionEffectType;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class ItemBandTask implements Runnable {
+public final class ItemBandTask implements Runnable {
 
     //The value if not null will be a SlIMEFUN_ID that is an Item
 
@@ -45,17 +45,13 @@ public class ItemBandTask implements Runnable {
                 if (sfItem instanceof ItemBand) {
                     ItemBand itemBand = (ItemBand) sfItem;
 
-                    DynaTech.runSync(() -> {
+                    DynaTech.inst().runSync(() -> {
                         for (PotionEffect pe : itemBand.getPotionEffects()) {
                             if (pe.getType() == PotionEffectType.HEALTH_BOOST)
                             {
                                 double health = p.getHealth();
                                 p.addPotionEffect(pe);
-                                if (health > p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()) {
-                                    p.setHealth(p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-                                } else {
-                                    p.setHealth(health);
-                                }
+                                p.setHealth(Math.min(health, p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()));
                                 
                             } else {
                                 p.addPotionEffect(pe);

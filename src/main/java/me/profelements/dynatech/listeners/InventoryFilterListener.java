@@ -42,7 +42,7 @@ public class InventoryFilterListener implements Listener {
             for (ItemStack item : p.getInventory().getContents()) {
                 if (item != null && item.getType() == inventoryFilter.getItem().getType() && item.hasItemMeta() && inventoryFilter.isItem(item)) {
                     if (SlimefunUtils.canPlayerUseItem(p, item, true)) {
-                        PlayerProfile.getBackpack(item, backpack -> DynaTech.runSync(() -> filterInventory(p, backpack)));
+                        PlayerProfile.getBackpack(item, backpack -> DynaTech.inst().runSync(() -> filterInventory(p, backpack)));
                     }
                 }
             }
@@ -50,7 +50,7 @@ public class InventoryFilterListener implements Listener {
     }
 
     private void filterInventory(@Nonnull Player p, @Nonnull PlayerBackpack backpack) {
-        List<String> blacklistedStrings = new ArrayList<String>();
+        List<String> blacklistedStrings = new ArrayList<>();
         if (backpack.getInventory().isEmpty()) {
             blacklistedMaterials.clear();
             blacklistedStrings.clear();

@@ -35,7 +35,7 @@ public class BarbedWire extends AMachine {
             return;
         }
         
-        DynaTech.runSync(()->sendEntitiesFlying(b.getLocation(), b.getWorld()));
+        DynaTech.inst().runSync(()->sendEntitiesFlying(b.getLocation(), b.getWorld()));
         removeCharge(b.getLocation(), getEnergyConsumption());
 
     }

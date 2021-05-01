@@ -36,7 +36,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class WirelessEnergyPoint extends SlimefunItem implements EnergyNetProvider {
 
-    private static final NamespacedKey WIRELESS_LOCATION_KEY = new NamespacedKey(DynaTech.getInstance(), "wireless-location");
+    private static final NamespacedKey WIRELESS_LOCATION_KEY = new NamespacedKey(DynaTech.inst(), "wireless-location");
     private final int capacity;
     private final int energyRate;
 

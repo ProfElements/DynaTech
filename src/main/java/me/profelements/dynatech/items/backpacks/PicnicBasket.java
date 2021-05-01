@@ -17,11 +17,11 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PicnicBasket extends SlimefunBackpack {
+public final class PicnicBasket extends SlimefunBackpack {
 
     private final List<Material> defaultBlacklist = new ArrayList<>();
 
-    private final ItemSetting<List<String>> blacklistedMaterials = new ItemSetting<>(this, "blacklisted-materials", ToStringList(getDefaultBlacklist()));
+    private final ItemSetting<List<String>> blacklistedMaterials = new ItemSetting<>(this, "blacklisted-materials", toStringList(getDefaultBlacklist()));
 
     public PicnicBasket(int size, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(size, category, item, recipeType, recipe);
@@ -61,7 +61,7 @@ public class PicnicBasket extends SlimefunBackpack {
         return defaultBlacklist;
     }
 
-    private List<String> ToStringList(List<Material> mats) {
+    private static List<String> toStringList(List<Material> mats) {
         List<String> materials = new ArrayList<>();
 
         for (Material mat : mats) {

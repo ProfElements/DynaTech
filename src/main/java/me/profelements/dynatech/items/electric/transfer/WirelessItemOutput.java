@@ -50,7 +50,7 @@ import me.profelements.dynatech.DynaTechItems;
 public class WirelessItemOutput extends SlimefunItem implements EnergyNetComponent {
 
     
-    protected static final NamespacedKey WIRELESS_LOCATION_KEY = new NamespacedKey(DynaTech.getInstance(), "wireless-input-location");
+    protected static final NamespacedKey WIRELESS_LOCATION_KEY = new NamespacedKey(DynaTech.inst(), "wireless-input-location");
 	private final int capacity;
             
     public WirelessItemOutput(Category category, int capacity, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
