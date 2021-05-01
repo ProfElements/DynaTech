@@ -6,13 +6,13 @@ import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.profelements.dynatech.DynaTech;
 
 import org.bukkit.Location;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Waterlogged;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.mooy1.infinityexpansion.infinitylib.PluginUtils;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 
@@ -32,7 +32,7 @@ public class HydroGenerator extends SlimefunItem implements EnergyNetProvider {
 
     @Override
     public int getGeneratedOutput(@Nonnull Location location, @Nonnull Config config) {
-        if (PluginUtils.getCurrentTick()  % 10 == 0) {
+        if (DynaTech.getInstance().getTickInterval()  % 10 == 0) {
             BlockData blockData = PaperLib.getBlockState(location.getBlock(), false).getState().getBlockData();
 
             if (blockData instanceof Waterlogged) {

@@ -8,7 +8,6 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.mooy1.infinitylib.PluginUtils;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
@@ -34,7 +33,7 @@ public class Orechid extends AMachine implements RecipeDisplayItem {
 
     @Override
     public void tick(Block b) {
-        if (PluginUtils.getCurrentTick() % 10 == 0) {
+        if (DynaTech.getInstance().getTickInterval() % 10 == 0) {
             for (BlockFace relative : BlockFace.values()) {
                 if (getCharge(b.getLocation()) < getEnergyConsumption()) {
                     break;

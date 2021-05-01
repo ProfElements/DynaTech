@@ -6,6 +6,7 @@ import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.profelements.dynatech.DynaTech;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -13,7 +14,6 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.mooy1.infinityexpansion.infinitylib.PluginUtils;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
 
 import javax.annotation.Nonnull;
@@ -26,7 +26,7 @@ public class DragonEggGenerator extends SlimefunItem implements EnergyNetProvide
 
     @Override
     public int getGeneratedOutput(@Nonnull Location location, @Nonnull Config config) {
-        if (PluginUtils.getCurrentTick()  % 10 == 0) {
+        if (DynaTech.getInstance().getTickInterval()  % 10 == 0) {
             
             Block dragonEgg = location.getBlock().getRelative(BlockFace.UP);
             if (dragonEgg.getType() == Material.DRAGON_EGG) {
