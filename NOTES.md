@@ -5,7 +5,6 @@
 - **Stave** : A magical staff that changes based on what runes you add to it
 - **Skeletal Bee** : A Bee that sometimes makes material hive output double at the cost of dying // Texture > 7129324c900a58cf34b42ce3f07c1753f9f7523f22bccbc9afc63f191fd1395
 - **Nether Heat Upgrade** : When applied to a solar panel, let them generate half the amount of energy while in the nether.
-- **Portable Liquid Tank** : A Simple liquid tank that holds multiple buckets of an liquid.
 
 ## Steam Revolution
 - **Steam Tank** : A tank that hold steams for all machines in a Steam network can grab and use

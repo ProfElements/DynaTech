@@ -39,6 +39,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Scoop** - The only way to get naturals Bees. Scoop them into item form.
 - **Dimensional Home** - Gives you a small home in another dimension to teleport to and from. (it sends to you back to your bed spawn if you are in the dimension.)
 - **Tesseract Binder** - Binds Tesseract in a better manner then binding themselves via direct linking
+- **Portable Fluid Tank** - Holds 16 buckets of any fluid. Can place them back down too 
 
 ## Bees 
 - **Bee** - A Natural Bee, for each one -2 seconds to resource creation time in Material Hive.

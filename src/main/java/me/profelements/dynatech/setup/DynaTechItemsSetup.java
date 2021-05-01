@@ -48,6 +48,7 @@ import me.profelements.dynatech.items.tools.AngelGem;
 import me.profelements.dynatech.items.tools.DimensionalHome;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
 import me.profelements.dynatech.items.tools.InventoryFilter;
+import me.profelements.dynatech.items.tools.LiquidTank;
 import me.profelements.dynatech.items.tools.Orechid;
 import me.profelements.dynatech.items.tools.Scoop;
 import me.profelements.dynatech.items.tools.TesseractBinder;
@@ -485,6 +486,14 @@ public class DynaTechItemsSetup {
                 DynaTechItems.TESSERACTING_OBJ, DynaTechItems.GHOSTLY_ESSENCE, DynaTechItems.TESSERACTING_OBJ,
                 DynaTechItems.WIRELESS_ITEM_OUTPUT, DynaTechItems.TESSERACTING_OBJ, DynaTechItems.WIRELESS_ENERGY_POINT
         }).register(plugin);
+
+        new LiquidTank(DynaTechItems.DT_TOOLS, DynaTechItems.LIQUID_TANK, 16000, RecipeType.ENHANCED_CRAFTING_TABLE, 
+            new ItemStack[] {
+                DynaTechItems.STAINLESS_STEEL, new ItemStack(Material.BUCKET), DynaTechItems.STAINLESS_STEEL,
+                new ItemStack(Material.BUCKET), new ItemStack(Material.BUCKET), new ItemStack(Material.BUCKET),
+                DynaTechItems.STAINLESS_STEEL, new ItemStack(Material.BUCKET), DynaTechItems.STAINLESS_STEEL,
+        }).register(plugin);
+        
 
         //Generators
         new HydroGenerator(DynaTechItems.DT_GENERATORS, 16, 256, DynaTechItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,

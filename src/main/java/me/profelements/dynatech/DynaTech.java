@@ -34,12 +34,12 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
     private static boolean exoticGardenInstalled;
     private static boolean infinityExpansionInstalled;
 
-    private static final int TICK_TIME = SlimefunPlugin.getTickerTask().getTickRate();
     private int tickInterval;
     
     @Override
     public void onEnable() {
         instance = this;
+        final int TICK_TIME = SlimefunPlugin.getTickerTask().getTickRate();
         exoticGardenInstalled = Bukkit.getServer().getPluginManager().isPluginEnabled("ExoticGarden");
         infinityExpansionInstalled = Bukkit.getServer().getPluginManager().isPluginEnabled("InfinityExpansion");
 
