@@ -1,12 +1,16 @@
 package me.profelements.dynatech.items.electric;
 
+import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -25,73 +29,49 @@ public class AntigravityBubble extends AMachine {
     }
 
     @Override
-    public void blockExtras(Block b) {
-        clearFlightFromPlayer(b);
-        enabledPlayers.clear();
-    }
+    public void preRegister() {
+        addItemHandler(new BlockTicker() {
 
-    private void clearFlightFromPlayer(Block block) {
-        for (Player p : block.getWorld().getPlayers()) {
-            if (enabledPlayers.contains(p.getUniqueId())) {
-                p.setFlying(false);
-                p.setAllowFlight(false);
-                p.setFallDistance(0.0f);
+            @Override
+            public void tick(Block b, SlimefunItem  sfItem, Config data) {
+                AntigravityBubble.this.tick(b);
             }
-        }
+
+            @Override
+            public boolean isSynchronized() {
+                return true;
+            }
+        });
     }
 
     @Override
     public void tick(Block b) {
-        doFlightIfAvailable(b);
-    }
+        Collection<Entity> bubbledEntities = b.getWorld().getNearbyEntities(b.getLocation(), 25, 25, 25);
 
-    protected void doFlightIfAvailable(Block block) {
-        if (getCharge(block.getLocation()) < getEnergyConsumption()) {
-            return;
+        for (Entity entity : bubbledEntities) {
+            if (entity instanceof Player) {
+                Player p = (Player) entity;
+
+                if (!p.getAllowFlight()) {
+                    enabledPlayers.add(p.getUniqueId());
+                    p.setAllowFlight(true);
+                    removeCharge(b.getLocation(), getEnergyConsumption());
+                }
+            }
         }
 
-        for (Player p : block.getWorld().getPlayers()) {
-            if (p.getWorld() != block.getWorld()) {
-                continue;
+        final Iterator<UUID> playerIterator = enabledPlayers.iterator();
+        while (playerIterator.hasNext()) {
+            final UUID uuid = playerIterator.next();
+            Player p = Bukkit.getPlayer(uuid);
+
+            if (p != null && !bubbledEntities.contains(p)) {
+                p.setAllowFlight(false);
+                p.setFlying(false);
+                p.setFallDistance(0.0f);
+                playerIterator.remove();
             }
-
-            double distance = block.getLocation().distance(p.getLocation());
-            Set<UUID> plrsToRemove = new HashSet<>();
-
-            if (!enabledPlayers.contains(p.getUniqueId()) && distance < 22.5  && p.getWorld() == block.getWorld() && !p.getAllowFlight()) {
-                    p.setAllowFlight(true);
-                    enabledPlayers.add(p.getUniqueId());
-                    removeCharge(block.getLocation(), getEnergyConsumption());
-                } 
-            
-            for (UUID playerUUID : enabledPlayers) {
-                Player plr = Bukkit.getPlayer(playerUUID);
-
-                if (plr != null) {
-                    if (plr.getWorld() != block.getWorld()) {
-                        plrsToRemove.add(plr.getUniqueId());
-                        continue;
-                    }
-                    double distance2 = block.getLocation().distance(plr.getLocation());
-                    if (distance2 >= 22.5 && distance2 <= 50) {
-                        plrsToRemove.add(plr.getUniqueId());
-                    }
-                }
-            }
-
-            for (UUID playerToRemove : plrsToRemove) {
-                Player plyr = Bukkit.getPlayer(playerToRemove);
-
-                if (plyr != null) {
-                    plyr.setFlying(false);
-                    plyr.setAllowFlight(false);
-                    plyr.setFallDistance(0.0f);
-                    enabledPlayers.remove(playerToRemove);
-                }
-                
-            }
-            plrsToRemove.clear();
-        }        
+        }
     }
 
     @Override
