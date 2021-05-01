@@ -1,5 +1,7 @@
 package me.profelements.dynatech.items.electric.generators;
 
+import javax.annotation.Nonnull;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -12,8 +14,6 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
-
-import javax.annotation.Nonnull;
 
 public class ChippingGenerator extends AMachineGenerator {
 

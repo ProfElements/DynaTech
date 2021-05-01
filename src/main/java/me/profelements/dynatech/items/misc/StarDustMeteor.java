@@ -1,5 +1,7 @@
 package me.profelements.dynatech.items.misc;
 
+import javax.annotation.Nonnull;
+
 import org.bukkit.NamespacedKey;
 import org.bukkit.World.Environment;
 import org.bukkit.block.Biome;
@@ -12,8 +14,6 @@ import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import me.profelements.dynatech.DynaTech;
-
-import javax.annotation.Nonnull;
 
 public class StarDustMeteor extends UnplaceableBlock implements GEOResource {
 

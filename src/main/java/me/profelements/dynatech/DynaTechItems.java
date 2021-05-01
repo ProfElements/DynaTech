@@ -1,5 +1,8 @@
 package me.profelements.dynatech;
 
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
@@ -11,8 +14,6 @@ import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 
 public class DynaTechItems {
 

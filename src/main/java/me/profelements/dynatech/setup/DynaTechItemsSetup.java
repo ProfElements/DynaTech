@@ -1,5 +1,12 @@
 package me.profelements.dynatech.setup;
 
+import javax.annotation.Nonnull;
+
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+
 import io.github.mooy1.infinityexpansion.implementation.mobdata.EmptyDataCard;
 import io.github.mooy1.infinityexpansion.implementation.mobdata.MobDataCard;
 import io.github.mooy1.infinityexpansion.implementation.mobdata.MobDataTier;
@@ -51,13 +58,6 @@ import me.profelements.dynatech.items.tools.InventoryFilter;
 import me.profelements.dynatech.items.tools.Orechid;
 import me.profelements.dynatech.items.tools.Scoop;
 import me.profelements.dynatech.items.tools.TesseractBinder;
-
-import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-
-import javax.annotation.Nonnull;
 
 public final class DynaTechItemsSetup {
 

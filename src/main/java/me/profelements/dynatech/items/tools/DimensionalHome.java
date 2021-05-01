@@ -1,6 +1,7 @@
 package me.profelements.dynatech.items.tools;
 
 import java.util.List;
+import javax.annotation.Nonnull;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -18,8 +19,6 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.data.PersistentDataAPI;
 import me.profelements.dynatech.DynaTech;
-
-import javax.annotation.Nonnull;
 
 public class DimensionalHome extends SlimefunItem {
     

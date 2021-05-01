@@ -2,6 +2,7 @@ package me.profelements.dynatech.items.misc;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Nullable;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -16,8 +17,6 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.data.PersistentDataAPI;
 import me.profelements.dynatech.DynaTech;
-
-import javax.annotation.Nullable;
 
 public class ItemBand extends SlimefunItem {
 

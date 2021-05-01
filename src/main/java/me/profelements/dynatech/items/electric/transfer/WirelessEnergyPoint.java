@@ -3,7 +3,6 @@ package me.profelements.dynatech.items.electric.transfer;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.Bukkit;

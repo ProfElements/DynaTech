@@ -2,6 +2,7 @@ package me.profelements.dynatech.items.electric;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -19,8 +20,6 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
-
-import javax.annotation.Nonnull;
 
 public class WeatherController extends AMachine implements RecipeDisplayItem {
 

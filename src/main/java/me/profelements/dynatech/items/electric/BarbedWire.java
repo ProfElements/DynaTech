@@ -2,6 +2,7 @@ package me.profelements.dynatech.items.electric;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -18,8 +19,6 @@ import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
-
-import javax.annotation.Nonnull;
 
 public class BarbedWire extends AMachine {
     private static final int MAX_DIRECTION_VEL = 10000;

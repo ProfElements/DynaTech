@@ -1,13 +1,12 @@
 package me.profelements.dynatech.items.misc;
 
 import java.util.Random;
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
-
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
 
 public class DimensionalHomeDimension extends ChunkGenerator {
 

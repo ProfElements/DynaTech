@@ -2,7 +2,6 @@ package me.profelements.dynatech.items.tools;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.Nonnull;
 
 import org.bukkit.Material;

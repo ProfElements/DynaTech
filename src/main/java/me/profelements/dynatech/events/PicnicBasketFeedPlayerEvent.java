@@ -1,5 +1,8 @@
 package me.profelements.dynatech.events;
 
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import org.apache.commons.lang.Validate;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
@@ -8,9 +11,6 @@ import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.inventory.ItemStack;
 
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
-
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
 
 public final class PicnicBasketFeedPlayerEvent extends PlayerEvent implements Cancellable {
 

@@ -1,5 +1,7 @@
 package me.profelements.dynatech.items.electric.generators;
 
+import javax.annotation.Nonnull;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -9,8 +11,6 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineFuel;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
-
-import javax.annotation.Nonnull;
 
 public class StardustReactor extends AMachineGenerator {
 

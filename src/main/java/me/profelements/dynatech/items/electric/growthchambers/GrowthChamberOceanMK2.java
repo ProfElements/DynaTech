@@ -3,13 +3,13 @@ package me.profelements.dynatech.items.electric.growthchambers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
-
-import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
 
 public class GrowthChamberOceanMK2 extends AMachine {
     

@@ -22,3 +22,8 @@ version: ${project.version}
 
 ## This is the minimum minecraft version required to run your plugin.
 api-version: 1.14
+
+commands:
+    dynatech:
+        description: Do /dynatech help for a list of command
+        usage: /dynatech <subcommand>

@@ -1,6 +1,7 @@
 package me.profelements.dynatech.items.electric.generators;
 
 import java.util.Map;
+import javax.annotation.Nonnull;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -16,8 +17,6 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
-
-import javax.annotation.Nonnull;
 
 public class CulinaryGenerator extends AMachineGenerator implements NotHopperable {
 
