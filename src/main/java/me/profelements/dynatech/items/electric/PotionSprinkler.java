@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
@@ -25,6 +26,8 @@ import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 
 public class PotionSprinkler extends AMachine {
+
+    //TODO: Refactor this based arouhnd the same Ideas as AntigravityBubble
 
     private final Set<UUID> enabledPlayers = new HashSet<>();
     private int plyrsApplied = 0;
@@ -55,9 +58,14 @@ public class PotionSprinkler extends AMachine {
                     if (distance < 10 && !enabledPlayers.contains(p.getUniqueId())) {
                         int amplifier = pd.isUpgraded() ? 1 : 0;
                         int duration = pd.isExtended() ? 9600 : 3600;
-                        PotionEffect pe = new PotionEffect(pd.getType().getEffectType(), duration, amplifier);
-                        DynaTech.runSync(() -> applyPotionEffect(pe, p));
-                        enabledPlayers.add(p.getUniqueId());
+                        PotionEffectType pet = pd.getType().getEffectType();
+
+                        if (pet != null) {
+                            PotionEffect pe = new PotionEffect(pet, duration, amplifier);
+                            DynaTech.runSync(() -> applyPotionEffect(pe, p));
+                            enabledPlayers.add(p.getUniqueId());
+                        }
+                        
                     }
                 }
             }
