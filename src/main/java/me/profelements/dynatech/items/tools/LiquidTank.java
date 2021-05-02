@@ -1,8 +1,10 @@
 package me.profelements.dynatech.items.tools;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -23,8 +25,10 @@ import me.profelements.dynatech.DynaTech;
 
 public class LiquidTank extends SlimefunItem implements NotPlaceable {
 
-    private static final NamespacedKey FLUID_NAME = new NamespacedKey(DynaTech.getInstance(), "liquid-name");
-    private static final NamespacedKey FLUID_AMOUNT = new NamespacedKey(DynaTech.getInstance(), "liquid-amount");
+    private static final Set<String> PLACEABLE_FLUIDS = new HashSet<>(Arrays.asList("WATER", "LAVA"));
+    
+    private static final NamespacedKey FLUID_NAME = DynaTech.inst().getKey("liquid-name");
+    private static final NamespacedKey FLUID_AMOUNT = DynaTech.inst().getKey("liquid-amount");
 
     private final int maxLiquidAmount;
 
@@ -36,7 +40,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
         addItemHandler(onRightClick());
     }
 
-    private final ItemUseHandler onRightClick() {
+    private ItemUseHandler onRightClick() {
         return e -> {
             e.cancel();
 
@@ -51,8 +55,8 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
                 String fluidName = getLiquid(itemStack).getFirstValue();
                 int fluidAmount = getLiquid(itemStack).getSecondValue();
 
-                if (fluidName != null && e.getPlayer().isSneaking() && getPlaceableFluids().contains(fluidName) &&  fluidAmount >= 1000) {
-                    DynaTech.runSync(() -> {
+                if (fluidName != null && e.getPlayer().isSneaking() && PLACEABLE_FLUIDS.contains(fluidName) &&  fluidAmount >= 1000) {
+                    DynaTech.inst().runSync(() -> {
                         if (fluidName.equals("WATER")) {
                             removeLiquid(itemStack, fluidName, 1000);
                             liquid.setType(Material.WATER, true);
@@ -67,7 +71,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
                     });
                     
                 } else if (fluidName != null && fluidAmount <= liquidTank.getMaxLiquidAmount() && liquid.isLiquid()) {
-                    DynaTech.runSync(() -> {
+                    DynaTech.inst().runSync(() -> {
                         addLiquid(itemStack, liquid.getType().name(), 1000);
                         liquid.setType(Material.AIR, true);
                         updateLore(itemStack);
@@ -79,14 +83,6 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
 
     public int getMaxLiquidAmount() {
         return maxLiquidAmount;
-    }
-
-    public static final List<String> getPlaceableFluids() {
-        List<String> PLACEABLE_FLUIDS = new ArrayList<>();
-        PLACEABLE_FLUIDS.add("WATER");
-        PLACEABLE_FLUIDS.add("LAVA");
-
-        return PLACEABLE_FLUIDS;
     }
 
     public void addLiquid(ItemStack item, String fluidName, int fluidAmount) {
