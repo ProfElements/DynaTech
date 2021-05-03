@@ -13,12 +13,14 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.collections.Pair;
 import me.mrCookieSlime.Slimefun.cscorelib2.data.PersistentDataAPI;
+import me.mrCookieSlime.Slimefun.cscorelib2.protection.ProtectableAction;
 import me.profelements.dynatech.DynaTech;
 
 public class LiquidTank extends SlimefunItem implements NotPlaceable {
@@ -44,7 +46,10 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
             Optional<SlimefunItem> item = e.getSlimefunItem();
             ItemStack itemStack = e.getItem();
             
-            if (b.isPresent() && item.isPresent() && item.get() instanceof LiquidTank) {
+            
+
+
+            if (b.isPresent() && item.isPresent() && item.get() instanceof LiquidTank && SlimefunPlugin.getProtectionManager().hasPermission(p, b.getLocation() ProtectableAction.PLACE_BLOCK)) {
                 Block liquid = b.get().getRelative(e.getClickedFace());
                 LiquidTank liquidTank = (LiquidTank) item.get();
 
