@@ -45,7 +45,7 @@ public class HydroGenerator extends SlimefunItem implements EnergyNetProvider {
                 }
             }
             return 0;
-        } else if (BlockStorage.getLocationInfo(location, "waterlogged").equals(String.valueOf(true))){
+        } else if (BlockStorage.getLocationInfo(location, "waterlogged") != null && BlockStorage.getLocationInfo(location, "waterlogged").equals(String.valueOf(true))){
             return getEnergyProduction();
         }
         return 0;        

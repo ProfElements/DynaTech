@@ -36,7 +36,7 @@ public class DragonEggGenerator extends SlimefunItem implements EnergyNetProvide
                 BlockStorage.addBlockInfo(location, "egg", String.valueOf(false));
             }
 
-         }else if (BlockStorage.getLocationInfo(location, "egg").equals(String.valueOf(true))){
+         } else if (BlockStorage.getLocationInfo(location, "egg") != null && BlockStorage.getLocationInfo(location, "egg").equals(String.valueOf(true))){
             return getEnergyProduction();
         }
         return 0; 
