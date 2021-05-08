@@ -61,13 +61,13 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
                         if (fluidName.equals("WATER")) {
                             removeLiquid(itemStack, fluidName, 1000);
                             liquid.setType(Material.WATER, true);
-                            liquid.getState().update();
+                            liquid.getState().update(true, true);
                             updateLore(itemStack);
                             
                         } else if (fluidName.equals("LAVA")) {
                             removeLiquid(itemStack, fluidName, 1000);
                             liquid.setType(Material.LAVA, true);
-                            liquid.getState().update();
+                            liquid.getState().update(true, true);
                             updateLore(itemStack);
                         }
                         
@@ -77,7 +77,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
                     DynaTech.runSync(() -> {
                         addLiquid(itemStack, liquid.getType().name(), 1000);
                         liquid.setType(Material.AIR, true);
-                        liquid.getState().update();
+                        liquid.getState().update(true, true);
                         updateLore(itemStack);
                     });
                 }
