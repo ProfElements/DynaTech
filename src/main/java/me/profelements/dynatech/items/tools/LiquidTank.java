@@ -50,7 +50,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
 
 
             if (b.isPresent() && item.isPresent() && item.get() instanceof LiquidTank && SlimefunPlugin.getProtectionManager().hasPermission(e.getPlayer(), b.get().getLocation(), ProtectableAction.PLACE_BLOCK)) {
-                Block liquid = b.get().getRelative(e.getClickedFace());
+                Block liquid = b.get(); //Just get the block since we are using a bucket as the item now.
                 LiquidTank liquidTank = (LiquidTank) item.get();
 
                 String fluidName = getLiquid(itemStack).getFirstValue();
