@@ -90,7 +90,7 @@
         <dependency>
             <groupId>com.github.Slimefun</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-22</version>
+            <version>RC-23</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
