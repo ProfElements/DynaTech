@@ -32,9 +32,9 @@ public class HydroGenerator extends SlimefunItem implements EnergyNetProvider {
 
     @Override
     public int getGeneratedOutput(@Nonnull Location location, @Nonnull Config config) {
+        String isWaterlogged = BlockStorage.getLocationInfo(location, "waterlogged");
         if (DynaTech.getInstance().getTickInterval()  % 10 == 0) {
             BlockData blockData = PaperLib.getBlockState(location.getBlock(), false).getState().getBlockData();
-
             if (blockData instanceof Waterlogged) {
                 Waterlogged data = (Waterlogged) blockData;
                 if (data.isWaterlogged()) {
@@ -45,7 +45,7 @@ public class HydroGenerator extends SlimefunItem implements EnergyNetProvider {
                 }
             }
             return 0;
-        } else if (BlockStorage.getLocationInfo(location, "waterlogged") != null && BlockStorage.getLocationInfo(location, "waterlogged").equals(String.valueOf(true))){
+        } else if (isWaterlogged != null && isWaterlogged.equals(String.valueOf(true))){
             return getEnergyProduction();
         }
         return 0;        
