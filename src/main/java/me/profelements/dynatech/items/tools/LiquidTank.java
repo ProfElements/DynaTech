@@ -1,19 +1,23 @@
-package me.profelements.dynatech.items.tools;
+package me.profelements.dynatech.items.tools;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
-import org.bukkit.block.Block;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -50,7 +54,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
 
 
             if (b.isPresent() && item.isPresent() && item.get() instanceof LiquidTank && SlimefunPlugin.getProtectionManager().hasPermission(e.getPlayer(), b.get().getLocation(), ProtectableAction.PLACE_BLOCK)) {
-                Block liquid = b.get(); //Just get the block since we are using a bucket as the item now.
+                BlockState liquidState = PaperLib.getBlockState(b.get(), false).getState();
                 LiquidTank liquidTank = (LiquidTank) item.get();
 
                 String fluidName = getLiquid(itemStack).getFirstValue();
@@ -60,24 +64,36 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
                     DynaTech.runSync(() -> {
                         if (fluidName.equals("WATER")) {
                             removeLiquid(itemStack, fluidName, 1000);
-                            liquid.setType(Material.WATER, true);
-                            liquid.getState().update(true, true);
+                            liquidState.setType(Material.WATER);
+                            liquidState.update(true, true);
+                            
+                            EntityChangeBlockEvent updateBlock = new EntityChangeBlockEvent(e.getPlayer(), b.get(), liquidState.getBlockData());
+                            Bukkit.getPluginManager().callEvent(updateBlock);
+
                             updateLore(itemStack);
                             
                         } else if (fluidName.equals("LAVA")) {
                             removeLiquid(itemStack, fluidName, 1000);
-                            liquid.setType(Material.LAVA, true);
-                            liquid.getState().update(true, true);
+                            liquidState.setType(Material.LAVA);
+                            liquidState.update(true, true);
+                            
+                            EntityChangeBlockEvent updateBlock = new EntityChangeBlockEvent(e.getPlayer(), b.get(), liquidState.getBlockData());
+                            Bukkit.getPluginManager().callEvent(updateBlock);
+
                             updateLore(itemStack);
                         }
                         
                     });
                     
-                } else if (fluidName != null && fluidAmount <= liquidTank.getMaxLiquidAmount() && liquid.isLiquid()) {
+                } else if (fluidName != null && fluidAmount <= liquidTank.getMaxLiquidAmount() && b.get().isLiquid()) {
                     DynaTech.runSync(() -> {
-                        addLiquid(itemStack, liquid.getType().name(), 1000);
-                        liquid.setType(Material.AIR, true);
-                        liquid.getState().update(true, true);
+                        addLiquid(itemStack, b.get().getType().name(), 1000);
+                        liquidState.setType(Material.AIR);
+                        liquidState.update(true, true);
+                        
+                        EntityChangeBlockEvent updateBlock = new EntityChangeBlockEvent(e.getPlayer(), b.get(), liquidState.getBlockData());
+                        Bukkit.getPluginManager().callEvent(updateBlock);
+
                         updateLore(itemStack);
                     });
                 }
