@@ -10,6 +10,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.handlers.SimpleBlockBre
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import io.github.thebusybiscuit.slimefun4.utils.itemstack.ItemStackWrapper;
+import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -196,7 +197,7 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
 
             if (timeLeft > 0) {
                 //dont check if it extends ChestMenu since it already does.
-                ChestMenuUtils.updateProgressbar((ChestMenu)inv, getProgressBarSlot(), timeLeft, processing.get(b).getTicks(), getProgressBar());
+                ChestMenuUtils.updateProgressbar(inv, getProgressBarSlot(), timeLeft, processing.get(b).getTicks(), getProgressBar());
 
                 if (isChargeable()) {
                     if (getCharge(b.getLocation()) < getEnergyConsumption()) {
