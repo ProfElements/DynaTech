@@ -50,11 +50,9 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
             Optional<SlimefunItem> item = e.getSlimefunItem();
             ItemStack itemStack = e.getItem();
             
-            
-
-
             if (b.isPresent() && item.isPresent() && item.get() instanceof LiquidTank && SlimefunPlugin.getProtectionManager().hasPermission(e.getPlayer(), b.get().getLocation(), ProtectableAction.PLACE_BLOCK)) {
-                BlockState liquidState = PaperLib.getBlockState(b.get(), false).getState();
+                Block liquid = b.get().getRelative(e.getClickedFace());
+                BlockState liquidState = PaperLib.getBlockState(liquid, false).getState();
                 LiquidTank liquidTank = (LiquidTank) item.get();
 
                 String fluidName = getLiquid(itemStack).getFirstValue();
@@ -64,20 +62,20 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
                     DynaTech.runSync(() -> {
                         if (fluidName.equals("WATER")) {
                             removeLiquid(itemStack, fluidName, 1000);
-                            liquidState.setType(Material.WATER);
+                            liquid.setType(Material.WATER);
                             liquidState.update(true, true);
                             
-                            EntityChangeBlockEvent updateBlock = new EntityChangeBlockEvent(e.getPlayer(), b.get(), liquidState.getBlockData());
+                            EntityChangeBlockEvent updateBlock = new EntityChangeBlockEvent(e.getPlayer(), liquid, liquidState.getBlockData());
                             Bukkit.getPluginManager().callEvent(updateBlock);
 
                             updateLore(itemStack);
                             
                         } else if (fluidName.equals("LAVA")) {
                             removeLiquid(itemStack, fluidName, 1000);
-                            liquidState.setType(Material.LAVA);
+                            liquid.setType(Material.LAVA);
                             liquidState.update(true, true);
                             
-                            EntityChangeBlockEvent updateBlock = new EntityChangeBlockEvent(e.getPlayer(), b.get(), liquidState.getBlockData());
+                            EntityChangeBlockEvent updateBlock = new EntityChangeBlockEvent(e.getPlayer(), liquid, liquidState.getBlockData());
                             Bukkit.getPluginManager().callEvent(updateBlock);
 
                             updateLore(itemStack);
@@ -85,13 +83,13 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
                         
                     });
                     
-                } else if (fluidName != null && fluidAmount <= liquidTank.getMaxLiquidAmount() && b.get().isLiquid()) {
+                } else if (fluidName != null && fluidAmount <= liquidTank.getMaxLiquidAmount() && liquid.isLiquid()) {
                     DynaTech.runSync(() -> {
-                        addLiquid(itemStack, b.get().getType().name(), 1000);
-                        liquidState.setType(Material.AIR);
+                        addLiquid(itemStack, liquid.getType().name(), 1000);
+                        liquid.setType(Material.AIR);
                         liquidState.update(true, true);
-                        
-                        EntityChangeBlockEvent updateBlock = new EntityChangeBlockEvent(e.getPlayer(), b.get(), liquidState.getBlockData());
+
+                        EntityChangeBlockEvent updateBlock = new EntityChangeBlockEvent(e.getPlayer(), liquid, liquid.getBlockData());
                         Bukkit.getPluginManager().callEvent(updateBlock);
 
                         updateLore(itemStack);
