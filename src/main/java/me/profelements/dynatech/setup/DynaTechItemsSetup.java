@@ -1,8 +1,8 @@
-package me.profelements.dynatech.setup;
-
-import io.github.mooy1.infinityexpansion.implementation.mobdata.EmptyDataCard;
-import io.github.mooy1.infinityexpansion.implementation.mobdata.MobDataCard;
-import io.github.mooy1.infinityexpansion.implementation.mobdata.MobDataTier;
+package me.profelements.dynatech.setup;
+
+import io.github.mooy1.infinityexpansion.items.MobData;
+import io.github.mooy1.infinityexpansion.items.mobdata.MobDataCard;
+import io.github.mooy1.infinityexpansion.items.mobdata.MobDataTier;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -243,9 +243,12 @@ public class DynaTechItemsSetup {
         if (DynaTech.isInfinityExpansionInstalled()) {
             new MobDataCard("Vex", MobDataTier.HOSTILE, new ItemStack[] {
                 new SlimefunItemStack(DynaTechItems.VEX_GEM, 16), new SlimefunItemStack(DynaTechItems.GHOSTLY_ESSENCE, 16), new SlimefunItemStack(DynaTechItems.VEX_GEM, 16),
-                new SlimefunItemStack(DynaTechItems.GHOSTLY_ESSENCE, 16), EmptyDataCard.ITEM, new SlimefunItemStack(DynaTechItems.GHOSTLY_ESSENCE, 16),
+                new SlimefunItemStack(DynaTechItems.GHOSTLY_ESSENCE, 16), MobData.EMPTY_DATA_CARD, new SlimefunItemStack(DynaTechItems.GHOSTLY_ESSENCE, 16),
                 new SlimefunItemStack(DynaTechItems.VEX_GEM, 16), new SlimefunItemStack(DynaTechItems.GHOSTLY_ESSENCE, 16), new SlimefunItemStack(DynaTechItems.VEX_GEM, 16)
-            }, DynaTechItems.VEX_GEM, 16, DynaTechItems.GHOSTLY_ESSENCE, 1).register(plugin);
+            })
+            .addDrop(DynaTechItems.VEX_GEM, 1)
+            .addDrop(DynaTechItems.GHOSTLY_ESSENCE, 9)
+            .register(plugin);
         }
 
         //Machines
