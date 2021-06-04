@@ -234,7 +234,7 @@ public abstract class AMachineGenerator extends SlimefunItem implements RecipeDi
             return false;
         }
 
-        ItemStackWrapper wrapper = new ItemStackWrapper(item);
+        ItemStackWrapper wrapper = ItemStackWrapper.wrap(item);
         return item.getType() == Material.LAVA_BUCKET || SlimefunUtils.isItemSimilar(wrapper, SlimefunItems.FUEL_BUCKET, true) || SlimefunUtils.isItemSimilar(wrapper, SlimefunItems.OIL_BUCKET, true);
     }
 

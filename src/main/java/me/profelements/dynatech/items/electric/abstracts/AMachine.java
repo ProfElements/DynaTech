@@ -237,7 +237,7 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
             ItemStack item = inv.getItemInSlot(slot);
 
             if (item != null) {
-                inventory.put(slot, new ItemStackWrapper(item));
+                inventory.put(slot, ItemStackWrapper.wrap(item));
             }
         }
 
