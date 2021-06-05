@@ -61,9 +61,13 @@
                             <pattern>org.bstats</pattern>
                             <shadedPattern>me.profelements.dynatech</shadedPattern>
                         </relocation>
-                    <relocation>
+                        <relocation>
                             <pattern>io.github.mooy1.infinitylib</pattern>
                             <shadedPattern>me.profelements.dynatech.infinitylib</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.github.Slimefun-Addon-Community.extrautils</pattern>
+                            <shadedPattern>me.profelements.dynatech.extrautils</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
@@ -123,5 +127,10 @@
             <version>1.8</version>
             <scope>compile</scope>
         </dependency>
-        </dependencies>
+        <dependency>
+            <groupId>com.github.Slimefun-Addon-Community</groupId>
+            <artifactId>extrautils</artifactId>
+            <version>c852937de5</version>
+        </dependency>
+    </dependencies>
 </project>
