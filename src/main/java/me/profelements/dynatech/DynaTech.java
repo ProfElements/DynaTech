@@ -35,7 +35,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
     private static boolean infinityExpansionInstalled;
 
     private int tickInterval;
-    
+
     @Override
     public void onEnable() {
         instance = this;
@@ -47,7 +47,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         
         Config cfg = new Config(this);
         
-        final Metrics metrics = new Metrics(this, 9689);
+        new Metrics(this, 9689);
 
         if (!cfg.getBoolean("options.disable-dimensionalhome-world")) {
             WorldCreator worldCreator = new WorldCreator("dimensionalhome");
@@ -98,10 +98,8 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         return instance;
     }
 
-    @Nonnull
     public int getTickInterval() {
         return tickInterval;
-
     }
 
     public static boolean isExoticGardenInstalled() {
