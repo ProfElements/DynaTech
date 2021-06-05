@@ -16,7 +16,7 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 public class WitherGolem extends MultiBlockMachine {
   
   public WitherGolem(Category category, SlimefunItemStack item) {
-    super(category, item, new ItemStack[] {null, new ItemStack(Material.PUMPKIN), null, null, new ItemStack(Material.POLISHED_BLACKSTONE), null, null, new ItemStack(Material. POLISHED_BLACKSTONE), null}, BlockFace.UP);
+    super(category, item, new ItemStack[] {null, new ItemStack(Material.PUMPKIN), null, null, new ItemStack(Material.POLISHED_BLACKSTONE), null, null, new ItemStack(Material. POLISHED_BLACKSTONE), null}, BlockFace.SELF);
   }
 
   @Override
