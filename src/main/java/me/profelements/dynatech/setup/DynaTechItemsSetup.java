@@ -43,7 +43,8 @@ import me.profelements.dynatech.items.misc.Bee;
 import me.profelements.dynatech.items.misc.ItemBand;
 import me.profelements.dynatech.items.misc.MobDropItem;
 import me.profelements.dynatech.items.misc.StarDustMeteor;
-import me.profelements.dynatech.items.misc.VexGem;
+import me.profelements.dynatech.items.misc.VexGem;
+import me.profelements.dynatech.items.misc.WitherGolem;
 import me.profelements.dynatech.items.tools.AngelGem;
 import me.profelements.dynatech.items.tools.DimensionalHome;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
@@ -250,6 +251,8 @@ public class DynaTechItemsSetup {
             .addDrop(DynaTechItems.GHOSTLY_ESSENCE, 9)
             .register(plugin);
         }
+        
+        new WitherGolem(DynaTechItems.DT_TOOLS, DynaTechItems.WITHER_GOLEM).register(plugin);
 
         //Machines
         if (DynaTech.isExoticGardenInstalled()) {

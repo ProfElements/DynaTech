@@ -172,6 +172,14 @@ public class DynaTechItems {
         "&fAmount: 0mb / 16000",
         ""
     );
+    
+    public static final SlimefunItemStack WITHER_GOLEM = new SlimefunItemStack("WITHER_GOLEM",
+        Material.WITHER_SKELETON_SKULL,
+        "&6Wither Golem MultiBlock",
+        "",
+        "Spawns a Wither Skeleton",
+        ""
+    );
 
     //Machines
     public static final SlimefunItemStack AUTO_KITCHEN = new SlimefunItemStack("AUTO_KITCHEN",
