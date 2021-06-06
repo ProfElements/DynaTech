@@ -1,17 +1,8 @@
 package me.profelements.dynatech;
 
-import org.apache.commons.lang.Validate;
-import org.bstats.bukkit.Metrics;
-import org.bukkit.Bukkit;
-import org.bukkit.World;
-import org.bukkit.WorldCreator;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitTask;
-
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
 import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.misc.DimensionalHomeDimension;
@@ -22,11 +13,17 @@ import me.profelements.dynatech.listeners.InventoryFilterListener;
 import me.profelements.dynatech.listeners.PicnicBasketListener;
 import me.profelements.dynatech.setup.DynaTechItemsSetup;
 import me.profelements.dynatech.tasks.ItemBandTask;
-
-import java.util.logging.Level;
+import org.apache.commons.lang.Validate;
+import org.bstats.bukkit.Metrics;
+import org.bukkit.Bukkit;
+import org.bukkit.World;
+import org.bukkit.WorldCreator;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.logging.Level;
 
 public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
@@ -44,12 +41,10 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         infinityExpansionInstalled = Bukkit.getServer().getPluginManager().isPluginEnabled("InfinityExpansion");
 
         saveDefaultConfig();
-        
-        Config cfg = new Config(this);
-        
+
         new Metrics(this, 9689);
 
-        if (!cfg.getBoolean("options.disable-dimensionalhome-world")) {
+        if (!getConfig().getBoolean("options.disable-dimensionalhome-world")) {
             WorldCreator worldCreator = new WorldCreator("dimensionalhome");
             worldCreator.generator(new DimensionalHomeDimension());
             World dimensionalHome = worldCreator.createWorld();
@@ -65,7 +60,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         getServer().getScheduler().runTaskTimerAsynchronously(DynaTech.getInstance(), new ItemBandTask(), 0L, 5 * 20L);
         getServer().getScheduler().runTaskTimer(DynaTech.getInstance(), () -> this.tickInterval++, 0, TICK_TIME);
 
-        if (cfg.getBoolean("options.auto-update", true) && getDescription().getVersion().startsWith("DEV - ")) {
+        if (getConfig().getBoolean("options.auto-update", true) && getDescription().getVersion().startsWith("DEV - ")) {
             new GitHubBuildsUpdater(this, getFile(), "ProfElements/DynaTech/master");
         }
 
@@ -120,5 +115,5 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
         return instance.getServer().getScheduler().runTask(getInstance(), runnable);
     }
-    
+
 }
