@@ -17,7 +17,6 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
-import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 
 import javax.annotation.Nonnull;
@@ -42,7 +41,7 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
         BlockMenu menu = BlockStorage.getInventory(b);
         ItemStack item = menu.getItemInSlot(getInputSlots()[0]);
 
-        if( item != null && (item.getType() == Material.SUNFLOWER || item.getType() == Material.LILAC || item.getType() == Material.CREEPER_HEAD) ) {
+        if (item != null && (item.getType() == Material.SUNFLOWER || item.getType() == Material.LILAC || item.getType() == Material.CREEPER_HEAD)) {
             if (item.getType() == Material.SUNFLOWER) {
                 if (b.getWorld().isClearWeather()) {
                     return;
@@ -52,10 +51,10 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
             }
             
             if (item.getType() == Material.LILAC) {
-                if(b.getWorld().hasStorm()) {
+                if (b.getWorld().hasStorm()) {
                     return;
                 }
-                DynaTech.runSync(()->b.getWorld().setStorm(true));
+                b.getWorld().setStorm(true);
                 b.getWorld().setWeatherDuration(1200);
                 removeCharge(b.getLocation(), getEnergyConsumption());
             }
@@ -64,7 +63,7 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
                 if (b.getWorld().isThundering()) {
                     return;
                 }
-                DynaTech.runSync(()->b.getWorld().setThundering(true));
+                b.getWorld().setThundering(true);
                 b.getWorld().setThunderDuration(1200);
                 removeCharge(b.getLocation(), getEnergyConsumption());
             }
@@ -76,8 +75,8 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
         return new BlockBreakHandler(false, false) {
             @Override
             public void onPlayerBreak(BlockBreakEvent event, ItemStack item, List<ItemStack> drops) {
-              DynaTech.runSync(()->event.getBlock().getWorld().setClearWeatherDuration(60));
-            }   
+                event.getBlock().getWorld().setClearWeatherDuration(60);
+            }
         };
     }
 

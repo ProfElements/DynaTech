@@ -1,8 +1,11 @@
-package me.profelements.dynatech.setup;
-
-import io.github.mooy1.infinityexpansion.items.MobData;
-import io.github.mooy1.infinityexpansion.items.mobdata.MobDataCard;
-import io.github.mooy1.infinityexpansion.items.mobdata.MobDataTier;
+package me.profelements.dynatech.setup;
+
+import io.github.mooy1.infinityexpansion.items.MobData;
+
+import io.github.mooy1.infinityexpansion.items.mobdata.MobDataCard;
+
+import io.github.mooy1.infinityexpansion.items.mobdata.MobDataTier;
+
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
