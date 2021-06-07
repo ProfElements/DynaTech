@@ -23,12 +23,12 @@ public class WitherGolem extends MultiBlockMachine {
   public void onInteract(@Nonnull Player p, @Nonnull Block b) {
     Block pumpkinHead = b.getRelative(BlockFace.UP);
     Block bottomBlackstone = b.getRelative(BlockFace.DOWN);
-    
+  
+    p.getWorld().spawnEntity(p.getLocation(), EntityType.WITHER_SKELETON);
+
     pumpkinHead.setType(Material.AIR);
     b.setType(Material.AIR);
     bottomBlackstone.setType(Material.AIR);
-
-    p.getWorld().spawnEntity(p.getLocation(), EntityType.WITHER_SKELETON);
   }
 
 }
