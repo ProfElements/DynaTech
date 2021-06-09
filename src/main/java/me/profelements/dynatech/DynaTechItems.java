@@ -168,6 +168,9 @@ public class DynaTechItems {
         "",
         "&fSimple Liquid Snatcher.",
         "",
+        "Right click to grab a fluid",
+        "Shift click to place a fluid",
+        "",
         "&fFluid Held: NO_FLUID",
         "&fAmount: 0mb / 16000",
         ""

@@ -1,10 +1,5 @@
 package me.profelements.dynatech.items.electric.generators;
 
-import java.util.Map;
-
-import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
-
 import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotHopperable;
@@ -16,12 +11,15 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
+import java.util.Map;
 
 public class CulinaryGenerator extends AMachineGenerator implements NotHopperable {
 
-    private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>(this, "exotic-garden-integration", true);
+    private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<>(this, "exotic-garden-integration", true);
 
     public CulinaryGenerator(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
@@ -29,10 +27,8 @@ public class CulinaryGenerator extends AMachineGenerator implements NotHopperabl
         addItemSetting(exoticGardenIntegration);
     }
 
-
     @Override
     public void registerDefaultFuelTypes() {
-       
         //1 Food Levels
         registerFuel(new MachineFuel(2, new ItemStack(Material.BEETROOT)));
         registerFuel(new MachineFuel(2, new ItemStack(Material.DRIED_KELP)));
@@ -71,7 +67,7 @@ public class CulinaryGenerator extends AMachineGenerator implements NotHopperabl
         registerFuel(new MachineFuel(24, new ItemStack(Material.COOKED_CHICKEN)));
         registerFuel(new MachineFuel(24, new ItemStack(Material.COOKED_SALMON)));
         registerFuel(new MachineFuel(24, new ItemStack(Material.GOLDEN_CARROT)));
-        
+
         //8 Food Levels
         registerFuel(new MachineFuel(36, new ItemStack(Material.COOKED_PORKCHOP)));
         registerFuel(new MachineFuel(36, new ItemStack(Material.COOKED_BEEF)));
@@ -85,19 +81,18 @@ public class CulinaryGenerator extends AMachineGenerator implements NotHopperabl
                 SlimefunItem sfItem = SlimefunItem.getByItem(inv.getItemInSlot(inputSlot));
                 if (sfItem instanceof CustomFood) {
                     CustomFood cfItem = (CustomFood) sfItem;
-                    MachineFuel fuel = new MachineFuel(cfItem.getFoodValue()*4, sfItem.getItem());    
-                    inv.consumeItem(inputSlot);                
+                    MachineFuel fuel = new MachineFuel(cfItem.getFoodValue() * 4, sfItem.getItem());
+                    inv.consumeItem(inputSlot);
                     return fuel;
                 }
             }
         }
-        return super.findRecipe(inv, found); 
-    }    
-             
+        return super.findRecipe(inv, found);
+    }
 
     @Override
     public String getMachineIdentifier() {
-       return "CULINARY_GENERATOR";
+        return "CULINARY_GENERATOR";
     }
 
     @Nonnull
@@ -105,5 +100,4 @@ public class CulinaryGenerator extends AMachineGenerator implements NotHopperabl
     public ItemStack getProgressBar() {
         return new ItemStack(Material.IRON_SHOVEL);
     }
-    
 }

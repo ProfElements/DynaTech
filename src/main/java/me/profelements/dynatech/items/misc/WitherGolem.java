@@ -16,22 +16,19 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 public class WitherGolem extends MultiBlockMachine {
   
   public WitherGolem(Category category, SlimefunItemStack item) {
-    super(category, item, new ItemStack[] {null, new ItemStack(Material.PUMPKIN), null, null, new ItemStack(Material.POLISHED_BLACKSTONE), null, null, new ItemStack(Material. POLISHED_BLACKSTONE), null}, BlockFace.SELF);
+    super(category, item, new ItemStack[] {null, new ItemStack(Material.CARVED_PUMPKIN), null, null, new ItemStack(Material.POLISHED_BLACKSTONE), null, null, new ItemStack(Material. POLISHED_BLACKSTONE), null}, BlockFace.SELF);
   }
 
   @Override
   public void onInteract(@Nonnull Player p, @Nonnull Block b) {
-     Block golemPart = b.getRelative(BlockFace.DOWN);
-     Block golemBottom = golemPart.getRelative(BlockFace.DOWN);
-     
-     if (golemPart.getType() == Material.POLISHED_BLACKSTONE && golemBottom.getType() == Material.POLISHED_BLACKSTONE) {
-        b.setType(Material.AIR);
-        golemPart.setType(Material.AIR);
-        golemBottom.setType(Material.AIR);
+    Block pumpkinHead = b.getRelative(BlockFace.UP);
+    Block bottomBlackstone = b.getRelative(BlockFace.DOWN);
+  
+    p.getWorld().spawnEntity(p.getLocation(), EntityType.WITHER_SKELETON);
 
-        b.getWorld().spawnEntity(b.getLocation(), EntityType.WITHER_SKELETON);
-     }
-
+    pumpkinHead.setType(Material.AIR);
+    b.setType(Material.AIR);
+    bottomBlackstone.setType(Material.AIR);
   }
 
 }

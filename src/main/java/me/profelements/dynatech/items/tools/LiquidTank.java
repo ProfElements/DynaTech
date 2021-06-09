@@ -10,6 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -58,42 +59,27 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
                 String fluidName = getLiquid(itemStack).getFirstValue();
                 int fluidAmount = getLiquid(itemStack).getSecondValue();
 
-                if (fluidName != null && e.getPlayer().isSneaking() && getPlaceableFluids().contains(fluidName) &&  fluidAmount >= 1000) {
-                    DynaTech.runSync(() -> {
+                if (fluidName != null && e.getPlayer().isSneaking() && fluidAmount >= 1000) {
                         if (fluidName.equals("WATER")) {
                             removeLiquid(itemStack, fluidName, 1000);
-                            liquid.setType(Material.WATER);
+                            liquidState.setType(Material.WATER);
                             liquidState.update(true, true);
                             
-                            EntityChangeBlockEvent updateBlock = new EntityChangeBlockEvent(e.getPlayer(), liquid, liquidState.getBlockData());
-                            Bukkit.getPluginManager().callEvent(updateBlock);
-
                             updateLore(itemStack);
                             
                         } else if (fluidName.equals("LAVA")) {
                             removeLiquid(itemStack, fluidName, 1000);
-                            liquid.setType(Material.LAVA);
+                            liquidState.setType(Material.LAVA);
                             liquidState.update(true, true);
                             
-                            EntityChangeBlockEvent updateBlock = new EntityChangeBlockEvent(e.getPlayer(), liquid, liquidState.getBlockData());
-                            Bukkit.getPluginManager().callEvent(updateBlock);
-
                             updateLore(itemStack);
                         }
-                        
-                    });
                     
                 } else if (fluidName != null && fluidAmount <= liquidTank.getMaxLiquidAmount() && liquid.isLiquid()) {
-                    DynaTech.runSync(() -> {
                         addLiquid(itemStack, liquid.getType().name(), 1000);
-                        liquid.setType(Material.AIR);
+                        liquidState.setType(Material.AIR);
                         liquidState.update(true, true);
-
-                        EntityChangeBlockEvent updateBlock = new EntityChangeBlockEvent(e.getPlayer(), liquid, liquid.getBlockData());
-                        Bukkit.getPluginManager().callEvent(updateBlock);
-
                         updateLore(itemStack);
-                    });
                 }
             }
         };

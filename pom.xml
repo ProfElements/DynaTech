@@ -131,6 +131,7 @@
             <groupId>com.github.Slimefun-Addon-Community</groupId>
             <artifactId>extrautils</artifactId>
             <version>c852937de5</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
