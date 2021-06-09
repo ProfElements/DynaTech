@@ -66,7 +66,7 @@
                             <shadedPattern>me.profelements.dynatech.infinitylib</shadedPattern>
                         </relocation>
                         <relocation>
-                            <pattern>com.github.Slimefun-Addon-Community.extrautils</pattern>
+                            <pattern>dev.j3fftw.extrautils</pattern>
                             <shadedPattern>me.profelements.dynatech.extrautils</shadedPattern>
                         </relocation>
                     </relocations>
