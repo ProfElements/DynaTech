@@ -188,7 +188,7 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
                     }
                     removeCharge(tesseractPair, chargedNeeded);
                     return chargedNeeded;
-                } else {
+                } else if (BankCharge > 0) {
                     if (chargedNeeded > getEnergyRate()) {
                         removeCharge(tesseractPair, getEnergyRate());
                         return getEnergyRate();
