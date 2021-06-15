@@ -5,6 +5,7 @@ import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
+import me.mrCookieSlime.Slimefun.Objects.handlers.ItemHandler;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import org.bukkit.Bukkit;
@@ -12,7 +13,10 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
+
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 
 import java.util.*;
 
@@ -26,6 +30,8 @@ public class AntigravityBubble extends AMachine {
 
     public AntigravityBubble(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
+
+        addItemHandler(onBreak());
     }
 
     @Override
@@ -72,6 +78,26 @@ public class AntigravityBubble extends AMachine {
                 playerIterator.remove();
             }
         }
+    }
+        
+    private ItemHandler onBreak() {
+        return new BlockBreakHandler(false, false) {
+        
+            @Override
+            public void onPlayerBreak(BlockBreakEvent e, ItemStack tool, List<ItemStack> drops) {
+                final Iterator<UUID> playerIterator = enabledPlayers.iterator();
+                while (playerIterator.hasNext()) {
+                    final UUID uuid = playerIterator.next();
+                    Player p = Bukkit.getPlayer(uuid);
+                    if (p != null) {
+                        p.setAllowFlight(false);
+                        p.setFlying(false);
+                        p.setFallDistance(0.0F);
+                        playerIterator.remove();
+                    }
+                }
+            }
+        };
     }
 
     @Override
