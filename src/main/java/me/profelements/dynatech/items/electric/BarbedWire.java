@@ -49,7 +49,7 @@ public class BarbedWire extends AMachine {
                 Vector tempV2 = tempV.multiply(-1).multiply(1.2).add(new Vector(1, 0.7, 1));
                 
                 if (tempV2.getX() >= MAX_DIRECTION_VEL || tempV2.getY() >= MAX_DIRECTION_VEL || tempV2.getZ() >= MAX_DIRECTION_VEL) {
-                    tempV2 = new Vector();
+                    tempV2 = new Vector(0, 0, 0);
                 }
 
 
