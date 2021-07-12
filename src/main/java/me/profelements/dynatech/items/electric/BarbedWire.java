@@ -45,7 +45,7 @@ public class BarbedWire extends AMachine {
         int waitTime = 0;
         for (Entity e : w.getNearbyEntities(loc, 9, 9, 9)) {
             Vector tempV = e.getVelocity();
-            if (e.getType() != EntityType.PLAYER  && e.getType() != EntityType.DROPPED_ITEM && !shotEntities.contains(e)) {
+            if (e.getType() != EntityType.PLAYER && e.getType() != EntityType.ARMOR_STAND && e.getType() != EntityType.DROPPED_ITEM && !shotEntities.contains(e)) {
                 Vector tempV2 = tempV.multiply(-1).multiply(1.2).add(new Vector(1, 0.7, 1));
                 
                 if (tempV2.getX() >= MAX_DIRECTION_VEL || tempV2.getY() >= MAX_DIRECTION_VEL || tempV2.getZ() >= MAX_DIRECTION_VEL) {

@@ -17,6 +17,7 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
+import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 
 import javax.annotation.Nonnull;
@@ -63,9 +64,11 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
                 if (b.getWorld().isThundering()) {
                     return;
                 }
-                b.getWorld().setThundering(true);
-                b.getWorld().setThunderDuration(1200);
-                removeCharge(b.getLocation(), getEnergyConsumption());
+                DynaTech.runSync(()-> {
+                    b.getWorld().setThundering(true);
+                    b.getWorld().setThunderDuration(1200);
+                    removeCharge(b.getLocation(), getEnergyConsumption());
+                });
             }
         }
     }

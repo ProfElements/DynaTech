@@ -2,6 +2,7 @@ package me.profelements.dynatech.items.electric;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -75,12 +76,17 @@ public class PotionSprinkler extends AMachine {
             }
         }
 
-        for (UUID plyrUUID : enabledPlayers) {
-            Player plyr = Bukkit.getPlayer(plyrUUID);
-            if (plyr != null && plyr.getActivePotionEffects().isEmpty()) {
-                enabledPlayers.remove(plyr.getUniqueId());
+        final Iterator<UUID> playerIterator = enabledPlayers.iterator();
+        while (playerIterator.hasNext()) {
+            final UUID uuid = playerIterator.next();
+            Player p = Bukkit.getPlayer(uuid);
+
+            if (p != null && p.getActivePotionEffects().isEmpty()) {
+                playerIterator.remove();
             }
         }
+
+
     }
 
     private void applyPotionEffect(PotionEffect pe, LivingEntity livingEntity) {
