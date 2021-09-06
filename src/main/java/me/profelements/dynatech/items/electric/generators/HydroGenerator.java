@@ -4,14 +4,14 @@ package me.profelements.dynatech.items.electric.generators;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.blocks.BlockPosition;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.cscorelib2.blocks.BlockPosition;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -37,9 +37,9 @@ public class HydroGenerator extends SlimefunItem implements EnergyNetProvider {
             }
         });
 
-    public HydroGenerator(Category category, int energy, int capacity, SlimefunItemStack item, RecipeType recipeType,
+    public HydroGenerator(ItemGroup itemGroup, int energy, int capacity, SlimefunItemStack item, RecipeType recipeType,
                           ItemStack[] recipe) {
-        super(category, item, recipeType, recipe);
+        super(itemGroup, item, recipeType, recipe);
 
         this.energy = energy;
         this.capacity = capacity;
