@@ -94,7 +94,7 @@
         <dependency>
             <groupId>com.github.Slimefun</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-24</version>
+            <version>ab8f20f</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
@@ -106,13 +106,13 @@
         <dependency>
             <groupId>com.github.thebusybiscuit</groupId>
             <artifactId>exoticgarden</artifactId>
-            <version>b7dfe8c35b</version>
+            <version>a2c4b6d</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.github.mooy1</groupId>
             <artifactId>InfinityExpansion</artifactId>
-            <version>9d5d3cecc0</version>
+            <version>c4e42cc</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -130,7 +130,7 @@
         <dependency>
             <groupId>com.github.Slimefun-Addon-Community</groupId>
             <artifactId>extrautils</artifactId>
-            <version>c852937de5</version>
+            <version>73e76ac</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

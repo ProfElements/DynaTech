@@ -1,17 +1,15 @@
 package me.profelements.dynatech.setup;
 
-import io.github.mooy1.infinityexpansion.items.MobData;
-
+import io.github.mooy1.infinityexpansion.items.mobdata.MobData;
 import io.github.mooy1.infinityexpansion.items.mobdata.MobDataCard;
-
 import io.github.mooy1.infinityexpansion.items.mobdata.MobDataTier;
-
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
-import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
@@ -46,8 +44,8 @@ import me.profelements.dynatech.items.misc.Bee;
 import me.profelements.dynatech.items.misc.ItemBand;
 import me.profelements.dynatech.items.misc.MobDropItem;
 import me.profelements.dynatech.items.misc.StarDustMeteor;
-import me.profelements.dynatech.items.misc.VexGem;
-import me.profelements.dynatech.items.misc.WitherGolem;
+import me.profelements.dynatech.items.misc.VexGem;
+import me.profelements.dynatech.items.misc.WitherGolem;
 import me.profelements.dynatech.items.tools.AngelGem;
 import me.profelements.dynatech.items.tools.DimensionalHome;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
@@ -56,7 +54,6 @@ import me.profelements.dynatech.items.tools.LiquidTank;
 import me.profelements.dynatech.items.tools.Orechid;
 import me.profelements.dynatech.items.tools.Scoop;
 import me.profelements.dynatech.items.tools.TesseractBinder;
-
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -98,7 +95,7 @@ public class DynaTechItemsSetup {
                     SlimefunItems.PROGRAMMABLE_ANDROID, null, null,
                     null, null, null,
                     null, null, null,
-        }, new SlimefunItemStack(DynaTechItems.MACHINE_SCRAP, 8)).register(plugin); 
+        }, new SlimefunItemStack(DynaTechItems.MACHINE_SCRAP, 8)).register(plugin);
                 
         new SlimefunItem(DynaTechItems.DT_RESOURCES, DynaTechItems.ADVANCED_MACHINE_SCRAP, RecipeType.GRIND_STONE,
             new ItemStack[] {
@@ -110,7 +107,7 @@ public class DynaTechItemsSetup {
         new VexGem(DynaTechItems.DT_RESOURCES, DynaTechItems.VEX_GEM, RecipeType.MOB_DROP, 
             new ItemStack[] {
                 null, null, null,
-                null, new CustomItem(SkullItem.fromHash("c2ec5a516617ff1573cd2f9d5f3969f56d5575c4ff4efefabd2a18dc7ab98cd"), "&aVex"), null,
+                null, new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode("c2ec5a516617ff1573cd2f9d5f3969f56d5575c4ff4efefabd2a18dc7ab98cd")), "&aVex"), null,
                 null, null, null
         }).register(plugin);
         
@@ -132,7 +129,7 @@ public class DynaTechItemsSetup {
         new MobDropItem(DynaTechItems.DT_RESOURCES, DynaTechItems.GHOSTLY_ESSENCE, RecipeType.MOB_DROP, 
             new ItemStack[] {
                 null, null, null,
-                null, new CustomItem(SkullItem.fromHash("c2ec5a516617ff1573cd2f9d5f3969f56d5575c4ff4efefabd2a18dc7ab98cd"), "&aVex"), null,
+                null, new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode("c2ec5a516617ff1573cd2f9d5f3969f56d5575c4ff4efefabd2a18dc7ab98cd")), "&aVex"), null,
                 null, null, null
         }, 80).register(plugin);
 
@@ -147,7 +144,7 @@ public class DynaTechItemsSetup {
         new Bee(DynaTechItems.DT_RESOURCES, DynaTechItems.BEE, DynaTechItems.DynaTechScoop,
             new ItemStack[] {
                 null, null, null,
-                null, new CustomItem(SkullItem.fromHash("12724a9a4cdd68ba49415560e5be40b4a1c47cb5be1d66aedb52a30e62ef2d47"), "&aAny Bee"), null,
+                null, new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode("12724a9a4cdd68ba49415560e5be40b4a1c47cb5be1d66aedb52a30e62ef2d47")), "&aAny Bee"), null,
                 null, null, null
             }, 2
         ).register(plugin);

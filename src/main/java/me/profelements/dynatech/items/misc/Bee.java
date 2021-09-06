@@ -1,19 +1,18 @@
 package me.profelements.dynatech.items.misc;
 
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
 import org.apache.commons.lang.Validate;
 import org.bukkit.inventory.ItemStack;
-
-import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
 public class Bee extends UnplaceableBlock {
     
     private int speedMultiplier;
 
-    public Bee(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, int speedMulitplier) {
-        super(category, item, recipeType, recipe);
+    public Bee(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, int speedMulitplier) {
+        super(itemGroup, item, recipeType, recipe);
         this.speedMultiplier = speedMulitplier;
     }
 

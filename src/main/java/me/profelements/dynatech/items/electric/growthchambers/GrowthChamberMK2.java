@@ -1,21 +1,19 @@
 package me.profelements.dynatech.items.electric.growthchambers;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
-
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GrowthChamberMK2 extends AMachine {
     
@@ -25,8 +23,8 @@ public class GrowthChamberMK2 extends AMachine {
     
     private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>(this, "exotic-garden-integration", true);
 
-    public GrowthChamberMK2(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(category, item, recipeType, recipe);
+    public GrowthChamberMK2(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+        super(itemGroup, item, recipeType, recipe);
 
         addItemSetting(exoticGardenIntegration);
     }
@@ -93,7 +91,7 @@ public class GrowthChamberMK2 extends AMachine {
                     SlimefunItem sfItem = SlimefunItem.getByItem(item);
                     if (sfItem.getId().contains("_BUSH") || sfItem.getId().contains("_PLANT") || sfItem.getId().contains("_SAPLING")) {
                         if (sfItem.getId().contains("_BUSH")) {
-                            ItemStack fruit = SlimefunItem.getByID(sfItem.getId().replace("_BUSH", "")).getItem();
+                            ItemStack fruit = SlimefunItem.getById(sfItem.getId().replace("_BUSH", "")).getItem();
                             MachineRecipe recipe = new MachineRecipe(20, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {sfItem.getItem(), fruit});
 
                             inv.consumeItem(inputSlot);
@@ -101,7 +99,7 @@ public class GrowthChamberMK2 extends AMachine {
                             return recipe;
                         } else 
                         if (sfItem.getId().contains("_PLANT")) {
-                            ItemStack fruit = SlimefunItem.getByID(sfItem.getId().replace("_PLANT", "")) != null ? SlimefunItem.getByID(sfItem.getId().replace("_PLANT", "")).getItem() : SlimefunItem.getByID(sfItem.getId().replace("_PLANT", "_ESSENCE")).getItem();
+                            ItemStack fruit = SlimefunItem.getById(sfItem.getId().replace("_PLANT", "")) != null ? SlimefunItem.getById(sfItem.getId().replace("_PLANT", "")).getItem() : SlimefunItem.getById(sfItem.getId().replace("_PLANT", "_ESSENCE")).getItem();
                             MachineRecipe recipe = new MachineRecipe(10, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {sfItem.getItem(), fruit});
 
                             inv.consumeItem(inputSlot);
@@ -109,7 +107,7 @@ public class GrowthChamberMK2 extends AMachine {
                             return recipe;
                         } else
                         if (sfItem.getId().contains("_SAPLING")) {
-                            ItemStack fruit = SlimefunItem.getByID(sfItem.getId().replace("_SAPLING", "")).getItem();
+                            ItemStack fruit = SlimefunItem.getById(sfItem.getId().replace("_SAPLING", "")).getItem();
                             
                             MachineRecipe recipe = new MachineRecipe(60, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {sfItem.getItem(), fruit});
 

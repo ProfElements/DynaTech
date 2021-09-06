@@ -1,26 +1,24 @@
 package me.profelements.dynatech.items.electric;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemHandler;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import me.mrCookieSlime.Slimefun.api.BlockStorage;
+import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+import me.profelements.dynatech.DynaTech;
+import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
-import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.handlers.ItemHandler;
-import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
-import me.profelements.dynatech.DynaTech;
-import me.profelements.dynatech.items.electric.abstracts.AMachine;
-
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WeatherController extends AMachine implements RecipeDisplayItem {
 
@@ -28,8 +26,8 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
     private static final int[] BORDER_IN = new int[] {3,4,5,12,14,21,22,23};
     private static final int[] BORDER_OUT = new int[] {0,8,18,26};
 
-    public WeatherController(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(category, item, recipeType, recipe);
+    public WeatherController(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+        super(itemGroup, item, recipeType, recipe);
         addItemHandler(onBlockBreak());
     }
 
@@ -88,13 +86,13 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
     public List<ItemStack> getDisplayRecipes() {
         List<ItemStack> items = new ArrayList<>();
         items.add(new ItemStack(Material.SUNFLOWER));
-        items.add(new CustomItem(Material.DIAMOND, "&fMakes its sunny in philadelphia."));
+        items.add(new CustomItemStack(Material.DIAMOND, "&fMakes its sunny in philadelphia."));
 
         items.add(new ItemStack(Material.LILAC));
-        items.add(new CustomItem(Material.DIAMOND, "&fMakes its rain while the old man snores"));
+        items.add(new CustomItemStack(Material.DIAMOND, "&fMakes its rain while the old man snores"));
 
         items.add(new ItemStack(Material.CREEPER_HEAD));
-        items.add(new CustomItem(Material.DIAMOND, "&fMakes it thunder."));
+        items.add(new CustomItemStack(Material.DIAMOND, "&fMakes it thunder."));
 
         return items;
     }

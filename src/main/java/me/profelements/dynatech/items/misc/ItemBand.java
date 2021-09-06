@@ -1,8 +1,11 @@
 package me.profelements.dynatech.items.misc;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+import me.profelements.dynatech.DynaTech;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -10,22 +13,17 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.cscorelib2.data.PersistentDataAPI;
-import me.profelements.dynatech.DynaTech;
-
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemBand extends SlimefunItem {
 
     public static final NamespacedKey KEY = new NamespacedKey(DynaTech.getInstance(), "item_band");
     private final PotionEffect[] potionEffects;
 
-    public ItemBand(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, PotionEffect[] potionEffects) {
-        super(category, item, recipeType, recipe);
+    public ItemBand(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, PotionEffect[] potionEffects) {
+        super(itemGroup, item, recipeType, recipe);
         
         this.potionEffects = potionEffects;
     }

@@ -1,32 +1,29 @@
-package me.profelements.dynatech.items.tools;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+package me.profelements.dynatech.items.tools;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.entity.EntityChangeBlockEvent;
+
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
+import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
+import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
+import me.profelements.dynatech.DynaTech;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
-import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
-import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.cscorelib2.collections.Pair;
-import me.mrCookieSlime.Slimefun.cscorelib2.data.PersistentDataAPI;
-import me.mrCookieSlime.Slimefun.cscorelib2.protection.ProtectableAction;
-import me.profelements.dynatech.DynaTech;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class LiquidTank extends SlimefunItem implements NotPlaceable {
 
@@ -35,8 +32,8 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
 
     private final int maxLiquidAmount;
 
-    public LiquidTank(Category category, SlimefunItemStack item, int maxLiquidAmount, RecipeType recipeType, ItemStack[] recipe) {
-        super(category, item, recipeType, recipe);
+    public LiquidTank(ItemGroup itemGroup, SlimefunItemStack item, int maxLiquidAmount, RecipeType recipeType, ItemStack[] recipe) {
+        super(itemGroup, item, recipeType, recipe);
 
         this.maxLiquidAmount = maxLiquidAmount;
 
@@ -51,7 +48,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
             Optional<SlimefunItem> item = e.getSlimefunItem();
             ItemStack itemStack = e.getItem();
             
-            if (b.isPresent() && item.isPresent() && item.get() instanceof LiquidTank && SlimefunPlugin.getProtectionManager().hasPermission(e.getPlayer(), b.get().getLocation(), ProtectableAction.PLACE_BLOCK)) {
+            if (b.isPresent() && item.isPresent() && item.get() instanceof LiquidTank && Slimefun.getProtectionManager().hasPermission(e.getPlayer(), b.get().getLocation(), Interaction.PLACE_BLOCK)) {
                 Block liquid = b.get().getRelative(e.getClickedFace());
                 BlockState liquidState = PaperLib.getBlockState(liquid, false).getState();
                 LiquidTank liquidTank = (LiquidTank) item.get();

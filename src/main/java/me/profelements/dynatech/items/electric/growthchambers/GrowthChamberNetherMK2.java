@@ -1,15 +1,14 @@
 package me.profelements.dynatech.items.electric.growthchambers;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
-
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GrowthChamberNetherMK2 extends AMachine {
     
@@ -17,8 +16,8 @@ public class GrowthChamberNetherMK2 extends AMachine {
     private static int[] BORDER_IN = new int[] {0,8,9,10,11,12,14,15,16,17};
     private static int[] BORDER_OUT = new int[] {18,19,20,21,22,23,24,25,26,27,35,36,44,45,53};
     
-    public GrowthChamberNetherMK2(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(category, item, recipeType, recipe);
+    public GrowthChamberNetherMK2(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+        super(itemGroup, item, recipeType, recipe);
 
     }
 

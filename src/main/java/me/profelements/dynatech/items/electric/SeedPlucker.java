@@ -1,26 +1,24 @@
 package me.profelements.dynatech.items.electric;
 
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import io.github.thebusybiscuit.exoticgarden.items.ExoticGardenFruit;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
-
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-
-import io.github.thebusybiscuit.exoticgarden.items.ExoticGardenFruit;
-import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 
 public class SeedPlucker extends AMachine {
 
     private final ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<>(this, "exotic-garden-integration", true);
 
-    public SeedPlucker(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(category, item, recipeType, recipe);
+    public SeedPlucker(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+        super(itemGroup, item, recipeType, recipe);
 
         addItemSetting(exoticGardenIntegration);
     }
@@ -39,17 +37,17 @@ public class SeedPlucker extends AMachine {
             for (int inputSlot : getInputSlots()) {
                 SlimefunItem item = SlimefunItem.getByItem(inv.getItemInSlot(inputSlot));
                 if (item instanceof ExoticGardenFruit) {
-                    SlimefunItem out = SlimefunItem.getByID(item.getId().concat("_BUSH"));
+                    SlimefunItem out = SlimefunItem.getById(item.getId().concat("_BUSH"));
                     if (out != null) {
                         inv.consumeItem(inputSlot);
                         return new MachineRecipe(10, new ItemStack[] {item.getItem()}, new ItemStack[] {out.getItem()});
                     }
-                    out = SlimefunItem.getByID(item.getId().concat("_SAPLING"));
+                    out = SlimefunItem.getById(item.getId().concat("_SAPLING"));
                     if (out != null) {
                         inv.consumeItem(inputSlot);
                         return new MachineRecipe(10, new ItemStack[] {item.getItem()}, new ItemStack[] {out.getItem()});
                     }
-                    out = SlimefunItem.getByID(item.getId().concat("_PLANT"));
+                    out = SlimefunItem.getById(item.getId().concat("_PLANT"));
                     if (out != null) {
                         inv.consumeItem(inputSlot);
                         return new MachineRecipe(10, new ItemStack[] {item.getItem()}, new ItemStack[] {out.getItem()});

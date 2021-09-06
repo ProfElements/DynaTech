@@ -1,22 +1,21 @@
 package me.profelements.dynatech.items.electric;
 
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
+import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+import me.profelements.dynatech.items.electric.abstracts.AMachine;
+import me.profelements.dynatech.items.misc.ItemBand;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
-import me.mrCookieSlime.Slimefun.cscorelib2.data.PersistentDataAPI;
-import me.profelements.dynatech.items.electric.abstracts.AMachine;
-import me.profelements.dynatech.items.misc.ItemBand;
-
 public class BandaidManager extends AMachine {
 
-    public BandaidManager(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(category, item, recipeType, recipe);
+    public BandaidManager(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+        super(itemGroup, item, recipeType, recipe);
     }
 
     @Override
@@ -41,8 +40,8 @@ public class BandaidManager extends AMachine {
                 }
             } else if (ItemBand.containsItemBand(target)) {
                 String id = PersistentDataAPI.getString(target.getItemMeta(), ItemBand.KEY);
-                if (SlimefunItem.getByID(id) != null) {
-                    SlimefunItem sfItem = SlimefunItem.getByID(id);
+                if (SlimefunItem.getById(id) != null) {
+                    SlimefunItem sfItem = SlimefunItem.getById(id);
                     ItemStack result = ItemBand.removeFromItem(target).clone();
 
                     inv.consumeItem(getInputSlots()[0]);

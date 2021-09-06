@@ -1,9 +1,9 @@
 package me.profelements.dynatech;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.GitHubBuildsUpdater;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.misc.DimensionalHomeDimension;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
@@ -36,7 +36,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
     @Override
     public void onEnable() {
         instance = this;
-        final int TICK_TIME = SlimefunPlugin.getTickerTask().getTickRate();
+        final int TICK_TIME = Slimefun.getTickerTask().getTickRate();
         exoticGardenInstalled = Bukkit.getServer().getPluginManager().isPluginEnabled("ExoticGarden");
         infinityExpansionInstalled = Bukkit.getServer().getPluginManager().isPluginEnabled("InfinityExpansion");
 

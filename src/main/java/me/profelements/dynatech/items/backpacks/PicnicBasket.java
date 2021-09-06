@@ -1,14 +1,13 @@
 package me.profelements.dynatech.items.backpacks;
 
 import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.items.backpacks.SlimefunBackpack;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.profelements.dynatech.DynaTech;
-
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -23,8 +22,8 @@ public class PicnicBasket extends SlimefunBackpack {
 
     private final ItemSetting<List<String>> blacklistedMaterials = new ItemSetting<>(this, "blacklisted-materials", ToStringList(getDefaultBlacklist()));
 
-    public PicnicBasket(int size, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(size, category, item, recipeType, recipe);
+    public PicnicBasket(int size, ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+        super(size, itemGroup, item, recipeType, recipe);
 
         /*Maybe use Material.getMaterial() and send a set of strings*/
 
