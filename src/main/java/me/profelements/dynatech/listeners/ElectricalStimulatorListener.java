@@ -1,5 +1,6 @@
 package me.profelements.dynatech.listeners;
 
+import io.github.thebusybiscuit.slimefun4.utils.ChargeUtils;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
@@ -50,7 +51,7 @@ public class ElectricalStimulatorListener implements Listener {
        }
 
         for (ItemStack item : p.getInventory().getStorageContents()) {
-            if (item != null && item.getType() == electricalStimulator.getItem().getType() && SlimefunUtils.isItemSimilar(item, DynaTechItems.ELECTRICAL_STIMULATOR, false, false)) {
+            if (item != null && item.getType() == electricalStimulator.getItem().getType() && SlimefunUtils.isItemSimilar(item, DynaTechItems.ELECTRICAL_STIMULATOR, false, false) && ChargeUtils.getCharge(item.getItemMeta()) > electricalStimulator.getEnergyComsumption()) {
                 if (SlimefunUtils.canPlayerUseItem(p, item, true)) {
                     p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, 1F , 1F);
                     electricalStimulator.removeItemCharge(item,  electricalStimulator.getEnergyComsumption());
