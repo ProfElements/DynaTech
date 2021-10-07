@@ -52,7 +52,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 
 ## Integrations 
  - **Vex Mob Data Card** - If InfinityExpansion is installed then you get a Vex Mob Data Card to help with Ghostly Essence and Vex Gems
-
+ - **Phantom Mob Data Card** - If InfinityExpansion is install then you get a Phantom Mob Data card to help with Phantom Membrane
 ## Credits
  [NCBPFluffyBear](https://github.com/ncbpfluffybear) for their autocrafter code since it helped alot with the Auto-Kitchen.
 

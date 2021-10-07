@@ -139,8 +139,9 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
         preset.drawBackground(borders.get(0));
         preset.drawBackground(ChestMenuUtils.getInputSlotTexture(), borders.get(1));
         preset.drawBackground(ChestMenuUtils.getOutputSlotTexture(), borders.get(2));
-
-        preset.addItem(getProgressBarSlot(), new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler());
+        
+        preset.addItem(getProgressBarSlot(), new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " "));
+        preset.addMenuClickHandler(getProgressBarSlot(), ChestMenuUtils.getEmptyClickHandler());   
     }
 
     public boolean isGraphical() {

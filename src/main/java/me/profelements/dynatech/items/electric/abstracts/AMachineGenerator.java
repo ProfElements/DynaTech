@@ -129,19 +129,22 @@ public abstract class AMachineGenerator extends SlimefunItem implements RecipeDi
 
     protected void constructMenu(BlockMenuPreset preset) {
         for (int i : getBorders().get(0)) {
-            preset.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
+            preset.addItem(i, ChestMenuUtils.getBackground());
+            preset.addMenuClickHandler(i, ChestMenuUtils.getEmptyClickHandler());
         }
 
         for (int i : getBorders().get(1)) {
-            preset.addItem(i, ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
+            preset.addItem(i, ChestMenuUtils.getInputSlotTexture());
+            preset.addMenuClickHandler(i, ChestMenuUtils.getEmptyClickHandler());
         }
 
         for (int i : getBorders().get(2)) {
-            preset.addItem(i, ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
+            preset.addItem(i, ChestMenuUtils.getOutputSlotTexture());
+            preset.addMenuClickHandler(i, ChestMenuUtils.getEmptyClickHandler());
         }
 
-        preset.addItem(getProgressBarSlot(), new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " "),
-                ChestMenuUtils.getEmptyClickHandler());
+        preset.addItem(getProgressBarSlot(), new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " "));
+        preset.addMenuClickHandler(getProgressBarSlot(), ChestMenuUtils.getEmptyClickHandler());
 
         for (int i : getOutputSlots()) {
             preset.addMenuClickHandler(i, new AdvancedMenuClickHandler() {
