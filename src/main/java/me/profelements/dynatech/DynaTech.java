@@ -61,7 +61,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         getServer().getScheduler().runTaskTimer(DynaTech.getInstance(), () -> this.tickInterval++, 0, TICK_TIME);
 
         if (getConfig().getBoolean("options.auto-update", true) && getDescription().getVersion().startsWith("DEV - ")) {
-            new GitHubBuildsUpdater(this, getFile(), "ProfElements/DynaTech/master");
+            new GitHubBuildsUpdater(this, getFile(), "ProfElements/DynaTech/master").start();
         }
 
         if (System.getProperty("java.version").startsWith("1.8")) {
