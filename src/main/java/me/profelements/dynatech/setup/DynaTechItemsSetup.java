@@ -154,7 +154,7 @@ public class DynaTechItemsSetup {
                 SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.REINFORCED_ALLOY_INGOT,
                 SlimefunItems.SYNTHETIC_SAPPHIRE, DynaTechItems.MACHINE_SCRAP, SlimefunItems.SYNTHETIC_SAPPHIRE,
                 SlimefunItems.REINFORCED_ALLOY_INGOT, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.REINFORCED_ALLOY_INGOT
-            }, 6
+            }, 7
         ).register(plugin);
 
         new Bee(DynaTechItems.DT_RESOURCES, DynaTechItems.ADVANCED_ROBOTIC_BEE, RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -162,7 +162,7 @@ public class DynaTechItemsSetup {
                 SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE,
                 DynaTechItems.VEX_GEM, DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.VEX_GEM,
                 SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.GOLD_24K_BLOCK
-            }, 8
+            }, 11
         ).register(plugin);
 
         
