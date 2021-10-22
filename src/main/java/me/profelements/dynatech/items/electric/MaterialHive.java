@@ -51,7 +51,7 @@ public class MaterialHive extends AMachine implements Radioactive {
         SlimefunItem sfItem = SlimefunItem.getByItem(key);
         
         if (sfItem != null && slimefunItemsAccepted.getValue().contains(sfItem.getId())) {
-            output = SlimefunItem.getById(sfItem.getId()).clone();
+            output = SlimefunItem.getById(sfItem.getId()).getItem().clone();
             
         } else if (vanillaItemsAccepted.getValue().contains(key.getType().toString())) {
             output = new ItemStack(key.getType());
