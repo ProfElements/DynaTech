@@ -91,7 +91,8 @@ public class GrowthChamberMK2 extends AMachine {
                     SlimefunItem sfItem = SlimefunItem.getByItem(item);
                     if (sfItem.getId().contains("_BUSH") || sfItem.getId().contains("_PLANT") || sfItem.getId().contains("_SAPLING")) {
                         if (sfItem.getId().contains("_BUSH")) {
-                            ItemStack fruit = SlimefunItem.getById(sfItem.getId().replace("_BUSH", "")).getItem();
+                            ItemStack fruit = SlimefunItem.getById(sfItem.getId().replace("_BUSH", "")).getItem().clone();
+                            fruit.setAmount(3);
                             MachineRecipe recipe = new MachineRecipe(20, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {sfItem.getItem(), fruit});
 
                             inv.consumeItem(inputSlot);
@@ -99,7 +100,8 @@ public class GrowthChamberMK2 extends AMachine {
                             return recipe;
                         } else 
                         if (sfItem.getId().contains("_PLANT")) {
-                            ItemStack fruit = SlimefunItem.getById(sfItem.getId().replace("_PLANT", "")) != null ? SlimefunItem.getById(sfItem.getId().replace("_PLANT", "")).getItem() : SlimefunItem.getById(sfItem.getId().replace("_PLANT", "_ESSENCE")).getItem();
+                            ItemStack fruit = SlimefunItem.getById(sfItem.getId().replace("_PLANT", "")) != null ? SlimefunItem.getById(sfItem.getId().replace("_PLANT", "")).getItem().clone() : SlimefunItem.getById(sfItem.getId().replace("_PLANT", "_ESSENCE")).getItem().clone();
+                            fruit.setAmount(3);
                             MachineRecipe recipe = new MachineRecipe(10, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {sfItem.getItem(), fruit});
 
                             inv.consumeItem(inputSlot);
@@ -107,8 +109,8 @@ public class GrowthChamberMK2 extends AMachine {
                             return recipe;
                         } else
                         if (sfItem.getId().contains("_SAPLING")) {
-                            ItemStack fruit = SlimefunItem.getById(sfItem.getId().replace("_SAPLING", "")).getItem();
-                            
+                            ItemStack fruit = SlimefunItem.getById(sfItem.getId().replace("_SAPLING", "")).getItem().clone();
+                            fruit.setAmount(3); 
                             MachineRecipe recipe = new MachineRecipe(60, new ItemStack[] {sfItem.getItem()}, new ItemStack[] {sfItem.getItem(), fruit});
 
                             inv.consumeItem(inputSlot);
