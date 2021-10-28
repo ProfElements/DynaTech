@@ -170,7 +170,7 @@ public class MaterialHive extends AMachine implements Radioactive {
         //Alloys
         sfItemsAllowed.add("STEEL_INGOT");
         sfItemsAllowed.add("DURALUMIN_INGOT");
-        sfItemsAllowed.add("BILLION_INGOT");
+        sfItemsAllowed.add("BILLON_INGOT");
         sfItemsAllowed.add("BRASS_INGOT");
         sfItemsAllowed.add("ALUMINUM_BRASS_INGOT");
         sfItemsAllowed.add("ALUMINUM_BRONZE_INGOT");
