@@ -7,9 +7,14 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactive;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
+import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.inventory.InvUtils;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
+import io.github.thebusybiscuit.slimefun4.utils.itemstack.ItemStackWrapper;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
+import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import me.profelements.dynatech.items.misc.Bee;
@@ -20,7 +25,7 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MaterialHive extends AMachine implements Radioactive {
+public class MaterialHive extends AMachine implements RecipeDisplayItem, Radioactive {
 
     private static final int[] BORDER = new int[] {0,1,2,6,7,8,31,36,37,38,39,40,41,42,43,44};
     private static final int[] BORDER_IN = new int[] {9,10,11,12,18,21,27,28,29,30};
@@ -39,9 +44,69 @@ public class MaterialHive extends AMachine implements Radioactive {
         addItemSetting(vanillaItemsAccepted, slimefunItemsAccepted);
     }
 
+
     @Override
     public MachineRecipe findNextRecipe(BlockMenu inv) {
+        for (MachineRecipe recipe : recipes) {
+            ItemStack input = recipe.getInput()[0];
+            ItemStack key = inv.getItemInSlot(getInputSlots()[2]);
+            if (SlimefunUtils.isItemSimilar(key, input, true) && key.getAmount() == 64) {
+                 
+                int seconds = 1800;
+                ItemStack b1 = inv.getItemInSlot(getInputSlots()[0]);
+                ItemStack b2 = inv.getItemInSlot(getInputSlots()[1]);
+
+                if (b1 != null) {
+                    SlimefunItem bee1 = SlimefunItem.getByItem(b1);
+                    if (bee1 instanceof Bee) {
+                        seconds -= ((Bee) bee1).getSpeedMultipler() * b1.getAmount();
+                    }
+                }
+                if (b2 != null) {
+                    SlimefunItem bee2 = SlimefunItem.getByItem(b2);
+                    if (bee2 instanceof Bee) {
+                        seconds -= ((Bee) bee2).getSpeedMultipler() * b2.getAmount();
+                    }
+
+                    if (SlimefunUtils.isItemSimilar(b1, b2, true) && b1.getAmount() == 64 && b2.getAmount() == 64) {
+                       if (bee2.getId().equals(DynaTechItems.BEE.getItemId())) {
+                            seconds = 1500;
+                       }
+                       if (bee2.getId().equals(DynaTechItems.ROBOTIC_BEE.getItemId())) {
+                            seconds = 900;
+                       }
+                       if (bee2.getId().equals(DynaTechItems.ADVANCED_ROBOTIC_BEE.getItemId())) {
+                           seconds = 300; 
+                       }
+                    }
+                }
+                return new MachineRecipe(seconds, recipe.getInput(), recipe.getOutput());
+            }
+        }
+        return null;
+    }
+    
+    @Override
+    public void registerDefaultRecipes() {
+        for (String slimefunItem : getDefaultAllowedSlimefunItems()) {
+            ItemStack item = SlimefunItem.getById(slimefunItem).getItem().clone();
+            item.setAmount(64);
+            registerRecipe(new MachineRecipe(1800, new ItemStack[] { item }, new ItemStack[] { SlimefunItem.getById(slimefunItem).getItem() }));
+        }
+        for (String material : getDefaultAllowedVanillaItems()) {
+            ItemStack item = new ItemStack(Material.matchMaterial(material), 64);
+            registerRecipe(new MachineRecipe(1800, new ItemStack[] { item }, new ItemStack[] { new ItemStack(Material.matchMaterial(material)) }));
+        }
+    }
+        
+
+    /*@Override
+    public MachineRecipe findNextRecipe(BlockMenu inv) {
         ItemStack key = inv.getItemInSlot(getInputSlots()[2]);
+        
+        
+
+
         if (key == null || key.getAmount() != 64) {
             return null;
         }
@@ -95,7 +160,7 @@ public class MaterialHive extends AMachine implements Radioactive {
         }
 
         return new MachineRecipe(seconds, new ItemStack[] {DynaTechItems.BEE, key}, new ItemStack[] {output});
-    }
+    }*/
 
     @Override
     public void constructMenu(BlockMenuPreset preset) {

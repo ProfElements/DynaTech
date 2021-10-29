@@ -13,8 +13,12 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
+import me.profelements.dynatech.items.electric.MaterialHive;
+
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.ItemStack;
 
 public class DynaTechItems {
 
@@ -41,6 +45,7 @@ public class DynaTechItems {
     public static final RecipeType DT_SCOOP = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "DT_SCOOP"), new CustomItemStack(Material.IRON_SHOVEL, "&bScoop a Bee using a Scoop"));
     //public static final RecipeType DT_ORECHID = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "DT_ORECHID"), new CustomItem(Material.END_ROD, "&BTransmuted using the Orechid"));
 
+    
     //General
 
     //Resources
@@ -522,4 +527,11 @@ public class DynaTechItems {
         LoreBuilder.powerBuffer(32768),
         LoreBuilderDynamic.powerPerSecond(1024)
     );
+
+    public static final RecipeType DT_MATERIAL_HIVE = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "DT_MATERIAL_HIVE"), DynaTechItems.MATERIAL_HIVE, (recipe, output) -> {
+        MaterialHive materialHive = ((MaterialHive) DynaTechItems.MATERIAL_HIVE.getItem());
+        materialHive.getMachineRecipes().add(new MachineRecipe(1800, recipe, new ItemStack[] {output}));
+    
+    });
+
 }
