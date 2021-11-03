@@ -56,6 +56,8 @@ public class Orechid extends AMachine implements RecipeDisplayItem {
                             BlockStorage.addBlockInfo(relBlock, "id", sfi.getId());
                         }
                     });
+
+                    removeCharge(b.getLocation(), getEnergyConsumption());
                 }
             }        
         }
