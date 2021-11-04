@@ -24,6 +24,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Wireless Item Input** - Input point for 1 way wireless item transfer 
 - **Wireless Item Output** - Output Point for 1 way wireless item transfer 
 - **Tesseract** - Two way item and energy transport.
+- External Heater - Externally heats Furnace-like blocks.
 ## Generators
 - **Hydro Generator** - Generates energy from flowing water (Waterlog the generator)
 - **Dragon Egg Generator** - Generates energy from the warmth of a dragon egg. (Place the dragon egg on top)
