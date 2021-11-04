@@ -1,10 +1,12 @@
 package me.profelements.dynatech.items.tools;
 
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.RandomizedSet;
+import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import org.bukkit.Material;
@@ -13,21 +15,21 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
+import javax.annotation.Nonnull;
 
-//I feel like this can somehow be much better :O
+//I feel like this can somehow be much better :O (review)
 
 public class Orechid extends AMachine implements RecipeDisplayItem {
 
-    private static final RandomizedSet<Material> OVERWORLD_ORES = new RandomizedSet<Material>();
-    private static final RandomizedSet<Material> NETHER_ORES = new RandomizedSet<Material>();
+    private static final Map<Material, RandomizedSet<ItemStack>> oreMap = new EnumMap<>(Material.class);
     //private static final List<Material> END_ORES = new ArrayList<>();
-
-    //Somehow setup a RecipeType for this for people to use in addons
-    //private static final RecipeType ORECHID = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "dt_orechid"), new CustomItem(Material.WITHER_ROSE, "&bConverted with the Orechid"));
 
     public Orechid(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
+        registerDefaultOres();
     }
 
     @Override
@@ -44,55 +46,60 @@ public class Orechid extends AMachine implements RecipeDisplayItem {
                 
                 Block relBlock = b.getRelative(relative);
     
-                if (relBlock.getType() == Material.STONE) {
-                    DynaTech.runSync(()-> relBlock.setType(getOverWorldOres().getRandom()));
+                if (oreMap.containsKey(relBlock.getType())) {
+                    ItemStack item = oreMap.get(relBlock.getType()).getRandom();
+                    SlimefunItem sfi = SlimefunItem.getByItem(item);
+
+                    DynaTech.runSync(() -> {
+                        relBlock.setType(item.getType());
+                        if (sfi != null) {
+                            BlockStorage.addBlockInfo(relBlock, "id", sfi.getId());
+                        }
+                    });
+
                     removeCharge(b.getLocation(), getEnergyConsumption());
-    
-                } else if (relBlock.getType() == Material.NETHERRACK) {
-                    DynaTech.runSync(()-> relBlock.setType(getNetherOres().getRandom()));
-                    removeCharge(b.getLocation(), getEnergyConsumption());
-    
                 }
             }        
         }
     }
 
-
-
-    private static final RandomizedSet<Material> getOverWorldOres() {
-        OVERWORLD_ORES.add(Material.COAL_ORE, 3);
-        OVERWORLD_ORES.add(Material.IRON_ORE, 2);
-        OVERWORLD_ORES.add(Material.GOLD_ORE, 2);
-        OVERWORLD_ORES.add(Material.DIAMOND_ORE, 1);
-        OVERWORLD_ORES.add(Material.EMERALD_ORE, 1);
-        OVERWORLD_ORES.add(Material.REDSTONE_ORE, 3);
-        OVERWORLD_ORES.add(Material.LAPIS_ORE, 3);
-
-        return OVERWORLD_ORES;
+    public static void registerOre(@Nonnull Material from, @Nonnull Material result, float weight) {
+        oreMap.computeIfAbsent(from, k -> new RandomizedSet<>()).add(new ItemStack(result), weight);
     }
 
-    private static final RandomizedSet<Material> getNetherOres() {
-        NETHER_ORES.add(Material.NETHER_QUARTZ_ORE, 3);
-        NETHER_ORES.add(Material.NETHER_GOLD_ORE, 3);
-        NETHER_ORES.add(Material.ANCIENT_DEBRIS, 1);
-        NETHER_ORES.add(Material.BASALT, 5);
-        NETHER_ORES.add(Material.BLACKSTONE, 5);
-
-        return NETHER_ORES;
+    /**
+     * For Slimefun items
+     */
+    public static void registerOre(@Nonnull Material from, @Nonnull SlimefunItemStack result, float weight) {
+        oreMap.computeIfAbsent(from, k -> new RandomizedSet<>()).add(result, weight);
     }
 
+    private static void registerDefaultOres() {
+        registerOre(Material.STONE, Material.COAL_ORE, 3);
+        registerOre(Material.STONE, Material.IRON_ORE, 2);
+        registerOre(Material.STONE, Material.GOLD_ORE, 2);
+        registerOre(Material.STONE, Material.DIAMOND_ORE, 1);
+        registerOre(Material.STONE, Material.EMERALD_ORE, 1);
+        registerOre(Material.STONE, Material.REDSTONE_ORE, 3);
+        registerOre(Material.STONE, Material.LAPIS_ORE, 3);
+
+        registerOre(Material.NETHERRACK, Material.NETHER_QUARTZ_ORE, 3);
+        registerOre(Material.NETHERRACK, Material.NETHER_GOLD_ORE, 3);
+        registerOre(Material.NETHERRACK, Material.ANCIENT_DEBRIS, 1);
+        registerOre(Material.NETHERRACK, Material.BASALT, 5);
+        registerOre(Material.NETHERRACK, Material.BLACKSTONE, 5);
+    }
+
+    @Nonnull
     @Override
     public List<ItemStack> getDisplayRecipes() {
         List<ItemStack> displayList = new ArrayList<>();
 
-        for (Material m : getOverWorldOres()) {
-            displayList.add(new ItemStack(Material.STONE));
-            displayList.add(new ItemStack(m));
-        }
-
-        for (Material m : getNetherOres()) {
-            displayList.add(new ItemStack(Material.NETHERRACK));
-            displayList.add(new ItemStack(m));
+        for (Material m : oreMap.keySet()) {
+            for (ItemStack item : oreMap.get(m)) {
+                displayList.add(new ItemStack(m));
+                displayList.add(item);
+            }
         }
 
         return displayList;
