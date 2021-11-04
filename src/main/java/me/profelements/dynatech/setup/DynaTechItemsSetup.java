@@ -17,6 +17,7 @@ import me.profelements.dynatech.items.electric.AntigravityBubble;
 import me.profelements.dynatech.items.electric.AutoKitchen;
 import me.profelements.dynatech.items.electric.BandaidManager;
 import me.profelements.dynatech.items.electric.BarbedWire;
+import me.profelements.dynatech.items.electric.FurnaceController;
 import me.profelements.dynatech.items.electric.MaterialHive;
 import me.profelements.dynatech.items.electric.PotionSprinkler;
 import me.profelements.dynatech.items.electric.SeedPlucker;
@@ -499,6 +500,13 @@ public class DynaTechItemsSetup {
                 DynaTechItems.WIRELESS_ENERGY_BANK, DynaTechItems.TESSERACTING_OBJ, DynaTechItems.WIRELESS_ITEM_INPUT,
                 DynaTechItems.TESSERACTING_OBJ, DynaTechItems.GHOSTLY_ESSENCE, DynaTechItems.TESSERACTING_OBJ,
                 DynaTechItems.WIRELESS_ITEM_OUTPUT, DynaTechItems.TESSERACTING_OBJ, DynaTechItems.WIRELESS_ENERGY_POINT
+        }).register(plugin);
+
+        new FurnaceController(DynaTechItems.DT_MACHINES, DynaTechItems.EXTERNAL_HEATER, RecipeType.ENHANCED_CRAFTING_TABLE, 
+            new ItemStack[] {
+                DynaTechItems.STAINLESS_STEEL, SlimefunItems.HARDENED_METAL_INGOT, DynaTechItems.STAINLESS_STEEL,
+                new ItemStack(Material.OBSIDIAN), new ItemStack(Material.OBSERVER), new ItemStack(Material.OBSIDIAN),
+                new ItemStack(Material.OBSIDIAN), SlimefunItems.ENERGY_REGULATOR, new ItemStack(Material.OBSIDIAN)
         }).register(plugin);
 
         new LiquidTank(DynaTechItems.DT_TOOLS, DynaTechItems.LIQUID_TANK, 16000, RecipeType.ENHANCED_CRAFTING_TABLE, 
