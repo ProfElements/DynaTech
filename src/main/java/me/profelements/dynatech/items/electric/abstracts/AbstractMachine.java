@@ -32,8 +32,6 @@ import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import io.github.thebusybiscuit.slimefun4.utils.itemstack.ItemStackWrapper;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
-import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
-import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu.AdvancedMenuClickHandler;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
@@ -42,14 +40,6 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 
 public abstract class AbstractMachine extends SlimefunItem implements InventoryBlock, MachineProcessHolder<CraftingOperation> {
     
-    private static final int[] BORDER = {0, 1, 2, 3, 4, 5, 6, 7, 8, 13, 31, 36, 37, 38, 39, 40, 41, 42, 43, 44};
-    private static final int[] BORDER_INPUT = {9, 10, 11, 12, 18, 21, 27, 28, 29, 30};
-    private static final int[] BORDER_OUTPUT = { 14, 15, 16, 17, 23, 26, 32, 33, 34, 35};
-    
-    private static final int[] INPUT_SLOTS = { 19, 20 };
-    private static final int[] OUTPUT_SLOTS = { 24, 25 };
-    private static final int PROGRESS_SLOT = 22;
-
     protected final List<MachineRecipe> recipes = new ArrayList<>();
     private final MachineProcessor<CraftingOperation> processor = new MachineProcessor<>(this);
 
@@ -60,7 +50,7 @@ public abstract class AbstractMachine extends SlimefunItem implements InventoryB
         super(itemGroup, item, recipeType, recipe);
 
         processor.setProgressBar(getProgressBar());
-        if (isGraphical()) { createPreset(this, getInventoryTitle(), this::constructMenu); }
+        createPreset(this, getInventoryTitle(), this::constructMenu);
 
         addItemHandler(onBlockBreak());
     }
@@ -178,28 +168,32 @@ public abstract class AbstractMachine extends SlimefunItem implements InventoryB
         return displayRecipes;
     }
 
-    public boolean getIsInputConsumed() {
+    public boolean IsInputConsumed() {
         return true;
     }
-
+ 
     public int[] getInputSlots() {
-        return INPUT_SLOTS;
+        return new int[] { 19, 20 };
     }
 
     public int[] getOutputSlots() {
-        return OUTPUT_SLOTS;
+        return new int[] { 24, 25 };
+    }
+
+    public int getProgressSlot() {
+        return 22;
     }
 
     public int[] getBorder() {
-        return BORDER;
+        return new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 13, 31, 36, 37, 38, 39, 40, 41, 42, 43, 44};
     }
 
     public int[] getInputBorder() {
-        return BORDER_INPUT;
+        return new int[] {9, 10, 11, 12, 18, 21, 27, 28, 29, 30};
     }
 
     public int[] getOutputBorder() {
-        return BORDER_OUTPUT;
+        return new int[] { 14, 15, 16, 17, 23, 26, 32, 33, 34, 35};;
     }
 
     public int getProgressSlot() {
@@ -235,10 +229,6 @@ public abstract class AbstractMachine extends SlimefunItem implements InventoryB
                 return false;
             }
         });
-    }
-
-    public boolean isGraphical() {
-        return true;
     }
 
     protected void tick(Block b) {
@@ -295,7 +285,7 @@ public abstract class AbstractMachine extends SlimefunItem implements InventoryB
                     return null;
                 }
 
-                if (getIsInputConsumed()) {
+                if (isInputConsumed()) {
                     for (Map.Entry<Integer, Integer> entry : found.entrySet()) {
                         inv.consumeItem(entry.getKey(), entry.getValue());
                     }
