@@ -24,7 +24,7 @@ import me.profelements.dynatech.DynaTech;
 
 public class FurnaceController extends SlimefunItem implements EnergyNetComponent {
     
-    private static final int J_PER_BLOCK = 16;
+    private static final int J_PER_BLOCK = 128;
 
     public FurnaceController(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
@@ -53,21 +53,19 @@ public class FurnaceController extends SlimefunItem implements EnergyNetComponen
                 continue;
             }
             Block relBlock = b.getRelative(face);
-            if (getMachines().contains(relBlock.getType()) && getCharge(b.getLocation()) >= J_PER_BLOCK) {
-                DynaTech.runSync(() -> {
-                    BlockStateSnapshotResult result = PaperLib.getBlockState(relBlock, false);
-                    BlockState state = result.getState();
+            if (getMachines().contains(relBlock.getType()) && getCharge(b.getLocation()) >= J_PER_BLOCK) { 
+                BlockStateSnapshotResult result = PaperLib.getBlockState(relBlock, false);
+                BlockState state = result.getState();
                 
-                    if (state instanceof Furnace && ((Furnace) state).getCookTimeTotal() > 0) {
-                        Furnace furnace = (Furnace) state;
-                        removeCharge(b.getLocation(), J_PER_BLOCK);
-                        furnace.setBurnTime((short) 1600);
-                    
-                        if (result.isSnapshot()) {
-                            state.update(true, true);
-                        }
+                if (state instanceof Furnace && ((Furnace) state).getCookTimeTotal() > 0) {
+                    Furnace furnace = (Furnace) state;
+                    removeCharge(b.getLocation(), J_PER_BLOCK);
+                    furnace.setBurnTime((short) 1600);
+
+                    if (result.isSnapshot()) {
+                        state.update(true, true);
                     }
-                });
+                }
             }
         }
     }
@@ -86,7 +84,7 @@ public class FurnaceController extends SlimefunItem implements EnergyNetComponen
 
 	@Override
 	public int getCapacity() {
-	    return 512;
+	    return 2048;
 	}
 
 	@Override

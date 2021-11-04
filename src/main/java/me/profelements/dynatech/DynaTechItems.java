@@ -467,9 +467,9 @@ public class DynaTechItems {
         "&fExternally heats Furnaces, Blast Furnaces,",
         "&fand Smokers.",
         "",
-        LoreBuilder.machine(MachineTier.AVERAGE, MachineType.MACHINE),
-        LoreBuilder.powerBuffer(512),
-        LoreBuilderDynamic.power(16, " per heated block")
+        LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+        LoreBuilder.powerBuffer(2048),
+        LoreBuilderDynamic.power(128, " per heated block")
     );
 
 
