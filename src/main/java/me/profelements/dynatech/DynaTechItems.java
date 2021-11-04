@@ -459,6 +459,19 @@ public class DynaTechItems {
         LoreBuilderDynamic.powerPerSecond(1024),
         ""  
     );
+    
+    public static final SlimefunItemStack EXTERNAL_HEATER = new SlimefunItemStack("DT_EXTERNAL_HEATER", 
+        Material.BRICKS,
+        "&6External Heater",
+        "",
+        "&fExternally heats Furnaces, Blast Furnaces,",
+        "&fand Smokers.",
+        "",
+        LoreBuilder.machine(MachineTier.AVERAGE, MachineType.MACHINE),
+        LoreBuilder.powerBuffer(512),
+        LoreBuilderDynamic.power(16, " per heated block")
+    );
+
 
     //Generators
     public static final SlimefunItemStack WATER_MILL = new SlimefunItemStack("WATER_MILL",
