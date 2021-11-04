@@ -32,6 +32,9 @@ import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import io.github.thebusybiscuit.slimefun4.utils.itemstack.ItemStackWrapper;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
+import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu.AdvancedMenuClickHandler;
+import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
+
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
@@ -168,7 +171,7 @@ public abstract class AbstractMachine extends SlimefunItem implements InventoryB
         return displayRecipes;
     }
 
-    public boolean IsInputConsumed() {
+    public boolean isInputConsumed() {
         return true;
     }
  
@@ -193,13 +196,8 @@ public abstract class AbstractMachine extends SlimefunItem implements InventoryB
     }
 
     public int[] getOutputBorder() {
-        return new int[] { 14, 15, 16, 17, 23, 26, 32, 33, 34, 35};;
+        return new int[] { 14, 15, 16, 17, 23, 26, 32, 33, 34, 35};
     }
-
-    public int getProgressSlot() {
-        return PROGRESS_SLOT;
-    }
-
 
     public void registerRecipe(MachineRecipe recipe) {
         recipe.setTicks(recipe.getTicks() / this.getSpeed());
