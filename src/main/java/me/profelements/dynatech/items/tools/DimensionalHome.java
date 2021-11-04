@@ -19,6 +19,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import javax.annotation.Nonnull;
 import java.util.List;
 
+///THIS ABSOLUTELY NEEDS TO BE REDONE 
 public class DimensionalHome extends SlimefunItem {
     
     private final NamespacedKey chunkId = new NamespacedKey(DynaTech.getInstance(), "chunk-id");
@@ -43,7 +44,7 @@ public class DimensionalHome extends SlimefunItem {
                     idSet = false;
                 }
                 
-                PaperLib.teleportAsync(p, new Location(dimHomeWorld, 16 * PersistentDataAPI.getInt(e.getItem().getItemMeta(), chunkId) + 8, 65, 8));
+                PaperLib.teleportAsync(p, new Location(dimHomeWorld, 16 * PersistentDataAPI.getInt(e.getItem().getItemMeta(), chunkId) + 8d, 65, 8));
             } else if (idSet) {
 
                 if (doesntContainNewChunkID(e.getItem())) {

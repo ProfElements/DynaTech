@@ -36,7 +36,7 @@ public class AntigravityBubble extends AMachine {
     public AntigravityBubble(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
 
-        addItemHandler(onBreak());
+        addItemHandler(onBlockBreak());
     }
 
     @Override
@@ -85,7 +85,7 @@ public class AntigravityBubble extends AMachine {
         }
     }
         
-    private ItemHandler onBreak() {
+    private ItemHandler onBlockBreak() {
         return new BlockBreakHandler(false, false) {
         
             @Override
