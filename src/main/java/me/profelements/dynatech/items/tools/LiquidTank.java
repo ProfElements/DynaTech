@@ -56,7 +56,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
                 String fluidName = getLiquid(itemStack).getFirstValue();
                 int fluidAmount = getLiquid(itemStack).getSecondValue();
 
-                if (fluidName != null && e.getPlayer().isSneaking() && fluidAmount >= 1000) {
+                if (liquid.getType() == Material.AIR && fluidName != null && e.getPlayer().isSneaking() && fluidAmount >= 1000) {
                         if (fluidName.equals("WATER")) {
                             removeLiquid(itemStack, fluidName, 1000);
                             liquidState.setType(Material.WATER);
@@ -72,7 +72,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
                             updateLore(itemStack);
                         }
                     
-                } else if (fluidName != null && fluidAmount <= liquidTank.getMaxLiquidAmount() && liquid.isLiquid()) {
+                } else if (liquid.getType() == Material.AIR && fluidName != null && fluidAmount <= liquidTank.getMaxLiquidAmount() && liquid.isLiquid()) {
                         addLiquid(itemStack, liquid.getType().name(), 1000);
                         liquidState.setType(Material.AIR);
                         liquidState.update(true, true);
