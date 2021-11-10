@@ -43,7 +43,7 @@ public class TesseractBinder extends SlimefunItem {
                         BlockStorage.addBlockInfo(blockLocation, "tesseract-pair-location", locString);
                         e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ChatColor.WHITE + "Tesseract Connected!"));
                     }
-                } else if (sfBlock != null && sfItem.getId().equals(DynaTechItems.TESSERACT.getItemId()) && blockLocation != null) {
+                } else if (sfItem.getId().equals(DynaTechItems.TESSERACT.getItemId()) && blockLocation != null) {
                     ItemMeta im = item.getItemMeta();
                     String locString = Tesseract.LocationToString(blockLocation);
                         

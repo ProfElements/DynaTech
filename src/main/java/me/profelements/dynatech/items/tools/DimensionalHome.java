@@ -38,7 +38,6 @@ public class DimensionalHome extends SlimefunItem {
 
     public ItemUseHandler onRightClick() {
         return new ItemUseHandler() {
-
 			@Override
 			public void onRightClick(PlayerRightClickEvent e) {
 			    e.cancel();
