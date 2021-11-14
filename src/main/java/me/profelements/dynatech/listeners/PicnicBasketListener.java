@@ -6,6 +6,7 @@ import io.github.thebusybiscuit.slimefun4.api.player.PlayerBackpack;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.profelements.dynatech.DynaTech;
+import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.events.PicnicBasketFeedPlayerEvent;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import org.bukkit.Material;
@@ -55,7 +56,7 @@ public class PicnicBasketListener implements Listener {
         }
 
         for (ItemStack item : p.getInventory().getContents()) {
-            if (item != null && item.getType() == picnicBasket.getItem().getType() && item.hasItemMeta() && picnicBasket.isItem(item)) {
+            if (item != null && item.getType() == picnicBasket.getItem().getType() && item.hasItemMeta() && (picnicBasket.isItem(item) || DynaTechItems.SOULBOUND_PICNIC_BASKET.getItem().isItem(item))) {
                 if (SlimefunUtils.canPlayerUseItem(p, picnicBasket.getItem(), true)) {
                     takeFoodFromPicnicBasket(p, item);
                 } else {

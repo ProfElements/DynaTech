@@ -13,6 +13,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
+import me.profelements.dynatech.items.backpacks.SoulboundPicnicBacket;
 import me.profelements.dynatech.items.electric.AntigravityBubble;
 import me.profelements.dynatech.items.electric.AutoKitchen;
 import me.profelements.dynatech.items.electric.BandaidManager;
@@ -183,6 +184,13 @@ public class DynaTechItemsSetup {
                 SlimefunItems.HEATING_COIL, new ItemStack(Material.BAMBOO), SlimefunItems.COOLING_UNIT
         }).register(plugin);
         
+        new SoulboundPicnicBacket(27, DynaTechItems.DT_TOOLS, DynaTechItems.SOULBOUND_PICNIC_BASKET, RecipeType.MAGIC_WORKBENCH,
+                new ItemStack[] {
+                new ItemStack(Material.CRYING_OBSIDIAN), SlimefunItems.ENDER_RUNE, new ItemStack(Material.CRYING_OBSIDIAN),
+                SlimefunItems.ENDER_RUNE, DynaTechItems.PICNIC_BASKET, SlimefunItems.ENDER_RUNE,
+                new ItemStack(Material.CRYING_OBSIDIAN), SlimefunItems.ENDER_RUNE, new ItemStack(Material.CRYING_OBSIDIAN)
+        }).register(plugin);
+
         new InventoryFilter(DynaTechItems.DT_TOOLS, DynaTechItems.INVENTORY_FILTER, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
                 SlimefunItems.REINFORCED_CLOTH, new ItemStack(Material.IRON_BARS), SlimefunItems.REINFORCED_CLOTH,

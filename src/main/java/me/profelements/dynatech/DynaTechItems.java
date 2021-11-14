@@ -75,7 +75,24 @@ public class DynaTechItems {
         "",
         "&7ID: <ID>",
         "",
-        "&eRight Click &7to open."
+       "&eRight Click &7to open."
+    );
+    
+    public static final SlimefunItemStack SOULBOUND_PICNIC_BASKET = new SlimefunItemStack("SOULBOUND_PICNIC_BASKET",
+        new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode("7a6bf916e28ccb80b4ebfacf98686ad6af7c4fb257e57a8cb78c71d19dccb2"))),
+        "&6Soulbound Picnic Basket",
+        "",
+        "&fAllows you to store food",
+        "&fAutomatically consumes them when you're hungry",
+        "&fMust be in your inventory",
+        "",
+        "&fSize: &e27",
+        "",
+        "&7ID: <ID>",
+        "",
+       "&eRight Click &7to open.",
+        "",
+        "&dSoulbound"
     );
 
     public static final SlimefunItemStack INVENTORY_FILTER = new SlimefunItemStack("INVENTORY_FILTER",
@@ -120,7 +137,7 @@ public class DynaTechItems {
         "&fUsed to capture bees.",
         "",
         "&f&oMake sure not to get stung",
-        "",
+       "",
         LoreBuilder.powerCharged(0, 512)
     );
 
