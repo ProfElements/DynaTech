@@ -37,7 +37,7 @@ public class ChippingGenerator extends AMachineGenerator {
             if (item != null && !item.getType().isAir() && item.getType().isItem() && item.hasItemMeta()) {
                 // `getItemMeta` does multiple clones! Even doing this once is slow, nevermind multiple times!
                 ItemMeta meta = item.getItemMeta();
-                if (meta instanceof Damageable) {
+                if (meta instanceof Damageable && !meta.isUnbreakable()) {
                     Damageable im = (Damageable) meta;
                     if (!im.hasDamage()) {
                         julesAmount = item.getType().getMaxDurability() * powerPerDurability;
