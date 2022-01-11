@@ -72,7 +72,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
                             updateLore(itemStack);
                         }
                     
-                } else if (liquid.getType() == Material.AIR && fluidName != null && fluidAmount <= liquidTank.getMaxLiquidAmount() && liquid.isLiquid()) {
+                } else if ((liquid.getType() == Material.LAVA || liquid.getType() == Material.WATER) && fluidName != null && fluidAmount <= liquidTank.getMaxLiquidAmount() && liquid.isLiquid()) {
                         addLiquid(itemStack, liquid.getType().name(), 1000);
                         liquidState.setType(Material.AIR);
                         liquidState.update(true, true);
