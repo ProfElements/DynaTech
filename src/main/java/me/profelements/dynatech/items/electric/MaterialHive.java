@@ -85,12 +85,12 @@ public class MaterialHive extends AMachine implements RecipeDisplayItem, Radioac
     
     @Override
     public void registerDefaultRecipes() {
-        for (String slimefunItem : getDefaultAllowedSlimefunItems()) {
+        for (String slimefunItem : slimefunItemsAccepted.getValue()) {
             ItemStack item = SlimefunItem.getById(slimefunItem).getItem().clone();
             item.setAmount(64);
             registerRecipe(new MachineRecipe(1800, new ItemStack[] { item }, new ItemStack[] { SlimefunItem.getById(slimefunItem).getItem() }));
         }
-        for (String material : getDefaultAllowedVanillaItems()) {
+        for (String material : vanillaItemsAccepted.getValue()) {
             ItemStack item = new ItemStack(Material.matchMaterial(material), 64);
             registerRecipe(new MachineRecipe(1800, new ItemStack[] { item }, new ItemStack[] { new ItemStack(Material.matchMaterial(material)) }));
         }
