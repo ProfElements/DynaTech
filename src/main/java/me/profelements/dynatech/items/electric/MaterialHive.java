@@ -44,9 +44,15 @@ public class MaterialHive extends AMachine implements RecipeDisplayItem, Radioac
 
     @Override
     public MachineRecipe findNextRecipe(BlockMenu inv) {
-        for (MachineRecipe recipe : recipes) {
-            ItemStack input = recipe.getInput()[0];
+            ItemStack input = new ItemStack(Material.AIR);    
             ItemStack key = inv.getItemInSlot(getInputSlots()[2]);
+
+            if (slimefunItemsAccepted.getValue().contains(SlimefunItem.getByItem(key).getId())) {
+                input = key.clone();
+            } else if (vanillaItemsAccepted.getValue().contains(key.getType().toString())) {
+                input = key.clone();
+            }
+
             if (SlimefunUtils.isItemSimilar(key, input, true) && key.getAmount() == 64) {
                  
                 int seconds = 1800;
@@ -77,20 +83,19 @@ public class MaterialHive extends AMachine implements RecipeDisplayItem, Radioac
                        }
                     }
                 }
-                return new MachineRecipe(seconds, recipe.getInput(), recipe.getOutput());
+                return new MachineRecipe(seconds, new ItemStack[] { input }, new ItemStack[] { input.clone() });
             }
-        }
         return null;
     }
     
     @Override
     public void registerDefaultRecipes() {
-        for (String slimefunItem : slimefunItemsAccepted.getValue()) {
+        for (String slimefunItem : slimefunItemsAccepted.getDefaultValue()) {
             ItemStack item = SlimefunItem.getById(slimefunItem).getItem().clone();
             item.setAmount(64);
             registerRecipe(new MachineRecipe(1800, new ItemStack[] { item }, new ItemStack[] { SlimefunItem.getById(slimefunItem).getItem() }));
         }
-        for (String material : vanillaItemsAccepted.getValue()) {
+        for (String material : vanillaItemsAccepted.getDefaultValue()) {
             ItemStack item = new ItemStack(Material.matchMaterial(material), 64);
             registerRecipe(new MachineRecipe(1800, new ItemStack[] { item }, new ItemStack[] { new ItemStack(Material.matchMaterial(material)) }));
         }
