@@ -48,8 +48,8 @@ public class MaterialHive extends AMachine implements RecipeDisplayItem, Radioac
         ItemStack key = inv.getItemInSlot(getInputSlots()[2]);
         SlimefunItem slimefunItem = SlimefunItem.getByItem(key);
 
-        if ((slimefunItem != null && slimefunItemsAccepted.getValue().contains(slimefunItem.getId()))
-            || vanillaItemsAccepted.getValue().contains(key.getType().toString())
+        if ( key != null && ((slimefunItem != null && slimefunItemsAccepted.getValue().contains(slimefunItem.getId()))
+            || vanillaItemsAccepted.getValue().contains(key.getType().toString()))
         ) {
             input = key.clone();
         }
