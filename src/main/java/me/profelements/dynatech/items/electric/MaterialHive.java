@@ -80,8 +80,8 @@ public class MaterialHive extends AMachine implements RecipeDisplayItem, Radioac
                 }
                 return new MachineRecipe(seconds, new ItemStack[] { input }, new ItemStack[] { input.clone() });
             }
-            return null;
         }
+        return null;
     }
     
     public void registerDefaultHiveRecipes() {
