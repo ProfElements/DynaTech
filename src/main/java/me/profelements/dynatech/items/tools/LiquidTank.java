@@ -6,18 +6,23 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
+import io.github.thebusybiscuit.slimefun4.core.handlers.EntityInteractHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.profelements.dynatech.DynaTech;
+import me.profelements.dynatech.DynaTechItems;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
+import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -38,6 +43,15 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
         this.maxLiquidAmount = maxLiquidAmount;
 
         addItemHandler(onRightClick());
+        addItemHandler(onEntityClick());
+    }
+
+    private final EntityInteractHandler onEntityClick() {
+        return (e, item, something) -> {
+            if ((e.getRightClicked().getType() == EntityType.COW || e.getRightClicked().getType() == EntityType.MUSHROOM_COW) && SlimefunUtils.isItemSimilar(item, DynaTechItems.LIQUID_TANK, true)) {
+                e.setCancelled(true);
+            }
+        };
     }
 
     private final ItemUseHandler onRightClick() {
