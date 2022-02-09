@@ -17,7 +17,9 @@ public class BandaidManager extends AMachine {
     public BandaidManager(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
     }
+    
 
+    //TODO: Rewrite this thing into a much better version - Quinn
     @Override
     public MachineRecipe findNextRecipe(BlockMenu inv) {
 
