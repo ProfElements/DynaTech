@@ -31,16 +31,15 @@ public class BarbedWire extends SlimefunItem implements EnergyNetComponent {
 
     private final ItemSetting<Integer> entityPushForce = new ItemSetting<>(this, "entity-push-force", DEFAULT_ENTITY_PUSH_FORCE);
     private final ItemSetting<Integer> entityDetectRange = new ItemSetting<>(this, "entity-detect-range", DEFAULT_ENTITY_DETECT_RANGE);
-    private final ItemSetting<List<EntityType>> entityWhitelist = new ItemSetting<>(this, "enity-whitelist", getDefaultEntityWhitelist());
     private final ItemSetting<Integer> blockEnergyConsumption = new ItemSetting<>(this, "block-energy-consumption", DEFAULT_ENERGY_CONSUMPTION);
 
     @ParametersAreNonnullByDefault
     public BarbedWire(ItemGroup group, SlimefunItemStack item,  RecipeType recipeType, ItemStack[] recipe) {
         super(group, item, recipeType, recipe);
-        addItemSetting(entityPushForce, entityDetectRange, entityWhitelist, blockEnergyConsumption);
+        addItemSetting(entityPushForce, entityDetectRange, blockEnergyConsumption);
     }
 
-    private List<EntityType> getDefaultEntityWhitelist() {
+    private List<EntityType> getEntityWhitelist() {
         ArrayList<EntityType> whitelist = new ArrayList<>();
 
         whitelist.add(EntityType.ARROW);
@@ -96,7 +95,7 @@ public class BarbedWire extends SlimefunItem implements EnergyNetComponent {
     protected void tick(Block block) {
         int entityDetectionRange = entityDetectRange.getValue();
         int energyConsumption = blockEnergyConsumption.getValue();
-        List<EntityType> entityTypeWhitelist = entityWhitelist.getValue();
+        List<EntityType> entityTypeWhitelist = getEntityWhitelist();
         Location loc = block.getLocation();
         if (getCharge(loc) >= energyConsumption) {
             // Intentional. Remove it per tick whether or not it shields from mobs.
