@@ -64,10 +64,6 @@
                             <shadedPattern>me.profelements.dynatech</shadedPattern>
                         </relocation>
                         <relocation>
-                            <pattern>io.github.mooy1.infinitylib</pattern>
-                            <shadedPattern>me.profelements.dynatech.infinitylib</shadedPattern>
-                        </relocation>
-                        <relocation>
                             <pattern>dev.j3fftw.extrautils</pattern>
                             <shadedPattern>me.profelements.dynatech.extrautils</shadedPattern>
                         </relocation>
