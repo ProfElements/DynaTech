@@ -28,7 +28,6 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
-import org.apache.commons.lang.Validate;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -40,6 +39,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+
+import com.google.common.base.Preconditions;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -255,7 +257,7 @@ public abstract class AMachineGenerator extends SlimefunItem implements RecipeDi
     protected void registerDefaultFuelTypes() {}
     
     public void registerFuel(@Nonnull MachineFuel fuel) {
-        Validate.notNull(fuel, "Machine fuel cannot be null.");
+        Preconditions.checkNotNull(fuel, "Machine fuel cannot be null.");
         fuelTypes.add(fuel);
     }
 
@@ -333,7 +335,7 @@ public abstract class AMachineGenerator extends SlimefunItem implements RecipeDi
     }
 
     public final AMachineGenerator setEnergyCapacity(int capacity) {
-        Validate.isTrue(capacity > 0, "Energy capacity must be greater then 0");
+        Preconditions.checkArgument(capacity > 0, "Energy capacity must be greater then 0");
 
         if(getState() == ItemState.UNREGISTERED) {
             this.energyCapacity = capacity;
@@ -345,9 +347,9 @@ public abstract class AMachineGenerator extends SlimefunItem implements RecipeDi
     }
 
     public final AMachineGenerator setEnergyProduction(int energyProduction) {
-        Validate.isTrue(energyProduction > 0, "Energy production must be greater then 0");
-        Validate.isTrue(energyCapacity > 0, "Energy capacity must be specified before energy production");
-        Validate.isTrue(energyProduction <= energyCapacity, "Energy production can not be greater the energy capacity.");
+        Preconditions.checkArgument(energyProduction > 0, "Energy production must be greater then 0");
+        Preconditions.checkArgument(energyCapacity > 0, "Energy capacity must be specified before energy production");
+        Preconditions.checkArgument(energyProduction <= energyCapacity, "Energy production can not be greater the energy capacity.");
 
         this.energyProducedPerTick = energyProduction;
         return this;

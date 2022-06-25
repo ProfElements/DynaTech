@@ -13,7 +13,6 @@ import me.profelements.dynatech.listeners.InventoryFilterListener;
 import me.profelements.dynatech.listeners.PicnicBasketListener;
 import me.profelements.dynatech.setup.DynaTechItemsSetup;
 import me.profelements.dynatech.tasks.ItemBandTask;
-import org.apache.commons.lang.Validate;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -23,6 +22,9 @@ import org.bukkit.scheduler.BukkitTask;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import com.google.common.base.Preconditions;
+
 import java.util.logging.Level;
 
 public class DynaTech extends JavaPlugin implements SlimefunAddon {
@@ -107,7 +109,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
     @Nullable
     public static BukkitTask runSync(@Nonnull Runnable runnable) {
-        Validate.notNull(runnable, "Cannot run null");
+        Preconditions.checkNotNull(runnable, "Cannot run null");
 
         if (instance == null || !instance.isEnabled()) {
             return null;

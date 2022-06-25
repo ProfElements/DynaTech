@@ -11,7 +11,6 @@ import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
-import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -26,6 +25,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+
+import com.google.common.base.Preconditions;
 
 public class AngelGem extends SlimefunItem implements NotPlaceable, Listener {
 
@@ -139,7 +140,7 @@ public class AngelGem extends SlimefunItem implements NotPlaceable, Listener {
     }
 
     public void setFlySpeed(float newFlySpeed) {
-        Validate.isTrue(newFlySpeed > 0, "Must be greater then 0");
+        Preconditions.checkArgument(newFlySpeed > 0, "Must be greater then 0");
 
         BigDecimal bd = new BigDecimal(Float.toString(newFlySpeed));
         bd = bd.setScale(1, RoundingMode.DOWN);

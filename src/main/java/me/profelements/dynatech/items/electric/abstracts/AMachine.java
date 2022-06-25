@@ -26,7 +26,6 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
-import org.apache.commons.lang.Validate;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -34,6 +33,9 @@ import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
+
+import com.google.common.base.Preconditions;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -351,7 +353,7 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
     }
 
     public final AMachine setEnergyCapacity(int capacity) {
-        Validate.isTrue(capacity > 0, "Energy capacity must be greater then 0");
+        Preconditions.checkArgument(capacity > 0, "Energy capacity must be greater then 0");
 
         if(getState() == ItemState.UNREGISTERED) {
             this.energyCapacity = capacity;
@@ -363,9 +365,9 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
     }
 
     public final AMachine setEnergyConsumption(int energyConsumption) {
-        Validate.isTrue(energyConsumption > 0, "Energy consumption must be greater then 0");
-        Validate.isTrue(energyCapacity > 0, "Energy capacity must be specified before energy consumption");
-        Validate.isTrue(energyConsumption <= energyCapacity, "Energy consumption can not be greater the energy capacity.");
+        Preconditions.checkArgument(energyConsumption > 0, "Energy consumption must be greater then 0");
+        Preconditions.checkArgument(energyCapacity > 0, "Energy capacity must be specified before energy consumption");
+        Preconditions.checkArgument(energyConsumption <= energyCapacity, "Energy consumption can not be greater the energy capacity.");
 
         this.energyConsumedPerTick = energyConsumption;
         return this;
@@ -373,7 +375,7 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
     }
 
     public final AMachine setProcessingSpeed(int processingSpeed) {
-        Validate.isTrue(processingSpeed > 0, "Processing speed must be greater then 0");
+        Preconditions.checkArgument(processingSpeed > 0, "Processing speed must be greater then 0");
 
         this.processingSpeed = processingSpeed;
         return this;

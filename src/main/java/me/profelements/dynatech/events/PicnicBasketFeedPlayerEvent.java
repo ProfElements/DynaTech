@@ -1,7 +1,6 @@
 package me.profelements.dynatech.events;
 
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
-import org.apache.commons.lang.Validate;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
@@ -10,6 +9,8 @@ import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
+
+import com.google.common.base.Preconditions;
 
 public class PicnicBasketFeedPlayerEvent extends PlayerEvent implements Cancellable {
 
@@ -48,10 +49,10 @@ public class PicnicBasketFeedPlayerEvent extends PlayerEvent implements Cancella
     }
 
     public void setConsumedItem(@Nonnull ItemStack item) {
-        Validate.notNull(item, "Consumed item can not be null.");
-        Validate.isTrue(item.getType().isEdible(), "Item must be edible.");
-
-        this.itemConsumed = item;
+      Preconditions.checkNotNull(item, "Consumed item can not be null");
+      Preconditions.checkArgument(item.getType().isEdible(), "Item must be edible");
+      
+      this.itemConsumed = item;
     }
 
     @Override

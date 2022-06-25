@@ -57,7 +57,7 @@ public class StarDustMeteor extends UnplaceableBlock implements GEOResource {
     
     @Override
     public int getDefaultSupply(@Nonnull Environment environment, @Nonnull Biome biome) {
-        if (biome == Biome.MOUNTAINS || biome == Biome.BADLANDS) {
+        if (biome == Biome.MEADOW || biome == Biome.BADLANDS) {
             return 16;
         } else {
             return 0;
