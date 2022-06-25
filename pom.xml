@@ -8,7 +8,7 @@
     <version>1.0.0</version>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
+      <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.organization>profelements</sonar.organization>
@@ -85,14 +85,14 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.17.1-R0.1-SNAPSHOT</version>
+            <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.github.Slimefun</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-30</version>
+            <version>122b43c</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
@@ -104,13 +104,13 @@
         <dependency>
             <groupId>com.github.thebusybiscuit</groupId>
             <artifactId>exoticgarden</artifactId>
-            <version>a2c4b6d</version>
+            <version>7f9a5f6</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.github.mooy1</groupId>
             <artifactId>InfinityExpansion</artifactId>
-            <version>c4e42cc</version>
+            <version>d995144</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
