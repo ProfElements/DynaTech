@@ -14,16 +14,7 @@ import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.backpacks.SoulboundPicnicBacket;
-import me.profelements.dynatech.items.electric.AntigravityBubble;
-import me.profelements.dynatech.items.electric.AutoKitchen;
-import me.profelements.dynatech.items.electric.BandaidManager;
-import me.profelements.dynatech.items.electric.BarbedWire;
-import me.profelements.dynatech.items.electric.FurnaceController;
-import me.profelements.dynatech.items.electric.MaterialHive;
-import me.profelements.dynatech.items.electric.PotionSprinkler;
-import me.profelements.dynatech.items.electric.SeedPlucker;
-import me.profelements.dynatech.items.electric.WeatherController;
-import me.profelements.dynatech.items.electric.WirelessCharger;
+import me.profelements.dynatech.items.electric.*;
 import me.profelements.dynatech.items.electric.generators.ChippingGenerator;
 import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
 import me.profelements.dynatech.items.electric.generators.DragonEggGenerator;
@@ -284,6 +275,17 @@ public class DynaTechItemsSetup {
             .setProcessingSpeed(1)
             .register(plugin);
         }
+
+        new AutoJuicer(DynaTechItems.DT_MACHINES, DynaTechItems.AUTO_JUICER, RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[] {
+                new ItemStack(Material.BRICK), SlimefunItems.ELECTRIC_ORE_GRINDER, new ItemStack(Material.BRICK),
+                DynaTechItems.STAINLESS_STEEL, SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.STAINLESS_STEEL,
+                new ItemStack(Material.TERRACOTTA), new ItemStack(Material.TERRACOTTA), new ItemStack(Material.TERRACOTTA)
+            })
+            .setEnergyCapacity(512)
+            .setEnergyConsumption(16)
+            .setProcessingSpeed(1)
+            .register(plugin);
        
         new GrowthChamber(DynaTechItems.DT_MACHINES, DynaTechItems.GROWTH_CHAMBER, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {

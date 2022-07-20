@@ -220,6 +220,19 @@ public class DynaTechItems {
         LoreBuilderDynamic.powerPerSecond(16)
     );
 
+    public static final SlimefunItemStack AUTO_JUICER = new SlimefunItemStack("AUTO_JUICER",
+        Material.PURPLE_GLAZED_TERRACOTTA,
+        "&6Auto Juicer",
+        "",
+        "&fAutomatically makes Juicer recipes",
+        "",
+        "&f&oSmells like oranges",
+        "",
+        LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+        LoreBuilder.speed(1),
+        LoreBuilderDynamic.powerPerSecond(16)
+    );
+
     public static final SlimefunItemStack GROWTH_CHAMBER = new SlimefunItemStack("GROWTH_CHAMBER",
         Material.GREEN_STAINED_GLASS,
         "&6Growth Chamber",
