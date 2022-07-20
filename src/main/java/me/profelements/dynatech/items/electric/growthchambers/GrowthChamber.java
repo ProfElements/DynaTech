@@ -40,6 +40,14 @@ public class GrowthChamber extends AMachine {
         registerRecipe(9, new ItemStack(Material.FERN), new ItemStack(Material.FERN, 3));
         registerRecipe(12, new ItemStack(Material.LARGE_FERN), new ItemStack(Material.LARGE_FERN, 3));
         registerRecipe(9, new ItemStack(Material.VINE), new ItemStack(Material.VINE, 3));
+        registerRecipe(30, new ItemStack[] {new ItemStack(Material.FLOWERING_AZALEA)}, new ItemStack[] {new ItemStack(Material.FLOWERING_AZALEA, 2), new ItemStack(Material.AZALEA_LEAVES, 2), new ItemStack(Material.FLOWERING_AZALEA_LEAVES, 3), new ItemStack(Material.OAK_LOG, 2)});
+        registerRecipe(30, new ItemStack[] {new ItemStack(Material.AZALEA)}, new ItemStack[] {new ItemStack(Material.AZALEA, 2), new ItemStack(Material.AZALEA_LEAVES, 3), new ItemStack(Material.FLOWERING_AZALEA_LEAVES, 2), new ItemStack(Material.OAK_LOG, 2)});
+        registerRecipe(12, new ItemStack(Material.BIG_DRIPLEAF), new ItemStack(Material.BIG_DRIPLEAF, 2));
+        registerRecipe(9, new ItemStack(Material.SMALL_DRIPLEAF), new ItemStack(Material.SMALL_DRIPLEAF, 2));
+        registerRecipe(9, new ItemStack(Material.SPORE_BLOSSOM), new ItemStack(Material.SPORE_BLOSSOM, 2));
+        registerRecipe(9, new ItemStack[] {new ItemStack(Material.MOSS_BLOCK)}, new ItemStack[]{new ItemStack(Material.MOSS_BLOCK, 2), new ItemStack(Material.MOSS_CARPET, 2)});
+        registerRecipe(9, new ItemStack(Material.GLOW_LICHEN), new ItemStack(Material.GLOW_LICHEN, 3));
+        registerRecipe(9, new ItemStack(Material.HANGING_ROOTS), new ItemStack(Material.HANGING_ROOTS, 3));
 
     // Flowers
         registerRecipe(9, new ItemStack(Material.DANDELION), new ItemStack(Material.DANDELION, 3));
@@ -66,6 +74,7 @@ public class GrowthChamber extends AMachine {
         registerRecipe(12, new ItemStack(Material.SUGAR_CANE), new ItemStack(Material.SUGAR_CANE, 3));
         registerRecipe(12, new ItemStack(Material.BAMBOO), new ItemStack(Material.BAMBOO, 3));
         registerRecipe(12, new ItemStack(Material.CACTUS), new ItemStack(Material.CACTUS, 3));
+        registerRecipe(12, new ItemStack(Material.GLOW_BERRIES), new ItemStack(Material.GLOW_BERRIES, 3));
 
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.OAK_SAPLING)}, new ItemStack[] {new ItemStack(Material.OAK_SAPLING , 3), new ItemStack(Material.OAK_LOG, 6)});
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.BIRCH_SAPLING)}, new ItemStack[] {new ItemStack(Material.BIRCH_SAPLING , 3), new ItemStack(Material.BIRCH_LOG, 6)});
@@ -73,6 +82,7 @@ public class GrowthChamber extends AMachine {
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.DARK_OAK_SAPLING)}, new ItemStack[] {new ItemStack(Material.DARK_OAK_SAPLING , 3), new ItemStack(Material.DARK_OAK_LOG, 6)});
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.JUNGLE_SAPLING)}, new ItemStack[] {new ItemStack(Material.JUNGLE_SAPLING, 3), new ItemStack(Material.JUNGLE_LOG, 6)});
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.ACACIA_SAPLING)}, new ItemStack[] {new ItemStack(Material.ACACIA_SAPLING, 3), new ItemStack(Material.ACACIA_LOG, 6)});
+        registerRecipe(30, new ItemStack[] {new ItemStack(Material.MANGROVE_PROPAGULE)}, new ItemStack[] {new ItemStack(Material.MANGROVE_PROPAGULE, 3), new ItemStack(Material.MANGROVE_LOG, 6)});
 
     }
     

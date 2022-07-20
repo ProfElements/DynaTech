@@ -10,6 +10,7 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -46,6 +47,14 @@ public class GrowthChamberMK2 extends AMachine {
         registerRecipe(9, new ItemStack(Material.FERN), new ItemStack(Material.FERN, 9));
         registerRecipe(12, new ItemStack(Material.LARGE_FERN), new ItemStack(Material.LARGE_FERN, 9));
         registerRecipe(9, new ItemStack(Material.VINE), new ItemStack(Material.VINE, 9));
+        registerRecipe(30, new ItemStack[] {new ItemStack(Material.FLOWERING_AZALEA)}, new ItemStack[] {new ItemStack(Material.FLOWERING_AZALEA, 3), new ItemStack(Material.AZALEA_LEAVES, 6), new ItemStack(Material.FLOWERING_AZALEA_LEAVES, 9), new ItemStack(Material.OAK_LOG, 6)});
+        registerRecipe(30, new ItemStack[] {new ItemStack(Material.AZALEA)}, new ItemStack[] {new ItemStack(Material.AZALEA, 3), new ItemStack(Material.AZALEA_LEAVES, 9), new ItemStack(Material.FLOWERING_AZALEA_LEAVES, 6), new ItemStack(Material.OAK_LOG, 6)});
+        registerRecipe(12, new ItemStack(Material.BIG_DRIPLEAF), new ItemStack(Material.BIG_DRIPLEAF, 6));
+        registerRecipe(9, new ItemStack(Material.SMALL_DRIPLEAF), new ItemStack(Material.SMALL_DRIPLEAF, 6));
+        registerRecipe(9, new ItemStack(Material.SPORE_BLOSSOM), new ItemStack(Material.SPORE_BLOSSOM, 3));
+        registerRecipe(9, new ItemStack[] {new ItemStack(Material.MOSS_BLOCK)}, new ItemStack[]{new ItemStack(Material.MOSS_BLOCK, 3), new ItemStack(Material.MOSS_CARPET, 6)});
+        registerRecipe(9, new ItemStack(Material.GLOW_LICHEN), new ItemStack(Material.GLOW_LICHEN, 9));
+        registerRecipe(9, new ItemStack(Material.HANGING_ROOTS), new ItemStack(Material.HANGING_ROOTS, 9));
 
     // Flowers
         registerRecipe(9, new ItemStack(Material.DANDELION), new ItemStack(Material.DANDELION, 9));
@@ -72,6 +81,7 @@ public class GrowthChamberMK2 extends AMachine {
         registerRecipe(12, new ItemStack(Material.SUGAR_CANE), new ItemStack(Material.SUGAR_CANE, 9));
         registerRecipe(12, new ItemStack(Material.BAMBOO), new ItemStack(Material.BAMBOO, 9));
         registerRecipe(12, new ItemStack(Material.CACTUS), new ItemStack(Material.CACTUS, 9));
+        registerRecipe(12, new ItemStack(Material.GLOW_BERRIES), new ItemStack(Material.GLOW_BERRIES, 9));
 
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.OAK_SAPLING)}, new ItemStack[] {new ItemStack(Material.OAK_SAPLING , 9), new ItemStack(Material.OAK_LOG, 18), new ItemStack(Material.APPLE, 6), new ItemStack(Material.OAK_LEAVES, 9), new ItemStack(Material.STICK, 6)});
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.BIRCH_SAPLING)}, new ItemStack[] {new ItemStack(Material.BIRCH_SAPLING , 9), new ItemStack(Material.BIRCH_LOG, 18), new ItemStack(Material.APPLE, 6), new ItemStack(Material.BIRCH_LEAVES, 9), new ItemStack(Material.STICK, 6)});
@@ -79,6 +89,7 @@ public class GrowthChamberMK2 extends AMachine {
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.DARK_OAK_SAPLING)}, new ItemStack[] {new ItemStack(Material.DARK_OAK_SAPLING , 9), new ItemStack(Material.DARK_OAK_LOG, 18), new ItemStack(Material.APPLE, 6), new ItemStack(Material.DARK_OAK_LEAVES, 9), new ItemStack(Material.STICK, 6)});
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.JUNGLE_SAPLING)}, new ItemStack[] {new ItemStack(Material.JUNGLE_SAPLING, 9), new ItemStack(Material.JUNGLE_LOG, 18), new ItemStack(Material.APPLE, 6), new ItemStack(Material.JUNGLE_LEAVES, 9), new ItemStack(Material.STICK, 6)});
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.ACACIA_SAPLING)}, new ItemStack[] {new ItemStack(Material.ACACIA_SAPLING, 9), new ItemStack(Material.ACACIA_LOG, 18), new ItemStack(Material.APPLE, 6), new ItemStack(Material.ACACIA_LEAVES, 9), new ItemStack(Material.STICK, 6)});
+        registerRecipe(30, new ItemStack[] {new ItemStack(Material.MANGROVE_PROPAGULE)}, new ItemStack[] {new ItemStack(Material.MANGROVE_PROPAGULE, 9), new ItemStack(Material.MANGROVE_LOG, 18), new ItemStack(Material.APPLE, 6), new ItemStack(Material.MANGROVE_LEAVES, 9), new ItemStack(Material.STICK, 6)});
 
     }
 
