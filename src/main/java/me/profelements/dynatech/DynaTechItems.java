@@ -30,9 +30,6 @@ public class DynaTechItems {
     public static final SubItemGroup DT_TOOLS = new SubItemGroup(new NamespacedKey(DynaTech.getInstance(), "DT_TOOLS"), DT_GENERAL, new CustomItemStack(Material.DIAMOND_AXE, "&bDynaTech Tools"));
     public static final SubItemGroup DT_MACHINES = new SubItemGroup(new NamespacedKey(DynaTech.getInstance(), "DT_MACHINES"), DT_GENERAL, new CustomItemStack(Material.SEA_LANTERN, "&bDynaTech Machines"));
     public static final SubItemGroup DT_GENERATORS = new SubItemGroup(new NamespacedKey(DynaTech.getInstance(), "DT_GENERATORS"), DT_GENERAL, new CustomItemStack(Material.PRISMARINE_BRICKS, "&bDynaTech Generators"));
-
-    public static final ItemGroup DynaTechGeneral = new ItemGroup(new NamespacedKey(DynaTech.getInstance(), "dynatech"),
-        new CustomItemStack(Material.CONDUIT, "&bDynaTech")
     );
 
     public static final RecipeType DynaTechScoop = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "dt_scoop"),
