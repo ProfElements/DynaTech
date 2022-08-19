@@ -71,7 +71,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable {
                 int fluidAmount = getLiquid(itemStack).getSecondValue();
 
                 if (liquid.getType() == Material.AIR && fluidName != null && e.getPlayer().isSneaking() && fluidAmount >= 1000) {
-                        if (fluidName.equals("WATER")) {
+                        if (fluidName.equals("WATER") && !e.getPlayer().getWorld().isUltraWarm()) {
                             removeLiquid(itemStack, fluidName, 1000);
                             liquidState.setType(Material.WATER);
                             liquidState.update(true, true);
