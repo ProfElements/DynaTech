@@ -69,7 +69,7 @@ public class BarbedWire extends SlimefunItem implements EnergyNetComponent {
         whitelist.add(EntityType.SHULKER);
         whitelist.add(EntityType.SHULKER_BULLET);
         whitelist.add(EntityType.SILVERFISH);
-        whitelist.add(EntityType.SKELTON);
+        whitelist.add(EntityType.SKELETON);
         whitelist.add(EntityType.SLIME);
         whitelist.add(EntityType.SMALL_FIREBALL);
         whitelist.add(EntityType.SPIDER);
