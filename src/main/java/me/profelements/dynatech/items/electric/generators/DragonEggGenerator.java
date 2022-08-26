@@ -31,11 +31,6 @@ public class DragonEggGenerator extends SlimefunItem implements EnergyNetProvide
     }
 
     @Override
-    public boolean isChargeable() {
-        return false;
-    }
-
-    @Override
     public int getCapacity() {
         return 512;
     }
