@@ -381,8 +381,8 @@ public class DynaTechItemsSetup {
                 SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.BIG_CAPACITOR , SlimefunItems.REINFORCED_ALLOY_INGOT,
                 SlimefunItems.REINFORCED_ALLOY_INGOT, DynaTechItems.STAINLESS_STEEL, SlimefunItems.REINFORCED_ALLOY_INGOT, 
         })
-        .setEnergyCapacity(1024)
-        .setEnergyConsumption(128)
+        .setCapacity(1024)
+        .setConsumption(128)
         .setProcessingSpeed(1)
         .register(plugin);
         
