@@ -76,10 +76,7 @@ public abstract class AbstractContainer extends SlimefunItem implements NotHoppe
         addItemHandler(new BlockPlaceHandler(false) {
             @Override
             public void onPlayerPlace(BlockPlaceEvent e) {
-                BlockMenu menu = BlockStorage.getInventory(e.getBlock());
-                if (menu != null) {
                     onPlace(e, e.getBlockPlaced()); 
-                }
             }
         });
 
