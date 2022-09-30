@@ -10,6 +10,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
@@ -444,10 +445,11 @@ public class DynaTechItemsSetup {
                 new ItemStack(Material.BONE_BLOCK),null,new ItemStack(Material.BONE_BLOCK),
                 DynaTechItems.STAINLESS_STEEL,new ItemStack(Material.SHEARS) ,DynaTechItems.STAINLESS_STEEL                
         })
-        .setEnergyCapacity(512)
-        .setEnergyConsumption(32)
+        .setCapacity(512)
+        .setConsumption(32)
         .setProcessingSpeed(1)
         .register(plugin);
+            
 
         new BandaidManager(DynaTechItems.DT_MACHINES, DynaTechItems.BANDAID_MANAGER, RecipeType.MAGIC_WORKBENCH,
             new ItemStack[] {
