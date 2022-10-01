@@ -10,7 +10,6 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
@@ -20,6 +19,7 @@ import me.profelements.dynatech.items.electric.AutoKitchen;
 import me.profelements.dynatech.items.electric.BandaidManager;
 import me.profelements.dynatech.items.electric.BarbedWire;
 import me.profelements.dynatech.items.electric.FurnaceController;
+import me.profelements.dynatech.items.electric.KitchenAutoCrafter;
 import me.profelements.dynatech.items.electric.MaterialHive;
 import me.profelements.dynatech.items.electric.PotionSprinkler;
 import me.profelements.dynatech.items.electric.SeedPlucker;
@@ -274,16 +274,21 @@ public class DynaTechItemsSetup {
 
         //Machines
         if (DynaTech.isExoticGardenInstalled()) {
-            new AutoKitchen(DynaTechItems.DT_MACHINES, DynaTechItems.AUTO_KITCHEN, RecipeType.ENHANCED_CRAFTING_TABLE,
-            new ItemStack[] {
-                new ItemStack(Material.BRICK), SlimefunItems.ELECTRIC_FURNACE, new ItemStack(Material.BRICK),
-                DynaTechItems.STAINLESS_STEEL, SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.STAINLESS_STEEL,
-                new ItemStack(Material.TERRACOTTA), new ItemStack(Material.TERRACOTTA), new ItemStack(Material.TERRACOTTA)
-            })
+            new AutoKitchen(DynaTechItems.DT_MACHINES, DynaTechItems.AUTO_KITCHEN, RecipeType.NULL, new ItemStack[] {})
             .setEnergyCapacity(512)
             .setEnergyConsumption(16)
             .setProcessingSpeed(1)
             .register(plugin);
+
+            new KitchenAutoCrafter(DynaTechItems.DT_MACHINES, DynaTechItems.KITCHEN_AUTO_CRAFTER, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                new ItemStack(Material.BRICK), SlimefunItems.ELECTRIC_FURNACE, new ItemStack(Material.BRICK),
+                DynaTechItems.STAINLESS_STEEL, SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.STAINLESS_STEEL,
+                new ItemStack(Material.TERRACOTTA), new ItemStack(Material.TERRACOTTA), new ItemStack(Material.TERRACOTTA),
+            })
+            .setCapacity(512)
+            .setEnergyConsumption(16)
+            .register(plugin); 
         }
        
         new GrowthChamber(DynaTechItems.DT_MACHINES, DynaTechItems.GROWTH_CHAMBER, RecipeType.ENHANCED_CRAFTING_TABLE,

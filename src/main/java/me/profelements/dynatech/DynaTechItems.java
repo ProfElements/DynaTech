@@ -214,6 +214,20 @@ public class DynaTechItems {
         LoreBuilderDynamic.powerPerSecond(16)
     );
 
+    //Machines
+    public static final SlimefunItemStack KITCHEN_AUTO_CRAFTER = new SlimefunItemStack("KITCHEN_AUTO_CRAFTER",
+        new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode("c5c5b24cd5efa07d31beea655d7ff972e6f47cdb898be4404363deeba43ba5d"))),
+        "&6Kitchen Auto Crafter",
+        "",
+        "&fAutomatically makes Kitchen recipes",
+        "",
+        "&f&oSmells like cookies",
+        "",
+        LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+        LoreBuilder.speed(1),
+        LoreBuilderDynamic.powerPerSecond(16)
+    );
+
     public static final SlimefunItemStack GROWTH_CHAMBER = new SlimefunItemStack("GROWTH_CHAMBER",
         Material.GREEN_STAINED_GLASS,
         "&6Growth Chamber",
