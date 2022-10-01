@@ -52,7 +52,7 @@ public class AntigravityBubble extends AbstractElectricTicker {
 
 	@Override
 	protected void tick(Block b, SlimefunItem item) {
-        Collection<Entity> bubbledEntities = b.getWorld().getNearbyEntities(b.getLocation(), 16, 16, 16, e -> (e instanceof Player));
+        Collection<Entity> bubbledEntities = b.getWorld().getNearbyEntities(b.getLocation(), 16, 16, 16, Player.class::isInstance);
         for (Entity entity : bubbledEntities) {
             Player p = (Player) entity; 
 
@@ -74,7 +74,7 @@ public class AntigravityBubble extends AbstractElectricTicker {
             }
         }
 
-        enabledPlayers.get(b.getLocation()).removeIf(uuid -> (Bukkit.getPlayer(uuid) != null & !bubbledEntities.contains(Bukkit.getPlayer(uuid)))); 
+        enabledPlayers.get(b.getLocation()).removeIf(uuid -> (Bukkit.getPlayer(uuid) != null && !bubbledEntities.contains(Bukkit.getPlayer(uuid)))); 
         
 	}
 
