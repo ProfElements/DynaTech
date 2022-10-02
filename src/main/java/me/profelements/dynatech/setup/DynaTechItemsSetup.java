@@ -522,7 +522,11 @@ public class DynaTechItemsSetup {
                 DynaTechItems.STAINLESS_STEEL, SlimefunItems.HARDENED_METAL_INGOT, DynaTechItems.STAINLESS_STEEL,
                 new ItemStack(Material.OBSIDIAN), new ItemStack(Material.OBSERVER), new ItemStack(Material.OBSIDIAN),
                 new ItemStack(Material.OBSIDIAN), SlimefunItems.ENERGY_REGULATOR, new ItemStack(Material.OBSIDIAN)
-        }).register(plugin);
+        })
+        .setCapacity(2048)
+        .setConsumption(128)
+        .setProcessingSpeed(1)
+        .register(plugin);
 
         new LiquidTank(DynaTechItems.DT_TOOLS, DynaTechItems.LIQUID_TANK, 16000, RecipeType.ENHANCED_CRAFTING_TABLE, 
             new ItemStack[] {
