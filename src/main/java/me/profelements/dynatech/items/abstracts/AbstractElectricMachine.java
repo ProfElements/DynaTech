@@ -2,10 +2,8 @@ package me.profelements.dynatech.items.abstracts;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -14,12 +12,13 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
+import com.google.common.base.Preconditions;
+
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
-import io.github.thebusybiscuit.slimefun4.libraries.commons.lang.Validate;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.inventory.InvUtils;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import io.github.thebusybiscuit.slimefun4.utils.itemstack.ItemStackWrapper;
@@ -62,22 +61,22 @@ public abstract class AbstractElectricMachine extends AbstractMachine implements
     }
 
     public final AbstractElectricMachine setCapacity(int capacity) {
-        Validate.isTrue(capacity > 0, "The capacity must be greater then 0");
+        Preconditions.checkArgument(capacity > 0, "The capacity must be greater then 0");
 
         this.energyCapacity = capacity; 
         return this;
     }
 
     public final AbstractElectricMachine setConsumption(int consumption) {
-        Validate.isTrue(getCapacity() > 0, "Capacity must be set before consumption");
-        Validate.isTrue(consumption < getCapacity() && consumption != 0, "Consuption can not be greater then capacity"); 
+        Preconditions.checkArgument(getCapacity() > 0, "Capacity must be set before consumption");
+        Preconditions.checkArgument(consumption < getCapacity() && consumption != 0, "Consuption can not be greater then capacity"); 
         
         this.energyConsumedPerTick = consumption;
         return this;
     }
 
     public final AbstractElectricMachine setProcessingSpeed(int speed) {
-        Validate.isTrue(speed > 0, "Speed must be greater then zero!"); 
+        Preconditions.checkArgument(speed > 0, "Speed must be greater then zero!"); 
 
         this.processingSpeed = speed; 
         return this; 
@@ -89,7 +88,7 @@ public abstract class AbstractElectricMachine extends AbstractMachine implements
     }
 
     protected boolean takeCharge(Location l) {
-        Validate.notNull(l, "Can't take energy from a null location"); 
+        Preconditions.checkNotNull(l, "Can't take energy from a null location"); 
 
         if (isChargeable()) {
             int charge = getCharge(l); 
