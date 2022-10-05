@@ -3,23 +3,40 @@ package me.profelements.dynatech.items.electric.generators;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
+import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
+import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
+import me.profelements.dynatech.items.abstracts.AbstractGenerator;
 import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Nonnull;
 
-public class ChippingGenerator extends AMachineGenerator {
+public class ChippingGenerator extends AbstractGenerator {
 
     private final int powerPerDurability = 8;
+    
+    private static final int[] INPUT_SLOTS = new int[] { 19, 20 };
+    private static final int[] OUTPUT_SLOTS = new int[] { 24, 25 };
 
-    private final ItemStack progressBar = new ItemStack(Material.WOODEN_AXE);
+    private static final int[] INPUT_BORDER_SLOTS = new int[] { 9, 10, 11, 12, 18, 21, 27, 28, 29, 30 };
+    private static final int[] OUTPUT_BORDER_SLOTS = new int[] {14, 15, 16, 17, 23, 26, 32, 33, 34, 35 };
+    private static final int[] BACKGROUND_SLOTS = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 13, 31, 36, 37, 38, 39, 40, 41, 42, 43, 44 }; 
+
+    private final ItemStack PROGRESS_ITEM = new ItemStack(Material.WOODEN_AXE);
 
     public ChippingGenerator(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
@@ -58,14 +75,57 @@ public class ChippingGenerator extends AMachineGenerator {
         return 0;
     }
 
-    @Override
-    public String getMachineIdentifier() {
-        return "CHIPPING_GENERATOR";
-    }
 
-    @Nonnull
+	@Override
+	public List<ItemStack> getDisplayRecipes() {
+		return new ArrayList<>();
+	}
+
+    
     @Override
-    public ItemStack getProgressBar() {
-        return progressBar;
-    }
+	protected void setupMenu(BlockMenuPreset preset) {
+		for (int slot : BACKGROUND_SLOTS) {
+            preset.addItem(slot, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
+        }
+
+        for (int slot : INPUT_BORDER_SLOTS) {
+            preset.addItem(slot, ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
+        }
+
+        for (int slot : OUTPUT_BORDER_SLOTS) {
+            preset.addItem(slot, ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
+        }
+
+        for (int slot : getOutputSlots()) {
+            preset.addMenuClickHandler(slot,new ChestMenu.AdvancedMenuClickHandler() {
+                @Override
+                public boolean onClick(InventoryClickEvent e, Player p, int slot, ItemStack cursor, ClickAction action) {
+                    return cursor.getType().isAir();
+                }
+
+                @Override
+                public boolean onClick(Player p, int slot, ItemStack item, ClickAction action) {
+                    return false;
+                }
+            });
+        }	
+	}
+
+
+	@Override
+	protected ItemStack getProgressBar() {
+		return PROGRESS_ITEM;
+	}
+
+	@Override
+	protected int[] getInputSlots() {
+		return INPUT_SLOTS;
+	}
+
+
+	@Override
+	protected int[] getOutputSlots() {
+		return OUTPUT_SLOTS;
+	}
+
 }
