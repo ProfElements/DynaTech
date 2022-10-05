@@ -254,7 +254,7 @@ public class MaterialHive extends AMachine implements RecipeDisplayItem, Radioac
         sfItemsAllowed.add("GILDED_IRON");
         sfItemsAllowed.add("NICKEL_INGOT");
         sfItemsAllowed.add("COBALT_INGOT");
-        
+        sfItemsAllowed.add("REDSTONE_ALLOY"); 
         //Gems
         sfItemsAllowed.add("SYNTHETIC_DIAMOND");
         sfItemsAllowed.add("SYNTHETIC_EMERALD");

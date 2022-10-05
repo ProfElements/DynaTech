@@ -12,6 +12,7 @@ import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
+import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.abstracts.AbstractElectricMachine;
 
 import java.util.ArrayList;
@@ -47,26 +48,27 @@ public class SeedPlucker extends AbstractElectricMachine {
         recipes.add(new MachineRecipe(10, new ItemStack[] {new ItemStack(Material.BEETROOT)}, new ItemStack[] {new ItemStack(Material.BEETROOT_SEEDS)}));
         recipes.add(new MachineRecipe(10, new ItemStack[] {new ItemStack(Material.PUMPKIN)}, new ItemStack[] {new ItemStack(Material.PUMPKIN_SEEDS)}));
         recipes.add(new MachineRecipe(10, new ItemStack[] {new ItemStack(Material.MELON_SLICE)}, new ItemStack[] {new ItemStack(Material.MELON_SEEDS)}));
+        
+        if (DynaTech.isExoticGardenInstalled()) {
+            for (SlimefunItem item : Slimefun.getRegistry().getEnabledSlimefunItems()) {
+                if (item instanceof ExoticGardenFruit) {
+                    SlimefunItem out = SlimefunItem.getById(item.getId().concat("_BUSH")); 
+                    if (out != null) {
+                        recipes.add(new MachineRecipe(10, new ItemStack[] { item.getItem() }, new ItemStack[] { out.getItem() }));
+                    }
+                    
+                    out = SlimefunItem.getById(item.getId().concat("_PLANT"));
+                    if (out != null) {
+                        recipes.add(new MachineRecipe(10, new ItemStack[] { item.getItem() }, new ItemStack[] { out.getItem() }));
+                    }     
 
-        for (SlimefunItem item : Slimefun.getRegistry().getEnabledSlimefunItems()) {
-            if (item instanceof ExoticGardenFruit) {
-                SlimefunItem out = SlimefunItem.getById(item.getId().concat("_BUSH")); 
-                if (out != null) {
-                    recipes.add(new MachineRecipe(10, new ItemStack[] { item.getItem() }, new ItemStack[] { out.getItem() }));
-                }
-                
-                out = SlimefunItem.getById(item.getId().concat("_PLANT"));
-                if (out != null) {
-                    recipes.add(new MachineRecipe(10, new ItemStack[] { item.getItem() }, new ItemStack[] { out.getItem() }));
-                }     
-
-                out = SlimefunItem.getById(item.getId().concat("_SAPLING"));
-                if (out != null) {
-                    recipes.add(new MachineRecipe(10, new ItemStack[] { item.getItem() }, new ItemStack[] { out.getItem() }));
+                    out = SlimefunItem.getById(item.getId().concat("_SAPLING"));
+                    if (out != null) {
+                        recipes.add(new MachineRecipe(10, new ItemStack[] { item.getItem() }, new ItemStack[] { out.getItem() }));
+                    }
                 }
             }
         }
-    
     }
     
     @Override
