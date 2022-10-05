@@ -565,7 +565,8 @@ public class DynaTechItemsSetup {
                 DynaTechItems.STAINLESS_STEEL, DynaTechItems.STAINLESS_STEEL, DynaTechItems.STAINLESS_STEEL
         })
         .setEnergyCapacity(256)
-        .setEnergyProduction(2)
+        .setEnergyProduction(8)
+        .setProcessingSpeed(1)
         .register(plugin);
 
         new CulinaryGenerator(DynaTechItems.DT_GENERATORS, DynaTechItems.CULINARY_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE,

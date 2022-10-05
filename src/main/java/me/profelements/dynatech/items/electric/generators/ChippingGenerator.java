@@ -7,6 +7,7 @@ import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineFuel;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
@@ -36,13 +37,13 @@ public class ChippingGenerator extends AbstractGenerator {
     private static final int[] OUTPUT_BORDER_SLOTS = new int[] {14, 15, 16, 17, 23, 26, 32, 33, 34, 35 };
     private static final int[] BACKGROUND_SLOTS = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 13, 31, 36, 37, 38, 39, 40, 41, 42, 43, 44 }; 
 
-    private final ItemStack PROGRESS_ITEM = new ItemStack(Material.WOODEN_AXE);
+    private final ItemStack PROGRESS_ITEM = new ItemStack(Material.NETHERITE_AXE);
 
     public ChippingGenerator(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
     }
 
-
+    /*
     @Override
     public int getGeneratedOutput(Location l, Config data) {
         BlockMenu inv = BlockStorage.getInventory(l.getBlock());
@@ -74,7 +75,33 @@ public class ChippingGenerator extends AbstractGenerator {
         }
         return 0;
     }
+    */
 
+    @Override
+    public MachineFuel findNextFuel(BlockMenu inv) {
+            
+        for (int slot : getInputSlots()) {
+            ItemStack item =  inv.getItemInSlot(slot); 
+            if (item != null && !item.getType().isAir() && item.hasItemMeta()) {
+                ItemMeta meta = item.getItemMeta(); 
+                if (meta instanceof Damageable && !meta.isUnbreakable()) {
+                    Damageable damage = (Damageable) meta; 
+                    if (!damage.hasDamage()) {
+                        int durability = item.getType().getMaxDurability(); 
+                        inv.consumeItem(slot); 
+                        return new MachineFuel(durability, item);  
+                    } else {
+                        int durability = item.getType().getMaxDurability() - damage.getDamage();
+                        inv.consumeItem(slot);
+                        return new MachineFuel(durability, item);  
+
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
 
 	@Override
 	public List<ItemStack> getDisplayRecipes() {
