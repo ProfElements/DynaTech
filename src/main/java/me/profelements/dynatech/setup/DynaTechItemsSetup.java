@@ -442,8 +442,8 @@ public class DynaTechItemsSetup {
                 null, SlimefunItems.SMALL_CAPACITOR, null
         }, 16
         )
-        .setEnergyCapacity(1024)
-        .setEnergyConsumption(16)
+        .setCapacity(1024)
+        .setConsumption(16)
         .setProcessingSpeed(1)
         .register(plugin);
 
