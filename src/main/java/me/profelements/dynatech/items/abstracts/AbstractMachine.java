@@ -76,10 +76,10 @@ public abstract class AbstractMachine extends AbstractTickingContainer implement
             if (checkCraftPreconditions(b)) {
                 
                 if(!currentOp.isFinished()) {
-                    processor.updateProgressBar(menu, 22, currentOp); 
+                    processor.updateProgressBar(menu, getProgressSlot(), currentOp); 
                     currentOp.addProgress(1);
                 } else {
-                    menu.replaceExistingItem(22, new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " ")); 
+                    menu.replaceExistingItem(getProgressSlot(), new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " ")); 
 
                     boolean isFinished = onCraftFinish(menu, currentOp.getIngredients()); 
                     if (isFinished) {
@@ -96,8 +96,12 @@ public abstract class AbstractMachine extends AbstractTickingContainer implement
                 currentOp = new CraftingOperation(next);
                 processor.startOperation(b, currentOp);
 
-                processor.updateProgressBar(menu, 22, currentOp);
+                processor.updateProgressBar(menu, getProgressSlot(), currentOp);
             }
         }
+    }
+
+    protected int getProgressSlot() {
+        return 22; 
     }
 }

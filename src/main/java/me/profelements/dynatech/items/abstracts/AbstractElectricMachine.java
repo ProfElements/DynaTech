@@ -87,6 +87,14 @@ public abstract class AbstractElectricMachine extends AbstractMachine implements
         recipes.add(recipe); 
     }
 
+    public void registerRecipe(int seconds, ItemStack[] inputs, ItemStack[] outputs) {
+        registerRecipe(new MachineRecipe(seconds, inputs, outputs));
+    }
+
+    public void registerRecipe(int seconds, ItemStack input, ItemStack outputs) {
+        registerRecipe(seconds, new ItemStack[] { input }, new ItemStack[] { outputs });
+    }
+
     protected boolean takeCharge(Location l) {
         Preconditions.checkNotNull(l, "Can't take energy from a null location"); 
 
@@ -144,5 +152,5 @@ public abstract class AbstractElectricMachine extends AbstractMachine implements
 
         return null;
     }
-
+    
 }
