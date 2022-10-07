@@ -1,18 +1,26 @@
 package me.profelements.dynatech.items.electric;
 
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
-import io.github.thebusybiscuit.slimefun4.api.items.ItemHandler;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
-import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
+import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
+import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
+import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
 import me.profelements.dynatech.DynaTech;
-import me.profelements.dynatech.items.electric.abstracts.AMachine;
+import me.profelements.dynatech.items.abstracts.AbstractElectricTicker;
+
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -20,25 +28,62 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeatherController extends AMachine implements RecipeDisplayItem {
+public class WeatherController extends AbstractElectricTicker implements RecipeDisplayItem {
 
-    private static final int[] BORDER = new int[] {1,2,6,7,9,10,11,15,16,17,19,20,24,25};
-    private static final int[] BORDER_IN = new int[] {3,4,5,12,14,21,22,23};
-    private static final int[] BORDER_OUT = new int[] {0,8,18,26};
+    private static final int[] BACKGROUND_SLOTS = new int[] {0,1,2,3,5,6,7,8};
+    private static final int[] INPUT_BORDER_SLOTS = new int[] {};
+    private static final int[] OUTPUT_BORDER_SLOTS = new int[] {};
 
     public WeatherController(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
-        addItemHandler(onBlockBreak());
+    
+        new BlockMenuPreset(getId(), getItemName()) {
+            @Override
+            public void init() {
+                setupMenu(this); 
+            }
+
+            @Override
+            public boolean canOpen(Block b, Player p) {
+                return p.hasPermission("slimefun.inventory.bypass") || Slimefun.getProtectionManager().hasPermission(p, b.getLocation(), Interaction.INTERACT_BLOCK); 
+            }
+            
+            @Nonnull
+            @Override
+            public int[] getSlotsAccessedByItemTransport(ItemTransportFlow flow) {
+                if (flow == ItemTransportFlow.INSERT) {
+                    return null;
+                } else {
+                    return null; 
+                }
+            }
+
+        };
+
     }
 
-    @Override
-    public void tick(Block b) {
+	protected void setupMenu(BlockMenuPreset preset) {
+		for (int slot : BACKGROUND_SLOTS) {
+            preset.addItem(slot, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
+        }
+
+        for (int slot : INPUT_BORDER_SLOTS) {
+            preset.addItem(slot, ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
+        }
+
+        for (int slot : OUTPUT_BORDER_SLOTS) {
+            preset.addItem(slot, ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
+        } 
+
+    }
+
+    public void tick(Block b, SlimefunItem sfItem) {
         if (getCharge(b.getLocation()) < getEnergyConsumption()) {
             return;
         }
 
         BlockMenu menu = BlockStorage.getInventory(b);
-        ItemStack item = menu.getItemInSlot(getInputSlots()[0]);
+        ItemStack item = menu.getItemInSlot(4);
 
         if (item != null && (item.getType() == Material.SUNFLOWER || item.getType() == Material.LILAC || item.getType() == Material.CREEPER_HEAD)) {
             if (item.getType() == Material.SUNFLOWER) {
@@ -75,14 +120,9 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
         }
     }
 
-
-    public ItemHandler onBlockBreak() {
-        return new BlockBreakHandler(false, false) {
-            @Override
-            public void onPlayerBreak(BlockBreakEvent event, ItemStack item, List<ItemStack> drops) {
-                event.getBlock().getWorld().setClearWeatherDuration(60);
-            }
-        };
+    @Override
+    protected void onBreak(BlockBreakEvent e, Location l) {
+        l.getWorld().setClearWeatherDuration(60);
     }
 
     @Nonnull
@@ -100,40 +140,4 @@ public class WeatherController extends AMachine implements RecipeDisplayItem {
 
         return items;
     }
-
-    @Override
-    public String getMachineIdentifier() {
-        return "WEATHER_CONTROLLER";
-    }
-
-
-    @Override
-    public List<int[]> getBorders() {
-        List<int[]> borders = new ArrayList<>();
-        borders.add(BORDER);
-        borders.add(BORDER_IN);
-        borders.add(BORDER_OUT);
-        
-        return borders;
-    }
-    
-    @Override
-    public int[] getInputSlots() {
-        return new int[] {13};
-    }
-    @Override
-    public int[] getOutputSlots() {
-        return new int[] {13};
-    }
-
-    @Override
-    public ItemStack getProgressBar() {
-        return new ItemStack(Material.SUNFLOWER);
-    }
-    
-    @Override
-    public int getProgressBarSlot() {
-        return 4;
-    }
-
 }

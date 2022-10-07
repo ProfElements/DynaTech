@@ -5,14 +5,34 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
+import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
+import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
+import me.profelements.dynatech.items.abstracts.AbstractElectricMachine;
 import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import me.profelements.dynatech.items.misc.ItemBand;
+
+import java.util.List;
+
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class BandaidManager extends AMachine {
+public class BandaidManager extends AbstractElectricMachine {
+    
+    private static final int[] INPUT_SLOTS = new int[] { 19, 20 };
+    private static final int[] OUTPUT_SLOTS = new int[] { 24, 25 };
+
+    private static final int[] INPUT_BORDER_SLOTS = new int[] { 9, 10, 11, 12, 18, 21, 27, 28, 29, 30 };
+    private static final int[] OUTPUT_BORDER_SLOTS = new int[] {14, 15, 16, 17, 23, 26, 32, 33, 34, 35 };
+    private static final int[] BACKGROUND_SLOTS = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 13, 31, 36, 37, 38, 39, 40, 41, 42, 43, 44 }; 
+
+    private static final ItemStack PROGRESS_ITEM = new ItemStack(Material.PHANTOM_MEMBRANE);
+
 
     public BandaidManager(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
@@ -63,15 +83,59 @@ public class BandaidManager extends AMachine {
         }
         return null;
     }
-
-    @Override
-    public String getMachineIdentifier() {
-        return "BANDAID_MANAGER";
-    }
-
+    
     @Override
     public ItemStack getProgressBar() {
-        return new ItemStack(Material.PHANTOM_MEMBRANE);
+        return PROGRESS_ITEM;
     }
+
+	@Override
+	protected void setupMenu(BlockMenuPreset preset) {
+		for (int slot : BACKGROUND_SLOTS) {
+            preset.addItem(slot, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
+        }
+
+        for (int slot : INPUT_BORDER_SLOTS) {
+            preset.addItem(slot, ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
+        }
+
+        for (int slot : OUTPUT_BORDER_SLOTS) {
+            preset.addItem(slot, ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
+        }
+
+        for (int slot : getOutputSlots()) {
+            preset.addMenuClickHandler(slot,new ChestMenu.AdvancedMenuClickHandler() {
+                @Override
+                public boolean onClick(InventoryClickEvent e, Player p, int slot, ItemStack cursor, ClickAction action) {
+                    return cursor.getType().isAir();
+                }
+
+                @Override
+                public boolean onClick(Player p, int slot, ItemStack item, ClickAction action) {
+                    return false;
+                }
+            });
+        }
+	}
+
+	@Override
+	protected int[] getInputSlots() {
+		// TODO Auto-generated method stub
+		return INPUT_SLOTS; 
+	}
+
+
+	@Override
+	protected int[] getOutputSlots() {
+		// TODO Auto-generated method stub
+		return OUTPUT_SLOTS;
+	}
+
+
+	@Override
+	public List<ItemStack> getDisplayRecipes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 }

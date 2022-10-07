@@ -397,8 +397,8 @@ public class DynaTechItemsSetup {
                 new ItemStack(Material.WATER_BUCKET), DynaTechItems.ANCIENT_MACHINE_CORE, new ItemStack(Material.LAVA_BUCKET),
                 DynaTechItems.STAINLESS_STEEL, new ItemStack(Material.CRYING_OBSIDIAN), DynaTechItems.STAINLESS_STEEL
         })
-        .setEnergyCapacity(512)
-        .setEnergyConsumption(32)
+        .setCapacity(512)
+        .setConsumption(32)
         .setProcessingSpeed(1)
         .register(plugin);
         
@@ -465,8 +465,8 @@ public class DynaTechItemsSetup {
                 SlimefunItems.REINFORCED_CLOTH, new ItemStack(Material.ENCHANTING_TABLE), SlimefunItems.REINFORCED_CLOTH,
                 null, SlimefunItems.WITHER_PROOF_OBSIDIAN, null
         })
-        .setEnergyCapacity(1024)
-        .setEnergyConsumption(48)
+        .setCapacity(1024)
+        .setConsumption(48)
         .setProcessingSpeed(1)
         .register(plugin);
         
