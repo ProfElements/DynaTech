@@ -135,7 +135,7 @@ public class PotionSprinkler extends AbstractElectricTicker {
             }
         }
 
-        enabledEntities.get(b.getLocation()).removeIf(uuid -> (Bukkit.getEntity(uuid) != null 
+        enabledEntities.getOrDefault(b.getLocation(), new HashSet<>()).removeIf(uuid -> (Bukkit.getEntity(uuid) != null 
                     && Bukkit.getEntity(uuid) instanceof LivingEntity 
                     && ((LivingEntity) Bukkit.getEntity(uuid)).getActivePotionEffects().isEmpty())); 
     }

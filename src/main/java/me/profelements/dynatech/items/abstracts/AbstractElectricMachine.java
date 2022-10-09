@@ -82,6 +82,10 @@ public abstract class AbstractElectricMachine extends AbstractMachine implements
         return this; 
     }
 
+    public List<MachineRecipe> getMachineRecipes() {
+        return recipes;
+    }
+
     public void registerRecipe(MachineRecipe recipe) {
         recipe.setTicks(recipe.getTicks() / getSpeed()); 
         recipes.add(recipe); 
