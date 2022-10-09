@@ -25,6 +25,7 @@ import me.profelements.dynatech.items.electric.PotionSprinkler;
 import me.profelements.dynatech.items.electric.SeedPlucker;
 import me.profelements.dynatech.items.electric.WeatherController;
 import me.profelements.dynatech.items.electric.WirelessCharger;
+import me.profelements.dynatech.items.electric.machines.Orechid;
 import me.profelements.dynatech.items.electric.generators.ChippingGenerator;
 import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
 import me.profelements.dynatech.items.electric.generators.DragonEggGenerator;
@@ -54,7 +55,6 @@ import me.profelements.dynatech.items.tools.DimensionalHome;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
 import me.profelements.dynatech.items.tools.InventoryFilter;
 import me.profelements.dynatech.items.tools.LiquidTank;
-import me.profelements.dynatech.items.tools.Orechid;
 import me.profelements.dynatech.items.tools.Scoop;
 import me.profelements.dynatech.items.tools.TesseractBinder;
 import org.bukkit.Material;
@@ -430,8 +430,8 @@ public class DynaTechItemsSetup {
                 SlimefunItems.HARDENED_METAL_INGOT, new ItemStack(Material.BEEHIVE), SlimefunItems.HARDENED_METAL_INGOT,
                 DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.MACHINE_SCRAP, DynaTechItems.ADVANCED_MACHINE_SCRAP
         })
-        .setEnergyCapacity(8192)
-        .setEnergyConsumption(1024)
+        .setCapacity(8192)
+        .setConsumption(1024)
         .setProcessingSpeed(1)
         .register(plugin);       
 
@@ -476,8 +476,8 @@ public class DynaTechItemsSetup {
                 SlimefunItems.MAGIC_LUMP_3, new ItemStack(Material.WITHER_ROSE), SlimefunItems.MAGIC_LUMP_3,
                 SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.REINFORCED_PLATE, SlimefunItems.HARDENED_METAL_INGOT
         })
-        .setEnergyCapacity(16384)
-        .setEnergyConsumption(1024)
+        .setCapacity(16384)
+        .setConsumption(1024)
         .setProcessingSpeed(1)
         .register(plugin);
                 
