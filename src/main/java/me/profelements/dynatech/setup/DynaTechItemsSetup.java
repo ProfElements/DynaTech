@@ -408,8 +408,8 @@ public class DynaTechItemsSetup {
                 new ItemStack(Material.IRON_BARS), DynaTechItems.ANCIENT_MACHINE_CORE, new ItemStack(Material.IRON_BARS),
                 SlimefunItems.FERROSILICON, SlimefunItems.FERROSILICON, SlimefunItems.FERROSILICON
         })
-        .setEnergyCapacity(256)
-        .setEnergyConsumption(32)
+        .setCapacity(256)
+        .setConsumption(32)
         .setProcessingSpeed(1)
         .register(plugin);
         
