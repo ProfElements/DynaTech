@@ -3,13 +3,18 @@ package me.profelements.dynatech.setup;
 import io.github.mooy1.infinityexpansion.items.mobdata.MobData;
 import io.github.mooy1.infinityexpansion.items.mobdata.MobDataCard;
 import io.github.mooy1.infinityexpansion.items.mobdata.MobDataTier;
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
+import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
+import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
@@ -25,6 +30,7 @@ import me.profelements.dynatech.items.electric.PotionSprinkler;
 import me.profelements.dynatech.items.electric.SeedPlucker;
 import me.profelements.dynatech.items.electric.WeatherController;
 import me.profelements.dynatech.items.electric.WirelessCharger;
+import me.profelements.dynatech.items.electric.machines.MineralizedApiary;
 import me.profelements.dynatech.items.electric.machines.Orechid;
 import me.profelements.dynatech.items.electric.generators.ChippingGenerator;
 import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
@@ -61,6 +67,8 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+
+import dev.j3fftw.extrautils.utils.LoreBuilderDynamic;
 
 import javax.annotation.Nonnull;
 
@@ -424,12 +432,14 @@ public class DynaTechItemsSetup {
         .setProcessingSpeed(1)
         .register(plugin);
         
-        new MaterialHive(DynaTechItems.DT_MACHINES, DynaTechItems.MATERIAL_HIVE, RecipeType.ENHANCED_CRAFTING_TABLE,
+        MaterialHive hive = new MaterialHive(DynaTechItems.DT_MACHINES, DynaTechItems.MATERIAL_HIVE, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
                 SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.SYNTHETIC_DIAMOND, SlimefunItems.HARDENED_METAL_INGOT,
                 SlimefunItems.HARDENED_METAL_INGOT, new ItemStack(Material.BEEHIVE), SlimefunItems.HARDENED_METAL_INGOT,
                 DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.MACHINE_SCRAP, DynaTechItems.ADVANCED_MACHINE_SCRAP
-        })
+        });
+
+        hive
         .setCapacity(8192)
         .setConsumption(1024)
         .setProcessingSpeed(1)
@@ -589,4 +599,65 @@ public class DynaTechItemsSetup {
         .setEnergyProduction(1024)
         .register(plugin);
     }
+
+	private static void registerMineralizedApiaries(MaterialHive hive, SlimefunAddon plugin) {
+        for (String id: hive.slimefunItemsAccepted.getValue()) {
+            SlimefunItem item = SlimefunItem.getById(id);
+
+            if (item != null) {
+                SlimefunItemStack apiary = new SlimefunItemStack("DT_" + id.replace("_INGOT", "") + "_MINERALIZED_APIARY",
+                    Material.BEEHIVE,
+                    "&f" + item.getItemName().replace(" Ingot", "") + " Mineralized Apiary",
+                    "",
+                    "&fProduces a material",
+                    "&fwith the help of bees",
+                    "",
+                    LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
+                    LoreBuilder.powerBuffer(16384),
+                    LoreBuilderDynamic.powerPerTick(1024)
+                );
+
+                new MineralizedApiary(DynaTechItems.DT_HIVES, apiary, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                    SlimefunItems.LARGE_CAPACITOR, item.getItem(), SlimefunItems.LARGE_CAPACITOR,
+                    item.getItem(), DynaTechItems.MATERIAL_HIVE, item.getItem(),
+                    DynaTechItems.MACHINE_SCRAP, DynaTechItems.VEX_GEM, DynaTechItems.MACHINE_SCRAP,
+                }, item.getItem())
+                .setCapacity(16384)
+                .setConsumption(1024)
+                .setProcessingSpeed(1)
+                .register(plugin);
+            }
+        }
+
+    for (String name: hive.vanillaItemsAccepted.getValue()) {
+            ItemStack item = new ItemStack(Material.matchMaterial(name));
+
+            if (item != null) {
+                SlimefunItemStack apiary = new SlimefunItemStack("DT_" + name.replace("_INGOT", "") + "_MINERALIZED_APIARY",
+                    Material.BEEHIVE,
+                    "&f" + ItemUtils.getItemName(item).replace(" Ingot", "") + " Mineralized Apiary",
+                    "",
+                    "&fProduces a material",
+                    "&fwith the help of bees",
+                    "",
+                    LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
+                    LoreBuilder.powerBuffer(16384),
+                    LoreBuilderDynamic.powerPerTick(1024)
+                );
+
+                new MineralizedApiary(DynaTechItems.DT_HIVES, apiary, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                    SlimefunItems.LARGE_CAPACITOR, item, SlimefunItems.LARGE_CAPACITOR,
+                    item, DynaTechItems.MATERIAL_HIVE, item,
+                    DynaTechItems.MACHINE_SCRAP, DynaTechItems.VEX_GEM, DynaTechItems.MACHINE_SCRAP,
+                }, item)
+                .setCapacity(16384)
+                .setConsumption(1024)
+                .setProcessingSpeed(1)
+                .register(plugin);
+            }
+        }
+
+	}
 }
