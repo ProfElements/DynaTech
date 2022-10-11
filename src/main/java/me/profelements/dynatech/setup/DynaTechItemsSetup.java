@@ -20,7 +20,6 @@ import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.backpacks.SoulboundPicnicBacket;
 import me.profelements.dynatech.items.electric.AntigravityBubble;
-import me.profelements.dynatech.items.electric.AutoKitchen;
 import me.profelements.dynatech.items.electric.BandaidManager;
 import me.profelements.dynatech.items.electric.BarbedWire;
 import me.profelements.dynatech.items.electric.FurnaceController;
@@ -282,12 +281,6 @@ public class DynaTechItemsSetup {
 
         //Machines
         if (DynaTech.isExoticGardenInstalled()) {
-            new AutoKitchen(DynaTechItems.DT_MACHINES, DynaTechItems.AUTO_KITCHEN, RecipeType.NULL, new ItemStack[] {})
-            .setEnergyCapacity(512)
-            .setEnergyConsumption(16)
-            .setProcessingSpeed(1)
-            .register(plugin);
-
             new KitchenAutoCrafter(DynaTechItems.DT_MACHINES, DynaTechItems.KITCHEN_AUTO_CRAFTER, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                 new ItemStack(Material.BRICK), SlimefunItems.ELECTRIC_FURNACE, new ItemStack(Material.BRICK),
