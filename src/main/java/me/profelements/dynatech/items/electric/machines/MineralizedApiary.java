@@ -105,6 +105,7 @@ public class MineralizedApiary extends AbstractElectricMachine {
         preset.drawBackground(ChestMenuUtils.getInputSlotTexture(), INPUT_BORDER_SLOTS);
         preset.drawBackground(ChestMenuUtils.getOutputSlotTexture(), OUTPUT_BORDER_SLOTS);
 
+        preset.addItem(getProgressSlot(), new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler());
         preset.addItem(20, new CustomItemStack(Material.BEACON, "&fINFO", "&fBee Count: {}", "&fCurrent Speed: {}"), ChestMenuUtils.getEmptyClickHandler()); 
  
     }
