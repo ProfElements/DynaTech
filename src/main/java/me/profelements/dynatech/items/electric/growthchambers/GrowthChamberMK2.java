@@ -102,8 +102,13 @@ public class GrowthChamberMK2 extends AbstractElectricMachine {
             for (SlimefunItem item : Slimefun.getRegistry().getEnabledSlimefunItems()) {
                 if (item.getId().contains("_BUSH") || item.getId().contains("_PLANT") || item.getId().contains("_SAPLING")) {
                     SlimefunItem fruit = SlimefunItem.getById(item.getId().split("_")[0]);
+                    SlimefunItem essence = SlimefunItem.getById(item.getId().split("_")[0] + "_ESSENCE");
                     if ( fruit != null) { 
                        registerRecipe(new MachineRecipe(30, new ItemStack[] {item.getItem()}, new ItemStack[] { item.getItem(), fruit.getItem()}));
+                    }
+
+                    if (essence != null) { 
+                       registerRecipe(new MachineRecipe(30, new ItemStack[] {item.getItem()}, new ItemStack[] { item.getItem(), essence.getItem()}));
                     }
                 }
             }
