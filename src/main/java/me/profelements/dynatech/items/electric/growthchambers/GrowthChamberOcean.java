@@ -9,7 +9,6 @@ import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.profelements.dynatech.items.abstracts.AbstractElectricMachine;
-import me.profelements.dynatech.items.electric.abstracts.AMachine;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -14,7 +14,6 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.abstracts.AbstractElectricMachine;
-import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;

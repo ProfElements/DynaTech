@@ -443,7 +443,9 @@ public class DynaTechItemsSetup {
         .setCapacity(8192)
         .setConsumption(1024)
         .setProcessingSpeed(1)
-        .register(plugin);       
+        .register(plugin);   
+
+        registerMineralizedApiaries(hive, plugin);
 
         new WirelessCharger(DynaTechItems.DT_MACHINES, DynaTechItems.WIRELESS_CHARGER, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {

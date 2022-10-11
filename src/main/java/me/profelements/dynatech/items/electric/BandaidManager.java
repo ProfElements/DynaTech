@@ -12,7 +12,6 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecip
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.profelements.dynatech.items.abstracts.AbstractElectricMachine;
-import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import me.profelements.dynatech.items.misc.ItemBand;
 
 import java.util.List;
