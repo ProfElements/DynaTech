@@ -15,6 +15,7 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.profelements.dynatech.items.abstracts.AbstractElectricMachine;
 import me.profelements.dynatech.items.misc.ItemBand;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Material;
@@ -136,8 +137,7 @@ public class BandaidManager extends AbstractElectricMachine {
 
 	@Override
 	public List<ItemStack> getDisplayRecipes() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<>();
 	}
     
 }
