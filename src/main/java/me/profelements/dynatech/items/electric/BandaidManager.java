@@ -12,6 +12,7 @@ import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
+import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.abstracts.AbstractElectricMachine;
 import me.profelements.dynatech.items.misc.ItemBand;
 
@@ -40,7 +41,6 @@ public class BandaidManager extends AbstractElectricMachine {
     }
     
 
-    //TODO: Rewrite this thing into a much better version - Quinn
     @Override
     public MachineRecipe findNextRecipe(BlockMenu inv) {
 
@@ -123,21 +123,26 @@ public class BandaidManager extends AbstractElectricMachine {
 
 	@Override
 	protected int[] getInputSlots() {
-		// TODO Auto-generated method stub
 		return INPUT_SLOTS; 
 	}
 
 
 	@Override
 	protected int[] getOutputSlots() {
-		// TODO Auto-generated method stub
 		return OUTPUT_SLOTS;
 	}
 
 
 	@Override
 	public List<ItemStack> getDisplayRecipes() {
-		return new ArrayList<>();
-	}
+		List<ItemStack> display = new ArrayList<>();
+
+        display.add(DynaTechItems.ITEM_BAND_HASTE);
+        display.add(new CustomItemStack(Material.IRON_PICKAXE, "Any Tool"));
+        display.add(DynaTechItems.ITEM_BAND_HEALTH);
+        display.add(new CustomItemStack(Material.IRON_PICKAXE, "Any Tool"));
+	    
+        return display;
+    }
     
 }
