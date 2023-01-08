@@ -55,6 +55,7 @@ public class PicnicBasket extends SlimefunBackpack {
         defaultBlacklist.add(Material.SUSPICIOUS_STEW);
         defaultBlacklist.add(Material.MUSHROOM_STEW);
         defaultBlacklist.add(Material.RABBIT_STEW);
+        defaultBlacklist.add(Material.BEETROOT_SOUP);
         defaultBlacklist.add(Material.HONEY_BOTTLE);
 
         return defaultBlacklist;
