@@ -144,7 +144,8 @@ public class PicnicBasketListener implements Listener {
                         }
                     } else if (material == Material.COOKIE || material == Material.MELON_SLICE
                             || material == Material.CHICKEN || material == Material.COD || material == Material.MUTTON
-                            || material == Material.SALMON || material == Material.SWEET_BERRIES) {
+                            || material == Material.SALMON || material == Material.SWEET_BERRIES
+                            || material == Material.GLOW_BERRIES ) {
 
                         if (p.getFoodLevel() <= 18) {
                             p.setFoodLevel(p.getFoodLevel() + 2);
