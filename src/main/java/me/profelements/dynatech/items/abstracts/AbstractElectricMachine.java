@@ -127,6 +127,16 @@ public abstract class AbstractElectricMachine extends AbstractMachine implements
             }
         }
 
+        int maxedSlots = 0;
+        for (int slot : getOutputSlots()) {
+            ItemStack item = menu.getItemInSlot(slot); 
+            if (item.getAmount() == item.getMaxStackSize()) {
+                maxedSlots += 1;
+            }
+        }
+
+        if (maxedSlots == getOutputSlots().length) { return null; }
+
         Map<Integer, Integer> found = new HashMap<>();
 
         for (MachineRecipe recipe : recipes) {
