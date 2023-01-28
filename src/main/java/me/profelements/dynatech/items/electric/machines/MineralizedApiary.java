@@ -61,6 +61,17 @@ public class MineralizedApiary extends AbstractElectricMachine {
 
     @Override
 	public MachineRecipe findNextRecipe(BlockMenu menu) {
+        
+        int maxedSlots = 0; 
+        for (int slots : getOutputSlots()) {
+            ItemStack item = menu.getItemInSlot(slots);
+            if (item != null && item.getMaxStackSize() == item.getAmount()) {
+                maxedSlots += 1;
+            }
+        }
+
+        if (maxedSlots == getOutputSlots().length) { return null; }
+
 
         MachineRecipe recipe = recipes.get(0);
     
