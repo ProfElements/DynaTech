@@ -67,6 +67,10 @@
                             <pattern>dev.j3fftw.extrautils</pattern>
                             <shadedPattern>me.profelements.dynatech.extrautils</shadedPattern>
                         </relocation>
+                        <relocation>
+                            <pattern>io.github.bakedlibs.dough</pattern>
+                            <shadedPattern>me.profelements.dynatech.dough</shadedPattern>
+                        </relocation>
                     </relocations>
                 </configuration>
                 <executions>
@@ -129,6 +133,13 @@
             <groupId>com.github.Slimefun-Addon-Community</groupId>
             <artifactId>extrautils</artifactId>
             <version>73e76ac</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <dependency> 
+            <groupId>io.github.baked-libs</groupId>
+            <artifactId>dough-api</artifactId>
+            <version>1.2.0</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
