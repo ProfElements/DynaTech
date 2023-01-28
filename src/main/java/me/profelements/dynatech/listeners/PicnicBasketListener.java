@@ -82,9 +82,13 @@ public class PicnicBasketListener implements Listener {
         for (int i = 0; i < inv.getSize(); i++) {
             ItemStack item = inv.getItem(i);
             
-            if (item != null && (getFoodItems().keySet().contains(item.getType()) || (DynaTech.isExoticGardenInstalled() && SlimefunItem.getByItem(item) instanceof CustomFood))) {
-                slot = i;
-            } 
+            if (item != null) {
+                if (getFoodItems().keySet().contains(item.getType())) {
+                    slot = i; 
+                } else if (DynaTech.isExoticGardenInstalled() && SlimefunItem.getByItem(item) instanceof CustomFood) { 
+                    slot = i;
+                }
+            }
         }
 
         if (slot >= 0) {
@@ -93,8 +97,8 @@ public class PicnicBasketListener implements Listener {
             plugin.getServer().getPluginManager().callEvent(event);
 
             if (!event.isCancelled()) {
-                if (getFoodItems().keySet().contains(event.getItemConsumed().getType())) {
-                    p.setFoodLevel(p.getFoodLevel() + getFoodItems().get(event.getItemConsumed().getType())); 
+                if (getFoodItems().keySet().contains(item.getType())) {
+                    p.setFoodLevel(p.getFoodLevel() + getFoodItems().get(item.getType())); 
                     p.setSaturation(p.getSaturation() + 4F);
                     p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, 1F, 1F);
                     
