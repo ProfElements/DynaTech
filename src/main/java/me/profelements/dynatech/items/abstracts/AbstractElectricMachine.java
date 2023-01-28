@@ -130,7 +130,7 @@ public abstract class AbstractElectricMachine extends AbstractMachine implements
         int maxedSlots = 0;
         for (int slot : getOutputSlots()) {
             ItemStack item = menu.getItemInSlot(slot); 
-            if (item.getAmount() == item.getMaxStackSize()) {
+            if (item != null && item.getAmount() == item.getMaxStackSize()) {
                 maxedSlots += 1;
             }
         }
