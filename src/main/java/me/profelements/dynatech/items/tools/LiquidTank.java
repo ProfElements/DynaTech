@@ -60,10 +60,10 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
     }
     @EventHandler
     private void onBucketChange(PlayerBucketFillEvent e) {
-        e.setCancelled(true);
         ItemStack item = e.getPlayer().getEquipment().getItem(e.getHand());
         if (this.isItem(item) && this.canUse(e.getPlayer(), true) && SlimefunItem.getByItem(item) instanceof LiquidTank tank) {
-        //Check if block == LAVA or WATER 
+            e.setCancelled(true);
+            //Check if block == LAVA or WATER 
             String fluidName = PersistentDataAPI.getString(item.getItemMeta(), FLUID_NAME, "NO_LIQUID");
             int fluidAmount = PersistentDataAPI.getInt(item.getItemMeta(), FLUID_AMOUNT, 0);
             Block block = e.getBlock();
