@@ -64,6 +64,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
             new GitHubBuildsUpdater(this, getFile(), "ProfElements/DynaTech/master").start();
         }
 
+        //TODO: I have been updating javas left right and center 
         if (System.getProperty("java.version").startsWith("1.8")) {
             getLogger().log(Level.WARNING, "           DynaTech will be switching to JAVA 11        ");
             getLogger().log(Level.WARNING, "                Please Update to JAVA 11                ");
