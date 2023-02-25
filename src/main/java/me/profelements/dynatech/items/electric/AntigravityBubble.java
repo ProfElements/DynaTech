@@ -64,7 +64,7 @@ public class AntigravityBubble extends AbstractElectricTicker {
 
 
 
-        for (UUID id : enabledPlayers.get(b.getLocation())) {
+        for (UUID id : enabledPlayers.getOrDefault(b.getLocation(), new HashSet<>())) {
             Player p = Bukkit.getPlayer(id); 
 
             if (p != null && !bubbledEntities.contains(p)) {
