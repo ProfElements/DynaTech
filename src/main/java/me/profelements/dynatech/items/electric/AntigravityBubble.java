@@ -19,6 +19,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -62,20 +63,19 @@ public class AntigravityBubble extends AbstractElectricTicker {
             }
         }
 
-
-
-        for (UUID id : enabledPlayers.getOrDefault(b.getLocation(), new HashSet<>())) {
+        Set<UUID> players = enabledPlayers.getOrDefault(b.getLocation(), new HashSet<>());
+        for (Iterator<UUID> iterator = players.iterator(); iterator.hasNext(); ) {
+            UUID id = iterator.next();
             Player p = Bukkit.getPlayer(id); 
 
             if (p != null && !bubbledEntities.contains(p)) {
-                    p.setAllowFlight(false);
-                    p.setFlying(false);
-                    p.setFallDistance(0.f);
+                p.setAllowFlight(false);
+                p.setFlying(false);
+                p.setFallDistance(0.f);
+
+                players.remove(id);
             }
         }
-
-        enabledPlayers.get(b.getLocation()).removeIf(uuid -> (Bukkit.getPlayer(uuid) != null && !bubbledEntities.contains(Bukkit.getPlayer(uuid)))); 
-        
 	}
 
     @Override
