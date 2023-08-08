@@ -58,7 +58,7 @@ public class PicnicBasketListener implements Listener {
         }
 
         for (ItemStack item : p.getInventory().getContents()) {
-            if (picnicBasket.isItem(item)) { 
+            if (picnicBasket.isItem(item) || SlimefunItem.getByItem(item) instanceof PicnicBasket) {
                 if (picnicBasket.canUse(p, true)) {
                     takeFoodFromPicnicBasket(p, item);
                 } else { 
