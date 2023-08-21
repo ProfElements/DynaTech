@@ -58,7 +58,7 @@ public class AntigravityBubble extends AbstractElectricTicker {
             Player p = (Player) entity; 
 
             if (!p.getAllowFlight() && (p.getGameMode() != GameMode.CREATIVE || p.getGameMode() != GameMode.SPECTATOR)) {
-                enabledPlayers.get(b.getLocation()).add(p.getUniqueId()); 
+                enabledPlayers.getOrDefault(b.getLocation(), new HashSet<>()).add(p.getUniqueId()); 
                 p.setAllowFlight(true); 
             }
         }
