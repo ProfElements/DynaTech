@@ -3,7 +3,6 @@ package me.profelements.dynatech;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.GitHubBuildsUpdater;
-import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.misc.DimensionalHomeDimension;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
@@ -24,7 +23,6 @@ import javax.annotation.Nullable;
 
 import com.google.common.base.Preconditions;
 
-import java.util.logging.Level;
 
 public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
@@ -62,12 +60,6 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
         if (getConfig().getBoolean("options.auto-update", true) && getDescription().getVersion().startsWith("DEV - ")) {
             new GitHubBuildsUpdater(this, getFile(), "ProfElements/DynaTech/master").start();
-        }
-
-        //TODO: I have been updating javas left right and center 
-        if (System.getProperty("java.version").startsWith("1.8")) {
-            getLogger().log(Level.WARNING, "           DynaTech will be switching to JAVA 11        ");
-            getLogger().log(Level.WARNING, "                Please Update to JAVA 11                ");
         }
     }
 
