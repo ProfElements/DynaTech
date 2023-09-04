@@ -52,7 +52,13 @@ public class Orechid extends AbstractElectricTicker implements RecipeDisplayItem
                 Block relBlock = b.getRelative(relative);
     
                 if (oreMap.containsKey(relBlock.getType())) {
-                    ItemStack item = oreMap.get(relBlock.getType()).getRandom();
+                    RandomizedSet<ItemStack> set = oreMap.get(relBlock.getType());
+                    if (set == null) {
+                        return; 
+                    }
+
+                    ItemStack item = set.getRandom();
+                    
                     SlimefunItem sfi = SlimefunItem.getByItem(item);
 
                     DynaTech.runSync(() -> {
