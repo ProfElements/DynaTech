@@ -61,7 +61,7 @@
                     <relocations>
                         <relocation>
                             <pattern>org.bstats</pattern>
-                            <shadedPattern>me.profelements.dynatech</shadedPattern>
+                            <shadedPattern>me.profelements.dynatech.bstats</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>dev.j3fftw.extrautils</pattern>
