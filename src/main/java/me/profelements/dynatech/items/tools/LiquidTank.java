@@ -12,7 +12,6 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
-import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
@@ -22,7 +21,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -34,7 +32,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
 
@@ -69,7 +66,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
             String fluidName = PersistentDataAPI.getString(item.getItemMeta(), FLUID_NAME, "NO_LIQUID");
             int fluidAmount = PersistentDataAPI.getInt(item.getItemMeta(), FLUID_AMOUNT, 0);
             Block block = e.getBlock();
-            if (block.isLiquid() && (fluidName.equals("NO_LIQUID") && fluidAmount == 0) || fluidName.equals(block.getType().toString()) && fluidAmount + 1000 <= getMaxLiquidAmount()) {
+            if (block.isLiquid() && (fluidName.equals("NO_LIQUID") && fluidAmount == 0) || fluidName.equals(block.getType().toString()) && fluidAmount + 1000 <= getMaxLiquidAmount() && Slimefun.getProtectionManager().hasPermission(e.getPlayer(), block.getLocation(), Interaction.PLACE_BLOCK)) {
                 ItemMeta meta = item.getItemMeta(); 
             
                 PersistentDataAPI.setString(meta, FLUID_NAME, block.getType().toString());
@@ -111,7 +108,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
 
                     if (mat != null && e.getClickedBlock().isPresent()) {
                         Block block = e.getClickedBlock().get().getRelative(e.getClickedFace());
-                        if ((block.isLiquid() || block.getType().isAir()) && !block.getWorld().isUltraWarm()) {
+                        if ((block.isLiquid() || block.getType().isAir()) && !block.getWorld().isUltraWarm() && Slimefun.getProtectionManager().hasPermission(e.getPlayer(), block.getLocation(), Interaction.PLACE_BLOCK)) {
                             ItemMeta meta = item.getItemMeta(); 
                             if (fluidAmount - 1000 == 0) {
                                 PersistentDataAPI.setString(meta, FLUID_NAME, "NO_LIQUID");
