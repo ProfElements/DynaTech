@@ -1,5 +1,6 @@
 package me.profelements.dynatech;
 
+import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.GitHubBuildsUpdater;
@@ -60,6 +61,11 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
         if (getConfig().getBoolean("options.auto-update", true) && getDescription().getVersion().startsWith("DEV - ")) {
             new GitHubBuildsUpdater(this, getFile(), "ProfElements/DynaTech/master").start();
+        }
+
+        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_19) == false) {
+                getLogger().warning("DynaTech only support 1.19+, disabling.");
+                getServer().getPluginManager().disablePlugin(this);
         }
     }
 
