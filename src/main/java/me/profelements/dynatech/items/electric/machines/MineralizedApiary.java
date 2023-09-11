@@ -31,7 +31,9 @@ public class MineralizedApiary extends AbstractElectricMachine {
 
     private static final ItemStack PROGRESS_ITEM = new ItemStack(Material.HONEYCOMB);
     private ItemStack material = new ItemStack(Material.AIR);
+    
 
+    private static final ItemStack PROGRESS_STACK = new CustomItemStack(Material.BEACON, "&fINFO", "&fBee Count: {}", "&fCurrent Speed: {}");
 
 
     public MineralizedApiary(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, ItemStack material) {
@@ -117,7 +119,7 @@ public class MineralizedApiary extends AbstractElectricMachine {
         preset.drawBackground(ChestMenuUtils.getOutputSlotTexture(), OUTPUT_BORDER_SLOTS);
 
         preset.addItem(getProgressSlot(), new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler());
-        preset.addItem(20, new CustomItemStack(Material.BEACON, "&fINFO", "&fBee Count: {}", "&fCurrent Speed: {}"), ChestMenuUtils.getEmptyClickHandler()); 
+        preset.addItem(20, PROGRESS_STACK, ChestMenuUtils.getEmptyClickHandler()); 
  
     }
 
