@@ -138,8 +138,8 @@
         
         <dependency> 
             <groupId>io.github.baked-libs</groupId>
-            <artifactId>dough-api</artifactId>
-            <version>1.2.0</version>
+            <artifactId>dough</artifactId>
+            <version>e0ba50b254</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
