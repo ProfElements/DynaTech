@@ -33,6 +33,7 @@ public class DynaTechItems {
     
     public static final SubItemGroup DT_HIVES = new SubItemGroup(new NamespacedKey(DynaTech.getInstance(), "DT_HIVES"), DT_GENERAL, new CustomItemStack(Material.BEEHIVE, "&bDynaTech Apiaries"));
 
+    public static final SubItemGroup DT_FLORALMANCY = new SubItemGroup(new NamespacedKey(DynaTech.getInstance(), "DT_FLORALMANCY"), DT_GENERAL, new CustomItemStack(Material.WITHER_ROSE, "&bDynaTech Floralmancy"));
 
     public static final RecipeType DynaTechScoop = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "dt_scoop"),
         new CustomItemStack(Material.IRON_SHOVEL, "&bScoop the Bee using a Scoop")
