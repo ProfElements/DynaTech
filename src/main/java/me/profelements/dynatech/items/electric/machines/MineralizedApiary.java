@@ -156,7 +156,7 @@ public class MineralizedApiary extends AbstractElectricMachine {
         ItemMeta meta = item.getItemMeta();
 
         meta.setDisplayName("&fInfo");
-        meta.setLore(Arrays.asList("&fBee Count: " + String.valueOf(beeCount), "&fCurrent Speed: " + String.valueOf(currSpeed) + "s"));
+        meta.setLore(Arrays.asList("&fBee Count: " + beeCount, "&fCurrent Speed: " + currSpeed + "s"));
         item.setItemMeta(meta); 
 
         menu.replaceExistingItem(20, item);
