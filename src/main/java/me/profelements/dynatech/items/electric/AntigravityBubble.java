@@ -4,6 +4,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.abstracts.AbstractElectricTicker;
 
 import org.bukkit.Bukkit;
@@ -12,8 +13,11 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Collection;
@@ -24,12 +28,14 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-public class AntigravityBubble extends AbstractElectricTicker {
+public class AntigravityBubble extends AbstractElectricTicker implements Listener {
 
     private final Map<Location, Set<UUID>> enabledPlayers = new HashMap<>(); 
+    private final Set<UUID> teleportedPlayers = new HashSet<>();
 
 	public AntigravityBubble(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
 		super(itemGroup, item, recipeType, recipe);
+        Bukkit.getPluginManager().registerEvents(this, DynaTech.getInstance());
 	}
 
     @Override
@@ -51,6 +57,13 @@ public class AntigravityBubble extends AbstractElectricTicker {
         
     }
 
+    @EventHandler
+    public void onPlayerTeleport(PlayerTeleportEvent e) {
+        if (e.getPlayer() != null) {
+            teleportedPlayers.add(e.getPlayer().getUniqueId()); 
+        }
+    }
+
 	@Override
 	protected void tick(Block b, SlimefunItem item) {
         Collection<Entity> bubbledEntities = b.getWorld().getNearbyEntities(b.getLocation(), 16, 16, 16, Player.class::isInstance);
@@ -68,7 +81,7 @@ public class AntigravityBubble extends AbstractElectricTicker {
             UUID id = iterator.next();
             Player p = Bukkit.getPlayer(id); 
 
-            if (p != null && !bubbledEntities.contains(p)) {
+            if (p != null && !bubbledEntities.contains(p) || (p != null && teleportedPlayers.contains(id))) {
                 p.setAllowFlight(false);
                 p.setFlying(false);
                 p.setFallDistance(0.f);
@@ -76,6 +89,8 @@ public class AntigravityBubble extends AbstractElectricTicker {
                 players.remove(id);
             }
         }
+
+        teleportedPlayers.clear();
 	}
 
     @Override
