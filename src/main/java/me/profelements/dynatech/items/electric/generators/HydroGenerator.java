@@ -62,8 +62,7 @@ public class HydroGenerator extends SlimefunItem implements EnergyNetProvider {
 
         if (b.getType() == Material.COBBLESTONE_WALL || b.getType() == Material.PRISMARINE_WALL) {
             BlockData blockData = PaperLib.getBlockState(b, false).getState().getBlockData();
-            if (blockData instanceof Waterlogged) {
-                Waterlogged data = (Waterlogged) blockData;
+            if (blockData instanceof Waterlogged data) {
                 if (data.isWaterlogged()) {
                     return getEnergyProduction();
                 }

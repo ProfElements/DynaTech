@@ -68,7 +68,7 @@ public class WirelessEnergyPoint extends SlimefunItem implements EnergyNetProvid
                 } 
             }
     
-            if (wirelessEnergyBank != null && BlockStorage.checkID(wirelessEnergyBank) != null && BlockStorage.checkID(wirelessEnergyBank).equals(DynaTechItems.WIRELESS_ENERGY_BANK.getItemId())) {
+            if (BlockStorage.checkID(wirelessEnergyBank) != null && BlockStorage.checkID(wirelessEnergyBank).equals(DynaTechItems.WIRELESS_ENERGY_BANK.getItemId())) {
                 int BankCharge = getCharge(wirelessEnergyBank);
                 
                 if (BankCharge > chargedNeeded) {
@@ -124,7 +124,7 @@ public class WirelessEnergyPoint extends SlimefunItem implements EnergyNetProvid
                 ItemStack item = event.getItemInHand();
                 String locationString = PersistentDataAPI.getString(item.getItemMeta(), WIRELESS_LOCATION_KEY);
                 
-                if (item != null && item.getType() == DynaTechItems.WIRELESS_ENERGY_POINT.getType() && item.hasItemMeta() && locationString != null) {
+                if (item.getType() == DynaTechItems.WIRELESS_ENERGY_POINT.getType() && item.hasItemMeta() && locationString != null) {
                     BlockStorage.addBlockInfo(blockLoc, "wireless-location", locationString);
                     
                 }   

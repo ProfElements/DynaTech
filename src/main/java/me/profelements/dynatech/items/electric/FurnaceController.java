@@ -35,8 +35,7 @@ public class FurnaceController extends AbstractElectricTicker {
                 BlockStateSnapshotResult result = PaperLib.getBlockState(relBlock, false);
                 BlockState state = result.getState();
                 
-                if (state instanceof Furnace && ((Furnace) state).getCookTimeTotal() > 0) {
-                    Furnace furnace = (Furnace) state;
+                if (state instanceof Furnace furnace && furnace.getCookTimeTotal() > 0) {
                     furnace.setBurnTime((short) 1600);
 
                     if (result.isSnapshot()) {
