@@ -31,8 +31,8 @@ public class InventoryFilterListener implements Listener {
 
     @EventHandler
     public void onItemPickup(EntityPickupItemEvent e) {
-        if(e.getEntity() instanceof Player) {
-            checkAndFilter((Player) e.getEntity());
+        if(e.getEntity() instanceof Player p) {
+            checkAndFilter(p);
         }
     }
 
@@ -49,7 +49,7 @@ public class InventoryFilterListener implements Listener {
     }
 
     private void filterInventory(@Nonnull Player p, @Nonnull PlayerBackpack backpack) {
-        List<String> blacklistedStrings = new ArrayList<String>();
+        List<String> blacklistedStrings = new ArrayList<>();
         if (backpack.getInventory().isEmpty()) {
             blacklistedMaterials.clear();
             blacklistedStrings.clear();

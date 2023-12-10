@@ -628,30 +628,28 @@ public class DynaTechItemsSetup {
     for (String name: hive.vanillaItemsAccepted.getValue()) {
             ItemStack item = new ItemStack(Material.matchMaterial(name));
 
-            if (item != null) {
-                SlimefunItemStack apiary = new SlimefunItemStack("DT_" + name.replace("_INGOT", "") + "_MINERALIZED_APIARY",
-                    Material.BEEHIVE,
-                    "&f" + ItemUtils.getItemName(item).replace(" Ingot", "") + " Mineralized Apiary",
-                    "",
-                    "&fProduces a material",
-                    "&fwith the help of bees",
-                    "",
-                    LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-                    LoreBuilder.powerBuffer(16384),
-                    LoreBuilderDynamic.powerPerTick(1024)
-                );
+            SlimefunItemStack apiary = new SlimefunItemStack("DT_" + name.replace("_INGOT", "") + "_MINERALIZED_APIARY",
+                Material.BEEHIVE,
+                "&f" + ItemUtils.getItemName(item).replace(" Ingot", "") + " Mineralized Apiary",
+                "",
+                "&fProduces a material",
+                "&fwith the help of bees",
+                "",
+                LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
+                LoreBuilder.powerBuffer(16384),
+                LoreBuilderDynamic.powerPerTick(1024)
+            );
 
-                new MineralizedApiary(DynaTechItems.DT_HIVES, apiary, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                    SlimefunItems.LARGE_CAPACITOR, item, SlimefunItems.LARGE_CAPACITOR,
-                    item, DynaTechItems.MATERIAL_HIVE, item,
-                    DynaTechItems.MACHINE_SCRAP, DynaTechItems.VEX_GEM, DynaTechItems.MACHINE_SCRAP,
-                }, item)
-                .setCapacity(16384)
-                .setConsumption(1024)
-                .setProcessingSpeed(1)
-                .register(plugin);
-            }
+            new MineralizedApiary(DynaTechItems.DT_HIVES, apiary, RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[] {
+                SlimefunItems.LARGE_CAPACITOR, item, SlimefunItems.LARGE_CAPACITOR,
+                item, DynaTechItems.MATERIAL_HIVE, item,
+                DynaTechItems.MACHINE_SCRAP, DynaTechItems.VEX_GEM, DynaTechItems.MACHINE_SCRAP,
+            }, item)
+            .setCapacity(16384)
+            .setConsumption(1024)
+            .setProcessingSpeed(1)
+            .register(plugin);
         }
 
 	}

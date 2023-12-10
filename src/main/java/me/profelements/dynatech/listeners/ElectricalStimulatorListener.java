@@ -26,8 +26,7 @@ public class ElectricalStimulatorListener implements Listener {
 
     @EventHandler
     public void onHungerLoss(FoodLevelChangeEvent e) {
-        if (e.getEntity() instanceof Player) {
-            Player p = (Player) e.getEntity();
+        if (e.getEntity() instanceof Player p) {
             if (p.getFoodLevel() < 20 && feedPlayer(p)) {
                 e.setFoodLevel(20); 
             }
@@ -36,9 +35,8 @@ public class ElectricalStimulatorListener implements Listener {
 
     @EventHandler
     public void onHungerDamage(EntityDamageEvent e) {
-        if (e.getEntity() instanceof Player && e.getCause() == EntityDamageEvent.DamageCause.STARVATION) {
-            if(feedPlayer((Player) e.getEntity())) {
-                Player p = (Player) e.getEntity();
+        if (e.getEntity() instanceof Player p && e.getCause() == EntityDamageEvent.DamageCause.STARVATION) {
+            if(feedPlayer(p)) {
                 p.setFoodLevel(20);
                 p.setSaturation(20f);
             }
