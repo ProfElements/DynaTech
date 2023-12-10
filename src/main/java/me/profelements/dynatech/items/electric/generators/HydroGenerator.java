@@ -25,7 +25,6 @@ import java.util.concurrent.TimeUnit;
 public class HydroGenerator extends SlimefunItem implements EnergyNetProvider {
 
     private final int energy;
-    private final int capacity;
 
     private final LoadingCache<BlockPosition, Integer> cachedGeneration = CacheBuilder.newBuilder()
         .refreshAfterWrite(1, TimeUnit.MINUTES)
@@ -37,12 +36,11 @@ public class HydroGenerator extends SlimefunItem implements EnergyNetProvider {
             }
         });
 
-    public HydroGenerator(ItemGroup itemGroup, int energy, int capacity, SlimefunItemStack item, RecipeType recipeType,
+    public HydroGenerator(ItemGroup itemGroup, int energy, SlimefunItemStack item, RecipeType recipeType,
                           ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
 
         this.energy = energy;
-        this.capacity = capacity;
     }
 
     @Override
@@ -88,6 +86,6 @@ public class HydroGenerator extends SlimefunItem implements EnergyNetProvider {
 
     @Override
     public int getCapacity() {
-        return capacity;
+        return 0;
     }
 }

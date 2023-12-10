@@ -542,14 +542,14 @@ public class DynaTechItemsSetup {
         
 
         //Generators
-        new HydroGenerator(DynaTechItems.DT_GENERATORS, 16, 256, DynaTechItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,
+        new HydroGenerator(DynaTechItems.DT_GENERATORS, 16, DynaTechItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
                 SlimefunItems.ALUMINUM_INGOT, SlimefunItems.SULFATE, SlimefunItems.ALUMINUM_INGOT,
                 SlimefunItems.ALUMINUM_INGOT, SlimefunItems.ENERGY_CONNECTOR, SlimefunItems.ALUMINUM_INGOT,
                 DynaTechItems.STAINLESS_STEEL_ROTOR, null, DynaTechItems.STAINLESS_STEEL_ROTOR,
         }).register(plugin);
 
-        new HydroGenerator(DynaTechItems.DT_GENERATORS, 64, 512, DynaTechItems.WATER_TURBINE, RecipeType.ENHANCED_CRAFTING_TABLE,
+        new HydroGenerator(DynaTechItems.DT_GENERATORS, 64, DynaTechItems.WATER_TURBINE, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
                 DynaTechItems.WATER_MILL, SlimefunItems.REINFORCED_ALLOY_INGOT, DynaTechItems.WATER_MILL,
                 SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.GOLD_8K, SlimefunItems.REINFORCED_ALLOY_INGOT,
