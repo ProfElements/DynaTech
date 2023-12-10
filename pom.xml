@@ -137,12 +137,11 @@
             <version>73e76ac</version>
             <scope>compile</scope>
         </dependency>
-        
-        <dependency> 
-            <groupId>io.github.baked-libs</groupId>
+        <dependency>
+            <groupId>com.github.baked-libs</groupId>
             <artifactId>dough</artifactId>
-            <version>e0ba50b254</version>
-            <scope>compile</scope>
+            <version>dd9b6b617f</version>
         </dependency>
+
     </dependencies>
 </project>
