@@ -7,6 +7,8 @@
     <artifactId>DynaTech</artifactId>
     <version>1.0.0</version>
 
+    <name>DynaTech</name>
+
     <properties>
       <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
@@ -38,7 +40,7 @@
     </repositories>
 
     <build>
-        <finalName>${project.name} v${project.version}</finalName>
+    <finalName>${project.name}</finalName>
         <defaultGoal>clean package</defaultGoal>
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
 
