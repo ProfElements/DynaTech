@@ -51,11 +51,7 @@ public class WeatherController extends AbstractElectricTicker implements RecipeD
             @Nonnull
             @Override
             public int[] getSlotsAccessedByItemTransport(ItemTransportFlow flow) {
-                if (flow == ItemTransportFlow.INSERT) {
-                    return null;
-                } else {
-                    return null; 
-                }
+               return new int[] {}; 
             }
 
         };

@@ -68,7 +68,7 @@ public class PotionSprinkler extends AbstractElectricTicker {
                 if (flow == ItemTransportFlow.INSERT) {
                     return new int[] {13};
                 } else {
-                    return null; 
+                    return new int[] {}; 
                 }
             }
 
