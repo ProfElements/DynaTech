@@ -30,3 +30,4 @@ jobs:
           apiToken: ${{ secrets.BLOB_BUILDS_API_TOKEN }}
           file: ./target/DynaTech.jar
           releaseNotes: ${{ github.event.head_commit.message }}
+          releaseChannel: 'Main'
