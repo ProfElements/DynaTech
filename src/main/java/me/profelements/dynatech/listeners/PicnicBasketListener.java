@@ -20,7 +20,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
