@@ -54,6 +54,7 @@ public class InventoryFilterListener implements Listener {
                 break;
             }
 
-        }   
+        }
+        itemBlackList.clear();
     }
 }
