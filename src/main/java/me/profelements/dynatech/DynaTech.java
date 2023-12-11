@@ -53,7 +53,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         DynaTechItemsSetup.setup(this);
         new PicnicBasketListener(this, (PicnicBasket) DynaTechItems.PICNIC_BASKET.getItem());
         new ElectricalStimulatorListener(this, (ElectricalStimulator) DynaTechItems.ELECTRICAL_STIMULATOR.getItem());
-        new InventoryFilterListener(this, (InventoryFilter) DynaTechItems.INVENTORY_FILTER.getItem());
+        new InventoryFilterListener(this);
 
         //Tasks
         getServer().getScheduler().runTaskTimerAsynchronously(DynaTech.getInstance(), new ItemBandTask(), 0L, 5 * 20L);
