@@ -42,8 +42,8 @@ public class InventoryFilterListener implements Listener {
                         }
     
                 });
+                break;
             }
-            break;
         }
             
         //Clear and add back drops if not filtered by Inventory filtered
@@ -51,8 +51,9 @@ public class InventoryFilterListener implements Listener {
             if (SlimefunUtils.isItemSimilar(item, e.getItem().getItemStack(), true, false)) {
                 Item itemEnt = e.getItem();
                 itemEnt.remove();
+                break;
             }
-            break;
+
         }   
     }
 }
