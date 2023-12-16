@@ -140,7 +140,7 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
             } 
         }
 
-        if (tesseractPair != null && BlockStorage.checkID(tesseractPair) != null && BlockStorage.checkID(tesseractPair).equals(DynaTechItems.TESSERACT.getItemId())) {
+        if (BlockStorage.checkID(tesseractPair) != null && BlockStorage.checkID(tesseractPair).equals(DynaTechItems.TESSERACT.getItemId())) {
             BlockMenu input = BlockStorage.getInventory(tesseractPair);
             BlockMenu output = BlockStorage.getInventory(b);
 
@@ -177,7 +177,7 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
                 } 
             }
     
-            if (tesseractPair != null && BlockStorage.checkID(tesseractPair) != null && BlockStorage.checkID(tesseractPair).equals(DynaTechItems.TESSERACT.getItemId())) {
+            if (BlockStorage.checkID(tesseractPair) != null && BlockStorage.checkID(tesseractPair).equals(DynaTechItems.TESSERACT.getItemId())) {
                 int BankCharge = getCharge(tesseractPair);
                 
                 if (BankCharge > chargedNeeded && BankCharge != 0) {
@@ -204,7 +204,7 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
     private void updateKnowledgePane(BlockMenu menu, int currentCharge) {
         ItemStack knowledgePane = menu.getItemInSlot(4);
         ItemMeta im = knowledgePane.getItemMeta();
-        List<String> lore = im.hasLore() ? im.getLore() : new ArrayList<String>();
+        List<String> lore = im.hasLore() ? im.getLore() : new ArrayList<>();
 
         lore.clear();
         lore.add(" ");

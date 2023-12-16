@@ -5,15 +5,12 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
-import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineFuel;
-import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.profelements.dynatech.items.abstracts.AbstractGenerator;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -24,11 +21,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Nonnull;
 
 public class ChippingGenerator extends AbstractGenerator {
 
-    private final int powerPerDurability = 8;
     
     private static final int[] INPUT_SLOTS = new int[] { 19, 20 };
     private static final int[] OUTPUT_SLOTS = new int[] { 24, 25 };
@@ -84,8 +79,7 @@ public class ChippingGenerator extends AbstractGenerator {
             ItemStack item =  inv.getItemInSlot(slot); 
             if (item != null && !item.getType().isAir() && item.hasItemMeta()) {
                 ItemMeta meta = item.getItemMeta(); 
-                if (meta instanceof Damageable && !meta.isUnbreakable()) {
-                    Damageable damage = (Damageable) meta; 
+                if (meta instanceof Damageable damage && !meta.isUnbreakable()) {
                     if (!damage.hasDamage()) {
                         int durability = item.getType().getMaxDurability(); 
                         inv.consumeItem(slot); 

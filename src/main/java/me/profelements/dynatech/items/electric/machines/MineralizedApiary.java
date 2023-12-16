@@ -1,12 +1,14 @@
 package me.profelements.dynatech.items.electric.machines;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Material;
 import org.bukkit.block.Beehive;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -51,8 +53,7 @@ public class MineralizedApiary extends AbstractElectricMachine {
     @Override
     public void tick(BlockMenu menu, Block b) {
         BlockState state = PaperLib.getBlockState(menu.getBlock(), false).getState(); 
-        if (state instanceof Beehive) {
-            Beehive hive = (Beehive) state;
+        if (state instanceof Beehive hive) {
 
             int count = hive.getEntityCount();
             
@@ -78,8 +79,7 @@ public class MineralizedApiary extends AbstractElectricMachine {
         MachineRecipe recipe = recipes.get(0);
     
         BlockState state = PaperLib.getBlockState(menu.getBlock(), false).getState(); 
-        if (state instanceof Beehive) {
-            Beehive hive = (Beehive) state;
+        if (state instanceof Beehive hive) {
 
             int count = hive.getEntityCount();
             
@@ -138,13 +138,25 @@ public class MineralizedApiary extends AbstractElectricMachine {
         return true;
     }
 
-    private void updateInfoStack(BlockMenu menu, int beeCount) {
+    private static void updateInfoStack(BlockMenu menu, int beeCount) {
+        Inventory inv = menu.toInventory(); 
+
+        if (inv == null || inv.getViewers().isEmpty()) {
+            return; 
+        }
+
         int currSpeed = 100; 
         if (beeCount > 0) {
             currSpeed = 30 - ((beeCount - 1) * 10);
         }
 
-        ItemStack infoStack = new CustomItemStack(Material.BEACON, "&fINFO", "&fBee Count: " + String.valueOf(beeCount), "&fCurrent Speed: " + String.valueOf(currSpeed) + "s");  
-        menu.replaceExistingItem(20, infoStack);
+        ItemStack item = PROGRESS_STACK.clone();
+        ItemMeta meta = item.getItemMeta();
+
+        meta.setDisplayName("&fInfo");
+        meta.setLore(Arrays.asList("&fBee Count: " + beeCount, "&fCurrent Speed: " + currSpeed + "s"));
+        item.setItemMeta(meta); 
+
+        menu.replaceExistingItem(20, item);
     }
 }

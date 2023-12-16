@@ -11,7 +11,6 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
-import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.abstracts.AbstractElectricTicker;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -68,7 +67,7 @@ public class PotionSprinkler extends AbstractElectricTicker {
                 if (flow == ItemTransportFlow.INSERT) {
                     return new int[] {13};
                 } else {
-                    return null; 
+                    return new int[] {}; 
                 }
             }
 
@@ -111,10 +110,9 @@ public class PotionSprinkler extends AbstractElectricTicker {
         BlockMenu menu = BlockStorage.getInventory(b);
         ItemStack item = menu.getItemInSlot(13);
 
-        if (item != null && item.getType() == Material.POTION && item.hasItemMeta() && item.getItemMeta() instanceof PotionMeta) {
-            PotionMeta potionMeta = (PotionMeta) item.getItemMeta();
+        if (item != null && item.getType() == Material.POTION && item.hasItemMeta() && item.getItemMeta() instanceof PotionMeta potionMeta) {
             PotionData pd = potionMeta.getBasePotionData();
-            for (Entity ent : b.getWorld().getNearbyEntities(b.getLocation(), 10, 10, 10, e -> (e instanceof LivingEntity))) {
+            for (Entity ent : b.getWorld().getNearbyEntities(b.getLocation(), 10, 10, 10, LivingEntity.class::isInstance)) {
                 LivingEntity p = (LivingEntity) ent;
                 if (!enabledEntities.get(b.getLocation()).contains(p.getUniqueId())) {
                     int amplifier = pd.isUpgraded() ? 1 : 0;
@@ -136,8 +134,8 @@ public class PotionSprinkler extends AbstractElectricTicker {
         }
 
         enabledEntities.getOrDefault(b.getLocation(), new HashSet<>()).removeIf(uuid -> (Bukkit.getEntity(uuid) != null 
-                    && Bukkit.getEntity(uuid) instanceof LivingEntity 
-                    && ((LivingEntity) Bukkit.getEntity(uuid)).getActivePotionEffects().isEmpty())); 
+                    && Bukkit.getEntity(uuid) instanceof LivingEntity livingEntity
+                    && livingEntity.getActivePotionEffects().isEmpty())); 
     }
 
     private void applyPotionEffect(PotionEffect pe, LivingEntity livingEntity) {

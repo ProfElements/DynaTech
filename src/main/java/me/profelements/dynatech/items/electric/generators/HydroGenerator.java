@@ -25,7 +25,6 @@ import java.util.concurrent.TimeUnit;
 public class HydroGenerator extends SlimefunItem implements EnergyNetProvider {
 
     private final int energy;
-    private final int capacity;
 
     private final LoadingCache<BlockPosition, Integer> cachedGeneration = CacheBuilder.newBuilder()
         .refreshAfterWrite(1, TimeUnit.MINUTES)
@@ -37,12 +36,11 @@ public class HydroGenerator extends SlimefunItem implements EnergyNetProvider {
             }
         });
 
-    public HydroGenerator(ItemGroup itemGroup, int energy, int capacity, SlimefunItemStack item, RecipeType recipeType,
+    public HydroGenerator(ItemGroup itemGroup, int energy, SlimefunItemStack item, RecipeType recipeType,
                           ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
 
         this.energy = energy;
-        this.capacity = capacity;
     }
 
     @Override
@@ -64,15 +62,13 @@ public class HydroGenerator extends SlimefunItem implements EnergyNetProvider {
 
         if (b.getType() == Material.COBBLESTONE_WALL || b.getType() == Material.PRISMARINE_WALL) {
             BlockData blockData = PaperLib.getBlockState(b, false).getState().getBlockData();
-            if (blockData instanceof Waterlogged) {
-                Waterlogged data = (Waterlogged) blockData;
-                if (data.isWaterlogged()) {
-                    return getEnergyProduction();
-                }
+            if (blockData instanceof Waterlogged data && data.isWaterlogged()) {
+                return getEnergyProduction();
+            } else {
+                // Block has been removed, invalidate the cache
+                cachedGeneration.invalidate(position);
+                return 0;
             }
-        } else {
-            // Block has been removed, invalidate the cache
-            cachedGeneration.invalidate(position);
         }
         return 0;
     }
@@ -88,6 +84,6 @@ public class HydroGenerator extends SlimefunItem implements EnergyNetProvider {
 
     @Override
     public int getCapacity() {
-        return capacity;
+        return 0;
     }
 }

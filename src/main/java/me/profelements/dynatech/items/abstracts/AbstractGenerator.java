@@ -190,7 +190,7 @@ public abstract class AbstractGenerator extends AbstractContainer implements Mac
         } else {
             MachineFuel next = findNextFuel(menu);
 
-            if (next != null) {
+            if (next != null && menu != null) {
                 currentOp = new FuelOperation(next);
                 processor.startOperation(b, currentOp);
 

@@ -542,14 +542,14 @@ public class DynaTechItemsSetup {
         
 
         //Generators
-        new HydroGenerator(DynaTechItems.DT_GENERATORS, 16, 256, DynaTechItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,
+        new HydroGenerator(DynaTechItems.DT_GENERATORS, 16, DynaTechItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
                 SlimefunItems.ALUMINUM_INGOT, SlimefunItems.SULFATE, SlimefunItems.ALUMINUM_INGOT,
                 SlimefunItems.ALUMINUM_INGOT, SlimefunItems.ENERGY_CONNECTOR, SlimefunItems.ALUMINUM_INGOT,
                 DynaTechItems.STAINLESS_STEEL_ROTOR, null, DynaTechItems.STAINLESS_STEEL_ROTOR,
         }).register(plugin);
 
-        new HydroGenerator(DynaTechItems.DT_GENERATORS, 64, 512, DynaTechItems.WATER_TURBINE, RecipeType.ENHANCED_CRAFTING_TABLE,
+        new HydroGenerator(DynaTechItems.DT_GENERATORS, 64, DynaTechItems.WATER_TURBINE, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
                 DynaTechItems.WATER_MILL, SlimefunItems.REINFORCED_ALLOY_INGOT, DynaTechItems.WATER_MILL,
                 SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.GOLD_8K, SlimefunItems.REINFORCED_ALLOY_INGOT,
@@ -628,30 +628,28 @@ public class DynaTechItemsSetup {
     for (String name: hive.vanillaItemsAccepted.getValue()) {
             ItemStack item = new ItemStack(Material.matchMaterial(name));
 
-            if (item != null) {
-                SlimefunItemStack apiary = new SlimefunItemStack("DT_" + name.replace("_INGOT", "") + "_MINERALIZED_APIARY",
-                    Material.BEEHIVE,
-                    "&f" + ItemUtils.getItemName(item).replace(" Ingot", "") + " Mineralized Apiary",
-                    "",
-                    "&fProduces a material",
-                    "&fwith the help of bees",
-                    "",
-                    LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-                    LoreBuilder.powerBuffer(16384),
-                    LoreBuilderDynamic.powerPerTick(1024)
-                );
+            SlimefunItemStack apiary = new SlimefunItemStack("DT_" + name.replace("_INGOT", "") + "_MINERALIZED_APIARY",
+                Material.BEEHIVE,
+                "&f" + ItemUtils.getItemName(item).replace(" Ingot", "") + " Mineralized Apiary",
+                "",
+                "&fProduces a material",
+                "&fwith the help of bees",
+                "",
+                LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
+                LoreBuilder.powerBuffer(16384),
+                LoreBuilderDynamic.powerPerTick(1024)
+            );
 
-                new MineralizedApiary(DynaTechItems.DT_HIVES, apiary, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                    SlimefunItems.LARGE_CAPACITOR, item, SlimefunItems.LARGE_CAPACITOR,
-                    item, DynaTechItems.MATERIAL_HIVE, item,
-                    DynaTechItems.MACHINE_SCRAP, DynaTechItems.VEX_GEM, DynaTechItems.MACHINE_SCRAP,
-                }, item)
-                .setCapacity(16384)
-                .setConsumption(1024)
-                .setProcessingSpeed(1)
-                .register(plugin);
-            }
+            new MineralizedApiary(DynaTechItems.DT_HIVES, apiary, RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[] {
+                SlimefunItems.LARGE_CAPACITOR, item, SlimefunItems.LARGE_CAPACITOR,
+                item, DynaTechItems.MATERIAL_HIVE, item,
+                DynaTechItems.MACHINE_SCRAP, DynaTechItems.VEX_GEM, DynaTechItems.MACHINE_SCRAP,
+            }, item)
+            .setCapacity(16384)
+            .setConsumption(1024)
+            .setProcessingSpeed(1)
+            .register(plugin);
         }
 
 	}

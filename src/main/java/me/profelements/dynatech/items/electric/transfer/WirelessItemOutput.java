@@ -146,7 +146,7 @@ public class WirelessItemOutput extends SlimefunItem implements EnergyNetCompone
                 ItemStack item = event.getItemInHand();
                 String locationString = PersistentDataAPI.getString(item.getItemMeta(), WIRELESS_LOCATION_KEY);
                 
-                if (item != null && item.getType() == DynaTechItems.WIRELESS_ITEM_OUTPUT.getType() && item.hasItemMeta() && locationString != null) {
+                if (item.getType() == DynaTechItems.WIRELESS_ITEM_OUTPUT.getType() && item.hasItemMeta() && locationString != null) {
                     BlockStorage.addBlockInfo(blockLoc, "wireless-input-location", locationString);
                     
                 }   
@@ -195,7 +195,7 @@ public class WirelessItemOutput extends SlimefunItem implements EnergyNetCompone
             } 
         }
 
-        if (wirelessItemInput != null && BlockStorage.checkID(wirelessItemInput) != null && BlockStorage.checkID(wirelessItemInput).equals(DynaTechItems.WIRELESS_ITEM_INPUT.getItemId())) {
+        if (BlockStorage.checkID(wirelessItemInput) != null && BlockStorage.checkID(wirelessItemInput).equals(DynaTechItems.WIRELESS_ITEM_INPUT.getItemId())) {
             BlockMenu input = BlockStorage.getInventory(wirelessItemInput);
             BlockMenu output = BlockStorage.getInventory(b);
             updateKnowledgePane(output, getCharge(b.getLocation()));
@@ -221,7 +221,7 @@ public class WirelessItemOutput extends SlimefunItem implements EnergyNetCompone
     private void updateKnowledgePane(BlockMenu menu, int currentCharge) {
         ItemStack knowledgePane = menu.getItemInSlot(4);
         ItemMeta im = knowledgePane.getItemMeta();
-        List<String> lore = im.hasLore() ? im.getLore() : new ArrayList<String>();
+        List<String> lore = im.hasLore() ? im.getLore() : new ArrayList<>();
 
         lore.clear();
         lore.add(" ");

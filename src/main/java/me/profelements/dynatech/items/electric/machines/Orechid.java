@@ -107,11 +107,11 @@ public class Orechid extends AbstractElectricTicker implements RecipeDisplayItem
     public List<ItemStack> getDisplayRecipes() {
         List<ItemStack> displayList = new ArrayList<>();
 
-        for (Material m : oreMap.keySet()) {
-            for (ItemStack item : oreMap.get(m)) {
-                displayList.add(new ItemStack(m));
-                displayList.add(item);
-            }
+        for (Map.Entry<Material, RandomizedSet<ItemStack>> entry : oreMap.entrySet()) {
+            for (ItemStack stack : entry.getValue().toMap().keySet()) {
+                displayList.add(new ItemStack(entry.getKey()));
+                displayList.add(stack);
+            } 
         }
 
         return displayList;

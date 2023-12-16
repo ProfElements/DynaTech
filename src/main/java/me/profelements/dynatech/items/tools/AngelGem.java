@@ -101,8 +101,7 @@ public class AngelGem extends SlimefunItem implements NotPlaceable, Listener {
         List<HumanEntity> views = e.getViewers();
         if (isItem(e.getCursor()) || isItem(e.getCurrentItem())) {
             for (HumanEntity he : views) {
-                if (he instanceof Player) {
-                    Player p = (Player) he;
+                if (he instanceof Player p) {
                     p.setFlying(false);
                     p.setAllowFlight(false);
                     p.setFallDistance(0f);

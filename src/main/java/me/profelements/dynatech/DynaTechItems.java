@@ -512,7 +512,6 @@ public class DynaTechItems {
         "&fCreates energy from flowing water",
         "",
         LoreBuilder.machine(MachineTier.MEDIUM, MachineType.GENERATOR),
-        LoreBuilder.powerBuffer(128),
         LoreBuilderDynamic.powerPerSecond(16)
     );
 
@@ -523,7 +522,6 @@ public class DynaTechItems {
         "&fCreates energy from flowing water",
         "",
         LoreBuilder.machine(MachineTier.MEDIUM, MachineType.GENERATOR),
-        LoreBuilder.powerBuffer(512),
         LoreBuilderDynamic.powerPerSecond(64)
     );
 

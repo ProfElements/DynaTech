@@ -7,6 +7,8 @@
     <artifactId>DynaTech</artifactId>
     <version>1.0.0</version>
 
+    <name>DynaTech</name>
+
     <properties>
       <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
@@ -38,7 +40,7 @@
     </repositories>
 
     <build>
-        <finalName>${project.name} v${project.version}</finalName>
+    <finalName>${project.name}</finalName>
         <defaultGoal>clean package</defaultGoal>
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
 
@@ -89,7 +91,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.19.3-R0.1-SNAPSHOT</version>
+            <version>1.20.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
@@ -135,12 +137,11 @@
             <version>73e76ac</version>
             <scope>compile</scope>
         </dependency>
-        
-        <dependency> 
-            <groupId>io.github.baked-libs</groupId>
+        <dependency>
+            <groupId>com.github.baked-libs</groupId>
             <artifactId>dough</artifactId>
-            <version>e0ba50b254</version>
-            <scope>compile</scope>
+            <version>dd9b6b617f</version>
         </dependency>
+
     </dependencies>
 </project>

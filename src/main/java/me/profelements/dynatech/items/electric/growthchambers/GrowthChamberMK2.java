@@ -11,7 +11,6 @@ import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
-import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.abstracts.AbstractElectricMachine;
@@ -35,7 +34,7 @@ public class GrowthChamberMK2 extends AbstractElectricMachine {
     private static final ItemStack PROGRESS_ITEM = new ItemStack(Material.DIAMOND_HOE);
 
 
-    private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>(this, "exotic-garden-integration", true);
+    private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<>(this, "exotic-garden-integration", true);
 
     public GrowthChamberMK2(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
@@ -60,7 +59,7 @@ public class GrowthChamberMK2 extends AbstractElectricMachine {
         registerRecipe(9, new ItemStack(Material.BROWN_MUSHROOM), new ItemStack(Material.BROWN_MUSHROOM, 9));
         registerRecipe(9, new ItemStack(Material.RED_MUSHROOM), new ItemStack(Material.RED_MUSHROOM, 9));
         registerRecipe(9, new ItemStack[] {new ItemStack(Material.DEAD_BUSH)}, new ItemStack[] {new ItemStack(Material.DEAD_BUSH , 9), new ItemStack(Material.STICK, 6)});
-        registerRecipe(9, new ItemStack(Material.GRASS), new ItemStack(Material.GRASS, 9));
+        registerRecipe(9, new ItemStack(Material.SHORT_GRASS), new ItemStack(Material.SHORT_GRASS, 9));
         registerRecipe(12, new ItemStack(Material.TALL_GRASS), new ItemStack(Material.TALL_GRASS, 9));
         registerRecipe(9, new ItemStack(Material.FERN), new ItemStack(Material.FERN, 9));
         registerRecipe(12, new ItemStack(Material.LARGE_FERN), new ItemStack(Material.LARGE_FERN, 9));

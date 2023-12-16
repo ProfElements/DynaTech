@@ -6,7 +6,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Rechargeable;
 import me.profelements.dynatech.items.abstracts.AbstractElectricTicker;
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -38,16 +37,12 @@ public class WirelessCharger extends AbstractElectricTicker {
                 for (ItemStack item : p.getInventory()) {
                     SlimefunItem sfItem = SlimefunItem.getByItem(item);
 
-                    if (sfItem instanceof Rechargeable) {
-                        Rechargeable rcItem = (Rechargeable) sfItem;
+                    if (sfItem instanceof Rechargeable rcItem && rcItem.getItemCharge(item) != rcItem.getMaxItemCharge(item)) {
                         
-                        if (rcItem.getItemCharge(item) != rcItem.getMaxItemCharge(item)) {
-                            
-                            removeCharge(b.getLocation(), getEnergyConsumption());
-                            rcItem.addItemCharge(item, getEnergyConsumption());
-                            p.updateInventory();
+                        removeCharge(b.getLocation(), getEnergyConsumption());
+                        rcItem.addItemCharge(item, getEnergyConsumption());
+                        p.updateInventory();
 
-                        }
                     }
                 }
             }

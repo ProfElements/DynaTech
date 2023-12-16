@@ -26,22 +26,16 @@ public class ElectricalStimulatorListener implements Listener {
 
     @EventHandler
     public void onHungerLoss(FoodLevelChangeEvent e) {
-        if (e.getEntity() instanceof Player) {
-            Player p = (Player) e.getEntity();
-            if (p.getFoodLevel() < 20 && feedPlayer(p)) {
-                e.setFoodLevel(20); 
-            }
+        if (e.getEntity() instanceof Player p && p.getFoodLevel() < 20 && feedPlayer(p)) {
+            e.setFoodLevel(20); 
         }
     }
 
     @EventHandler
     public void onHungerDamage(EntityDamageEvent e) {
-        if (e.getEntity() instanceof Player && e.getCause() == EntityDamageEvent.DamageCause.STARVATION) {
-            if(feedPlayer((Player) e.getEntity())) {
-                Player p = (Player) e.getEntity();
-                p.setFoodLevel(20);
-                p.setSaturation(20f);
-            }
+        if (e.getEntity() instanceof Player p && e.getCause() == EntityDamageEvent.DamageCause.STARVATION && feedPlayer(p)) {
+            p.setFoodLevel(20);
+            p.setSaturation(20f);
         }
     }
 

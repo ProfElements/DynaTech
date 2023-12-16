@@ -99,8 +99,7 @@ public class CulinaryGenerator extends AbstractGenerator {
         
         if(DynaTech.isExoticGardenInstalled() && exoticGardenIntegration.getValue()) {
             for (SlimefunItem sfItem : Slimefun.getRegistry().getEnabledSlimefunItems()) {
-                if (sfItem instanceof CustomFood) {
-                    CustomFood cfItem = (CustomFood) sfItem;
+                if (sfItem instanceof CustomFood cfItem) {
                     MachineFuel fuel = new MachineFuel(cfItem.getFoodValue() * 4, sfItem.getItem());
                     fuels.add(fuel);
                 }
