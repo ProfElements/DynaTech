@@ -75,7 +75,7 @@ public class ManaPot extends SlimefunItem implements ManaStorage {
     }
 
     private static final NamespacedKey ID = new NamespacedKey(DynaTech.getInstance(), "mana_pot"); 
-    public static final SlimefunItemStack ITEM = new SlimefunItemStack(ID.getNamespace().toUpperCase() + ":" + ID.getKey().toUpperCase(), Material.FLOWER_POT, 
+    public static final SlimefunItemStack ITEM = new SlimefunItemStack(ID.getNamespace().toUpperCase() + ":" + ID.getKey().toUpperCase(), Material.DECORATED_POT, 
             "&fMana Pot",
             "",
             "&fHolds some mana",
