@@ -138,9 +138,9 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.baked-libs</groupId>
-            <artifactId>dough</artifactId>
-            <version>dd9b6b617f</version>
+            <groupId>com.github.baked-libs.dough</groupId>
+            <artifactId>dough-api</artifactId>
+            <version>c4231a4d1a</version>
         </dependency>
 
     </dependencies>
