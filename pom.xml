@@ -10,8 +10,8 @@
     <name>DynaTech</name>
 
     <properties>
-      <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
+      <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.organization>profelements</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
@@ -94,11 +94,10 @@
             <version>1.20.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-
-        <dependency>
-            <groupId>com.github.Slimefun</groupId>
-            <artifactId>Slimefun4</artifactId>
-            <version>84aaaa8</version>
+	    <dependency>
+	        <groupId>com.github.Slimefun</groupId>
+	        <artifactId>Slimefun4</artifactId>
+	        <version>7c917c396f</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
@@ -119,6 +118,14 @@
             <version>d995144</version>
             <scope>provided</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>com.github.SchnTgaiSpock</groupId>
+            <artifactId>Gastronomicon</artifactId>
+            <version>33e89f01e6</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
