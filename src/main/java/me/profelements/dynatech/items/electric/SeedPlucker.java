@@ -48,28 +48,7 @@ public class SeedPlucker extends AbstractElectricMachine {
         recipes.add(new MachineRecipe(10, new ItemStack[] {new ItemStack(Material.WHEAT)}, new ItemStack[] {new ItemStack(Material.WHEAT_SEEDS)}));
         recipes.add(new MachineRecipe(10, new ItemStack[] {new ItemStack(Material.BEETROOT)}, new ItemStack[] {new ItemStack(Material.BEETROOT_SEEDS)}));
         recipes.add(new MachineRecipe(10, new ItemStack[] {new ItemStack(Material.PUMPKIN)}, new ItemStack[] {new ItemStack(Material.PUMPKIN_SEEDS)}));
-        recipes.add(new MachineRecipe(10, new ItemStack[] {new ItemStack(Material.MELON_SLICE)}, new ItemStack[] {new ItemStack(Material.MELON_SEEDS)}));
-        
-        if (DynaTech.isExoticGardenInstalled()) {
-            for (SlimefunItem item : Slimefun.getRegistry().getEnabledSlimefunItems()) {
-                if (item instanceof ExoticGardenFruit) {
-                    SlimefunItem out = SlimefunItem.getById(item.getId().concat("_BUSH")); 
-                    if (out != null) {
-                        recipes.add(new MachineRecipe(10, new ItemStack[] { item.getItem() }, new ItemStack[] { out.getItem() }));
-                    }
-                    
-                    out = SlimefunItem.getById(item.getId().concat("_PLANT"));
-                    if (out != null) {
-                        recipes.add(new MachineRecipe(10, new ItemStack[] { item.getItem() }, new ItemStack[] { out.getItem() }));
-                    }     
-
-                    out = SlimefunItem.getById(item.getId().concat("_SAPLING"));
-                    if (out != null) {
-                        recipes.add(new MachineRecipe(10, new ItemStack[] { item.getItem() }, new ItemStack[] { out.getItem() }));
-                    }
-                }
-            }
-        }
+        recipes.add(new MachineRecipe(10, new ItemStack[] {new ItemStack(Material.MELON_SLICE)}, new ItemStack[] {new ItemStack(Material.MELON_SEEDS)})); 
     }
     
     @Override

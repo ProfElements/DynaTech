@@ -15,10 +15,10 @@ website: https://github.com/ProfElements/DynaTech
 
 ## This is required and marks Slimefun as a plugin dependency.
 depend: [Slimefun]
-softdepend: [ExoticGarden, InfinityExpansion]
+softdepend: [ExoticGarden, InfinityExpansion, Gastronomicon]
 
 ## This value is automatically replaced by the version specified in your pom.xml file, do not change this.
 version: ${project.version}
 
 ## This is the minimum minecraft version required to run your plugin.
-api-version: 1.14
+api-version: 1.20

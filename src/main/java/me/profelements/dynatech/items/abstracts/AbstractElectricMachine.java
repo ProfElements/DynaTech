@@ -27,7 +27,7 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 
 public abstract class AbstractElectricMachine extends AbstractMachine implements EnergyNetComponent {
 
-    protected List<MachineRecipe> recipes = new ArrayList<>(); 
+    public List<MachineRecipe> recipes = new ArrayList<>(); 
 
     private int energyConsumedPerTick = -1;
     private int energyCapacity = -1;
@@ -58,6 +58,11 @@ public abstract class AbstractElectricMachine extends AbstractMachine implements
     
     public int getSpeed() {
         return processingSpeed;
+    }
+
+
+    public List<MachineRecipe> getRecipes() {
+        return recipes;
     }
 
     public final AbstractElectricMachine setCapacity(int capacity) {
