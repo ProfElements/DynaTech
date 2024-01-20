@@ -7,7 +7,6 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.misc.DimensionalHomeDimension;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
-import me.profelements.dynatech.items.tools.InventoryFilter;
 import me.profelements.dynatech.listeners.ElectricalStimulatorListener;
 import me.profelements.dynatech.listeners.IntegrationListener;
 import me.profelements.dynatech.listeners.InventoryFilterListener;
@@ -36,10 +35,11 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
     @Override
     public void onEnable() {
-        instance = this;
+        setInstance(this);
+        setExoticGardenInstalled(Bukkit.getPluginManager().isPluginEnabled("ExoticGarden"));
+        setInfinityExpansionInstalled(Bukkit.getPluginManager().isPluginEnabled("InfinityExpansion"));
+
         final int TICK_TIME = Slimefun.getTickerTask().getTickRate();
-        exoticGardenInstalled = Bukkit.getServer().getPluginManager().isPluginEnabled("ExoticGarden");
-        infinityExpansionInstalled = Bukkit.getServer().getPluginManager().isPluginEnabled("InfinityExpansion");
 
         saveDefaultConfig();
 
@@ -65,7 +65,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
             new BlobBuildUpdater(this, getFile(), "DynaTech", "Main").start();
         }
 
-        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_19) == false) {
+        if (!Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_19)) {
                 getLogger().warning("DynaTech only support 1.19+, disabling.");
                 getServer().getPluginManager().disablePlugin(this);
         }
@@ -75,7 +75,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
     public void onDisable() {
         Bukkit.getScheduler().cancelTasks(this);
 
-        instance = null;
+        setInstance(null);
     }
 
     @Override
@@ -104,6 +104,18 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
     public static boolean isInfinityExpansionInstalled() {
         return infinityExpansionInstalled;
+    }
+
+    public static void setInstance(DynaTech inst) {
+        instance = inst;
+    }
+
+    public static void setExoticGardenInstalled(boolean isExoticGardenInstalled) {
+        exoticGardenInstalled = isExoticGardenInstalled;
+    }
+
+    public static void setInfinityExpansionInstalled(boolean isInfinityExpansionInstalled) {
+        infinityExpansionInstalled = isInfinityExpansionInstalled;
     }
 
     @Nullable

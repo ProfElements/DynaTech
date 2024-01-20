@@ -21,6 +21,10 @@ import org.bukkit.inventory.ItemStack;
 
 
 public class DynaTechItems {
+        
+    private static final String ID_LORE = "&7ID: <ID>";
+    private static final String RIGHT_CLICK_LORE = "&eRight Click &7to open.";
+    private static final String THREE_X_PROD_LORE = "&c3x production.";
 
     private DynaTechItems() {}
     
@@ -39,10 +43,7 @@ public class DynaTechItems {
     );
 
 
-    //RecipeTypes
-    // #TODO: Make Orechid use RecipeType + Standard Conversions
     public static final RecipeType DT_SCOOP = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "DT_SCOOP"), new CustomItemStack(Material.IRON_SHOVEL, "&bScoop a Bee using a Scoop"));
-    //public static final RecipeType DT_ORECHID = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "DT_ORECHID"), new CustomItem(Material.END_ROD, "&BTransmuted using the Orechid"));
 
     
     //General
@@ -72,9 +73,9 @@ public class DynaTechItems {
         "",
         "&fSize: &e27",
         "",
-        "&7ID: <ID>",
+        ID_LORE,
         "",
-       "&eRight Click &7to open."
+       RIGHT_CLICK_LORE
     );
     
     public static final SlimefunItemStack SOULBOUND_PICNIC_BASKET = new SlimefunItemStack("SOULBOUND_PICNIC_BASKET",
@@ -87,9 +88,9 @@ public class DynaTechItems {
         "",
         "&fSize: &e27",
         "",
-        "&7ID: <ID>",
+        ID_LORE,
         "",
-       "&eRight Click &7to open.",
+       RIGHT_CLICK_LORE,
         "",
         "&dSoulbound"
     );
@@ -100,9 +101,9 @@ public class DynaTechItems {
         "",
         "&fFilters out items on the floor that are in it's inventory",
         "",
-        "&7ID: <ID>",
+        ID_LORE,
         "",
-        "&eRight Click &7to open."
+        RIGHT_CLICK_LORE
     );
 
     public static final SlimefunItemStack ELECTRICAL_STIMULATOR = new SlimefunItemStack("ELECTRICAL_STIMULATOR",
@@ -254,7 +255,7 @@ public class DynaTechItems {
         "",
         "&f&oIts like a small greenhouse!",
         "",
-        "&c3x production.",
+        THREE_X_PROD_LORE,
         LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
         LoreBuilder.speed(3),
         LoreBuilderDynamic.powerPerSecond(128)
@@ -277,7 +278,7 @@ public class DynaTechItems {
         "",
         "&fAutomatically grows &dchorus flowers.",
         "",
-        "&c3x production.",
+        THREE_X_PROD_LORE,
         LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
         LoreBuilder.speed(3),
         LoreBuilderDynamic.powerPerSecond(128)      
@@ -300,7 +301,7 @@ public class DynaTechItems {
         "",
         "&fAutomatically grows &cnether &fplants.",
         "",
-        "&c3x production.",
+        THREE_X_PROD_LORE,
         LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
         LoreBuilder.speed(3),
         LoreBuilderDynamic.powerPerSecond(128)
@@ -325,7 +326,7 @@ public class DynaTechItems {
         "&fAutomatically grows &9water &fplants.",
         "Can revive dead coral!",
         "",
-        "&c3x production.",
+        THREE_X_PROD_LORE,
         LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
         LoreBuilder.speed(3),
         LoreBuilderDynamic.powerPerSecond(128)

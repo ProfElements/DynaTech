@@ -1,7 +1,6 @@
 package me.profelements.dynatech.items.backpacks;
 
 import io.github.bakedlibs.dough.collections.Pair;
-import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -9,7 +8,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.items.backpacks.SlimefunBackpack;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
-import me.profelements.dynatech.DynaTech;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -22,11 +20,11 @@ import java.util.Map;
 
 public class PicnicBasket extends SlimefunBackpack {
         
-    public static Map<ItemStack, Pair<Integer, Float>> foods = new HashMap<>();
+    protected static Map<ItemStack, Pair<Integer, Float>> foods = new HashMap<>();
 
     private final List<Material> defaultBlacklist = new ArrayList<>();
 
-    private final ItemSetting<List<String>> blacklistedMaterials = new ItemSetting<>(this, "blacklisted-materials", ToStringList(getDefaultBlacklist()));
+    private final ItemSetting<List<String>> blacklistedMaterials = new ItemSetting<>(this, "blacklisted-materials", toStringList(getDefaultBlacklist()));
 
     public PicnicBasket(int size, ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(size, itemGroup, item, recipeType, recipe);
@@ -48,8 +46,6 @@ public class PicnicBasket extends SlimefunBackpack {
         for (ItemStack stack : getFoods().keySet()) {
                 if (SlimefunUtils.isItemSimilar(stack, item, false, false)) {
                     return true; 
-                } else {
-                    continue;
                 }
             }
         return false;
@@ -74,7 +70,7 @@ public class PicnicBasket extends SlimefunBackpack {
         return defaultBlacklist;
     }
 
-    private List<String> ToStringList(List<Material> mats) {
+    private List<String> toStringList(List<Material> mats) {
         List<String> materials = new ArrayList<>();
 
         for (Material mat : mats) {
@@ -90,10 +86,10 @@ public class PicnicBasket extends SlimefunBackpack {
     }
  
     private static void registerDefaultFoods() {
-        registerFood(new ItemStack(Material.APPLE), new Pair<Integer, Float>(4, 3F)); 
-        registerFood(new ItemStack(Material.MELON_SLICE), new Pair<Integer, Float>(2, 1F));
-        registerFood(new ItemStack(Material.SWEET_BERRIES), new Pair<Integer, Float>(2, 1F));
-        registerFood(new ItemStack(Material.GLOW_BERRIES), new Pair<Integer, Float>(2, 1F));
+        registerFood(new ItemStack(Material.APPLE), new Pair<>(4, 3F)); 
+        registerFood(new ItemStack(Material.MELON_SLICE), new Pair<>(2, 1F));
+        registerFood(new ItemStack(Material.SWEET_BERRIES), new Pair<>(2, 1F));
+        registerFood(new ItemStack(Material.GLOW_BERRIES), new Pair<>(2, 1F));
         registerFood(new ItemStack(Material.CARROT), new Pair<>(3, 3F));
         registerFood(new ItemStack(Material.GOLDEN_CARROT), new Pair<>(6, 15F));
         registerFood(new ItemStack(Material.POTATO), new Pair<>(1, 1F));
