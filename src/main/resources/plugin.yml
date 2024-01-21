@@ -21,4 +21,4 @@ softdepend: [ExoticGarden, InfinityExpansion, Gastronomicon]
 version: ${project.version}
 
 ## This is the minimum minecraft version required to run your plugin.
-api-version: ${api.version}
+api-version: 1.19
