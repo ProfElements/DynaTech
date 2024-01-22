@@ -1,7 +1,9 @@
 package me.profelements.dynatech.items.electric;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -20,16 +22,30 @@ import me.profelements.dynatech.items.abstracts.AbstractElectricTicker;
 
 public class FurnaceController extends AbstractElectricTicker {
     
+    private static final Set<BlockFace> ignoredFaces = new HashSet<>();
 
     public FurnaceController(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
+
+        ignoredFaces.add(BlockFace.UP);
+        ignoredFaces.add(BlockFace.DOWN);
+        ignoredFaces.add(BlockFace.NORTH_NORTH_EAST);
+        ignoredFaces.add(BlockFace.NORTH_NORTH_WEST);
+        ignoredFaces.add(BlockFace.SOUTH_SOUTH_EAST);
+        ignoredFaces.add(BlockFace.SOUTH_SOUTH_WEST);
+        ignoredFaces.add(BlockFace.WEST_NORTH_WEST);
+        ignoredFaces.add(BlockFace.WEST_SOUTH_WEST);
+        ignoredFaces.add(BlockFace.EAST_SOUTH_EAST);
+        ignoredFaces.add(BlockFace.EAST_NORTH_EAST);
+
     }
     
     protected void tick(Block b, SlimefunItem item) {
         for (BlockFace face : BlockFace.values()) {
-            if (face == BlockFace.UP || face == BlockFace.DOWN) {
+            if (ignoredFaces.contains(face)) {
                 continue;
             }
+
             Block relBlock = b.getRelative(face);
             if (getMachines().contains(relBlock.getType())) { 
                 BlockStateSnapshotResult result = PaperLib.getBlockState(relBlock, false);

@@ -16,8 +16,11 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import javax.annotation.Nonnull;
 
 //I feel like this can somehow be much better :O (review)
@@ -26,9 +29,24 @@ public class Orechid extends AbstractElectricTicker implements RecipeDisplayItem
 
     private static final Map<Material, RandomizedSet<ItemStack>> oreMap = new EnumMap<>(Material.class);
     //private static final List<Material> END_ORES = new ArrayList<>();
+    
+    private static final Set<BlockFace> ignoredFaces = new HashSet<>();
+    
 
     public Orechid(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
+        
+        ignoredFaces.add(BlockFace.UP);
+        ignoredFaces.add(BlockFace.DOWN);
+        ignoredFaces.add(BlockFace.NORTH_NORTH_EAST);
+        ignoredFaces.add(BlockFace.NORTH_NORTH_WEST);
+        ignoredFaces.add(BlockFace.SOUTH_SOUTH_EAST);
+        ignoredFaces.add(BlockFace.SOUTH_SOUTH_WEST);
+        ignoredFaces.add(BlockFace.WEST_NORTH_WEST);
+        ignoredFaces.add(BlockFace.WEST_SOUTH_WEST);
+        ignoredFaces.add(BlockFace.EAST_SOUTH_EAST);
+        ignoredFaces.add(BlockFace.EAST_NORTH_EAST);
+
         registerDefaultOres();
     }
     
@@ -45,9 +63,9 @@ public class Orechid extends AbstractElectricTicker implements RecipeDisplayItem
                     break;
                 }
     
-                if (relative == BlockFace.UP || relative == BlockFace.DOWN) {
+                if (ignoredFaces.contains(relative)) {
                     continue;
-                }
+                } 
                 
                 Block relBlock = b.getRelative(relative);
     
