@@ -32,7 +32,7 @@ public class ChippingGenerator extends AbstractGenerator {
     private static final int[] OUTPUT_BORDER_SLOTS = new int[] {14, 15, 16, 17, 23, 26, 32, 33, 34, 35 };
     private static final int[] BACKGROUND_SLOTS = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 13, 31, 36, 37, 38, 39, 40, 41, 42, 43, 44 }; 
 
-    private final ItemStack PROGRESS_ITEM = new ItemStack(Material.NETHERITE_AXE);
+    private static final ItemStack PROGRESS_ITEM = new ItemStack(Material.NETHERITE_AXE);
 
     public ChippingGenerator(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);

@@ -129,7 +129,7 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
     }
 
     private void sendItemsAndCharge(Block b, String wirelessLocation) {
-        Location tesseractPair = StringToLocation(wirelessLocation);
+        Location tesseractPair = stringToLocation(wirelessLocation);
     
         // Note: You should probably also see if the Future from getChunkAtAsync is finished here.
         // you don't really want to possibly trigger the chunk to load in another thread twice.
@@ -166,7 +166,7 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
         int chargedNeeded = getCapacity() - getCharge(l);
     
         if(chargedNeeded != 0 && tesseractPairLocation != null) {
-            Location tesseractPair = StringToLocation(tesseractPairLocation);
+            Location tesseractPair = stringToLocation(tesseractPairLocation);
     
             // Note: You should probably also see if the Future from getChunkAtAsync is finished here.
             // you don't really want to possibly trigger the chunk to load in another thread twice.
@@ -178,22 +178,22 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
             }
     
             if (BlockStorage.checkID(tesseractPair) != null && BlockStorage.checkID(tesseractPair).equals(DynaTechItems.TESSERACT.getItemId())) {
-                int BankCharge = getCharge(tesseractPair);
+                int bankCharge = getCharge(tesseractPair);
                 
-                if (BankCharge > chargedNeeded && BankCharge != 0) {
+                if (bankCharge > chargedNeeded && bankCharge != 0) {
                     if (chargedNeeded > getEnergyRate()) {
                         removeCharge(tesseractPair, getEnergyRate());
                         return getEnergyRate();
                     }
                     removeCharge(tesseractPair, chargedNeeded);
                     return chargedNeeded;
-                } else if (BankCharge > 0) {
+                } else if (bankCharge > 0) {
                     if (chargedNeeded > getEnergyRate()) {
                         removeCharge(tesseractPair, getEnergyRate());
                         return getEnergyRate();
                     }
-                    removeCharge(tesseractPair, BankCharge);
-                    return BankCharge;
+                    removeCharge(tesseractPair, bankCharge);
+                    return bankCharge;
                 }
                 
             }
@@ -269,11 +269,11 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
         
     }
 
-    public static String LocationToString(Location l) {
+    public static String locationToString(Location l) {
         return l.getWorld().getName()+";"+l.getBlockX()+";"+l.getBlockY()+";"+l.getBlockZ();
     }
 
-    public static final Location StringToLocation(String locString) {
+    public static final Location stringToLocation(String locString) {
         String[] locComponents = locString.split(";");
         return new Location(Bukkit.getWorld(locComponents[0]), Double.parseDouble(locComponents[1]), Double.parseDouble(locComponents[2]), Double.parseDouble(locComponents[3]));
     }

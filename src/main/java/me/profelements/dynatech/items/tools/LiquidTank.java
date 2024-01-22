@@ -141,11 +141,11 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
     }
 
     public static final List<String> getPlaceableFluids() {
-        List<String> PLACEABLE_FLUIDS = new ArrayList<>();
-        PLACEABLE_FLUIDS.add("WATER");
-        PLACEABLE_FLUIDS.add("LAVA");
+        List<String> placeableFluids = new ArrayList<>();
+        placeableFluids.add("WATER");
+        placeableFluids.add("LAVA");
 
-        return PLACEABLE_FLUIDS;
+        return placeableFluids;
     }
 
     public void addLiquid(ItemStack item, String fluidName, int fluidAmount) {

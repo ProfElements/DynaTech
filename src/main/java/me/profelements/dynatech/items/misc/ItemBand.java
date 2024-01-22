@@ -48,7 +48,7 @@ public class ItemBand extends SlimefunItem {
             ItemMeta im = item.getItemMeta();
             List<String> lore = im.hasLore() ? im.getLore() : new ArrayList<>();
             
-            lore.add(ChatColor.WHITE + "Bandaid: " + getPotionEffects()[0].getType().getName());
+            lore.add(ChatColor.WHITE + "Bandaid: " + getPotionEffects()[0].getType().getKey().getKey());
             PersistentDataAPI.setString(im, KEY, this.getId());
 
             im.setLore(lore);

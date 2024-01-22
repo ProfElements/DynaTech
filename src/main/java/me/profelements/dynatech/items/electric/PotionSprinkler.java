@@ -26,6 +26,7 @@ import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -111,13 +112,13 @@ public class PotionSprinkler extends AbstractElectricTicker {
         ItemStack item = menu.getItemInSlot(13);
 
         if (item != null && item.getType() == Material.POTION && item.hasItemMeta() && item.getItemMeta() instanceof PotionMeta potionMeta) {
-            PotionData pd = potionMeta.getBasePotionData();
+            PotionType pt = potionMeta.getBasePotionType();
             for (Entity ent : b.getWorld().getNearbyEntities(b.getLocation(), 10, 10, 10, LivingEntity.class::isInstance)) {
                 LivingEntity p = (LivingEntity) ent;
                 if (!enabledEntities.get(b.getLocation()).contains(p.getUniqueId())) {
-                    int amplifier = pd.isUpgraded() ? 1 : 0;
-                    int duration = pd.isExtended() ? 9600 : 3600;
-                    PotionEffectType pet = pd.getType().getEffectType();
+                    int amplifier = (!pt.isUpgradeable()) ? 1 : 0;
+                    int duration = (!pt.isExtendable()) ? 9600 : 3600;
+                    PotionEffectType pet = pt.getPotionEffects().get(0).getType();
 
                     if (pet != null) {
                         PotionEffect pe = new PotionEffect(pet, duration, amplifier);

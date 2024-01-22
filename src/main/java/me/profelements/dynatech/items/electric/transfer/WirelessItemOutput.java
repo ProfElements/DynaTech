@@ -125,7 +125,7 @@ public class WirelessItemOutput extends SlimefunItem implements EnergyNetCompone
                     if (sfBlock != null && sfBlock.getId().equals(DynaTechItems.WIRELESS_ITEM_INPUT.getItemId()) && blockLoc != null) {
                         event.cancel();
                         ItemMeta im = item.getItemMeta();
-                        String locationString = LocationToString(blockLoc);
+                        String locationString = locationToString(blockLoc);
                         
                         PersistentDataAPI.setString(im, WIRELESS_LOCATION_KEY, locationString);
                         item.setItemMeta(im);
@@ -184,7 +184,7 @@ public class WirelessItemOutput extends SlimefunItem implements EnergyNetCompone
     }
 
     private void sendItemsFromInput(Block b, String wirelessLocation) {
-        Location wirelessItemInput = StringToLocation(wirelessLocation);
+        Location wirelessItemInput = stringToLocation(wirelessLocation);
     
         // Note: You should probably also see if the Future from getChunkAtAsync is finished here.
         // you don't really want to possibly trigger the chunk to load in another thread twice.
@@ -282,11 +282,11 @@ public class WirelessItemOutput extends SlimefunItem implements EnergyNetCompone
         
     }
 
-    private String LocationToString(Location l) {
+    private String locationToString(Location l) {
         return l.getWorld().getName()+";"+l.getBlockX()+";"+l.getBlockY()+";"+l.getBlockZ();
     }
 
-    private static final Location StringToLocation(String locString) {
+    private static final Location stringToLocation(String locString) {
         String[] locComponents = locString.split(";");
         return new Location(Bukkit.getWorld(locComponents[0]), Double.parseDouble(locComponents[1]), Double.parseDouble(locComponents[2]), Double.parseDouble(locComponents[3]));
     }
