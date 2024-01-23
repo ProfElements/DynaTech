@@ -49,7 +49,7 @@ public class TesseractBinder extends SlimefunItem {
                     }
                 } else if (Boolean.TRUE.equals(hasPermision) && sfItem.getId().equals(DynaTechItems.TESSERACT.getItemId()) && blockLocation != null) {
                     ItemMeta im = item.getItemMeta();
-                    String locString = Tesseract.LocationToString(blockLocation);
+                    String locString = Tesseract.locationToString(blockLocation);
                         
                     PersistentDataAPI.setString(im, Tesseract.WIRELESS_LOCATION_KEY, locString);
                     item.setItemMeta(im);
