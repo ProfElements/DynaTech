@@ -7,22 +7,15 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import io.github.bakedlibs.dough.collections.Pair;
-import io.github.schntgaispock.gastronomicon.Gastronomicon;
 import io.github.schntgaispock.gastronomicon.api.items.FoodItemStack;
-import io.github.schntgaispock.gastronomicon.api.recipes.GastroRecipe;
-import io.github.schntgaispock.gastronomicon.api.recipes.RecipeRegistry;
-import io.github.schntgaispock.gastronomicon.core.slimefun.GastroStacks;
 import io.github.schntgaispock.gastronomicon.core.slimefun.recipes.GastroRecipeType;
 import io.github.schntgaispock.gastronomicon.util.item.HeadTextures;
 import io.github.thebusybiscuit.exoticgarden.ExoticGardenRecipeTypes;
 import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
-import io.github.thebusybiscuit.exoticgarden.items.ExoticGardenFruit;
-import io.github.thebusybiscuit.exoticgarden.items.MagicalEssence;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.events.SlimefunItemRegistryFinalizedEvent;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
-import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.electric.SeedPlucker;
@@ -50,7 +43,7 @@ public class IntegrationListener implements Listener {
             for (SlimefunItem item : Slimefun.getRegistry().getEnabledSlimefunItems()) { 
                if (item.getItem() instanceof FoodItemStack food && !food.getTexture().equals(HeadTextures.NONE) && !item.getId().contains("GN_PERFECT")) {
                     cg.registerFuel(food, food.getHunger() * 4);
-                    PicnicBasket.registerFood(food, new Pair<Integer, Float>(food.getHunger(), (float) food.getSaturation()));
+                    PicnicBasket.registerFood(food, new Pair<>(food.getHunger(), (float) food.getSaturation()));
                }
     
                 if (item.getRecipeType() == GastroRecipeType.HARVEST) {
@@ -63,7 +56,7 @@ public class IntegrationListener implements Listener {
             for (SlimefunItem item : Slimefun.getRegistry().getEnabledSlimefunItems()) {
                 if (item instanceof CustomFood cfItem) {
                     cg1.registerFuel(cfItem.getItem(), cfItem.getFoodValue() * 4);
-                    PicnicBasket.registerFood(cfItem.getItem(), new Pair<Integer, Float>(cfItem.getFoodValue(), 10F));
+                    PicnicBasket.registerFood(cfItem.getItem(), new Pair<>(cfItem.getFoodValue(), 10F));
                }
 
                 if (item.getRecipeType() == ExoticGardenRecipeTypes.HARVEST_BUSH || item.getRecipeType() == ExoticGardenRecipeTypes.HARVEST_TREE) {
