@@ -7,9 +7,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import io.github.bakedlibs.dough.collections.Pair;
-import io.github.schntgaispock.gastronomicon.api.items.FoodItemStack;
-import io.github.schntgaispock.gastronomicon.core.slimefun.recipes.GastroRecipeType;
-import io.github.schntgaispock.gastronomicon.util.item.HeadTextures;
 import io.github.thebusybiscuit.exoticgarden.ExoticGardenRecipeTypes;
 import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -23,22 +20,21 @@ import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
 import me.profelements.dynatech.items.electric.growthchambers.GrowthChamber;
 import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberMK2;
 
-public class IntegrationListener implements Listener {
+public class ExoticGardenIntegrationListener implements Listener {
     
 
-    public IntegrationListener(Plugin plugin) {
+    public ExoticGardenIntegrationListener(Plugin plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler
     public void onSlimefunRegistyFinalized(SlimefunItemRegistryFinalizedEvent e) {
-        boolean gastronomiconInstalled = Bukkit.getServer().getPluginManager().isPluginEnabled("Gastronomicon");
         boolean exoticGardenInstalled = Bukkit.getServer().getPluginManager().isPluginEnabled("ExoticGarden");
         SlimefunItem item1 = SlimefunItem.getByItem(DynaTechItems.CULINARY_GENERATOR);
         SlimefunItem item2 = SlimefunItem.getByItem(DynaTechItems.SEED_PLUCKER); 
         SlimefunItem item3 = SlimefunItem.getByItem(DynaTechItems.GROWTH_CHAMBER);
         SlimefunItem item4 = SlimefunItem.getByItem(DynaTechItems.GROWTH_CHAMBER_MK2);
-
+    /*
         if (item1 instanceof CulinaryGenerator cg && item2 instanceof SeedPlucker sp && gastronomiconInstalled) {  
             for (SlimefunItem item : Slimefun.getRegistry().getEnabledSlimefunItems()) { 
                if (item.getItem() instanceof FoodItemStack food && !food.getTexture().equals(HeadTextures.NONE) && !item.getId().contains("GN_PERFECT")) {
@@ -51,7 +47,7 @@ public class IntegrationListener implements Listener {
                 }
             }
         }
-
+    */
         if (item1 instanceof CulinaryGenerator cg1 && item3 instanceof GrowthChamber gc && item4 instanceof GrowthChamberMK2 gc2 && item2 instanceof SeedPlucker sp1 && exoticGardenInstalled) {
             for (SlimefunItem item : Slimefun.getRegistry().getEnabledSlimefunItems()) {
                 if (item instanceof CustomFood cfItem) {

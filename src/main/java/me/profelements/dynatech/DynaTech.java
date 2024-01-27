@@ -8,7 +8,8 @@ import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.misc.DimensionalHomeDimension;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
 import me.profelements.dynatech.listeners.ElectricalStimulatorListener;
-import me.profelements.dynatech.listeners.IntegrationListener;
+import me.profelements.dynatech.listeners.ExoticGardenIntegrationListener;
+import me.profelements.dynatech.listeners.GastronomiconIntegrationListener;
 import me.profelements.dynatech.listeners.InventoryFilterListener;
 import me.profelements.dynatech.listeners.PicnicBasketListener;
 import me.profelements.dynatech.setup.DynaTechItemsSetup;
@@ -55,7 +56,21 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         new PicnicBasketListener(this, (PicnicBasket) DynaTechItems.PICNIC_BASKET.getItem());
         new ElectricalStimulatorListener(this, (ElectricalStimulator) DynaTechItems.ELECTRICAL_STIMULATOR.getItem());
         new InventoryFilterListener(this);
-        new IntegrationListener(this);
+
+        try {
+            Class.forName("io.github.schntgaispock.gastronomicon.api.items.FoodItemStack");
+            new GastronomiconIntegrationListener(this);
+        } catch (ClassNotFoundException ex) {
+
+        }
+
+
+        try {
+            Class.forName("io.github.thebusybiscuit.exoticgarden.items.CustomFood");
+            new ExoticGardenIntegrationListener(this);
+        } catch (ClassNotFoundException ex) {
+        }
+
 
         //Tasks
         getServer().getScheduler().runTaskTimerAsynchronously(DynaTech.getInstance(), new ItemBandTask(), 0L, 5 * 20L);
