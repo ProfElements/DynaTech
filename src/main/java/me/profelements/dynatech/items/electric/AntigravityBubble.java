@@ -86,7 +86,7 @@ public class AntigravityBubble extends AbstractElectricTicker implements Listene
                 p.setFlying(false);
                 p.setFallDistance(0.f);
 
-                players.remove(id);
+                iterator.remove();
             }
         }
 
