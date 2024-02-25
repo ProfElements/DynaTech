@@ -18,6 +18,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Collection;
@@ -62,6 +63,28 @@ public class AntigravityBubble extends AbstractElectricTicker implements Listene
         if (e.getPlayer() != null) {
             teleportedPlayers.add(e.getPlayer().getUniqueId()); 
         }
+    }
+
+    @EventHandler
+    public void onChunkUnload(ChunkUnloadEvent e) {
+        for (Map.Entry<Location, Set<UUID>> entry : enabledPlayers.entrySet()) {
+            if (entry.getKey().getChunk() == e.getChunk()) {
+                Set<UUID> players = enabledPlayers.getOrDefault(entry.getKey(), new HashSet<>());
+                for (Iterator<UUID> iterator = players.iterator(); iterator.hasNext();) {
+                    Player p = Bukkit.getPlayer(iterator.next()); 
+
+                     if (p != null) {
+                        p.setAllowFlight(false);
+                        p.setFlying(false);
+                        p.setFallDistance(0.f);
+
+                        iterator.remove();
+                    }      
+                }
+                break;
+            }
+        }
+        enabledPlayers.entrySet().removeIf(entry -> entry.getKey().getChunk().equals(e.getChunk()));
     }
 
 	@Override
