@@ -139,24 +139,31 @@ public class MineralizedApiary extends AbstractElectricMachine {
     }
 
     private static void updateInfoStack(BlockMenu menu, int beeCount) {
-        Inventory inv = menu.toInventory(); 
+        Inventory inv = menu.toInventory();
 
         if (inv == null || inv.getViewers().isEmpty()) {
-            return; 
+            return;
         }
 
-        int currSpeed = 100; 
+        int currSpeed = 100;
         if (beeCount > 0) {
             currSpeed = 30 - ((beeCount - 1) * 10);
         }
 
-        ItemStack item = PROGRESS_STACK.clone();
+        ItemStack item = menu.getItemInSlot(20);
+        if (item == null) {
+            return;
+        }
+
         ItemMeta meta = item.getItemMeta();
 
-        meta.setDisplayName("&fInfo");
-        meta.setLore(Arrays.asList("&fBee Count: " + beeCount, "&fCurrent Speed: " + currSpeed + "s"));
-        item.setItemMeta(meta); 
+        if (meta != null) {
+            meta.setDisplayName("&fInfo");
+            meta.setLore(Arrays.asList("&fBee Count: " + beeCount, "&fCurrent Speed: " + currSpeed + "s"));
+            item.setItemMeta(meta);
 
-        menu.replaceExistingItem(20, item);
+
+            menu.replaceExistingItem(20, item);
+        }
     }
 }
