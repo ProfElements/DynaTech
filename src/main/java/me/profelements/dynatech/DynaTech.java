@@ -61,7 +61,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
             Class.forName("io.github.schntgaispock.gastronomicon.api.items.FoodItemStack");
             new GastronomiconIntegrationListener(this);
         } catch (ClassNotFoundException ex) {
-
+            // ignored
         }
 
 
@@ -69,6 +69,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
             Class.forName("io.github.thebusybiscuit.exoticgarden.items.CustomFood");
             new ExoticGardenIntegrationListener(this);
         } catch (ClassNotFoundException ex) {
+            // ignored
         }
 
 
@@ -76,7 +77,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         getServer().getScheduler().runTaskTimerAsynchronously(DynaTech.getInstance(), new ItemBandTask(), 0L, 5 * 20L);
         getServer().getScheduler().runTaskTimer(DynaTech.getInstance(), () -> this.tickInterval++, 0, TICK_TIME);
 
-        if (getConfig().getBoolean("options.auto-update", true) && getDescription().getVersion().startsWith("DEV - ")) {
+        if (getConfig().getBoolean("options.auto-update", true) && getDescription().getVersion().startsWith("Main")) {
             new BlobBuildUpdater(this, getFile(), "DynaTech", "Main").start();
         }
 
