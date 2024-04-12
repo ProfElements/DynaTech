@@ -64,25 +64,23 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
         }
 
-
         try {
             Class.forName("io.github.thebusybiscuit.exoticgarden.items.CustomFood");
             new ExoticGardenIntegrationListener(this);
         } catch (ClassNotFoundException ex) {
         }
 
-
-        //Tasks
+        // Tasks
         getServer().getScheduler().runTaskTimerAsynchronously(DynaTech.getInstance(), new ItemBandTask(), 0L, 5 * 20L);
         getServer().getScheduler().runTaskTimer(DynaTech.getInstance(), () -> this.tickInterval++, 0, TICK_TIME);
 
-        if (getConfig().getBoolean("options.auto-update", true) && getDescription().getVersion().startsWith("DEV - ")) {
+        if (getConfig().getBoolean("options.auto-update", true) && getDescription().getVersion().startsWith("Main")) {
             new BlobBuildUpdater(this, getFile(), "DynaTech", "Main").start();
         }
 
         if (!Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_19)) {
-                getLogger().warning("DynaTech only support 1.19+, disabling.");
-                getServer().getPluginManager().disablePlugin(this);
+            getLogger().warning("DynaTech only support 1.19+, disabling.");
+            getServer().getPluginManager().disablePlugin(this);
         }
     }
 
