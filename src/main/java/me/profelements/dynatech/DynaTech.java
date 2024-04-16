@@ -14,6 +14,8 @@ import me.profelements.dynatech.listeners.InventoryFilterListener;
 import me.profelements.dynatech.listeners.PicnicBasketListener;
 import me.profelements.dynatech.setup.DynaTechItemsSetup;
 import me.profelements.dynatech.tasks.ItemBandTask;
+import me.profelements.dynatech.utils.RecipeRegistry;
+
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.WorldCreator;
@@ -25,18 +27,19 @@ import javax.annotation.Nullable;
 
 import com.google.common.base.Preconditions;
 
-
 public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
     private static DynaTech instance;
     private static boolean exoticGardenInstalled;
     private static boolean infinityExpansionInstalled;
+    private static RecipeRegistry registry;
 
     private int tickInterval;
 
     @Override
     public void onEnable() {
         setInstance(this);
+        registry = RecipeRegistry.init();
         setExoticGardenInstalled(Bukkit.getPluginManager().isPluginEnabled("ExoticGarden"));
         setInfinityExpansionInstalled(Bukkit.getPluginManager().isPluginEnabled("InfinityExpansion"));
 
@@ -51,7 +54,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
             worldCreator.generator(new DimensionalHomeDimension());
             worldCreator.createWorld();
         }
-
+        DynaTechRecipes.registerRecipes(DynaTech.getRecipeRegistry());
         DynaTechItemsSetup.setup(this);
         new PicnicBasketListener(this, (PicnicBasket) DynaTechItems.PICNIC_BASKET.getItem());
         new ElectricalStimulatorListener(this, (ElectricalStimulator) DynaTechItems.ELECTRICAL_STIMULATOR.getItem());
@@ -105,6 +108,11 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
     @Nonnull
     public static DynaTech getInstance() {
         return instance;
+    }
+
+    @Nonnull
+    public static RecipeRegistry getRecipeRegistry() {
+        return RecipeRegistry.getInstance();
     }
 
     public int getTickInterval() {
