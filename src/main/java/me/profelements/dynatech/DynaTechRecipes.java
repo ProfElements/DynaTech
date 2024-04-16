@@ -8,11 +8,28 @@ import org.bukkit.inventory.ItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
-import me.profelements.dynatech.setup.DynaTechItemsSetup;
 import me.profelements.dynatech.utils.Recipe;
 import me.profelements.dynatech.utils.RecipeRegistry;
 
 public class DynaTechRecipes {
+    // START common use items
+    private static final ItemStack STICK = new ItemStack(Material.STICK);
+    private static final ItemStack OAK_LOG = new ItemStack(Material.OAK_LOG);
+    private static final ItemStack REDSTONE_BLOCK = new ItemStack(Material.REDSTONE_BLOCK);
+    private static final ItemStack BRICK = new ItemStack(Material.BRICK);
+    private static final ItemStack STONE = new ItemStack(Material.STONE);
+    private static final ItemStack IRON_INGOT = new ItemStack(Material.IRON_INGOT);
+    private static final ItemStack IRON_BLOCK = new ItemStack(Material.IRON_BLOCK);
+    private static final ItemStack DIAMOND = new ItemStack(Material.DIAMOND);
+    private static final ItemStack DIAMOND_BLOCK = new ItemStack(Material.DIAMOND_BLOCK);
+    private static final ItemStack CRYING_OBSIDIAN = new ItemStack(Material.CRYING_OBSIDIAN);
+    private static final ItemStack UNBREAKING_3_ENCHANTED_BOOK = new CustomItemStack(Material.ENCHANTED_BOOK, meta -> {
+        meta.addEnchant(Enchantment.DURABILITY, 3, false);
+    });
+    private static final ItemStack GLASS = new ItemStack(Material.GLASS);
+    private static final ItemStack CYAN_CONCRETE = new ItemStack(Material.LIGHT_BLUE_CONCRETE);
+    private static final ItemStack PINK_CONCRETE = new ItemStack(Material.PINK_CONCRETE);
+    // END common use items
 
     private DynaTechRecipes() {
     }
@@ -20,25 +37,6 @@ public class DynaTechRecipes {
     // START Recipes
 
     public static final void registerRecipes(RecipeRegistry registry) {
-
-        // START common use items
-        final ItemStack STICK = new ItemStack(Material.STICK);
-        final ItemStack OAK_LOG = new ItemStack(Material.OAK_LOG);
-        final ItemStack REDSTONE_BLOCK = new ItemStack(Material.REDSTONE_BLOCK);
-        final ItemStack BRICK = new ItemStack(Material.BRICK);
-        final ItemStack STONE = new ItemStack(Material.STONE);
-        final ItemStack IRON_INGOT = new ItemStack(Material.IRON_INGOT);
-        final ItemStack IRON_BLOCK = new ItemStack(Material.IRON_BLOCK);
-        final ItemStack DIAMOND = new ItemStack(Material.DIAMOND);
-        final ItemStack DIAMOND_BLOCK = new ItemStack(Material.DIAMOND_BLOCK);
-        final ItemStack CRYING_OBSIDIAN = new ItemStack(Material.CRYING_OBSIDIAN);
-        final ItemStack UNBREAKING_3_ENCHANTED_BOOK = new CustomItemStack(Material.ENCHANTED_BOOK, meta -> {
-            meta.addEnchant(Enchantment.DURABILITY, 3, false);
-        });
-        final ItemStack GLASS = new ItemStack(Material.GLASS);
-        final ItemStack CYAN_CONCRETE = new ItemStack(Material.LIGHT_BLUE_CONCRETE);
-        final ItemStack PINK_CONCRETE = new ItemStack(Material.PINK_CONCRETE);
-        // END common use items
 
         // START Mechanical Components
 
