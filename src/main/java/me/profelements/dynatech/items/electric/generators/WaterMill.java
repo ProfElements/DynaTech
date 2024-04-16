@@ -27,6 +27,8 @@ import me.profelements.dynatech.utils.Recipe;
 
 public class WaterMill extends SlimefunItem implements EnergyNetProvider {
 
+    private static final String durabilityString = "durability";
+
     private final HashMap<BlockPosition, Integer> durabilityMap = new HashMap<>();
     private final HashMap<BlockPosition, Boolean> hasWaterMap = new HashMap<>();
     private final int energyCapacity;
@@ -50,7 +52,7 @@ public class WaterMill extends SlimefunItem implements EnergyNetProvider {
 
             @Override
             public void onPlayerPlace(BlockPlaceEvent event) {
-                BlockStorage.addBlockInfo(event.getBlock(), "durability", String.valueOf(durabilityDefault));
+                BlockStorage.addBlockInfo(event.getBlock(), durabilityString, String.valueOf(durabilityDefault));
             }
 
         };
@@ -88,7 +90,7 @@ public class WaterMill extends SlimefunItem implements EnergyNetProvider {
         int energyAmount = 0;
 
         int durabilityDef = this.durabilityDefault;
-        String durabilityStr = BlockStorage.getLocationInfo(l, "durability");
+        String durabilityStr = BlockStorage.getLocationInfo(l, durabilityString);
 
         if (durabilityStr != null) {
             durabilityDef = Integer.parseInt(durabilityStr);
@@ -116,7 +118,7 @@ public class WaterMill extends SlimefunItem implements EnergyNetProvider {
         }
 
         int storageDurability = Math.max(durability - 1, 0);
-        BlockStorage.addBlockInfo(l, "durability", String.valueOf(storageDurability));
+        BlockStorage.addBlockInfo(l, durabilityString, String.valueOf(storageDurability));
         durabilityMap.put(pos, storageDurability);
 
         return energyAmount;
