@@ -32,6 +32,16 @@
 - **wip** : Work in Progress stuff to eventually become a feature or bugfix //GitMoji emoji : :construction:
 - **work** : general working on weather its cleaninp up or otherwise //GitMoji emoji : :construction:
 
+## ROUND 1
+- Add Wind Mill
+- Add Wind Turbine
+- Fix Water Mill [x]
+- Fix Hydro Turbine [x]
+- Fix Dragon Egg Generator
+- Add Dragon Egg Turbine
+### ROUND 2 
+- Add `DegradingGenerator`. This generator slowly degrades over time needed to be fixed. All infinite energy generators become this.  
+
 ## MISC Notes
 To register a recipe without a SlimefunItem + SlimefunItemStack combo 
 use RecipeType.register(ItemStack[], ItemStack) 
