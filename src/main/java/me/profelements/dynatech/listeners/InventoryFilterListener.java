@@ -34,7 +34,6 @@ public class InventoryFilterListener implements Listener {
     private void filterInventory(Player player, EntityPickupItemEvent event) {
         for (ItemStack stack : player.getInventory().getContents()) {
             if (SlimefunItem.getByItem(stack) instanceof InventoryFilter) {
-                DynaTech.getInstance().getLogger().info("Player has inventory filter");
 
                 List<String> slimefunItems = new ArrayList<>();
                 List<ItemStack> regItems = new ArrayList<>();
@@ -50,14 +49,11 @@ public class InventoryFilterListener implements Listener {
                     }
                 });
 
-                DynaTech.getInstance().getLogger().info("Blacklist stack sets have been built");
-
                 Item itemEntity = event.getItem();
                 ItemStack itemEntityStack = itemEntity.getItemStack();
 
                 for (ItemStack checkStack : regItems) {
-                    if (checkStack.isSimilar(itemEntityStack)) {
-                        DynaTech.getInstance().getLogger().info("Blacklist cancelled event due to isSimilar check");
+                    if (checkStack != null && checkStack.isSimilar(itemEntityStack)) {
                         event.setCancelled(true);
                         break;
                     }
@@ -66,7 +62,6 @@ public class InventoryFilterListener implements Listener {
                 SlimefunItem item = SlimefunItem.getByItem(itemEntityStack);
                 if (item != null
                         && slimefunItems.contains(item.getId())) {
-                    DynaTech.getInstance().getLogger().info("Blacklist cancelled event due to SlimefunItem");
                     event.setCancelled(true);
                 }
 
