@@ -29,6 +29,8 @@ public class DynaTechRecipes {
     private static final ItemStack GLASS = new ItemStack(Material.GLASS);
     private static final ItemStack CYAN_CONCRETE = new ItemStack(Material.LIGHT_BLUE_CONCRETE);
     private static final ItemStack PINK_CONCRETE = new ItemStack(Material.PINK_CONCRETE);
+    private static final ItemStack STRING = new ItemStack(Material.STRING);
+    private static final ItemStack IRON_BARS = new ItemStack(Material.IRON_BARS);
     // END common use items
 
     private DynaTechRecipes() {
@@ -205,6 +207,21 @@ public class DynaTechRecipes {
                 })
                 .setOutput(DynaTechItems.STAINLESS_STEEL_ROTOR_1)
                 .register(registry);
+
+        // END Materials
+        // START Tools
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "inventory_filter"))
+                .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
+                .setInput(new ItemStack[] {
+                        STRING, IRON_BARS, STRING,
+                        IRON_BARS, DynaTechItems.IRON_MACHINE_CORE, IRON_BARS,
+                        STRING, IRON_BARS, STRING,
+
+                }).setOutput(DynaTechItems.INV_FILTER)
+                .register(registry);
+
+        // END Tools
     }
 
     // END Recipes

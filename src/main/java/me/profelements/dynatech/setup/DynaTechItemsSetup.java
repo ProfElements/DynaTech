@@ -768,6 +768,14 @@ public class DynaTechItemsSetup {
         new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.STAINLESS_STEEL_ROTOR_1,
                 stainlessSteelRotorRecipe.getRecipeType(), stainlessSteelRotorRecipe.getInput()).register(plugin);
         // END Materials
+
+        // START Tools
+        final Recipe inventoryFilterRecipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.INV_FILTER)
+                .toList().get(0);
+        new InventoryFilter(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.INV_FILTER,
+                inventoryFilterRecipe.getRecipeType(), inventoryFilterRecipe.getInput()).register(plugin);
+
+        // END Tools
     }
 
     private static void registerMineralizedApiaries(MaterialHive hive, SlimefunAddon plugin) {

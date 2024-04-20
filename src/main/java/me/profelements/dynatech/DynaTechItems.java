@@ -119,6 +119,18 @@ public class DynaTechItems {
             Material.IRON_BLOCK, "&fStainless Steel Rotor");
     // END Materials
 
+    // START Tools
+    public static final SlimefunItemStack INV_FILTER = new SlimefunItemStack("DT_INVENTORY_FILTER",
+            Material.IRON_BARS, "&6Inventory Filter",
+            "",
+            "&fFilters out items on the floor that are in it's inventory",
+            "",
+            ID_LORE,
+            "",
+            RIGHT_CLICK_LORE);
+
+    // END Tools
+
     // General
 
     // Resources
