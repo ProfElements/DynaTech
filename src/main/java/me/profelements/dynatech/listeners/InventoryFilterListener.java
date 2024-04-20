@@ -32,12 +32,10 @@ public class InventoryFilterListener implements Listener {
     }
 
     private void filterInventory(Player player, EntityPickupItemEvent event) {
+        List<String> slimefunItems = new ArrayList<>();
+        List<ItemStack> regItems = new ArrayList<>();
         for (ItemStack stack : player.getInventory().getContents()) {
             if (SlimefunItem.getByItem(stack) instanceof InventoryFilter) {
-
-                List<String> slimefunItems = new ArrayList<>();
-                List<ItemStack> regItems = new ArrayList<>();
-
                 PlayerProfile.getBackpack(stack, backpack -> {
                     for (ItemStack bpStack : backpack.getInventory().getContents()) {
                         SlimefunItem item = SlimefunItem.getByItem(bpStack);
@@ -48,25 +46,24 @@ public class InventoryFilterListener implements Listener {
                         }
                     }
                 });
+            }
+        }
 
-                Item itemEntity = event.getItem();
-                ItemStack itemEntityStack = itemEntity.getItemStack();
+        Item itemEntity = event.getItem();
+        ItemStack itemEntityStack = itemEntity.getItemStack();
 
-                for (ItemStack checkStack : regItems) {
-                    if (checkStack != null && checkStack.isSimilar(itemEntityStack)) {
-                        event.setCancelled(true);
-                        break;
-                    }
-                }
-
-                SlimefunItem item = SlimefunItem.getByItem(itemEntityStack);
-                if (item != null
-                        && slimefunItems.contains(item.getId())) {
-                    event.setCancelled(true);
-                }
-
+        for (ItemStack checkStack : regItems) {
+            if (checkStack != null && checkStack.isSimilar(itemEntityStack)) {
+                event.setCancelled(true);
                 break;
             }
         }
+
+        SlimefunItem item = SlimefunItem.getByItem(itemEntityStack);
+        if (item != null
+                && slimefunItems.contains(item.getId())) {
+            event.setCancelled(true);
+        }
+
     }
 }
