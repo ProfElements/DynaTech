@@ -122,7 +122,7 @@ public class DynaTechItems {
             "&7Degrades over time.",
             "&fMinimum Energy Generation Rate: &b16j/tick",
             "&fMaximum Energy Generation Rate: &b64j/tick",
-            "&fEnergy Capacity: 256j");
+            "&fEnergy Capacity: &b256j");
 
     public static final SlimefunItemStack WIND_MILL_2 = new SlimefunItemStack("DT_WIND_MILL_2",
             Material.GRAY_GLAZED_TERRACOTTA,
@@ -131,7 +131,7 @@ public class DynaTechItems {
             "&7Degrades over time.",
             "&fMinimum Energy Generation Rate: &b64j/tick",
             "&fMaximum Energy Generation Rate: &b256j/tick",
-            "&fEnergy Capacity: 1024j");
+            "&fEnergy Capacity: &b1024j");
 
     // END Energy Generators
 
