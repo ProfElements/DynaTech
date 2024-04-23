@@ -54,6 +54,7 @@ public class InventoryFilterListener implements Listener {
 
         for (ItemStack checkStack : regItems) {
             if (checkStack != null && checkStack.isSimilar(itemEntityStack)) {
+                itemEntity.remove();
                 event.setCancelled(true);
                 break;
             }
@@ -62,6 +63,7 @@ public class InventoryFilterListener implements Listener {
         SlimefunItem item = SlimefunItem.getByItem(itemEntityStack);
         if (item != null
                 && slimefunItems.contains(item.getId())) {
+            itemEntity.remove();
             event.setCancelled(true);
         }
 
