@@ -33,8 +33,8 @@
 - **work** : general working on weather its cleaninp up or otherwise //GitMoji emoji : :construction:
 
 ## ROUND 1
-- Add Wind Mill
-- Add Wind Turbine
+- Add Wind Mill [x]
+- Add Wind Turbine [x]
 - Fix Water Mill [x]
 - Fix Hydro Turbine [x]
 - Fix Dragon Egg Generator
