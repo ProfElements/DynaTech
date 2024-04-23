@@ -160,9 +160,9 @@ public class DynaTechRecipes {
                 .setInput(new ItemStack[] {
                         DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.STONE_MACHINE_CORE,
                         DynaTechItems.STAINLESS_STEEL_INGOT,
-                        DynaTechItems.STAINLESS_STEEL_ROTOR_1, DynaTechItems.WATER_MILL,
+                        DynaTechItems.STAINLESS_STEEL_ROTOR_1, DynaTechItems.WATER_MILL_1,
                         DynaTechItems.STAINLESS_STEEL_ROTOR_1,
-                        DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.WATER_MILL,
+                        DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.WATER_MILL_1,
                         DynaTechItems.STAINLESS_STEEL_INGOT,
                 })
                 .setOutput(DynaTechItems.WATER_MILL_2)
