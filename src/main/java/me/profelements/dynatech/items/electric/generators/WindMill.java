@@ -58,11 +58,12 @@ public class WindMill extends SlimefunItem implements EnergyNetProvider {
 
             @Override
             public void onPlayerBreak(BlockBreakEvent e, ItemStack item, List<ItemStack> drops) {
-                e.setDropItems(false);
 
                 Location l = e.getBlock().getLocation();
                 int durability = Integer.parseInt(BlockStorage.getLocationInfo(l, dura));
                 if (durability <= 0) {
+
+                    e.setDropItems(false);
                     String id = BlockStorage.getLocationInfo(l, "id");
                     if (id != null && SlimefunItem.getById(id + "_DEGRADED") != null) {
                         l.getWorld().dropItemNaturally(l, SlimefunItem.getById(id + "_DEGRADED").getItem());

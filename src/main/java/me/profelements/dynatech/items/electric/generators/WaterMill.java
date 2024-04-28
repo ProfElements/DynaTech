@@ -62,13 +62,13 @@ public class WaterMill extends SlimefunItem implements EnergyNetProvider {
         return new BlockBreakHandler(false, false) {
             @Override
             public void onPlayerBreak(BlockBreakEvent event, ItemStack arg1, List<ItemStack> arg2) {
-                event.setDropItems(false);
 
                 final Location l = event.getBlock().getLocation();
                 final BlockPosition p = new BlockPosition(l);
                 int durability = durabilityMap.get(p);
 
                 if (durability == 0) {
+                    event.setDropItems(false);
                     String id = BlockStorage.getLocationInfo(l, "id");
                     if (id != null && SlimefunItem.getById(id + "_DEGRADED") != null) {
                         l.getWorld().dropItemNaturally(l, SlimefunItem.getById(id + "_DEGRADED").getItem());
