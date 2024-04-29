@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -31,6 +32,10 @@ public class RecipeRegistry {
 
     public final ArrayList<Recipe> getRecipes() {
         return RECIPES;
+    }
+
+    public final Recipe getRecipeByKey(NamespacedKey key) {
+        return getRecipes().stream().filter(r -> r.getKey().equals(key)).toList().get(0);
     }
 
     public final Stream<Recipe> getRecipesByRecipeType(RecipeType type) {
