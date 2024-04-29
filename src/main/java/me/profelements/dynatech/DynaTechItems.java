@@ -95,6 +95,11 @@ public class DynaTechItems {
     public static final SlimefunItemStack DEGRADED_WIND_MILL_2 = new SlimefunItemStack("DT_WIND_MILL_2_DEGRADED",
             Material.GRAY_GLAZED_TERRACOTTA, "&cDegraded Wind Turbine");
 
+    public static final SlimefunItemStack DEGRADED_EGG_MILL = new SlimefunItemStack("DT_EGG_MILL_DEGRADED",
+            Material.CRYING_OBSIDIAN, "&cDegraded Dragon Egg Mill");
+
+    public static final SlimefunItemStack DEGRADED_EGG_MILL_2 = new SlimefunItemStack("DT_EGG_MILL_2_DEGRADED",
+            Material.RESPAWN_ANCHOR, "&cDegraded Dragon Egg Turbine");
     // END Mechanical Components
 
     // START Energy Generators
@@ -133,6 +138,21 @@ public class DynaTechItems {
             "&fMaximum Energy Generation Rate: &b256j/tick",
             "&fEnergy Capacity: &b1024j");
 
+    public static final SlimefunItemStack EGG_MILL_1 = new SlimefunItemStack("DT_EGG_MILL",
+            Material.CRYING_OBSIDIAN,
+            "&bDragon Egg Mill",
+            "",
+            "&7Degrades over time.",
+            "&fEnergy Generation Rate: &b16j/t",
+            "&fEnergy Capacity: &b64j");
+
+    public static final SlimefunItemStack EGG_MILL_2 = new SlimefunItemStack("DT_EGG_MILL_2",
+            Material.RESPAWN_ANCHOR,
+            "&bDragon Egg Turbine",
+            "",
+            "&7Degrades over time.",
+            "&fEnergy Generation Rate: &b64j/t",
+            "&fEnergy Capacity: &b256j");
     // END Energy Generators
 
     // START Materials

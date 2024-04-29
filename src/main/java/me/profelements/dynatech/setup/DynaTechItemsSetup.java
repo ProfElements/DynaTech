@@ -35,6 +35,7 @@ import me.profelements.dynatech.items.electric.machines.Orechid;
 import me.profelements.dynatech.items.electric.generators.ChippingGenerator;
 import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
 import me.profelements.dynatech.items.electric.generators.DragonEggGenerator;
+import me.profelements.dynatech.items.electric.generators.EggMill;
 import me.profelements.dynatech.items.electric.generators.HydroGenerator;
 import me.profelements.dynatech.items.electric.generators.StardustReactor;
 import me.profelements.dynatech.items.electric.generators.WaterMill;
@@ -743,7 +744,14 @@ public class DynaTechItemsSetup {
 
         new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_WIND_MILL, RecipeType.NULL,
                 new ItemStack[] {}).register(plugin);
+
         new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_WIND_MILL_2, RecipeType.NULL,
+                new ItemStack[] {}).register(plugin);
+
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_EGG_MILL, RecipeType.NULL,
+                new ItemStack[] {}).register(plugin);
+
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_EGG_MILL_2, RecipeType.NULL,
                 new ItemStack[] {}).register(plugin);
 
         // END Mechanical Components
@@ -768,6 +776,16 @@ public class DynaTechItemsSetup {
         final Recipe windMill2Recipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.WIND_MILL_2)
                 .toList().get(0);
         new WindMill(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.WIND_MILL_2, windMill2Recipe, 256, 64, 1024, 5000)
+                .register(plugin);
+
+        final Recipe eggMillRecipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.EGG_MILL_1).toList()
+                .get(0);
+        new EggMill(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.EGG_MILL_1, eggMillRecipe, 2500, 16, 64)
+                .register(plugin);
+
+        final Recipe eggMill2Recipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.EGG_MILL_2).toList()
+                .get(0);
+        new EggMill(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.EGG_MILL_2, eggMill2Recipe, 5000, 64, 256)
                 .register(plugin);
 
         // END Energy Generators

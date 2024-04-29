@@ -31,6 +31,8 @@ public class DynaTechRecipes {
     private static final ItemStack PINK_CONCRETE = new ItemStack(Material.PINK_CONCRETE);
     private static final ItemStack STRING = new ItemStack(Material.STRING);
     private static final ItemStack IRON_BARS = new ItemStack(Material.IRON_BARS);
+    private static final ItemStack END_STONE = new ItemStack(Material.END_STONE);
+    private static final ItemStack CHORUS_FRUIT = new ItemStack(Material.CHORUS_FRUIT);
     // END common use items
 
     private DynaTechRecipes() {
@@ -231,6 +233,54 @@ public class DynaTechRecipes {
                         IRON_BLOCK, IRON_INGOT, IRON_BLOCK
                 })
                 .setOutput(DynaTechItems.WIND_MILL_2)
+                .register(registry);
+
+        // Egg Mill Level 1
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "egg_mill_1"))
+                .setRecipeType(RecipeType.MAGIC_WORKBENCH)
+                .setInput(new ItemStack[] {
+                        SlimefunItems.MAGIC_LUMP_3, END_STONE, SlimefunItems.MAGIC_LUMP_3,
+                        CHORUS_FRUIT, DynaTechItems.WOOD_MACHINE_CORE, CHORUS_FRUIT,
+                        DynaTechItems.ENERGY_OUTPUT_COMPONENT, END_STONE, DynaTechItems.ENERGY_STORAGE_COMPONENT,
+                })
+                .setOutput(DynaTechItems.EGG_MILL_1)
+                .register(registry);
+
+        // Egg Mill Level 1 Repair
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "egg_mill_1_repair"))
+                .setRecipeType(RecipeType.MAGIC_WORKBENCH)
+                .setInput(new ItemStack[] {
+                        SlimefunItems.MAGIC_LUMP_1, END_STONE, SlimefunItems.MAGIC_LUMP_1,
+                        CHORUS_FRUIT, DynaTechItems.DEGRADED_EGG_MILL, CHORUS_FRUIT,
+                        SlimefunItems.MAGIC_LUMP_1, END_STONE, SlimefunItems.MAGIC_LUMP_1,
+                })
+                .setOutput(DynaTechItems.EGG_MILL_1)
+                .register(registry);
+
+        // Egg Mill Level 2
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "egg_mill_2"))
+                .setRecipeType(RecipeType.MAGIC_WORKBENCH)
+                .setInput(new ItemStack[] {
+                        SlimefunItems.MAGIC_LUMP_3, END_STONE, SlimefunItems.MAGIC_LUMP_3,
+                        CHORUS_FRUIT, DynaTechItems.WOOD_MACHINE_CORE, CHORUS_FRUIT,
+                        DynaTechItems.EGG_MILL_1, END_STONE, DynaTechItems.EGG_MILL_1,
+                })
+                .setOutput(DynaTechItems.EGG_MILL_2)
+                .register(registry);
+
+        // Egg Mill Level 2 Repair
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "egg_mill_2_repair"))
+                .setRecipeType(RecipeType.MAGIC_WORKBENCH)
+                .setInput(new ItemStack[] {
+                        SlimefunItems.MAGIC_LUMP_1, END_STONE, SlimefunItems.MAGIC_LUMP_1,
+                        CHORUS_FRUIT, DynaTechItems.DEGRADED_EGG_MILL_2, CHORUS_FRUIT,
+                        SlimefunItems.MAGIC_LUMP_1, END_STONE, SlimefunItems.MAGIC_LUMP_1,
+                })
+                .setOutput(DynaTechItems.EGG_MILL_2)
                 .register(registry);
 
         // END Energy Generators
