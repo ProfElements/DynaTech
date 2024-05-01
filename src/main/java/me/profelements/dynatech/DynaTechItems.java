@@ -57,6 +57,14 @@ public class DynaTechItems {
     public static final RecipeType DT_SCOOP = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "DT_SCOOP"),
             new CustomItemStack(Material.IRON_SHOVEL, "&bScoop a Bee using a Scoop"));
 
+    // START Recipe Types
+
+    public static final RecipeType DT_BLOCK_DROP = new RecipeType(
+            new NamespacedKey(DynaTech.getInstance(), "DT_BLOCK_DROP"),
+            new CustomItemStack(Material.COBWEB, "&bDrops from a block"));
+
+    // END Recipe Types
+
     // START Mechanical Components
 
     public static final SlimefunItemStack WOOD_MACHINE_CORE = new SlimefunItemStack("DT_WOOD_MACHINE_CORE",

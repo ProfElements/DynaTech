@@ -123,6 +123,54 @@ public class DynaTechRecipes {
                 .setOutput(DynaTechItems.ENERGY_OUTPUT_COMPONENT)
                 .register(registry);
 
+        // Degraded Wind Mill
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "degraded_wind_mill"))
+                .setRecipeType(DynaTechItems.DT_BLOCK_DROP)
+                .setInput(new ItemStack[] { DynaTechItems.WIND_MILL_1 })
+                .setOutput(DynaTechItems.DEGRADED_WIND_MILL)
+                .register(registry);
+
+        // Degraded Wind Mill 2
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "degraded_wind_mill_2"))
+                .setRecipeType(DynaTechItems.DT_BLOCK_DROP)
+                .setInput(new ItemStack[] { DynaTechItems.WIND_MILL_2 })
+                .setOutput(DynaTechItems.DEGRADED_WIND_MILL_2)
+                .register(registry);
+
+        // Degraded Hydro Mill
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "degraded_water_mill"))
+                .setRecipeType(DynaTechItems.DT_BLOCK_DROP)
+                .setInput(new ItemStack[] { DynaTechItems.WATER_MILL_1 })
+                .setOutput(DynaTechItems.DEGRADED_WATER_MILL)
+                .register(registry);
+
+        // Degraded Hydro Mill 2
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "degraded_water_mill_2"))
+                .setRecipeType(DynaTechItems.DT_BLOCK_DROP)
+                .setInput(new ItemStack[] { DynaTechItems.WATER_MILL_2 })
+                .setOutput(DynaTechItems.DEGRADED_WATER_MILL_2)
+                .register(registry);
+
+        // Degraded Egg Mill
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "degraded_egg_mill"))
+                .setRecipeType(DynaTechItems.DT_BLOCK_DROP)
+                .setInput(new ItemStack[] { DynaTechItems.EGG_MILL_1 })
+                .setOutput(DynaTechItems.DEGRADED_EGG_MILL)
+                .register(registry);
+
+        // Degraded Egg Mill 2
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "degraded_egg_mill_2"))
+                .setRecipeType(DynaTechItems.DT_BLOCK_DROP)
+                .setInput(new ItemStack[] { DynaTechItems.EGG_MILL_2 })
+                .setOutput(DynaTechItems.DEGRADED_EGG_MILL_2)
+                .register(registry);
+
         // END Mechanical Components
 
         // Start Generators
