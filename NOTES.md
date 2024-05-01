@@ -37,10 +37,12 @@
 - Add Wind Turbine [x]
 - Fix Water Mill [x]
 - Fix Hydro Turbine [x]
-- Fix Dragon Egg Generator
-- Add Dragon Egg Turbine
+- Fix Dragon Egg Generator [x]
+- Add Dragon Egg Turbine [x]
 ### ROUND 2 
-- Add `DegradingGenerator`. This generator slowly degrades over time needed to be fixed. All infinite energy generators become this.  
+- Add Liquid Storage [ ]
+- Add Liquid Storage Tank (Liquid Storage Block) [ ]
+- Add Liquid Storage Capsule (Liquid Storage Item) [ ]
 
 ## MISC Notes
 To register a recipe without a SlimefunItem + SlimefunItemStack combo 
