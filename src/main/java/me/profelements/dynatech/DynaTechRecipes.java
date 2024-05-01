@@ -202,7 +202,7 @@ public class DynaTechRecipes {
                 .setKey(new NamespacedKey(DynaTech.getInstance(), "wind_mill_1_repair"))
                 .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
                 .setInput(new ItemStack[] {
-                        null, IRON_INGOT,
+                        null, IRON_INGOT, null,
                         IRON_INGOT, DynaTechItems.DEGRADED_WIND_MILL, IRON_INGOT,
                         IRON_BLOCK, IRON_INGOT, IRON_BLOCK
                 })
@@ -228,7 +228,7 @@ public class DynaTechRecipes {
                 .setKey(new NamespacedKey(DynaTech.getInstance(), "wind_mill_2_repair"))
                 .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
                 .setInput(new ItemStack[] {
-                        null, IRON_INGOT,
+                        null, IRON_INGOT, null,
                         IRON_INGOT, DynaTechItems.DEGRADED_WIND_MILL_2, IRON_INGOT,
                         IRON_BLOCK, IRON_INGOT, IRON_BLOCK
                 })
