@@ -737,22 +737,40 @@ public class DynaTechItemsSetup {
         new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.ENERGY_OUTPUT_COMPONENT,
                 energyOutputRecipe.getRecipeType(), energyInputRecipe.getInput()).register(plugin);
 
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_WATER_MILL, RecipeType.NULL,
-                new ItemStack[] {}).register(plugin);
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_WATER_MILL_2, RecipeType.NULL,
-                new ItemStack[] {}).register(plugin);
+        final Recipe degradedWaterMillRecipe = DynaTech.getRecipeRegistry()
+                .getRecipesByOutput(DynaTechItems.DEGRADED_WATER_MILL).toList().get(0);
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_WATER_MILL,
+                degradedWaterMillRecipe.getRecipeType(), degradedWaterMillRecipe.getInput()).register(plugin);
 
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_WIND_MILL, RecipeType.NULL,
-                new ItemStack[] {}).register(plugin);
+        final Recipe degradedWaterMill2Recipe = DynaTech.getRecipeRegistry()
+                .getRecipesByOutput(DynaTechItems.DEGRADED_WATER_MILL_2).toList().get(0);
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_WATER_MILL_2,
+                degradedWaterMill2Recipe.getRecipeType(),
+                degradedWaterMill2Recipe.getInput()).register(plugin);
 
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_WIND_MILL_2, RecipeType.NULL,
-                new ItemStack[] {}).register(plugin);
+        final Recipe degradedWindMillRecipe = DynaTech.getRecipeRegistry()
+                .getRecipesByOutput(DynaTechItems.DEGRADED_WIND_MILL).toList().get(0);
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_WIND_MILL,
+                degradedWindMillRecipe.getRecipeType(),
+                degradedWindMillRecipe.getInput()).register(plugin);
 
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_EGG_MILL, RecipeType.NULL,
-                new ItemStack[] {}).register(plugin);
+        final Recipe degradedWindMill2Recipe = DynaTech.getRecipeRegistry()
+                .getRecipesByOutput(DynaTechItems.DEGRADED_WIND_MILL_2).toList().get(0);
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_WIND_MILL_2,
+                degradedWindMill2Recipe.getRecipeType(),
+                degradedWindMill2Recipe.getInput()).register(plugin);
 
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_EGG_MILL_2, RecipeType.NULL,
-                new ItemStack[] {}).register(plugin);
+        final Recipe degradedEggMillRecipe = DynaTech.getRecipeRegistry()
+                .getRecipesByOutput(DynaTechItems.DEGRADED_EGG_MILL).toList().get(0);
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_EGG_MILL,
+                degradedEggMillRecipe.getRecipeType(),
+                degradedEggMillRecipe.getInput()).register(plugin);
+
+        final Recipe degradedEggMill2Recipe = DynaTech.getRecipeRegistry()
+                .getRecipesByOutput(DynaTechItems.DEGRADED_EGG_MILL_2).toList().get(0);
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_EGG_MILL_2,
+                degradedEggMill2Recipe.getRecipeType(),
+                degradedEggMill2Recipe.getInput()).register(plugin);
 
         // END Mechanical Components
 
