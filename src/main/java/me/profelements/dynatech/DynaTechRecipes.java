@@ -33,6 +33,7 @@ public class DynaTechRecipes {
     private static final ItemStack IRON_BARS = new ItemStack(Material.IRON_BARS);
     private static final ItemStack END_STONE = new ItemStack(Material.END_STONE);
     private static final ItemStack CHORUS_FRUIT = new ItemStack(Material.CHORUS_FRUIT);
+    private static final ItemStack BOOK = new ItemStack(Material.BOOK);
     // END common use items
 
     private DynaTechRecipes() {
@@ -371,6 +372,16 @@ public class DynaTechRecipes {
                 }).setOutput(DynaTechItems.INV_FILTER)
                 .register(registry);
 
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "recipe_book"))
+                .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
+                .setInput(new ItemStack[] {
+                        null, DynaTechItems.STAINLESS_STEEL_INGOT, null,
+                        DynaTechItems.STAINLESS_STEEL_INGOT, BOOK, DynaTechItems.STAINLESS_STEEL_INGOT,
+                        null, DynaTechItems.STAINLESS_STEEL_INGOT, null,
+                })
+                .setOutput(DynaTechItems.RECIPE_BOOK)
+                .register(registry);
         // END Tools
     }
 

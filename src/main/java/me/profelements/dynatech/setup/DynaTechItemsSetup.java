@@ -18,6 +18,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
+import me.profelements.dynatech.items.RecipeBook;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.backpacks.SoulboundPicnicBacket;
 import me.profelements.dynatech.items.electric.AntigravityBubble;
@@ -827,6 +828,9 @@ public class DynaTechItemsSetup {
         new InventoryFilter(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.INV_FILTER,
                 inventoryFilterRecipe.getRecipeType(), inventoryFilterRecipe.getInput()).register(plugin);
 
+        final Recipe recipeBookRecipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.RECIPE_BOOK)
+                .toList().get(0);
+        new RecipeBook(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.RECIPE_BOOK, recipeBookRecipe).register(plugin);
         // END Tools
     }
 
