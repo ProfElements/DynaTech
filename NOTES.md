@@ -40,10 +40,12 @@
 - Fix Dragon Egg Generator [x]
 - Add Dragon Egg Turbine [x]
 ### ROUND 2 
+- Add Recipe Book [x]
 - Add Liquid Storage [ ]
 - Add Liquid Storage Tank (Liquid Storage Block) [ ]
 - Add Liquid Storage Capsule (Liquid Storage Item) [ ]
-
+### ROUND OTHER
+- Add Fishing Machine [ ]
 ## MISC Notes
 To register a recipe without a SlimefunItem + SlimefunItemStack combo 
 use RecipeType.register(ItemStack[], ItemStack) 

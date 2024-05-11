@@ -64,12 +64,15 @@ import me.profelements.dynatech.items.tools.AngelGem;
 import me.profelements.dynatech.items.tools.DimensionalHome;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
 import me.profelements.dynatech.items.tools.InventoryFilter;
+import me.profelements.dynatech.items.tools.LiquidContainerItem;
 import me.profelements.dynatech.items.tools.LiquidTank;
 import me.profelements.dynatech.items.tools.Scoop;
 import me.profelements.dynatech.items.tools.TesseractBinder;
+import me.profelements.dynatech.utils.LiquidRegistry;
 import me.profelements.dynatech.utils.Recipe;
 
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -821,6 +824,24 @@ public class DynaTechItemsSetup {
         new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.STAINLESS_STEEL_ROTOR_1,
                 stainlessSteelRotorRecipe.getRecipeType(), stainlessSteelRotorRecipe.getInput()).register(plugin);
         // END Materials
+
+        // START Liquids
+        new LiquidContainerItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.LAVA_BOTTLE, RecipeType.NULL,
+                new ItemStack[] {}, LiquidRegistry.getInstance().getByKey(NamespacedKey.minecraft("lava")), 250)
+                .register(plugin);
+
+        new LiquidContainerItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.HONEY_BUCKET, RecipeType.NULL,
+                new ItemStack[] {}, LiquidRegistry.getInstance().getByKey(NamespacedKey.minecraft("honey")), 1000)
+                .register(plugin);
+
+        new LiquidContainerItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.POTION_BUCKET, RecipeType.NULL,
+                new ItemStack[] {}, LiquidRegistry.getInstance().getByKey(NamespacedKey.minecraft("potion")), 1000)
+                .register(plugin);
+
+        new LiquidContainerItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.MILK_BOTTLE, RecipeType.NULL,
+                new ItemStack[] {}, LiquidRegistry.getInstance().getByKey(NamespacedKey.minecraft("milk")), 1000)
+                .register(plugin);
+        // END Liquids
 
         // START Tools
         final Recipe inventoryFilterRecipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.INV_FILTER)

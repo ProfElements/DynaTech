@@ -38,7 +38,6 @@ public class DynaTechRecipes {
 
     private DynaTechRecipes() {
     }
-
     // START Recipes
 
     public static final void registerRecipes(RecipeRegistry registry) {

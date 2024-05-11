@@ -15,9 +15,14 @@ import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.profelements.dynatech.items.electric.MaterialHive;
+import me.profelements.dynatech.utils.LiquidRegistry;
+
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.potion.PotionType;
 
 public class DynaTechItems {
 
@@ -171,6 +176,50 @@ public class DynaTechItems {
             Material.IRON_BLOCK, "&fStainless Steel Rotor");
     // END Materials
 
+    // START Liquids
+    /* 5 Liquids Currently: Lava, Water, Honey, Potion, Milk */
+
+    // Lava
+    // Lava Bucket
+    // Lava Bottle
+    public static final SlimefunItemStack LAVA_BOTTLE = new SlimefunItemStack("DT_LAVA_BOTTLE",
+            Material.POTION,
+            "&fLava Bottle",
+            meta -> {
+                if (meta instanceof PotionMeta p) {
+                    p.setColor(Color.ORANGE);
+                    p.setBasePotionType(PotionType.WATER);
+                }
+            });
+
+    // Water
+    // Water Bucket
+    // Water Bottle
+
+    // Honey
+    // Honey Bucket
+    public static final SlimefunItemStack HONEY_BUCKET = new SlimefunItemStack("DT_HONEY_BUCKET", Material.LAVA_BUCKET,
+            "&fHoney Bucket");
+    // Honey Bottle
+
+    // Potion
+    // Potion Bucket
+    public static final SlimefunItemStack POTION_BUCKET = new SlimefunItemStack("DT_POTION_BUCKET",
+            Material.WATER_BUCKET, "&fPotion Bucket");
+    // Potion Bottle
+
+    // Milk
+    // Milk Bucket
+    // Milk Bottle
+    public static final SlimefunItemStack MILK_BOTTLE = new SlimefunItemStack("DT_MILK_BOTTLE", Material.POTION,
+            "&fMilk Bottle", meta -> {
+                if (meta instanceof PotionMeta p) {
+                    p.setColor(Color.WHITE);
+                    p.setBasePotionType(PotionType.WATER);
+                }
+            });
+
+    // END Liquids
     // START Tools
     public static final SlimefunItemStack INV_FILTER = new SlimefunItemStack("DT_INVENTORY_FILTER",
             Material.IRON_BARS, "&6Inventory Filter",
