@@ -32,7 +32,7 @@ public class ChestMenuUtils {
         Set<ItemStack> outputs = new HashSet<>();
 
         for (Recipe recipe : recipes) {
-            outputs.add(recipe.getOutput());
+            outputs.add(recipe.getOutput()[0]);
         }
 
         int iter = 9;
@@ -95,7 +95,7 @@ public class ChestMenuUtils {
         }
 
         menu.addItem(19, recipe.getRecipeType().toItem(), NO_CLICK);
-        menu.addItem(25, recipe.getOutput(), NO_CLICK);
+        menu.addItem(25, recipe.getOutput()[0], NO_CLICK);
 
         // air , air , air
         menu.addItem(36,

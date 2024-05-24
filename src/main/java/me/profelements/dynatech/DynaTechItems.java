@@ -68,6 +68,10 @@ public class DynaTechItems {
             new NamespacedKey(DynaTech.getInstance(), "DT_BLOCK_DROP"),
             new CustomItemStack(Material.COBWEB, "&bDrops from a block"));
 
+    public static final RecipeType DT_TREE_GROWTH_CHAMBER = new RecipeType(
+            new NamespacedKey(DynaTech.getInstance(), "tree_growth_chamber"),
+            new CustomItemStack(Material.LIME_TERRACOTTA, "&fGrow Item in the Tree Growth Chamber"));
+
     // END Recipe Types
 
     // START Mechanical Components
@@ -232,6 +236,12 @@ public class DynaTechItems {
 
     public static final SlimefunItemStack RECIPE_BOOK = new SlimefunItemStack("DT_RECIPE_BOOK", Material.BOOK,
             "&6Recipe Book");
+
+    public static final SlimefunItemStack AUTO_OUTPUT_UPGRADE = new SlimefunItemStack("DT_AUTO_OUTPUT_UPGRADE",
+            Material.RED_STAINED_GLASS_PANE, "&6Auto Output Upgrade");
+
+    public static final SlimefunItemStack AUTO_INPUT_UPGRADE = new SlimefunItemStack("DT_AUTO_INPUT_UPGRADE",
+            Material.BLUE_STAINED_GLASS_PANE, "&6Auto Input Upgrade");
     // END Tools
 
     // General
@@ -289,7 +299,6 @@ public class DynaTechItems {
             ID_LORE,
             "",
             RIGHT_CLICK_LORE);
-
     public static final SlimefunItemStack SOULBOUND_PICNIC_BASKET = new SlimefunItemStack("SOULBOUND_PICNIC_BASKET",
             new CustomItemStack(PlayerHead.getItemStack(
                     PlayerSkin.fromHashCode("7a6bf916e28ccb80b4ebfacf98686ad6af7c4fb257e57a8cb78c71d19dccb2"))),

@@ -61,6 +61,8 @@ import me.profelements.dynatech.items.misc.StarDustMeteor;
 import me.profelements.dynatech.items.misc.VexGem;
 import me.profelements.dynatech.items.misc.WitherGolem;
 import me.profelements.dynatech.items.tools.AngelGem;
+import me.profelements.dynatech.items.tools.AutoInputUpgrade;
+import me.profelements.dynatech.items.tools.AutoOutputUpgrade;
 import me.profelements.dynatech.items.tools.DimensionalHome;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
 import me.profelements.dynatech.items.tools.InventoryFilter;
@@ -98,8 +100,7 @@ public class DynaTechItemsSetup {
                 }).register(plugin);
 
         new SlimefunItem(DynaTechItems.DT_RESOURCES, DynaTechItems.STAINLESS_STEEL_ROTOR,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
+                RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                         null, DynaTechItems.STAINLESS_STEEL, null,
                         DynaTechItems.STAINLESS_STEEL, new ItemStack(Material.IRON_BLOCK),
                         DynaTechItems.STAINLESS_STEEL,
@@ -852,6 +853,16 @@ public class DynaTechItemsSetup {
         final Recipe recipeBookRecipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.RECIPE_BOOK)
                 .toList().get(0);
         new RecipeBook(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.RECIPE_BOOK, recipeBookRecipe).register(plugin);
+
+        final Recipe autoOutputUpgradeRecipe = DynaTech.getRecipeRegistry()
+                .getRecipesByOutput(DynaTechItems.AUTO_OUTPUT_UPGRADE).toList().get(0);
+        new AutoOutputUpgrade(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.AUTO_OUTPUT_UPGRADE,
+                autoOutputUpgradeRecipe).register(plugin);
+
+        final Recipe autoInputUpgradeRecipe = DynaTech.getRecipeRegistry()
+                .getRecipesByOutput(DynaTechItems.AUTO_INPUT_UPGRADE).toList().get(0);
+        new AutoInputUpgrade(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.AUTO_INPUT_UPGRADE, autoInputUpgradeRecipe)
+                .register(plugin);
         // END Tools
     }
 

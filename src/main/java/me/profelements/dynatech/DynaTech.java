@@ -12,6 +12,7 @@ import me.profelements.dynatech.listeners.ExoticGardenIntegrationListener;
 import me.profelements.dynatech.listeners.GastronomiconIntegrationListener;
 import me.profelements.dynatech.listeners.InventoryFilterListener;
 import me.profelements.dynatech.listeners.PicnicBasketListener;
+import me.profelements.dynatech.listeners.UpgradesListener;
 import me.profelements.dynatech.setup.DynaTechItemsSetup;
 import me.profelements.dynatech.tasks.ItemBandTask;
 import me.profelements.dynatech.utils.Liquid;
@@ -65,6 +66,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         new PicnicBasketListener(this, (PicnicBasket) DynaTechItems.PICNIC_BASKET.getItem());
         new ElectricalStimulatorListener(this, (ElectricalStimulator) DynaTechItems.ELECTRICAL_STIMULATOR.getItem());
         new InventoryFilterListener(this);
+        new UpgradesListener(this);
 
         try {
             Class.forName("io.github.schntgaispock.gastronomicon.api.items.FoodItemStack");

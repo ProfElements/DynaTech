@@ -11,19 +11,23 @@ public class Recipe {
     private NamespacedKey KEY;
     private RecipeType TYPE;
     private ItemStack[] INPUT;
-    private ItemStack OUTPUT;
+    private ItemStack[] OUTPUT;
 
-    private Recipe() {
+    protected Recipe() {
     }
 
     public static Recipe init() {
         return new Recipe();
     }
 
+    protected Recipe getInstance() {
+        return this;
+    }
+
     public Recipe setKey(NamespacedKey key) {
         Preconditions.checkNotNull(key, "The recipe's namespaced key should not be null");
         this.KEY = key;
-        return this;
+        return getInstance();
     }
 
     public final NamespacedKey getKey() {
@@ -33,17 +37,23 @@ public class Recipe {
     public Recipe setRecipeType(RecipeType type) {
         Preconditions.checkNotNull(type, "The recipe's type should not be null");
         this.TYPE = type;
-        return this;
+        return getInstance();
     }
 
     public final RecipeType getRecipeType() {
         return this.TYPE;
     }
 
+    public Recipe setInput(ItemStack input) {
+        Preconditions.checkNotNull(input, "This recipe's inputs should not be null");
+        this.INPUT = new ItemStack[] { input };
+        return getInstance();
+    }
+
     public Recipe setInput(ItemStack[] input) {
         Preconditions.checkNotNull(input, "This recipe's inputs should not be null");
         this.INPUT = input;
-        return this;
+        return getInstance();
     }
 
     public final ItemStack[] getInput() {
@@ -52,25 +62,36 @@ public class Recipe {
 
     public Recipe setOutput(ItemStack output) {
         Preconditions.checkNotNull(output, "This recipe's output should not be null");
-        this.OUTPUT = output;
-        return this;
+        this.OUTPUT = new ItemStack[] { output };
+        return getInstance();
     }
 
-    public final ItemStack getOutput() {
+    public Recipe setOutput(ItemStack[] output) {
+        Preconditions.checkNotNull(output, "This recipe's output should not be null");
+        this.OUTPUT = output;
+        return getInstance();
+    }
+
+    public final ItemStack[] getOutput() {
         return this.OUTPUT;
     }
 
-    public final Recipe build() {
+    public void validate() {
         Preconditions.checkNotNull(this.KEY, "The recipe's namespaced key should not be null");
         Preconditions.checkNotNull(this.TYPE, "The recipe's type should not be null");
         Preconditions.checkNotNull(this.INPUT, "This recipe's inputs should not be null");
         Preconditions.checkNotNull(this.OUTPUT, "This recipe's output should not be null");
-        return this;
+
+    }
+
+    public Recipe build() {
+        this.validate();
+        return getInstance();
     }
 
     public void register(RecipeRegistry registry) {
         Recipe res = this.build();
-        res.getRecipeType().register(res.getInput(), res.getOutput());
+        res.getRecipeType().register(res.getInput(), res.getOutput()[0]);
         registry.addRecipe(res);
     }
 

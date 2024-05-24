@@ -10,6 +10,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.profelements.dynatech.utils.Recipe;
 import me.profelements.dynatech.utils.RecipeRegistry;
+import me.profelements.dynatech.utils.TimedRecipe;
 
 public class DynaTechRecipes {
     // START common use items
@@ -154,7 +155,6 @@ public class DynaTechRecipes {
                 .setInput(new ItemStack[] { DynaTechItems.WATER_MILL_2 })
                 .setOutput(DynaTechItems.DEGRADED_WATER_MILL_2)
                 .register(registry);
-
         // Degraded Egg Mill
         Recipe.init()
                 .setKey(new NamespacedKey(DynaTech.getInstance(), "degraded_egg_mill"))
@@ -381,7 +381,51 @@ public class DynaTechRecipes {
                 })
                 .setOutput(DynaTechItems.RECIPE_BOOK)
                 .register(registry);
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "auto_output_upgrade"))
+                .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
+                .setInput(new ItemStack[] {
+                        DynaTechItems.STAINLESS_STEEL_INGOT, SlimefunItems.CARGO_MOTOR,
+                        DynaTechItems.STAINLESS_STEEL_INGOT,
+                        GLASS, GLASS, GLASS,
+                        DynaTechItems.STAINLESS_STEEL_INGOT, SlimefunItems.CARGO_MOTOR,
+                        DynaTechItems.STAINLESS_STEEL_INGOT,
+                })
+                .setOutput(DynaTechItems.AUTO_OUTPUT_UPGRADE)
+                .register(registry);
+
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "auto_input_upgrade"))
+                .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
+                .setInput(new ItemStack[] {
+                        DynaTechItems.STAINLESS_STEEL_INGOT, SlimefunItems.CARGO_MOTOR,
+                        DynaTechItems.STAINLESS_STEEL_INGOT,
+                        new ItemStack(Material.HOPPER), new ItemStack(Material.HOPPER), new ItemStack(Material.HOPPER),
+                        DynaTechItems.STAINLESS_STEEL_INGOT, SlimefunItems.CARGO_MOTOR,
+                        DynaTechItems.STAINLESS_STEEL_INGOT,
+                })
+                .setOutput(DynaTechItems.AUTO_INPUT_UPGRADE)
+                .register(registry);
         // END Tools
+
+        // START Tree Growth Chamber Recipes
+        // OAK, BIRCH, SPRUCE, DARK_OAK, MANGROVE, CHERRY, JUNGLE, ACAICA, AZALEA
+        // 1 SAPLING (10 secs) (128/s; 64 / default slimefun tick) -> 2 SAPLING, 6 LOG,
+        // 3 LEAF
+        TimedRecipe.init()
+                .setTimeInTicks(20)
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "oak_tree"))
+                .setRecipeType(DynaTechItems.DT_TREE_GROWTH_CHAMBER)
+                .setInput(new ItemStack(Material.OAK_SAPLING))
+                .setOutput(
+                        new ItemStack[] {
+                                new ItemStack(Material.OAK_SAPLING, 2),
+                                new ItemStack(Material.OAK_LOG, 6),
+                                new ItemStack(Material.OAK_LEAVES, 3)
+                        })
+                .register(registry);
+
+        // END Tree Growth Chamber Recipes
     }
 
     // END Recipes

@@ -47,7 +47,11 @@ public class RecipeRegistry {
     }
 
     public final Stream<Recipe> getRecipesByOutput(ItemStack output) {
-        return getRecipes().stream().filter(r -> r.getOutput().equals(output));
+        return getRecipes().stream().filter(r -> r.getOutput()[0].equals(output));
+    }
+
+    public final Stream<Recipe> getRecipeByOutputs(ItemStack[] outputs) {
+        return getRecipes().stream().filter(r -> r.getOutput().equals(outputs));
     }
 
     public final boolean isMatching(RecipeType type, ItemStack[] input, ItemStack output) {
