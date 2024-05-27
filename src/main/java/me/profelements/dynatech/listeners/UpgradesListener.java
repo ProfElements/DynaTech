@@ -44,6 +44,10 @@ public class UpgradesListener implements Listener {
         Location l = e.getPosition().toLocation();
         String upgrades = BlockStorage.getLocationInfo(l, "upgrades");
 
+        if (upgrades == null) {
+            return;
+        }
+
         int upgradeIdx = upgrades.indexOf("{id:auto_output");
         if (upgradeIdx == -1) {
             return;
