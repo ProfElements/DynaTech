@@ -92,21 +92,6 @@ public class DynaTechItemsSetup {
 
         // General
         // Resources
-        new SlimefunItem(DynaTechItems.DT_RESOURCES, DynaTechItems.STAINLESS_STEEL, RecipeType.SMELTERY,
-                new ItemStack[] {
-                        new ItemStack(Material.IRON_INGOT), SlimefunItems.IRON_DUST, SlimefunItems.ZINC_DUST,
-                        null, null, null,
-                        null, null, null,
-                }).register(plugin);
-
-        new SlimefunItem(DynaTechItems.DT_RESOURCES, DynaTechItems.STAINLESS_STEEL_ROTOR,
-                RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                        null, DynaTechItems.STAINLESS_STEEL, null,
-                        DynaTechItems.STAINLESS_STEEL, new ItemStack(Material.IRON_BLOCK),
-                        DynaTechItems.STAINLESS_STEEL,
-                        null, DynaTechItems.STAINLESS_STEEL, null
-                }).register(plugin);
-
         new SlimefunItem(DynaTechItems.DT_RESOURCES, DynaTechItems.ANCIENT_MACHINE_CORE, RecipeType.MAGIC_WORKBENCH,
                 new ItemStack[] {
                         SlimefunItems.LEAD_INGOT, SlimefunItems.MAGIC_LUMP_1, SlimefunItems.LEAD_INGOT,
@@ -236,8 +221,9 @@ public class DynaTechItemsSetup {
         new ElectricalStimulator(DynaTechItems.DT_TOOLS, DynaTechItems.ELECTRICAL_STIMULATOR,
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        DynaTechItems.STAINLESS_STEEL, null, DynaTechItems.STAINLESS_STEEL,
-                        DynaTechItems.STAINLESS_STEEL, SlimefunItems.FOOD_FABRICATOR, DynaTechItems.STAINLESS_STEEL,
+                        DynaTechItems.STAINLESS_STEEL_INGOT, null, DynaTechItems.STAINLESS_STEEL_INGOT,
+                        DynaTechItems.STAINLESS_STEEL_INGOT, SlimefunItems.FOOD_FABRICATOR,
+                        DynaTechItems.STAINLESS_STEEL_INGOT,
                         SlimefunItems.PLASTIC_SHEET, SlimefunItems.PLASTIC_SHEET, SlimefunItems.PLASTIC_SHEET
                 }).register(plugin);
 
@@ -246,7 +232,7 @@ public class DynaTechItemsSetup {
                         new ItemStack(Material.NETHERITE_INGOT), SlimefunItems.NUCLEAR_REACTOR,
                         new ItemStack(Material.NETHERITE_INGOT),
                         SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.VEX_GEM, SlimefunItems.GOLD_24K_BLOCK,
-                        SlimefunItems.BLISTERING_INGOT_3, DynaTechItems.STAINLESS_STEEL_ROTOR,
+                        SlimefunItems.BLISTERING_INGOT_3, DynaTechItems.STAINLESS_STEEL_ROTOR_1,
                         SlimefunItems.BLISTERING_INGOT_3
                 }).register(plugin);
 
@@ -286,8 +272,8 @@ public class DynaTechItemsSetup {
         new TesseractBinder(DynaTechItems.DT_TOOLS, DynaTechItems.TESSERACT_BINDER, RecipeType.MAGIC_WORKBENCH,
                 new ItemStack[] {
                         null, DynaTechItems.TESSERACTING_OBJ, null,
-                        null, DynaTechItems.STAINLESS_STEEL, null,
-                        null, DynaTechItems.STAINLESS_STEEL, null,
+                        null, DynaTechItems.STAINLESS_STEEL_INGOT, null,
+                        null, DynaTechItems.STAINLESS_STEEL_INGOT, null,
                 }).register(plugin);
 
         if (DynaTech.isInfinityExpansionInstalled()) {
@@ -326,7 +312,8 @@ public class DynaTechItemsSetup {
                     new ItemStack[] {
                             new ItemStack(Material.BRICK), SlimefunItems.ELECTRIC_FURNACE,
                             new ItemStack(Material.BRICK),
-                            DynaTechItems.STAINLESS_STEEL, SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.STAINLESS_STEEL,
+                            DynaTechItems.STAINLESS_STEEL_INGOT, SlimefunItems.GOLD_24K_BLOCK,
+                            DynaTechItems.STAINLESS_STEEL_INGOT,
                             new ItemStack(Material.TERRACOTTA), new ItemStack(Material.TERRACOTTA),
                             new ItemStack(Material.TERRACOTTA),
                     })
@@ -341,8 +328,8 @@ public class DynaTechItemsSetup {
                         SlimefunItems.HARDENED_GLASS,
                         new ItemStack(Material.BONE_BLOCK), new ItemStack(Material.GRASS_BLOCK),
                         new ItemStack(Material.BONE_BLOCK),
-                        DynaTechItems.STAINLESS_STEEL, SlimefunItems.CROP_GROWTH_ACCELERATOR_2,
-                        DynaTechItems.STAINLESS_STEEL
+                        DynaTechItems.STAINLESS_STEEL_INGOT, SlimefunItems.CROP_GROWTH_ACCELERATOR_2,
+                        DynaTechItems.STAINLESS_STEEL_INGOT
                 })
                 .setCapacity(512)
                 .setConsumption(32)
@@ -369,7 +356,8 @@ public class DynaTechItemsSetup {
                         SlimefunItems.HARDENED_GLASS,
                         new ItemStack(Material.PURPUR_BLOCK), new ItemStack(Material.CHORUS_FLOWER),
                         new ItemStack(Material.END_STONE),
-                        DynaTechItems.STAINLESS_STEEL, DynaTechItems.GROWTH_CHAMBER, DynaTechItems.STAINLESS_STEEL
+                        DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.GROWTH_CHAMBER,
+                        DynaTechItems.STAINLESS_STEEL_INGOT
                 })
                 .setCapacity(512)
                 .setConsumption(32)
@@ -396,7 +384,8 @@ public class DynaTechItemsSetup {
                         SlimefunItems.HARDENED_GLASS,
                         new ItemStack(Material.CRIMSON_NYLIUM), new ItemStack(Material.SOUL_SAND),
                         new ItemStack(Material.WARPED_NYLIUM),
-                        DynaTechItems.STAINLESS_STEEL, DynaTechItems.GROWTH_CHAMBER, DynaTechItems.STAINLESS_STEEL
+                        DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.GROWTH_CHAMBER,
+                        DynaTechItems.STAINLESS_STEEL_INGOT
                 })
                 .setCapacity(512)
                 .setConsumption(32)
@@ -423,7 +412,8 @@ public class DynaTechItemsSetup {
                         SlimefunItems.HARDENED_GLASS,
                         new ItemStack(Material.WATER_BUCKET), new ItemStack(Material.SAND),
                         new ItemStack(Material.WATER_BUCKET),
-                        DynaTechItems.STAINLESS_STEEL, DynaTechItems.GROWTH_CHAMBER, DynaTechItems.STAINLESS_STEEL
+                        DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.GROWTH_CHAMBER,
+                        DynaTechItems.STAINLESS_STEEL_INGOT
                 })
                 .setCapacity(512)
                 .setConsumption(32)
@@ -451,7 +441,7 @@ public class DynaTechItemsSetup {
                         SlimefunItems.BLISTERING_INGOT_3,
                         SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.BIG_CAPACITOR,
                         SlimefunItems.REINFORCED_ALLOY_INGOT,
-                        SlimefunItems.REINFORCED_ALLOY_INGOT, DynaTechItems.STAINLESS_STEEL,
+                        SlimefunItems.REINFORCED_ALLOY_INGOT, DynaTechItems.STAINLESS_STEEL_INGOT,
                         SlimefunItems.REINFORCED_ALLOY_INGOT,
                 })
                 .setCapacity(1024)
@@ -465,8 +455,8 @@ public class DynaTechItemsSetup {
                         null, SlimefunItems.HARDENED_METAL_INGOT, null,
                         new ItemStack(Material.WATER_BUCKET), DynaTechItems.ANCIENT_MACHINE_CORE,
                         new ItemStack(Material.LAVA_BUCKET),
-                        DynaTechItems.STAINLESS_STEEL, new ItemStack(Material.CRYING_OBSIDIAN),
-                        DynaTechItems.STAINLESS_STEEL
+                        DynaTechItems.STAINLESS_STEEL_INGOT, new ItemStack(Material.CRYING_OBSIDIAN),
+                        DynaTechItems.STAINLESS_STEEL_INGOT
                 })
                 .setCapacity(512)
                 .setConsumption(32)
@@ -490,7 +480,8 @@ public class DynaTechItemsSetup {
                 new ItemStack[] {
                         new ItemStack(Material.IRON_SWORD), new ItemStack(Material.IRON_SWORD),
                         new ItemStack(Material.IRON_SWORD),
-                        DynaTechItems.STAINLESS_STEEL, new ItemStack(Material.OAK_LOG), DynaTechItems.STAINLESS_STEEL,
+                        DynaTechItems.STAINLESS_STEEL_INGOT, new ItemStack(Material.OAK_LOG),
+                        DynaTechItems.STAINLESS_STEEL_INGOT,
                         SlimefunItems.ZINC_INGOT, SlimefunItems.ZINC_INGOT, SlimefunItems.ZINC_INGOT
                 })
                 .setCapacity(1024)
@@ -531,9 +522,10 @@ public class DynaTechItemsSetup {
 
         new SeedPlucker(DynaTechItems.DT_MACHINES, DynaTechItems.SEED_PLUCKER, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        SlimefunItems.HARDENED_GLASS, DynaTechItems.STAINLESS_STEEL, SlimefunItems.HARDENED_GLASS,
+                        SlimefunItems.HARDENED_GLASS, DynaTechItems.STAINLESS_STEEL_INGOT, SlimefunItems.HARDENED_GLASS,
                         new ItemStack(Material.BONE_BLOCK), null, new ItemStack(Material.BONE_BLOCK),
-                        DynaTechItems.STAINLESS_STEEL, new ItemStack(Material.SHEARS), DynaTechItems.STAINLESS_STEEL
+                        DynaTechItems.STAINLESS_STEEL_INGOT, new ItemStack(Material.SHEARS),
+                        DynaTechItems.STAINLESS_STEEL_INGOT
                 })
                 .setCapacity(512)
                 .setConsumption(32)
@@ -614,8 +606,8 @@ public class DynaTechItemsSetup {
         new FurnaceController(DynaTechItems.DT_MACHINES, DynaTechItems.EXTERNAL_HEATER,
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        DynaTechItems.STAINLESS_STEEL, SlimefunItems.HARDENED_METAL_INGOT,
-                        DynaTechItems.STAINLESS_STEEL,
+                        DynaTechItems.STAINLESS_STEEL_INGOT, SlimefunItems.HARDENED_METAL_INGOT,
+                        DynaTechItems.STAINLESS_STEEL_INGOT,
                         new ItemStack(Material.OBSIDIAN), new ItemStack(Material.OBSERVER),
                         new ItemStack(Material.OBSIDIAN),
                         new ItemStack(Material.OBSIDIAN), SlimefunItems.ENERGY_REGULATOR,
@@ -628,9 +620,11 @@ public class DynaTechItemsSetup {
 
         new LiquidTank(DynaTechItems.DT_TOOLS, DynaTechItems.LIQUID_TANK, 16000, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        DynaTechItems.STAINLESS_STEEL, new ItemStack(Material.BUCKET), DynaTechItems.STAINLESS_STEEL,
+                        DynaTechItems.STAINLESS_STEEL_INGOT, new ItemStack(Material.BUCKET),
+                        DynaTechItems.STAINLESS_STEEL_INGOT,
                         new ItemStack(Material.BUCKET), new ItemStack(Material.BUCKET), new ItemStack(Material.BUCKET),
-                        DynaTechItems.STAINLESS_STEEL, new ItemStack(Material.BUCKET), DynaTechItems.STAINLESS_STEEL,
+                        DynaTechItems.STAINLESS_STEEL_INGOT, new ItemStack(Material.BUCKET),
+                        DynaTechItems.STAINLESS_STEEL_INGOT,
                 }).register(plugin);
 
         // Generators
@@ -639,7 +633,7 @@ public class DynaTechItemsSetup {
                 new ItemStack[] {
                         SlimefunItems.ALUMINUM_INGOT, SlimefunItems.SULFATE, SlimefunItems.ALUMINUM_INGOT,
                         SlimefunItems.ALUMINUM_INGOT, SlimefunItems.ENERGY_CONNECTOR, SlimefunItems.ALUMINUM_INGOT,
-                        DynaTechItems.STAINLESS_STEEL_ROTOR, null, DynaTechItems.STAINLESS_STEEL_ROTOR,
+                        DynaTechItems.STAINLESS_STEEL_ROTOR_1, null, DynaTechItems.STAINLESS_STEEL_ROTOR_1
                 }).register(plugin);
 
         new HydroGenerator(DynaTechItems.DT_GENERATORS, 64, DynaTechItems.WATER_TURBINE,
@@ -664,10 +658,12 @@ public class DynaTechItemsSetup {
         new ChippingGenerator(DynaTechItems.DT_GENERATORS, DynaTechItems.CHIPPING_GENERATOR,
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        DynaTechItems.STAINLESS_STEEL, DynaTechItems.STAINLESS_STEEL, DynaTechItems.STAINLESS_STEEL,
+                        DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.STAINLESS_STEEL_INGOT,
+                        DynaTechItems.STAINLESS_STEEL_INGOT,
                         new ItemStack(Material.DIAMOND_AXE), DynaTechItems.ANCIENT_MACHINE_CORE,
                         new ItemStack(Material.DIAMOND_AXE),
-                        DynaTechItems.STAINLESS_STEEL, DynaTechItems.STAINLESS_STEEL, DynaTechItems.STAINLESS_STEEL
+                        DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.STAINLESS_STEEL_INGOT,
+                        DynaTechItems.STAINLESS_STEEL_INGOT,
                 })
                 .setEnergyCapacity(256)
                 .setEnergyProduction(8)

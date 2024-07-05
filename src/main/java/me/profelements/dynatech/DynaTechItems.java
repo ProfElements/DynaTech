@@ -247,10 +247,15 @@ public class DynaTechItems {
     // General
 
     // Resources
-    public static final SlimefunItemStack STAINLESS_STEEL = new SlimefunItemStack("STAINLESS_STEEL",
-            Material.IRON_INGOT, "&6Stainless Steel Ingot");
-    public static final SlimefunItemStack STAINLESS_STEEL_ROTOR = new SlimefunItemStack("STAINLESS_STEEL_ROTOR",
-            Material.IRON_BLOCK, "&6Stainless Steel Rotor");
+    /*
+     * public static final SlimefunItemStack STAINLESS_STEEL = new
+     * SlimefunItemStack("STAINLESS_STEEL",
+     * Material.IRON_INGOT, "&6Stainless Steel Ingot");
+     * 
+     * public static final SlimefunItemStack STAINLESS_STEEL_ROTOR = new
+     * SlimefunItemStack("STAINLESS_STEEL_ROTOR",
+     * Material.IRON_BLOCK, "&6Stainless Steel Rotor");
+     */
     public static final SlimefunItemStack ANCIENT_MACHINE_CORE = new SlimefunItemStack("ANCIENT_MACHINE_CORE",
             Material.LAPIS_BLOCK, "&6Ancient Machine Core");
     public static final SlimefunItemStack VEX_GEM = new SlimefunItemStack("VEX_GEM",
