@@ -15,7 +15,6 @@ import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.profelements.dynatech.items.electric.MaterialHive;
-import me.profelements.dynatech.utils.LiquidRegistry;
 
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -243,6 +242,10 @@ public class DynaTechItems {
     public static final SlimefunItemStack AUTO_INPUT_UPGRADE = new SlimefunItemStack("DT_AUTO_INPUT_UPGRADE",
             Material.BLUE_STAINED_GLASS_PANE, "&6Auto Input Upgrade");
     // END Tools
+
+    // START Machines
+    public static final SlimefunItemStack COKE_OVEN_CONTROLLER = new SlimefunItemStack("DT_COKE_OVEN_CONTROLLER",
+            Material.SMOKER, "&fCoke Oven Controller");
 
     // General
 

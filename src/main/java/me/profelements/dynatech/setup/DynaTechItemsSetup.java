@@ -18,6 +18,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
+import me.profelements.dynatech.blocks.CokeOvenController;
 import me.profelements.dynatech.items.RecipeBook;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.backpacks.SoulboundPicnicBacket;
@@ -860,6 +861,9 @@ public class DynaTechItemsSetup {
         new AutoInputUpgrade(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.AUTO_INPUT_UPGRADE, autoInputUpgradeRecipe)
                 .register(plugin);
         // END Tools
+
+        // START Machines
+        new CokeOvenController(DynaTechItems.COKE_OVEN_CONTROLLER).register(plugin);
     }
 
     private static void registerMineralizedApiaries(MaterialHive hive, SlimefunAddon plugin) {

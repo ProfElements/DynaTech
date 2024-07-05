@@ -408,6 +408,9 @@ public class DynaTechRecipes {
                 .register(registry);
         // END Tools
 
+        // START Machines
+        // END Machines
+
         // START Tree Growth Chamber Recipes
         // OAK, BIRCH, SPRUCE, DARK_OAK, MANGROVE, CHERRY, JUNGLE, ACAICA, AZALEA
         // 1 SAPLING (10 secs) (128/s; 64 / default slimefun tick) -> 2 SAPLING, 6 LOG,
