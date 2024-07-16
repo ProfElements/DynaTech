@@ -8,7 +8,6 @@ Most of these could possibly be overpowered or heavily underpowered.
 DynaTech **never** tries to be backwards with older minecraft versions.
 I do not want to deal with the extra issues or development time that supporting older versions needs.
 ### [Download](https://blob.build/project/DynaTech)
-[![Build Status](https://thebusybiscuit.github.io/builds/ProfElements/DynaTech/master/badge.svg)](https://thebusybiscuit.github.io/builds/ProfElements/DynaTech/master)
 
 ## Machines
 - **Auto-Kitchen** - If you have ExoticGarden installed, this machine will become available. It automatically crafts any Kitchen recipe inserted into it.
