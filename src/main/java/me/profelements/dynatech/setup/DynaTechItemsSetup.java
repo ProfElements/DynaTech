@@ -737,7 +737,7 @@ public class DynaTechItemsSetup {
         final Recipe energyOutputRecipe = DynaTech.getRecipeRegistry()
                 .getRecipesByOutput(DynaTechItems.ENERGY_OUTPUT_COMPONENT).toList().get(0);
         new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.ENERGY_OUTPUT_COMPONENT,
-                energyOutputRecipe.getRecipeType(), energyInputRecipe.getInput()).register(plugin);
+                energyOutputRecipe.getRecipeType(), energyOutputRecipe.getInput()).register(plugin);
 
         final Recipe degradedWaterMillRecipe = DynaTech.getRecipeRegistry()
                 .getRecipesByOutput(DynaTechItems.DEGRADED_WATER_MILL).toList().get(0);
