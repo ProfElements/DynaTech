@@ -5,7 +5,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
-import me.profelements.dynatech.DynaTechItems;
+import me.profelements.dynatech.registries.Items;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class HydroGenerator extends SlimefunItem {
             public void onPlayerBreak(BlockBreakEvent event, ItemStack arg1, List<ItemStack> arg2) {
                 arg2.clear();
                 event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(),
-                        DynaTechItems.DEGRADED_WATER_MILL);
+                        Items.DEGRADED_WATER_MILL.stack());
             }
         };
     }

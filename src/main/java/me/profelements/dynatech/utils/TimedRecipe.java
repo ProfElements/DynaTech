@@ -2,6 +2,9 @@ package me.profelements.dynatech.utils;
 
 import com.google.common.base.Preconditions;
 
+import me.profelements.dynatech.registries.Registries;
+import me.profelements.dynatech.registries.TypedKey;
+
 public class TimedRecipe extends Recipe {
     private int TIME_IN_TICKS;
 
@@ -36,9 +39,10 @@ public class TimedRecipe extends Recipe {
     }
 
     @Override
-    public void register(RecipeRegistry registry) {
+    public Recipe register() {
         TimedRecipe res = this.build();
         res.getRecipeType().register(res.getInput(), res.getOutput()[0]);
-        registry.addRecipe(res);
+        Registries.RECIPES.register(TypedKey.create(this.getKey()), res);
+        return res;
     }
 }

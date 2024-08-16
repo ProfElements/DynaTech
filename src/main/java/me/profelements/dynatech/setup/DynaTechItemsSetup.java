@@ -19,6 +19,7 @@ import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.blocks.CokeOvenController;
+import me.profelements.dynatech.fluids.FluidTank;
 import me.profelements.dynatech.items.RecipeBook;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.backpacks.SoulboundPicnicBacket;
@@ -71,6 +72,8 @@ import me.profelements.dynatech.items.tools.LiquidContainerItem;
 import me.profelements.dynatech.items.tools.LiquidTank;
 import me.profelements.dynatech.items.tools.Scoop;
 import me.profelements.dynatech.items.tools.TesseractBinder;
+import me.profelements.dynatech.registries.Items;
+import me.profelements.dynatech.registries.Recipes;
 import me.profelements.dynatech.utils.LiquidRegistry;
 import me.profelements.dynatech.utils.Recipe;
 
@@ -656,7 +659,7 @@ public class DynaTechItemsSetup {
                         SlimefunItems.LEAD_INGOT, SlimefunItems.MEDIUM_CAPACITOR, SlimefunItems.LEAD_INGOT
                 }).register(plugin);
 
-        new ChippingGenerator(DynaTechItems.DT_GENERATORS, DynaTechItems.CHIPPING_GENERATOR,
+        new ChippingGenerator(DynaTechItems.DT_GENERATORS, Items.DURABILITY_GENERATOR.stack(),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.STAINLESS_STEEL_INGOT,
@@ -671,7 +674,7 @@ public class DynaTechItemsSetup {
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        new CulinaryGenerator(DynaTechItems.DT_GENERATORS, DynaTechItems.CULINARY_GENERATOR,
+        new CulinaryGenerator(DynaTechItems.DT_GENERATORS, Items.FOOD_GENERATOR.stack(),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         SlimefunItems.ALUMINUM_BRASS_INGOT, SlimefunItems.ALUMINUM_BRASS_INGOT,
@@ -684,7 +687,7 @@ public class DynaTechItemsSetup {
                 .setEnergyProduction(16)
                 .register(plugin);
 
-        new StardustReactor(DynaTechItems.DT_GENERATORS, DynaTechItems.STARDUST_REACTOR,
+        new StardustReactor(DynaTechItems.DT_GENERATORS, Items.STARDUST_GENERATOR.stack(),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         new ItemStack(Material.FIRE_CHARGE), new ItemStack(Material.FIRE_CHARGE),
@@ -699,78 +702,64 @@ public class DynaTechItemsSetup {
 
         // START Mechanical Components
 
-        final Recipe woodMachineCoreRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.WOOD_MACHINE_CORE).toList().get(0);
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.WOOD_MACHINE_CORE,
+        final Recipe woodMachineCoreRecipe = Recipes.WOOD_MACHINE_CORE;
+        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.WOOD_MACHINE_CORE.stack(),
                 woodMachineCoreRecipe.getRecipeType(), woodMachineCoreRecipe.getInput()).register(plugin);
 
-        final Recipe stoneMachineCoreRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.STONE_MACHINE_CORE).toList().get(0);
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.STONE_MACHINE_CORE,
+        final Recipe stoneMachineCoreRecipe = Recipes.STONE_MACHINE_CORE;
+        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.STONE_MACHINE_CORE.stack(),
                 stoneMachineCoreRecipe.getRecipeType(), stoneMachineCoreRecipe.getInput()).register(plugin);
 
-        final Recipe ironMachineCoreRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.IRON_MACHINE_CORE).toList().get(0);
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.IRON_MACHINE_CORE,
+        final Recipe ironMachineCoreRecipe = Recipes.IRON_MACHINE_CORE;
+        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.IRON_MACHINE_CORE.stack(),
                 ironMachineCoreRecipe.getRecipeType(), ironMachineCoreRecipe.getInput()).register(plugin);
 
-        final Recipe diamondMachineCoreRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.DIAMOND_MACHINE_CORE).toList().get(0);
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DIAMOND_MACHINE_CORE,
+        final Recipe diamondMachineCoreRecipe = Recipes.DIAMOND_MACHINE_CORE;
+        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.DIAMOND_MACHINE_CORE.stack(),
                 diamondMachineCoreRecipe.getRecipeType(), diamondMachineCoreRecipe.getInput()).register(plugin);
 
-        final Recipe enchantedMachineCoreRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.ENCHANTED_MACHINE_CORE).toList().get(0);
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.ENCHANTED_MACHINE_CORE,
+        final Recipe enchantedMachineCoreRecipe = Recipes.ENCHANTED_MACHINE_CORE;
+        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.ENCHANTED_MACHINE_CORE.stack(),
                 enchantedMachineCoreRecipe.getRecipeType(), enchantedMachineCoreRecipe.getInput()).register(plugin);
 
-        final Recipe energyStorageRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.ENERGY_STORAGE_COMPONENT).toList().get(0);
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.ENERGY_STORAGE_COMPONENT,
+        final Recipe energyStorageRecipe = Recipes.ENERGY_STORAGE_COMPONENT;
+        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.ENERGY_STORAGE_COMPONENT.stack(),
                 energyStorageRecipe.getRecipeType(), energyStorageRecipe.getInput()).register(plugin);
 
-        final Recipe energyInputRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.ENERGY_INPUT_COMPONENT).toList().get(0);
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.ENERGY_INPUT_COMPONENT,
+        final Recipe energyInputRecipe = Recipes.ENERGY_INPUT_COMPONENT;
+        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.ENERGY_INPUT_COMPONENT.stack(),
                 energyInputRecipe.getRecipeType(), energyInputRecipe.getInput()).register(plugin);
 
-        final Recipe energyOutputRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.ENERGY_OUTPUT_COMPONENT).toList().get(0);
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.ENERGY_OUTPUT_COMPONENT,
+        final Recipe energyOutputRecipe = Recipes.ENERGY_OUTPUT_COMPONENT;
+        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.ENERGY_OUTPUT_COMPONENT.stack(),
                 energyOutputRecipe.getRecipeType(), energyOutputRecipe.getInput()).register(plugin);
 
-        final Recipe degradedWaterMillRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.DEGRADED_WATER_MILL).toList().get(0);
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_WATER_MILL,
+        final Recipe degradedWaterMillRecipe = Recipes.DEGRADED_WATER_MILL;
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, Items.DEGRADED_WATER_MILL.stack(),
                 degradedWaterMillRecipe.getRecipeType(), degradedWaterMillRecipe.getInput()).register(plugin);
 
-        final Recipe degradedWaterMill2Recipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.DEGRADED_WATER_MILL_2).toList().get(0);
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_WATER_MILL_2,
+        final Recipe degradedWaterMill2Recipe = Recipes.DEGRADED_WATER_MILL_2;
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, Items.DEGRADED_WATER_MILL_2.stack(),
                 degradedWaterMill2Recipe.getRecipeType(),
                 degradedWaterMill2Recipe.getInput()).register(plugin);
 
-        final Recipe degradedWindMillRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.DEGRADED_WIND_MILL).toList().get(0);
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_WIND_MILL,
+        final Recipe degradedWindMillRecipe = Recipes.DEGRADED_WIND_MILL;
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, Items.DEGRADED_WIND_MILL.stack(),
                 degradedWindMillRecipe.getRecipeType(),
                 degradedWindMillRecipe.getInput()).register(plugin);
 
-        final Recipe degradedWindMill2Recipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.DEGRADED_WIND_MILL_2).toList().get(0);
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_WIND_MILL_2,
+        final Recipe degradedWindMill2Recipe = Recipes.DEGRADED_WIND_MILL_2;
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, Items.DEGRADED_WIND_MILL_2.stack(),
                 degradedWindMill2Recipe.getRecipeType(),
                 degradedWindMill2Recipe.getInput()).register(plugin);
 
-        final Recipe degradedEggMillRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.DEGRADED_EGG_MILL).toList().get(0);
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_EGG_MILL,
+        final Recipe degradedEggMillRecipe = Recipes.DEGRADED_EGG_MILL;
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, Items.DEGRADED_EGG_MILL.stack(),
                 degradedEggMillRecipe.getRecipeType(),
                 degradedEggMillRecipe.getInput()).register(plugin);
 
-        final Recipe degradedEggMill2Recipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.DEGRADED_EGG_MILL_2).toList().get(0);
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.DEGRADED_EGG_MILL_2,
+        final Recipe degradedEggMill2Recipe = Recipes.DEGRADED_EGG_MILL_2;
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, Items.DEGRADED_EGG_MILL_2.stack(),
                 degradedEggMill2Recipe.getRecipeType(),
                 degradedEggMill2Recipe.getInput()).register(plugin);
 
@@ -778,49 +767,46 @@ public class DynaTechItemsSetup {
 
         // START Energy Generators
 
-        final Recipe waterMillRecipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.WATER_MILL_1)
-                .toList().get(0);
-        new WaterMill(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.WATER_MILL_1, waterMillRecipe, 64, 16, 2500)
+        final Recipe waterMillRecipe = Recipes.WATER_MILL;
+        new WaterMill(DynaTechItems.DT_EXPERIMENTAL, Items.WATER_MILL.stack(), waterMillRecipe, 64, 16, 2500)
                 .register(plugin);
 
-        final Recipe waterMill2Recipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.WATER_MILL_2)
-                .toList().get(0);
-        new WaterMill(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.WATER_MILL_2, waterMill2Recipe, 256, 64, 5000)
+        final Recipe waterMill2Recipe = Recipes.WATER_MILL_2;
+        new WaterMill(DynaTechItems.DT_EXPERIMENTAL, Items.WATER_MILL_2.stack(), waterMill2Recipe, 256, 64, 5000)
                 .register(plugin);
 
-        final Recipe windMillRecipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.WIND_MILL_1)
-                .toList().get(0);
-        new WindMill(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.WIND_MILL_1, windMillRecipe, 64, 16, 256, 2500)
+        final Recipe windMillRecipe = Recipes.WIND_MILL;
+        new WindMill(DynaTechItems.DT_EXPERIMENTAL, Items.WIND_MILL.stack(), windMillRecipe, 64, 16, 256, 2500)
                 .register(plugin);
 
-        final Recipe windMill2Recipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.WIND_MILL_2)
-                .toList().get(0);
-        new WindMill(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.WIND_MILL_2, windMill2Recipe, 256, 64, 1024, 5000)
+        final Recipe windMill2Recipe = Recipes.WIND_MILL_2;
+        new WindMill(DynaTechItems.DT_EXPERIMENTAL, Items.WIND_MILL_2.stack(), windMill2Recipe, 256, 64, 1024, 5000)
                 .register(plugin);
 
-        final Recipe eggMillRecipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.EGG_MILL_1).toList()
-                .get(0);
-        new EggMill(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.EGG_MILL_1, eggMillRecipe, 2500, 16, 64)
+        final Recipe eggMillRecipe = Recipes.EGG_MILL;
+        new EggMill(DynaTechItems.DT_EXPERIMENTAL, Items.EGG_MILL.stack(), eggMillRecipe, 2500, 16, 64)
                 .register(plugin);
 
-        final Recipe eggMill2Recipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.EGG_MILL_2).toList()
-                .get(0);
-        new EggMill(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.EGG_MILL_2, eggMill2Recipe, 5000, 64, 256)
+        final Recipe eggMill2Recipe = Recipes.EGG_MILL_2;
+        new EggMill(DynaTechItems.DT_EXPERIMENTAL, Items.EGG_MILL_2.stack(), eggMill2Recipe, 5000, 64, 256)
                 .register(plugin);
 
         // END Energy Generators
 
         // START Materials
 
-        final Recipe stainlessSteelIngotRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.STAINLESS_STEEL_INGOT).toList().get(0);
+        final Recipe stainlessSteelIngotRecipe = Recipes.STAINLESS_STEEL_INGOT;
         new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.STAINLESS_STEEL_INGOT,
                 stainlessSteelIngotRecipe.getRecipeType(), stainlessSteelIngotRecipe.getInput()).register(plugin);
 
-        final Recipe stainlessSteelRotorRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.STAINLESS_STEEL_ROTOR_1).toList().get(0);
+        final Recipe stainlessSteelRotorRecipe = Recipes.STAINLESS_STEEL_ROTOR;
         new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.STAINLESS_STEEL_ROTOR_1,
                 stainlessSteelRotorRecipe.getRecipeType(), stainlessSteelRotorRecipe.getInput()).register(plugin);
+
+        final Recipe coalCokeRecipe = Recipes.COAL_TO_COAL_COKE;
+        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.COAL_COKE, coalCokeRecipe.getRecipeType(),
+                coalCokeRecipe.getInput()).register(plugin);
+
         // END Materials
 
         // START Liquids
@@ -842,24 +828,20 @@ public class DynaTechItemsSetup {
         // END Liquids
 
         // START Tools
-        final Recipe inventoryFilterRecipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.INV_FILTER)
-                .toList().get(0);
+        final Recipe inventoryFilterRecipe = Recipes.INVENTORY_FILTER;
         new InventoryFilter(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.INV_FILTER,
                 inventoryFilterRecipe.getRecipeType(), inventoryFilterRecipe.getInput()).register(plugin);
 
-        final Recipe recipeBookRecipe = DynaTech.getRecipeRegistry().getRecipesByOutput(DynaTechItems.RECIPE_BOOK)
-                .toList().get(0);
-        new RecipeBook(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.RECIPE_BOOK, recipeBookRecipe).register(plugin);
+        new RecipeBook(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.RECIPE_BOOK, Recipes.RECIPE_BOOK).register(plugin);
 
-        final Recipe autoOutputUpgradeRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.AUTO_OUTPUT_UPGRADE).toList().get(0);
         new AutoOutputUpgrade(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.AUTO_OUTPUT_UPGRADE,
-                autoOutputUpgradeRecipe).register(plugin);
+                Recipes.AUTO_OUTPUT_UGPRADE).register(plugin);
 
-        final Recipe autoInputUpgradeRecipe = DynaTech.getRecipeRegistry()
-                .getRecipesByOutput(DynaTechItems.AUTO_INPUT_UPGRADE).toList().get(0);
-        new AutoInputUpgrade(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.AUTO_INPUT_UPGRADE, autoInputUpgradeRecipe)
+        new AutoInputUpgrade(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.AUTO_INPUT_UPGRADE,
+                Recipes.AUTO_INPUT_UPGRADE)
                 .register(plugin);
+
+        new FluidTank(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.FLUID_TANK).register(plugin);
         // END Tools
 
         // START Machines

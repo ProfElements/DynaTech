@@ -15,6 +15,7 @@ import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.profelements.dynatech.items.electric.MaterialHive;
+import me.profelements.dynatech.registries.Items;
 
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -61,6 +62,10 @@ public class DynaTechItems {
     public static final RecipeType DT_SCOOP = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "DT_SCOOP"),
             new CustomItemStack(Material.IRON_SHOVEL, "&bScoop a Bee using a Scoop"));
 
+    public static final RecipeType DT_OVENING = new RecipeType(
+            new NamespacedKey(DynaTech.getInstance(), "DT_OVENING"),
+            new CustomItemStack(Material.SMOKER, "Cooks in a Coke Oven"));
+
     // START Recipe Types
 
     public static final RecipeType DT_BLOCK_DROP = new RecipeType(
@@ -73,110 +78,16 @@ public class DynaTechItems {
 
     // END Recipe Types
 
-    // START Mechanical Components
-
-    public static final SlimefunItemStack WOOD_MACHINE_CORE = new SlimefunItemStack("DT_WOOD_MACHINE_CORE",
-            Material.MANGROVE_WOOD, "&fWood Machine Core");
-
-    public static final SlimefunItemStack STONE_MACHINE_CORE = new SlimefunItemStack("DT_STONE_MACHINE_CORE",
-            Material.SMOOTH_STONE, "&fStone Machine Core");
-
-    public static final SlimefunItemStack IRON_MACHINE_CORE = new SlimefunItemStack("DT_IRON_MACHINE_CORE",
-            Material.GRAY_CONCRETE, "&fIron Machine Core");
-
-    public static final SlimefunItemStack DIAMOND_MACHINE_CORE = new SlimefunItemStack("DT_DIAMOND_MACHINE_CORE",
-            Material.LIGHT_BLUE_CONCRETE, "&fDiamond Machine Core");
-
-    public static final SlimefunItemStack ENCHANTED_MACHINE_CORE = new SlimefunItemStack("DT_ENCHANTED_MACHINE_CORE",
-            Material.RESPAWN_ANCHOR, "&bEnchanted Machine Core");
-
-    public static final SlimefunItemStack ENERGY_STORAGE_COMPONENT = new SlimefunItemStack(
-            "DT_ENERGY_STORAGE_COMPONENT", Material.REDSTONE_LAMP, "&cEnergy Storage Component");
-
-    public static final SlimefunItemStack ENERGY_INPUT_COMPONENT = new SlimefunItemStack("DT_ENERGY_INPUT_COMPONENT",
-            Material.COMPARATOR, "&cEnergy Input Component");
-
-    public static final SlimefunItemStack ENERGY_OUTPUT_COMPONENT = new SlimefunItemStack("DT_ENERGY_OUTPUT_COMPONENT",
-            Material.REPEATER, "&cEnergy Output Component");
-
-    public static final SlimefunItemStack DEGRADED_WATER_MILL = new SlimefunItemStack("DT_WATER_MILL_DEGRADED",
-            Material.COBBLESTONE_WALL, "&cDegraded Water Mill");
-
-    public static final SlimefunItemStack DEGRADED_WATER_MILL_2 = new SlimefunItemStack("DT_WATER_MILL_2_DEGRADED",
-            Material.PRISMARINE_WALL, "&cDegraded Hydro Turbine");
-
-    public static final SlimefunItemStack DEGRADED_WIND_MILL = new SlimefunItemStack("DT_WIND_MILL_DEGRADED",
-            Material.LIGHT_GRAY_GLAZED_TERRACOTTA, "&cDegraded Wind Mill");
-
-    public static final SlimefunItemStack DEGRADED_WIND_MILL_2 = new SlimefunItemStack("DT_WIND_MILL_2_DEGRADED",
-            Material.GRAY_GLAZED_TERRACOTTA, "&cDegraded Wind Turbine");
-
-    public static final SlimefunItemStack DEGRADED_EGG_MILL = new SlimefunItemStack("DT_EGG_MILL_DEGRADED",
-            Material.CRYING_OBSIDIAN, "&cDegraded Dragon Egg Mill");
-
-    public static final SlimefunItemStack DEGRADED_EGG_MILL_2 = new SlimefunItemStack("DT_EGG_MILL_2_DEGRADED",
-            Material.RESPAWN_ANCHOR, "&cDegraded Dragon Egg Turbine");
-    // END Mechanical Components
-
-    // START Energy Generators
-
-    public static final SlimefunItemStack WATER_MILL_1 = new SlimefunItemStack("DT_WATER_MILL",
-            Material.COBBLESTONE_WALL,
-            "&bWater Mill",
-            "",
-            "&7Degrades over time.",
-            "&fEnergy Generation Rate: &b16j/tick",
-            "&fEnergy Capacity: &b64j");
-
-    public static final SlimefunItemStack WATER_MILL_2 = new SlimefunItemStack("DT_WATER_MILL_2",
-            Material.PRISMARINE_WALL,
-            "&bHydro Turbine",
-            "",
-            "&7Degrades over time.",
-            "&fEnergy Generation Rate: &b64j/tick",
-            "&fEnergy Capacity: &b256j");
-
-    public static final SlimefunItemStack WIND_MILL_1 = new SlimefunItemStack("DT_WIND_MILL",
-            Material.LIGHT_GRAY_GLAZED_TERRACOTTA,
-            "&bWind Mill",
-            "",
-            "&7Degrades over time.",
-            "&fMinimum Energy Generation Rate: &b16j/tick",
-            "&fMaximum Energy Generation Rate: &b64j/tick",
-            "&fEnergy Capacity: &b256j");
-
-    public static final SlimefunItemStack WIND_MILL_2 = new SlimefunItemStack("DT_WIND_MILL_2",
-            Material.GRAY_GLAZED_TERRACOTTA,
-            "&bWind Turbine",
-            "",
-            "&7Degrades over time.",
-            "&fMinimum Energy Generation Rate: &b64j/tick",
-            "&fMaximum Energy Generation Rate: &b256j/tick",
-            "&fEnergy Capacity: &b1024j");
-
-    public static final SlimefunItemStack EGG_MILL_1 = new SlimefunItemStack("DT_EGG_MILL",
-            Material.CRYING_OBSIDIAN,
-            "&bDragon Egg Mill",
-            "",
-            "&7Degrades over time.",
-            "&fEnergy Generation Rate: &b16j/t",
-            "&fEnergy Capacity: &b64j");
-
-    public static final SlimefunItemStack EGG_MILL_2 = new SlimefunItemStack("DT_EGG_MILL_2",
-            Material.RESPAWN_ANCHOR,
-            "&bDragon Egg Turbine",
-            "",
-            "&7Degrades over time.",
-            "&fEnergy Generation Rate: &b64j/t",
-            "&fEnergy Capacity: &b256j");
-    // END Energy Generators
-
     // START Materials
     public static final SlimefunItemStack STAINLESS_STEEL_INGOT = new SlimefunItemStack("DT_STAINLESS_STEEL_INGOT",
             Material.IRON_INGOT, "&fStainless Steel Ingot");
 
     public static final SlimefunItemStack STAINLESS_STEEL_ROTOR_1 = new SlimefunItemStack("DT_STAINLESS_STEEL_ROTOR",
             Material.IRON_BLOCK, "&fStainless Steel Rotor");
+
+    public static final SlimefunItemStack COAL_COKE = new SlimefunItemStack("DT_COAL_COKE", Material.COAL,
+            "&fCoal Coke");
+
     // END Materials
 
     // START Liquids
@@ -241,6 +152,10 @@ public class DynaTechItems {
 
     public static final SlimefunItemStack AUTO_INPUT_UPGRADE = new SlimefunItemStack("DT_AUTO_INPUT_UPGRADE",
             Material.BLUE_STAINED_GLASS_PANE, "&6Auto Input Upgrade");
+
+    public static final SlimefunItemStack FLUID_TANK = new SlimefunItemStack("DT_FLUID_TANK",
+            Material.BUCKET, "&fFluid Tank");
+
     // END Tools
 
     // START Machines
@@ -735,37 +650,6 @@ public class DynaTechItems {
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.GENERATOR),
             LoreBuilder.powerBuffer(512),
             LoreBuilderDynamic.powerPerSecond(32));
-
-    public static final SlimefunItemStack CHIPPING_GENERATOR = new SlimefunItemStack("CHIPPING_GENERATOR",
-            Material.SPRUCE_WOOD,
-            "&6Chipping Generator",
-            "",
-            "&fCreates energy from broken items",
-            "&f(Durability based items)",
-            "",
-            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.GENERATOR),
-            LoreBuilder.powerBuffer(256),
-            LoreBuilderDynamic.power(8, " per durability point"));
-
-    public static final SlimefunItemStack CULINARY_GENERATOR = new SlimefunItemStack("CULINARY_GENERATOR",
-            Material.BLAST_FURNACE,
-            "&6Culinary Generator",
-            "",
-            "&fCreates energy from food energy",
-            "",
-            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.GENERATOR),
-            LoreBuilder.powerBuffer(256),
-            LoreBuilderDynamic.powerPerSecond(8));
-
-    public static final SlimefunItemStack STARDUST_REACTOR = new SlimefunItemStack("STARDUST_REACTOR",
-            Material.IRON_BLOCK,
-            "&6Stardust Reactor",
-            "",
-            "&6Uses Star Dust to produce larges amount of power.",
-            "",
-            LoreBuilder.machine(MachineTier.END_GAME, MachineType.GENERATOR),
-            LoreBuilder.powerBuffer(32768),
-            LoreBuilderDynamic.powerPerSecond(1024));
 
     public static final RecipeType DT_MATERIAL_HIVE = new RecipeType(
             new NamespacedKey(DynaTech.getInstance(), "DT_MATERIAL_HIVE"), DynaTechItems.MATERIAL_HIVE,

@@ -7,6 +7,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.misc.DimensionalHomeDimension;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
+import me.profelements.dynatech.listeners.CoalCokeListener;
 import me.profelements.dynatech.listeners.ElectricalStimulatorListener;
 import me.profelements.dynatech.listeners.ExoticGardenIntegrationListener;
 import me.profelements.dynatech.listeners.GastronomiconIntegrationListener;
@@ -67,6 +68,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         new ElectricalStimulatorListener(this, (ElectricalStimulator) DynaTechItems.ELECTRICAL_STIMULATOR.getItem());
         new InventoryFilterListener(this);
         new UpgradesListener(this);
+        new CoalCokeListener(this);
 
         try {
             Class.forName("io.github.schntgaispock.gastronomicon.api.items.FoodItemStack");

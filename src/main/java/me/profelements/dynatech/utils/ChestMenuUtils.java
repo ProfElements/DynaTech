@@ -7,9 +7,9 @@ import java.util.Set;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu.MenuClickHandler;
+import me.profelements.dynatech.registries.Registries;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 
 public class ChestMenuUtils {
@@ -27,7 +27,7 @@ public class ChestMenuUtils {
             menu.addItem(i, BACKGROUND_ITEM, NO_CLICK);
         }
 
-        List<Recipe> recipes = RecipeRegistry.getInstance().getRecipes();
+        Set<Recipe> recipes = Registries.RECIPES.getEntries();
 
         Set<ItemStack> outputs = new HashSet<>();
 
@@ -71,7 +71,9 @@ public class ChestMenuUtils {
             menu.addItem(i, BACKGROUND_ITEM, NO_CLICK);
         }
 
-        List<Recipe> recipes = RecipeRegistry.getInstance().getRecipesByOutput(item).toList();
+        List<Recipe> recipes = Registries.RECIPES.getEntries().stream()
+                .filter((recipe) -> recipe.getOutput()[0].equals(item)).toList();
+
         Recipe recipe = recipes.get(idx);
 
         int[] recipeSlots = new int[] { 12, 13, 14, 21, 22, 23, 30, 31, 32 };
