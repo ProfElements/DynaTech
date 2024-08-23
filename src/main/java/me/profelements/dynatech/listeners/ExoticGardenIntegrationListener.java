@@ -13,7 +13,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.events.SlimefunItemRegistryFinalizedEvent;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
-import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.electric.SeedPlucker;
 import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
@@ -31,9 +30,9 @@ public class ExoticGardenIntegrationListener implements Listener {
     public void onSlimefunRegistyFinalized(SlimefunItemRegistryFinalizedEvent e) {
         boolean exoticGardenInstalled = Bukkit.getServer().getPluginManager().isPluginEnabled("ExoticGarden");
         SlimefunItem item1 = SlimefunItem.getByItem(Items.FOOD_GENERATOR.stack());
-        SlimefunItem item2 = SlimefunItem.getByItem(DynaTechItems.SEED_PLUCKER);
-        SlimefunItem item3 = SlimefunItem.getByItem(DynaTechItems.GROWTH_CHAMBER);
-        SlimefunItem item4 = SlimefunItem.getByItem(DynaTechItems.GROWTH_CHAMBER_MK2);
+        SlimefunItem item2 = SlimefunItem.getByItem(Items.SEED_PLUCKER.stack());
+        SlimefunItem item3 = SlimefunItem.getByItem(Items.GROWTH_CHAMBER.stack());
+        SlimefunItem item4 = SlimefunItem.getByItem(Items.GROWTH_CHAMBER_MK2.stack());
         /*
          * if (item1 instanceof CulinaryGenerator cg && item2 instanceof SeedPlucker sp
          * && gastronomiconInstalled) {

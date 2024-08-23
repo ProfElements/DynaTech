@@ -73,10 +73,11 @@ public record FluidStack(NamespacedKey fluid, int amount) {
 
     public void toItemStack(ItemStack itemStack) {
         ItemMeta meta = itemStack.getItemMeta();
+
         String fluidType = PersistentDataAPI.getString(meta, FLUID_KEY, "");
         int fluidAmount = PersistentDataAPI.getInt(meta, FLUID_AMOUNT_KEY, 0);
 
-        if (fluidType != null && this.fluid() == NamespacedKey.fromString(fluidType)) {
+        if (fluidType.equals("") || this.fluid().equals(NamespacedKey.fromString(fluidType))) {
             PersistentDataAPI.setString(meta, FLUID_KEY, this.fluid().toString());
             PersistentDataAPI.setInt(meta, FLUID_AMOUNT_KEY, fluidAmount + this.amount());
         }

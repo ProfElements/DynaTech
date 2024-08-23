@@ -7,7 +7,7 @@ import org.bukkit.plugin.Plugin;
 
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import me.profelements.dynatech.DynaTech;
-import me.profelements.dynatech.DynaTechItems;
+import me.profelements.dynatech.registries.Items;
 
 public class CoalCokeListener implements Listener {
 
@@ -19,7 +19,7 @@ public class CoalCokeListener implements Listener {
     public void onBurn(FurnaceBurnEvent event) {
         SlimefunItem sfItem = SlimefunItem.getByItem(event.getFuel());
 
-        if (sfItem != null && sfItem.getId().equals(DynaTechItems.COAL_COKE.getItemId())) {
+        if (sfItem != null && sfItem.getId().equals(Items.COAL_COKE.stack().getItemId())) {
             int burnTime = event.getBurnTime();
             DynaTech.getInstance().getLogger().info("Found Coal Coke, burnTime Original: " + String.valueOf(burnTime)
                     + " burnTime * 8 " + String.valueOf(burnTime * 8));

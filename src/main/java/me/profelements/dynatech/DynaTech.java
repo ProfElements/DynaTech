@@ -14,6 +14,11 @@ import me.profelements.dynatech.listeners.GastronomiconIntegrationListener;
 import me.profelements.dynatech.listeners.InventoryFilterListener;
 import me.profelements.dynatech.listeners.PicnicBasketListener;
 import me.profelements.dynatech.listeners.UpgradesListener;
+import me.profelements.dynatech.registries.ItemGroups;
+import me.profelements.dynatech.registries.Items;
+import me.profelements.dynatech.registries.RecipeTypes;
+import me.profelements.dynatech.registries.Recipes;
+import me.profelements.dynatech.registries.Registries;
 import me.profelements.dynatech.setup.DynaTechItemsSetup;
 import me.profelements.dynatech.tasks.ItemBandTask;
 import me.profelements.dynatech.utils.Liquid;
@@ -60,12 +65,11 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
             worldCreator.generator(new DimensionalHomeDimension());
             worldCreator.createWorld();
         }
-        DynaTechRecipes.registerRecipes(DynaTech.getRecipeRegistry());
         DynaTechLiquids.registerLiquids(DynaTech.getLiquidRegistry());
 
         DynaTechItemsSetup.setup(this);
-        new PicnicBasketListener(this, (PicnicBasket) DynaTechItems.PICNIC_BASKET.getItem());
-        new ElectricalStimulatorListener(this, (ElectricalStimulator) DynaTechItems.ELECTRICAL_STIMULATOR.getItem());
+        new PicnicBasketListener(this, (PicnicBasket) Items.PICNIC_BASKET.stack().getItem());
+        new ElectricalStimulatorListener(this, (ElectricalStimulator) Items.ELECTRICAL_STIMULATOR.stack().getItem());
         new InventoryFilterListener(this);
         new UpgradesListener(this);
         new CoalCokeListener(this);
@@ -95,6 +99,19 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
             getLogger().warning("DynaTech only support 1.19+, disabling.");
             getServer().getPluginManager().disablePlugin(this);
         }
+
+        setupRegistries();
+    }
+
+    private static void setupRegistries() {
+        ItemGroups.init(Registries.ITEM_GROUPS);
+        RecipeTypes.init(Registries.RECIPE_TYPES);
+        Recipes.init(Registries.RECIPES);
+        Registries.ITEMS.freeze();
+        Registries.ITEM_GROUPS.freeze();
+        Registries.RECIPE_TYPES.freeze();
+        Registries.RECIPES.freeze();
+
     }
 
     @Override

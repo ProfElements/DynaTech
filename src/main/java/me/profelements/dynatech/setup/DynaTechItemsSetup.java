@@ -17,7 +17,6 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.profelements.dynatech.DynaTech;
-import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.blocks.CokeOvenController;
 import me.profelements.dynatech.fluids.FluidTank;
 import me.profelements.dynatech.items.RecipeBook;
@@ -72,8 +71,11 @@ import me.profelements.dynatech.items.tools.LiquidContainerItem;
 import me.profelements.dynatech.items.tools.LiquidTank;
 import me.profelements.dynatech.items.tools.Scoop;
 import me.profelements.dynatech.items.tools.TesseractBinder;
+import me.profelements.dynatech.registries.ItemGroups;
 import me.profelements.dynatech.registries.Items;
 import me.profelements.dynatech.registries.Recipes;
+import me.profelements.dynatech.registries.TypedKey;
+import me.profelements.dynatech.utils.ItemWrapper;
 import me.profelements.dynatech.utils.LiquidRegistry;
 import me.profelements.dynatech.utils.Recipe;
 
@@ -96,99 +98,40 @@ public class DynaTechItemsSetup {
 
         // General
         // Resources
-        new SlimefunItem(DynaTechItems.DT_RESOURCES, DynaTechItems.ANCIENT_MACHINE_CORE, RecipeType.MAGIC_WORKBENCH,
-                new ItemStack[] {
-                        SlimefunItems.LEAD_INGOT, SlimefunItems.MAGIC_LUMP_1, SlimefunItems.LEAD_INGOT,
-                        SlimefunItems.MAGIC_LUMP_1, new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.MAGIC_LUMP_1,
-                        SlimefunItems.LEAD_INGOT, SlimefunItems.MAGIC_LUMP_1, SlimefunItems.LEAD_INGOT
-                }).register(plugin);
+        new SlimefunItem(ItemGroups.RESOURCES, Items.ANCIENT_MACHINE_CORE.stack(),
+                Recipes.ANCIENT_MACHINE_CORE.getRecipeType(), Recipes.ANCIENT_MACHINE_CORE.getInput()).register(plugin);
 
-        new SlimefunItem(DynaTechItems.DT_RESOURCES, DynaTechItems.MACHINE_SCRAP, RecipeType.GRIND_STONE,
-                new ItemStack[] {
-                        SlimefunItems.PROGRAMMABLE_ANDROID, null, null,
-                        null, null, null,
-                        null, null, null,
-                }, new SlimefunItemStack(DynaTechItems.MACHINE_SCRAP, 8)).register(plugin);
+        new SlimefunItem(ItemGroups.RESOURCES, Items.MACHINE_SCRAP.stack(), Recipes.MACHINE_SCRAP.getRecipeType(),
+                Recipes.MACHINE_SCRAP.getInput(), new SlimefunItemStack(Items.MACHINE_SCRAP.stack(), 8))
+                .register(plugin);
 
-        new SlimefunItem(DynaTechItems.DT_RESOURCES, DynaTechItems.ADVANCED_MACHINE_SCRAP, RecipeType.GRIND_STONE,
-                new ItemStack[] {
-                        SlimefunItems.PROGRAMMABLE_ANDROID_2, null, null,
-                        null, null, null,
-                        null, null, null,
-                }, new SlimefunItemStack(DynaTechItems.ADVANCED_MACHINE_SCRAP, 8)).register(plugin);
+        new SlimefunItem(ItemGroups.RESOURCES, Items.ADVANCED_MACHINE_SCRAP.stack(),
+                Recipes.ADVANCED_MACHINE_SCRAP.getRecipeType(), Recipes.ADVANCED_MACHINE_SCRAP.getInput(),
+                new SlimefunItemStack(Items.ADVANCED_MACHINE_SCRAP.stack(), 8)).register(plugin);
 
-        new VexGem(DynaTechItems.DT_RESOURCES, DynaTechItems.VEX_GEM, RecipeType.MOB_DROP,
-                new ItemStack[] {
-                        null, null, null,
-                        null,
-                        new CustomItemStack(PlayerHead.getItemStack(PlayerSkin
-                                .fromHashCode("c2ec5a516617ff1573cd2f9d5f3969f56d5575c4ff4efefabd2a18dc7ab98cd")),
-                                "&aVex"),
-                        null,
-                        null, null, null
-                }).register(plugin);
+        new VexGem(ItemGroups.RESOURCES, Items.VEX_GEM.stack(), Recipes.VEX_GEM.getRecipeType(),
+                Recipes.VEX_GEM.getInput()).register(plugin);
 
-        RecipeType.MAGIC_WORKBENCH.register(new ItemStack[] {
-                null, SlimefunItems.SYNTHETIC_SAPPHIRE, null,
-                new ItemStack(Material.PHANTOM_MEMBRANE), SlimefunItems.MAGIC_LUMP_3,
-                new ItemStack(Material.PHANTOM_MEMBRANE),
-                DynaTechItems.STAR_DUST, DynaTechItems.STAR_DUST, DynaTechItems.STAR_DUST
-        }, DynaTechItems.VEX_GEM);
+        new SlimefunItem(ItemGroups.RESOURCES, Items.STAR_DUST.stack(), Recipes.STAR_DUST.getRecipeType(),
+                Recipes.STAR_DUST.getInput()).register(plugin);
 
-        new SlimefunItem(DynaTechItems.DT_RESOURCES, DynaTechItems.STAR_DUST, RecipeType.GRIND_STONE,
-                new ItemStack[] {
-                        StarDustMeteor.STARDUST_METEOR, null, null,
-                        null, null, null,
-                        null, null, null
-                }).register(plugin);
+        new StarDustMeteor(ItemGroups.RESOURCES).register(plugin);
 
-        new StarDustMeteor(DynaTechItems.DT_RESOURCES).register(plugin);
+        new MobDropItem(ItemGroups.RESOURCES, Items.GHOSTLY_ESSENCE.stack(), Recipes.GHOSTLY_ESSENCE.getRecipeType(),
+                Recipes.GHOSTLY_ESSENCE.getInput(), 80).register(plugin);
 
-        new MobDropItem(DynaTechItems.DT_RESOURCES, DynaTechItems.GHOSTLY_ESSENCE, RecipeType.MOB_DROP,
-                new ItemStack[] {
-                        null, null, null,
-                        null,
-                        new CustomItemStack(PlayerHead.getItemStack(PlayerSkin
-                                .fromHashCode("c2ec5a516617ff1573cd2f9d5f3969f56d5575c4ff4efefabd2a18dc7ab98cd")),
-                                "&aVex"),
-                        null,
-                        null, null, null
-                }, 80).register(plugin);
+        new SlimefunItem(ItemGroups.RESOURCES, Items.TESSERACTING_OBJ.stack(), Recipes.TESSERACTING_OBJ.getRecipeType(),
+                Recipes.TESSERACTING_OBJ.getInput()).register(plugin);
 
-        new SlimefunItem(DynaTechItems.DT_RESOURCES, DynaTechItems.TESSERACTING_OBJ, RecipeType.ANCIENT_ALTAR,
-                new ItemStack[] {
-                        DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.ENDER_RUNE, DynaTechItems.VEX_GEM,
-                        SlimefunItems.ENDER_RUNE, new ItemStack(Material.WITHER_ROSE), SlimefunItems.ENDER_RUNE,
-                        DynaTechItems.VEX_GEM, SlimefunItems.ENDER_RUNE, DynaTechItems.GHOSTLY_ESSENCE
-                }).register(plugin);
+        new Bee(ItemGroups.RESOURCES, Items.BEE.stack(), Recipes.BEE.getRecipeType(), Recipes.BEE.getInput(), 2)
+                .register(plugin);
 
-        new Bee(DynaTechItems.DT_RESOURCES, DynaTechItems.BEE, DynaTechItems.DynaTechScoop,
-                new ItemStack[] {
-                        null, null, null,
-                        null,
-                        new CustomItemStack(
-                                PlayerHead.getItemStack(PlayerSkin.fromHashCode(
-                                        "12724a9a4cdd68ba49415560e5be40b4a1c47cb5be1d66aedb52a30e62ef2d47")),
-                                "&aAny Bee"),
-                        null,
-                        null, null, null
-                }, 2).register(plugin);
+        new Bee(ItemGroups.RESOURCES, Items.ROBOTIC_BEE.stack(), Recipes.ROBOTIC_BEE.getRecipeType(),
+                Recipes.ROBOTIC_BEE.getInput(), 7).register(plugin);
 
-        new Bee(DynaTechItems.DT_RESOURCES, DynaTechItems.ROBOTIC_BEE, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.REINFORCED_ALLOY_INGOT,
-                        SlimefunItems.REINFORCED_ALLOY_INGOT,
-                        SlimefunItems.SYNTHETIC_SAPPHIRE, DynaTechItems.MACHINE_SCRAP, SlimefunItems.SYNTHETIC_SAPPHIRE,
-                        SlimefunItems.REINFORCED_ALLOY_INGOT, DynaTechItems.ANCIENT_MACHINE_CORE,
-                        SlimefunItems.REINFORCED_ALLOY_INGOT
-                }, 7).register(plugin);
-
-        new Bee(DynaTechItems.DT_RESOURCES, DynaTechItems.ADVANCED_ROBOTIC_BEE, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE,
-                        DynaTechItems.VEX_GEM, DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.VEX_GEM,
-                        SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.GOLD_24K_BLOCK
-                }, 11).register(plugin);
+        new Bee(ItemGroups.RESOURCES, Items.ADVANCED_ROBOTIC_BEE.stack(),
+                Recipes.ADVANCED_ROBOTIC_BEE.getRecipeType(), Recipes.ADVANCED_ROBOTIC_BEE.getInput(), 11)
+                .register(plugin);
 
         // Machines
         // Generators
@@ -196,103 +139,52 @@ public class DynaTechItemsSetup {
         // Materials
 
         // Tools
-        new PicnicBasket(27, DynaTechItems.DT_TOOLS, DynaTechItems.PICNIC_BASKET, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        SlimefunItems.CLOTH, SlimefunItems.CLOTH, SlimefunItems.CLOTH,
-                        new ItemStack(Material.BAMBOO), SlimefunItems.COOLER, new ItemStack(Material.BAMBOO),
-                        SlimefunItems.HEATING_COIL, new ItemStack(Material.BAMBOO), SlimefunItems.COOLING_UNIT
-                }).register(plugin);
+        new PicnicBasket(27, ItemGroups.TOOLS, Items.PICNIC_BASKET.stack(), Recipes.PICNIC_BASKET.getRecipeType(),
+                Recipes.PICNIC_BASKET.getInput()).register(plugin);
 
-        new SoulboundPicnicBacket(27, DynaTechItems.DT_TOOLS, DynaTechItems.SOULBOUND_PICNIC_BASKET,
-                RecipeType.MAGIC_WORKBENCH,
-                new ItemStack[] {
-                        new ItemStack(Material.CRYING_OBSIDIAN), SlimefunItems.ENDER_RUNE,
-                        new ItemStack(Material.CRYING_OBSIDIAN),
-                        SlimefunItems.ENDER_RUNE, DynaTechItems.PICNIC_BASKET, SlimefunItems.ENDER_RUNE,
-                        new ItemStack(Material.CRYING_OBSIDIAN), SlimefunItems.ENDER_RUNE,
-                        new ItemStack(Material.CRYING_OBSIDIAN)
-                }).register(plugin);
-
-        new InventoryFilter(DynaTechItems.DT_TOOLS, DynaTechItems.INVENTORY_FILTER, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        SlimefunItems.REINFORCED_CLOTH, new ItemStack(Material.IRON_BARS),
-                        SlimefunItems.REINFORCED_CLOTH,
-                        new ItemStack(Material.IRON_BARS), null, new ItemStack(Material.IRON_BARS),
-                        SlimefunItems.REINFORCED_CLOTH, new ItemStack(Material.IRON_BARS),
-                        SlimefunItems.REINFORCED_CLOTH
-                }).register(plugin);
-
-        new ElectricalStimulator(DynaTechItems.DT_TOOLS, DynaTechItems.ELECTRICAL_STIMULATOR,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        DynaTechItems.STAINLESS_STEEL_INGOT, null, DynaTechItems.STAINLESS_STEEL_INGOT,
-                        DynaTechItems.STAINLESS_STEEL_INGOT, SlimefunItems.FOOD_FABRICATOR,
-                        DynaTechItems.STAINLESS_STEEL_INGOT,
-                        SlimefunItems.PLASTIC_SHEET, SlimefunItems.PLASTIC_SHEET, SlimefunItems.PLASTIC_SHEET
-                }).register(plugin);
-
-        new AngelGem(DynaTechItems.DT_TOOLS, DynaTechItems.ANGEL_GEM, RecipeType.ANCIENT_ALTAR,
-                new ItemStack[] {
-                        new ItemStack(Material.NETHERITE_INGOT), SlimefunItems.NUCLEAR_REACTOR,
-                        new ItemStack(Material.NETHERITE_INGOT),
-                        SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.VEX_GEM, SlimefunItems.GOLD_24K_BLOCK,
-                        SlimefunItems.BLISTERING_INGOT_3, DynaTechItems.STAINLESS_STEEL_ROTOR_1,
-                        SlimefunItems.BLISTERING_INGOT_3
-                }).register(plugin);
-
-        new Scoop(DynaTechItems.DT_TOOLS, DynaTechItems.SCOOP, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        new ItemStack(Material.WHITE_WOOL), new ItemStack(Material.WHITE_WOOL),
-                        new ItemStack(Material.WHITE_WOOL),
-                        new ItemStack(Material.WHITE_WOOL), SlimefunItems.BATTERY, new ItemStack(Material.WHITE_WOOL),
-                        null, new ItemStack(Material.STICK), null
-                }).register(plugin);
-
-        new DimensionalHome(DynaTechItems.DT_TOOLS, DynaTechItems.DIMENSIONAL_HOME, RecipeType.MAGIC_WORKBENCH,
-                new ItemStack[] {
-                        null, null, SlimefunItems.GOLD_24K_BLOCK,
-                        SlimefunItems.BRONZE_INGOT, new ItemStack(Material.BLAZE_ROD), null,
-                        SlimefunItems.SYNTHETIC_SAPPHIRE, SlimefunItems.BRONZE_INGOT, null
-                }).register(plugin);
-
-        new ItemBand(DynaTechItems.DT_TOOLS, DynaTechItems.ITEM_BAND_HEALTH, RecipeType.MAGIC_WORKBENCH,
-                new ItemStack[] {
-                        new ItemStack(Material.GOLDEN_CARROT), new ItemStack(Material.NETHER_STAR),
-                        new ItemStack(Material.GOLDEN_CARROT),
-                        new ItemStack(Material.NETHER_STAR), DynaTechItems.VEX_GEM, new ItemStack(Material.NETHER_STAR),
-                        new ItemStack(Material.GOLDEN_CARROT), new ItemStack(Material.NETHER_STAR),
-                        new ItemStack(Material.GOLDEN_CARROT)
-                }, new PotionEffect[] { new PotionEffect(PotionEffectType.HEALTH_BOOST, 20 * 15, 1, true) })
+        new SoulboundPicnicBacket(27, ItemGroups.TOOLS, Items.SOUL_BOUND_PICNIC_BASKET.stack(),
+                Recipes.SOUL_BOUND_PICNIC_BASKET.getRecipeType(), Recipes.SOUL_BOUND_PICNIC_BASKET.getInput())
                 .register(plugin);
 
-        new ItemBand(DynaTechItems.DT_TOOLS, DynaTechItems.ITEM_BAND_HASTE, RecipeType.MAGIC_WORKBENCH,
-                new ItemStack[] {
-                        SlimefunItems.COBALT_PICKAXE, new ItemStack(Material.NETHER_STAR), SlimefunItems.COBALT_PICKAXE,
-                        new ItemStack(Material.NETHER_STAR), DynaTechItems.VEX_GEM, new ItemStack(Material.NETHER_STAR),
-                        SlimefunItems.COBALT_PICKAXE, new ItemStack(Material.NETHER_STAR), SlimefunItems.COBALT_PICKAXE
-                }, new PotionEffect[] { new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 15, 1, true) })
+        new ElectricalStimulator(ItemGroups.TOOLS, Items.ELECTRICAL_STIMULATOR.stack(),
+                Recipes.ELECTRICAL_STIMULATOR.getRecipeType(),
+                Recipes.ELECTRICAL_STIMULATOR.getInput()).register(plugin);
+
+        new AngelGem(ItemGroups.TOOLS, Items.ANGEL_GEM.stack(), Recipes.ANGEL_GEM.getRecipeType(),
+                Recipes.ANGEL_GEM.getInput()).register(plugin);
+
+        new Scoop(ItemGroups.TOOLS, Items.SCOOP.stack(), Recipes.SCOOP.getRecipeType(), Recipes.SCOOP.getInput())
                 .register(plugin);
 
-        new TesseractBinder(DynaTechItems.DT_TOOLS, DynaTechItems.TESSERACT_BINDER, RecipeType.MAGIC_WORKBENCH,
-                new ItemStack[] {
-                        null, DynaTechItems.TESSERACTING_OBJ, null,
-                        null, DynaTechItems.STAINLESS_STEEL_INGOT, null,
-                        null, DynaTechItems.STAINLESS_STEEL_INGOT, null,
-                }).register(plugin);
+        new DimensionalHome(ItemGroups.TOOLS, Items.DIMENSIONAL_HOME.stack(), Recipes.DIMENSIONAL_HOME.getRecipeType(),
+                Recipes.DIMENSIONAL_HOME.getInput()).register(plugin);
+
+        new ItemBand(ItemGroups.TOOLS, Items.ITEM_BAND_HEALTH.stack(), Recipes.ITEM_BAND_HEALTH.getRecipeType(),
+                Recipes.ITEM_BAND_HEALTH.getInput(),
+                new PotionEffect[] { new PotionEffect(PotionEffectType.HEALTH_BOOST, 20 * 15, 1, true) })
+                .register(plugin);
+
+        new ItemBand(ItemGroups.TOOLS, Items.ITEM_BAND_HASTE.stack(), Recipes.ITEM_BAND_HASTE.getRecipeType(),
+                Recipes.ITEM_BAND_HASTE.getInput(),
+                new PotionEffect[] { new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 15, 1, true) })
+                .register(plugin);
+
+        new TesseractBinder(ItemGroups.TOOLS, Items.TESSERACT_BINDER.stack(), Recipes.TESSERACT_BINDER.getRecipeType(),
+                Recipes.TESSERACT_BINDER.getInput()).register(plugin);
 
         if (DynaTech.isInfinityExpansionInstalled()) {
             new MobDataCard("Vex", MobDataTier.HOSTILE, new ItemStack[] {
-                    new SlimefunItemStack(DynaTechItems.VEX_GEM, 16),
-                    new SlimefunItemStack(DynaTechItems.GHOSTLY_ESSENCE, 16),
-                    new SlimefunItemStack(DynaTechItems.VEX_GEM, 16),
-                    new SlimefunItemStack(DynaTechItems.GHOSTLY_ESSENCE, 16), MobData.EMPTY_DATA_CARD,
-                    new SlimefunItemStack(DynaTechItems.GHOSTLY_ESSENCE, 16),
-                    new SlimefunItemStack(DynaTechItems.VEX_GEM, 16),
-                    new SlimefunItemStack(DynaTechItems.GHOSTLY_ESSENCE, 16),
-                    new SlimefunItemStack(DynaTechItems.VEX_GEM, 16)
+                    new SlimefunItemStack(Items.VEX_GEM.stack(), 16),
+                    new SlimefunItemStack(Items.GHOSTLY_ESSENCE.stack(), 16),
+                    new SlimefunItemStack(Items.VEX_GEM.stack(), 16),
+                    new SlimefunItemStack(Items.GHOSTLY_ESSENCE.stack(), 16), MobData.EMPTY_DATA_CARD,
+                    new SlimefunItemStack(Items.GHOSTLY_ESSENCE.stack(), 16),
+                    new SlimefunItemStack(Items.VEX_GEM.stack(), 16),
+                    new SlimefunItemStack(Items.GHOSTLY_ESSENCE.stack(), 16),
+                    new SlimefunItemStack(Items.VEX_GEM.stack(), 16)
             })
-                    .addDrop(DynaTechItems.VEX_GEM, 1)
-                    .addDrop(DynaTechItems.GHOSTLY_ESSENCE, 9)
+                    .addDrop(Items.VEX_GEM.stack(), 1)
+                    .addDrop(Items.GHOSTLY_ESSENCE.stack(), 9)
                     .register(plugin);
 
             new MobDataCard("Phantom", MobDataTier.HOSTILE, new ItemStack[] {
@@ -307,202 +199,111 @@ public class DynaTechItemsSetup {
                     .register(plugin);
         }
 
-        new WitherGolem(DynaTechItems.DT_TOOLS, DynaTechItems.WITHER_GOLEM).register(plugin);
+        new WitherGolem(ItemGroups.TOOLS, Items.WITHER_SKELETON_GOLEM.stack()).register(plugin);
 
         // Machines
         if (DynaTech.isExoticGardenInstalled()) {
-            new KitchenAutoCrafter(DynaTechItems.DT_MACHINES, DynaTechItems.KITCHEN_AUTO_CRAFTER,
-                    RecipeType.ENHANCED_CRAFTING_TABLE,
-                    new ItemStack[] {
-                            new ItemStack(Material.BRICK), SlimefunItems.ELECTRIC_FURNACE,
-                            new ItemStack(Material.BRICK),
-                            DynaTechItems.STAINLESS_STEEL_INGOT, SlimefunItems.GOLD_24K_BLOCK,
-                            DynaTechItems.STAINLESS_STEEL_INGOT,
-                            new ItemStack(Material.TERRACOTTA), new ItemStack(Material.TERRACOTTA),
-                            new ItemStack(Material.TERRACOTTA),
-                    })
+            new KitchenAutoCrafter(ItemGroups.MACHINES, Items.KITCHEN_AUTO_CRAFTER.stack(),
+                    Recipes.KITCHEN_AUTO_CRAFTER.getRecipeType(), Recipes.KITCHEN_AUTO_CRAFTER.getInput())
                     .setCapacity(512)
                     .setEnergyConsumption(16)
                     .register(plugin);
         }
 
-        new GrowthChamber(DynaTechItems.DT_MACHINES, DynaTechItems.GROWTH_CHAMBER, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        SlimefunItems.HARDENED_GLASS, SlimefunItems.TREE_GROWTH_ACCELERATOR,
-                        SlimefunItems.HARDENED_GLASS,
-                        new ItemStack(Material.BONE_BLOCK), new ItemStack(Material.GRASS_BLOCK),
-                        new ItemStack(Material.BONE_BLOCK),
-                        DynaTechItems.STAINLESS_STEEL_INGOT, SlimefunItems.CROP_GROWTH_ACCELERATOR_2,
-                        DynaTechItems.STAINLESS_STEEL_INGOT
-                })
+        new GrowthChamber(ItemGroups.MACHINES, Items.GROWTH_CHAMBER.stack(), Recipes.GROWTH_CHAMBER.getRecipeType(),
+                Recipes.GROWTH_CHAMBER.getInput())
                 .setCapacity(512)
                 .setConsumption(32)
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        new GrowthChamberMK2(DynaTechItems.DT_MACHINES, DynaTechItems.GROWTH_CHAMBER_MK2,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        SlimefunItems.STEEL_PLATE, DynaTechItems.GROWTH_CHAMBER, SlimefunItems.STEEL_PLATE,
-                        new ItemStack(Material.GRASS_BLOCK), new ItemStack(Material.LIME_STAINED_GLASS),
-                        new ItemStack(Material.SAND),
-                        SlimefunItems.STEEL_PLATE, DynaTechItems.GROWTH_CHAMBER, SlimefunItems.STEEL_PLATE
-                })
+        new GrowthChamberMK2(ItemGroups.MACHINES, Items.GROWTH_CHAMBER_MK2.stack(),
+                Recipes.GROWTH_CHAMBER_MK2.getRecipeType(), Recipes.GROWTH_CHAMBER_MK2.getInput())
                 .setCapacity(1024)
                 .setConsumption(128)
                 .setProcessingSpeed(3)
                 .register(plugin);
 
-        new GrowthChamberEnd(DynaTechItems.DT_MACHINES, DynaTechItems.GROWTH_CHAMBER_END,
+        new GrowthChamberEnd(ItemGroups.MACHINES, Items.GROWTH_CHAMBER_END.stack(),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         SlimefunItems.HARDENED_GLASS, new ItemStack(Material.MAGENTA_STAINED_GLASS),
                         SlimefunItems.HARDENED_GLASS,
                         new ItemStack(Material.PURPUR_BLOCK), new ItemStack(Material.CHORUS_FLOWER),
                         new ItemStack(Material.END_STONE),
-                        DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.GROWTH_CHAMBER,
-                        DynaTechItems.STAINLESS_STEEL_INGOT
+                        Items.STAINLESS_STEEL_INGOT.stack(), Items.GROWTH_CHAMBER.stack(),
+                        Items.STAINLESS_STEEL_INGOT.stack()
                 })
                 .setCapacity(512)
                 .setConsumption(32)
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        new GrowthChamberEndMK2(DynaTechItems.DT_MACHINES, DynaTechItems.GROWTH_CHAMBER_END_MK2,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        SlimefunItems.STEEL_PLATE, DynaTechItems.GROWTH_CHAMBER_END, SlimefunItems.STEEL_PLATE,
-                        new ItemStack(Material.PURPUR_PILLAR), new ItemStack(Material.PURPLE_STAINED_GLASS),
-                        new ItemStack(Material.END_STONE_BRICKS),
-                        SlimefunItems.STEEL_PLATE, DynaTechItems.GROWTH_CHAMBER_END, SlimefunItems.STEEL_PLATE
-                })
+        new GrowthChamberEndMK2(ItemGroups.MACHINES, Items.GROWTH_CHAMBER_MK2_END.stack(),
+                Recipes.GROWTH_CHAMBER_MK2_END.getRecipeType(), Recipes.GROWTH_CHAMBER_MK2_END.getInput())
                 .setCapacity(1024)
                 .setConsumption(128)
                 .setProcessingSpeed(3)
                 .register(plugin);
 
-        new GrowthChamberNether(DynaTechItems.DT_MACHINES, DynaTechItems.GROWTH_CHAMBER_NETHER,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        SlimefunItems.HARDENED_GLASS, new ItemStack(Material.RED_STAINED_GLASS),
-                        SlimefunItems.HARDENED_GLASS,
-                        new ItemStack(Material.CRIMSON_NYLIUM), new ItemStack(Material.SOUL_SAND),
-                        new ItemStack(Material.WARPED_NYLIUM),
-                        DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.GROWTH_CHAMBER,
-                        DynaTechItems.STAINLESS_STEEL_INGOT
-                })
+        new GrowthChamberNether(ItemGroups.MACHINES, Items.GROWTH_CHAMBER_NETHER.stack(),
+                Recipes.GROWTH_CHAMBER_NETHER.getRecipeType(), Recipes.GROWTH_CHAMBER_NETHER.getInput())
                 .setCapacity(512)
                 .setConsumption(32)
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        new GrowthChamberNetherMK2(DynaTechItems.DT_MACHINES, DynaTechItems.GROWTH_CHAMBER_NETHER_MK2,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        SlimefunItems.STEEL_PLATE, DynaTechItems.GROWTH_CHAMBER_NETHER, SlimefunItems.STEEL_PLATE,
-                        new ItemStack(Material.CRIMSON_NYLIUM), new ItemStack(Material.SOUL_SAND),
-                        new ItemStack(Material.WARPED_NYLIUM),
-                        SlimefunItems.STEEL_PLATE, DynaTechItems.GROWTH_CHAMBER_NETHER, SlimefunItems.STEEL_PLATE
-                })
+        new GrowthChamberNetherMK2(ItemGroups.MACHINES, Items.GROWTH_CHAMBER_MK2_NETHER.stack(),
+                Recipes.GROWTH_CHAMBER_MK2_NETHER.getRecipeType(), Recipes.GROWTH_CHAMBER_MK2_NETHER.getInput())
                 .setCapacity(1024)
                 .setConsumption(128)
                 .setProcessingSpeed(3)
                 .register(plugin);
 
-        new GrowthChamberOcean(DynaTechItems.DT_MACHINES, DynaTechItems.GROWTH_CHAMBER_OCEAN,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        SlimefunItems.HARDENED_GLASS, new ItemStack(Material.CYAN_STAINED_GLASS),
-                        SlimefunItems.HARDENED_GLASS,
-                        new ItemStack(Material.WATER_BUCKET), new ItemStack(Material.SAND),
-                        new ItemStack(Material.WATER_BUCKET),
-                        DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.GROWTH_CHAMBER,
-                        DynaTechItems.STAINLESS_STEEL_INGOT
-                })
+        new GrowthChamberOcean(ItemGroups.MACHINES, Items.GROWTH_CHAMBER_OCEAN.stack(),
+                Recipes.GROWTH_CHAMBER_OCEAN.getRecipeType(), Recipes.GROWTH_CHAMBER_MK2_OCEAN.getInput())
                 .setCapacity(512)
                 .setConsumption(32)
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        new GrowthChamberOceanMK2(DynaTechItems.DT_MACHINES, DynaTechItems.GROWTH_CHAMBER_OCEAN_MK2,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        SlimefunItems.STEEL_PLATE, DynaTechItems.GROWTH_CHAMBER_OCEAN, SlimefunItems.STEEL_PLATE,
-                        new ItemStack(Material.GRAVEL), new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS),
-                        new ItemStack(Material.DIRT),
-                        SlimefunItems.STEEL_PLATE, DynaTechItems.GROWTH_CHAMBER_OCEAN, SlimefunItems.STEEL_PLATE
-
-                })
+        new GrowthChamberOceanMK2(ItemGroups.MACHINES, Items.GROWTH_CHAMBER_MK2_OCEAN.stack(),
+                Recipes.GROWTH_CHAMBER_MK2_OCEAN.getRecipeType(), Recipes.GROWTH_CHAMBER_MK2_OCEAN.getInput())
                 .setCapacity(1024)
                 .setConsumption(128)
                 .setProcessingSpeed(3)
                 .register(plugin);
 
-        new AntigravityBubble(DynaTechItems.DT_MACHINES, DynaTechItems.ANTIGRAVITY_BUBBLE,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        SlimefunItems.BLISTERING_INGOT_3, new ItemStack(Material.DIAMOND_BLOCK),
-                        SlimefunItems.BLISTERING_INGOT_3,
-                        SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.BIG_CAPACITOR,
-                        SlimefunItems.REINFORCED_ALLOY_INGOT,
-                        SlimefunItems.REINFORCED_ALLOY_INGOT, DynaTechItems.STAINLESS_STEEL_INGOT,
-                        SlimefunItems.REINFORCED_ALLOY_INGOT,
-                })
+        new AntigravityBubble(ItemGroups.MACHINES, Items.ANTIGRAVITY_BUBBLE.stack(),
+                Recipes.ANTIGRAVITY_BUBBLE.getRecipeType(), Recipes.ANTIGRAVITY_BUBBLE.getInput())
                 .setCapacity(1024)
                 .setConsumption(128)
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        new WeatherController(DynaTechItems.DT_MACHINES, DynaTechItems.WEATHER_CONTROLLER,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        null, SlimefunItems.HARDENED_METAL_INGOT, null,
-                        new ItemStack(Material.WATER_BUCKET), DynaTechItems.ANCIENT_MACHINE_CORE,
-                        new ItemStack(Material.LAVA_BUCKET),
-                        DynaTechItems.STAINLESS_STEEL_INGOT, new ItemStack(Material.CRYING_OBSIDIAN),
-                        DynaTechItems.STAINLESS_STEEL_INGOT
-                })
+        new WeatherController(ItemGroups.MACHINES, Items.WEATHER_CONTROLLER.stack(),
+                Recipes.WEATHER_CONTROLLER.getRecipeType(), Recipes.WEATHER_CONTROLLER.getInput())
                 .setCapacity(512)
                 .setConsumption(32)
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        new PotionSprinkler(DynaTechItems.DT_MACHINES, DynaTechItems.POTION_SPRINKLER,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        new ItemStack(Material.BREWING_STAND), null, new ItemStack(Material.BREWING_STAND),
-                        new ItemStack(Material.IRON_BARS), DynaTechItems.ANCIENT_MACHINE_CORE,
-                        new ItemStack(Material.IRON_BARS),
-                        SlimefunItems.FERROSILICON, SlimefunItems.FERROSILICON, SlimefunItems.FERROSILICON
-                })
+        new PotionSprinkler(ItemGroups.MACHINES, Items.POTION_SPRINKLER.stack(),
+                Recipes.POTION_SPRINKLER.getRecipeType(), Recipes.POTION_SPRINKLER.getInput())
                 .setCapacity(256)
                 .setConsumption(32)
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        new BarbedWire(DynaTechItems.DT_MACHINES, DynaTechItems.BARBED_WIRE, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        new ItemStack(Material.IRON_SWORD), new ItemStack(Material.IRON_SWORD),
-                        new ItemStack(Material.IRON_SWORD),
-                        DynaTechItems.STAINLESS_STEEL_INGOT, new ItemStack(Material.OAK_LOG),
-                        DynaTechItems.STAINLESS_STEEL_INGOT,
-                        SlimefunItems.ZINC_INGOT, SlimefunItems.ZINC_INGOT, SlimefunItems.ZINC_INGOT
-                })
+        new BarbedWire(ItemGroups.MACHINES, Items.BARBED_WIRE.stack(), Recipes.BARBED_WIRE.getRecipeType(),
+                Recipes.BARBED_WIRE.getInput())
                 .setCapacity(1024)
                 .setConsumption(16)
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        MaterialHive hive = new MaterialHive(DynaTechItems.DT_MACHINES, DynaTechItems.MATERIAL_HIVE,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.SYNTHETIC_DIAMOND,
-                        SlimefunItems.HARDENED_METAL_INGOT,
-                        SlimefunItems.HARDENED_METAL_INGOT, new ItemStack(Material.BEEHIVE),
-                        SlimefunItems.HARDENED_METAL_INGOT,
-                        DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.MACHINE_SCRAP,
-                        DynaTechItems.ADVANCED_MACHINE_SCRAP
-                });
+        MaterialHive hive = new MaterialHive(ItemGroups.MACHINES, Items.MATERIAL_HIVE.stack(),
+                Recipes.MATERIAL_HIVE.getRecipeType(), Recipes.MATERIAL_HIVE.getInput());
 
         hive
                 .setCapacity(8192)
@@ -512,33 +313,23 @@ public class DynaTechItemsSetup {
 
         registerMineralizedApiaries(hive, plugin);
 
-        new WirelessCharger(DynaTechItems.DT_MACHINES, DynaTechItems.WIRELESS_CHARGER,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        null, SlimefunItems.GPS_TRANSMITTER, null,
-                        SlimefunItems.GOLD_24K, SlimefunItems.CHARGING_BENCH, SlimefunItems.GOLD_24K,
-                        null, SlimefunItems.SMALL_CAPACITOR, null
-                }, 16)
+        new WirelessCharger(ItemGroups.MACHINES, Items.WIRELESS_CHARGER.stack(),
+                Recipes.WIRELESS_CHARGER.getRecipeType(), Recipes.WIRELESS_CHARGER.getInput(), 16)
                 .setCapacity(1024)
                 .setConsumption(16)
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        new SeedPlucker(DynaTechItems.DT_MACHINES, DynaTechItems.SEED_PLUCKER, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        SlimefunItems.HARDENED_GLASS, DynaTechItems.STAINLESS_STEEL_INGOT, SlimefunItems.HARDENED_GLASS,
-                        new ItemStack(Material.BONE_BLOCK), null, new ItemStack(Material.BONE_BLOCK),
-                        DynaTechItems.STAINLESS_STEEL_INGOT, new ItemStack(Material.SHEARS),
-                        DynaTechItems.STAINLESS_STEEL_INGOT
-                })
+        new SeedPlucker(ItemGroups.MACHINES, Items.SEED_PLUCKER.stack(), Recipes.SEED_PLUCKER.getRecipeType(),
+                Recipes.SEED_PLUCKER.getInput())
                 .setCapacity(512)
                 .setConsumption(32)
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        new BandaidManager(DynaTechItems.DT_MACHINES, DynaTechItems.BANDAID_MANAGER, RecipeType.MAGIC_WORKBENCH,
+        new BandaidManager(ItemGroups.MACHINES, Items.BANDAID_MANAGER.stack(), RecipeType.MAGIC_WORKBENCH,
                 new ItemStack[] {
-                        SlimefunItems.BLANK_RUNE, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.BLANK_RUNE,
+                        SlimefunItems.BLANK_RUNE, Items.ANCIENT_MACHINE_CORE.stack(), SlimefunItems.BLANK_RUNE,
                         SlimefunItems.REINFORCED_CLOTH, new ItemStack(Material.ENCHANTING_TABLE),
                         SlimefunItems.REINFORCED_CLOTH,
                         null, SlimefunItems.WITHER_PROOF_OBSIDIAN, null
@@ -548,7 +339,7 @@ public class DynaTechItemsSetup {
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        new Orechid(DynaTechItems.DT_MACHINES, DynaTechItems.ORECHID, RecipeType.MAGIC_WORKBENCH,
+        new Orechid(ItemGroups.MACHINES, Items.ORECHID.stack(), RecipeType.MAGIC_WORKBENCH,
                 new ItemStack[] {
                         SlimefunItems.ENDER_RUNE, SlimefunItems.ENDER_RUNE, SlimefunItems.ENDER_RUNE,
                         SlimefunItems.MAGIC_LUMP_3, new ItemStack(Material.WITHER_ROSE), SlimefunItems.MAGIC_LUMP_3,
@@ -561,57 +352,57 @@ public class DynaTechItemsSetup {
                 .register(plugin);
 
         // Make Wireless Energy Bank and Wireless Energy more costly
-        new WirelessEnergyBank(DynaTechItems.DT_MACHINES, 10240, DynaTechItems.WIRELESS_ENERGY_BANK,
+        new WirelessEnergyBank(ItemGroups.MACHINES, 10240, Items.WIRELESS_ENERGY_BANK.stack(),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.WIRELESS_CHARGER,
-                        DynaTechItems.ADVANCED_MACHINE_SCRAP,
-                        DynaTechItems.WIRELESS_CHARGER, SlimefunItems.BIG_CAPACITOR, DynaTechItems.WIRELESS_CHARGER,
-                        DynaTechItems.GHOSTLY_ESSENCE, DynaTechItems.WIRELESS_CHARGER, DynaTechItems.GHOSTLY_ESSENCE
+                        Items.ADVANCED_MACHINE_SCRAP.stack(), Items.WIRELESS_CHARGER.stack(),
+                        Items.ADVANCED_MACHINE_SCRAP.stack(),
+                        Items.WIRELESS_CHARGER.stack(), SlimefunItems.BIG_CAPACITOR, Items.WIRELESS_CHARGER.stack(),
+                        Items.GHOSTLY_ESSENCE.stack(), Items.WIRELESS_CHARGER.stack(), Items.GHOSTLY_ESSENCE.stack()
                 }).register(plugin);
 
-        new WirelessEnergyPoint(DynaTechItems.DT_MACHINES, 5120, 1024, DynaTechItems.WIRELESS_ENERGY_POINT,
+        new WirelessEnergyPoint(ItemGroups.MACHINES, 5120, 1024, Items.WIRELESS_ENERGY_POINT.stack(),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        SlimefunItems.ENERGY_CONNECTOR, DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.ENERGY_CONNECTOR,
-                        DynaTechItems.GHOSTLY_ESSENCE, DynaTechItems.ANCIENT_MACHINE_CORE,
-                        DynaTechItems.GHOSTLY_ESSENCE,
-                        SlimefunItems.ENERGY_CONNECTOR, DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.ENERGY_CONNECTOR
+                        SlimefunItems.ENERGY_CONNECTOR, Items.GHOSTLY_ESSENCE.stack(), SlimefunItems.ENERGY_CONNECTOR,
+                        Items.GHOSTLY_ESSENCE.stack(), Items.ANCIENT_MACHINE_CORE.stack(),
+                        Items.GHOSTLY_ESSENCE.stack(),
+                        SlimefunItems.ENERGY_CONNECTOR, Items.GHOSTLY_ESSENCE.stack(), SlimefunItems.ENERGY_CONNECTOR
                 }).register(plugin);
 
-        new WirelessItemInput(DynaTechItems.DT_MACHINES, 1024, DynaTechItems.WIRELESS_ITEM_INPUT,
+        new WirelessItemInput(ItemGroups.MACHINES, 1024, Items.WIRELESS_ITEM_INPUT.stack(),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        SlimefunItems.CARGO_INPUT_NODE, DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.CARGO_INPUT_NODE,
-                        DynaTechItems.GHOSTLY_ESSENCE, DynaTechItems.ANCIENT_MACHINE_CORE,
-                        DynaTechItems.GHOSTLY_ESSENCE,
-                        SlimefunItems.CARGO_INPUT_NODE, DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.CARGO_INPUT_NODE
+                        SlimefunItems.CARGO_INPUT_NODE, Items.GHOSTLY_ESSENCE.stack(), SlimefunItems.CARGO_INPUT_NODE,
+                        Items.GHOSTLY_ESSENCE.stack(), Items.ANCIENT_MACHINE_CORE.stack(),
+                        Items.GHOSTLY_ESSENCE.stack(),
+                        SlimefunItems.CARGO_INPUT_NODE, Items.GHOSTLY_ESSENCE.stack(), SlimefunItems.CARGO_INPUT_NODE
                 }).register(plugin);
 
-        new WirelessItemOutput(DynaTechItems.DT_MACHINES, 1024, DynaTechItems.WIRELESS_ITEM_OUTPUT,
+        new WirelessItemOutput(ItemGroups.MACHINES, 1024, Items.WIRELESS_ITEM_OUTPUT.stack(),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.GHOSTLY_ESSENCE,
-                        DynaTechItems.ADVANCED_MACHINE_SCRAP,
-                        DynaTechItems.GHOSTLY_ESSENCE, SlimefunItems.BIG_CAPACITOR, DynaTechItems.GHOSTLY_ESSENCE,
-                        SlimefunItems.CARGO_OUTPUT_NODE_2, DynaTechItems.GHOSTLY_ESSENCE,
+                        Items.ADVANCED_MACHINE_SCRAP.stack(), Items.GHOSTLY_ESSENCE.stack(),
+                        Items.ADVANCED_MACHINE_SCRAP.stack(),
+                        Items.GHOSTLY_ESSENCE.stack(), SlimefunItems.BIG_CAPACITOR, Items.GHOSTLY_ESSENCE.stack(),
+                        SlimefunItems.CARGO_OUTPUT_NODE_2, Items.GHOSTLY_ESSENCE.stack(),
                         SlimefunItems.CARGO_OUTPUT_NODE_2
                 }).register(plugin);
 
-        new Tesseract(DynaTechItems.DT_MACHINES, 65535, 1024, DynaTechItems.TESSERACT, RecipeType.MAGIC_WORKBENCH,
+        new Tesseract(ItemGroups.MACHINES, 65535, 1024, Items.TESSERACT.stack(), RecipeType.MAGIC_WORKBENCH,
                 new ItemStack[] {
-                        DynaTechItems.WIRELESS_ENERGY_BANK, DynaTechItems.TESSERACTING_OBJ,
-                        DynaTechItems.WIRELESS_ITEM_INPUT,
-                        DynaTechItems.TESSERACTING_OBJ, DynaTechItems.GHOSTLY_ESSENCE, DynaTechItems.TESSERACTING_OBJ,
-                        DynaTechItems.WIRELESS_ITEM_OUTPUT, DynaTechItems.TESSERACTING_OBJ,
-                        DynaTechItems.WIRELESS_ENERGY_POINT
+                        Items.WIRELESS_ENERGY_BANK.stack(), Items.TESSERACTING_OBJ.stack(),
+                        Items.WIRELESS_ITEM_INPUT.stack(),
+                        Items.TESSERACTING_OBJ.stack(), Items.GHOSTLY_ESSENCE.stack(), Items.TESSERACTING_OBJ.stack(),
+                        Items.WIRELESS_ITEM_OUTPUT.stack(), Items.TESSERACTING_OBJ.stack(),
+                        Items.WIRELESS_ENERGY_POINT.stack()
                 }).register(plugin);
 
-        new FurnaceController(DynaTechItems.DT_MACHINES, DynaTechItems.EXTERNAL_HEATER,
+        new FurnaceController(ItemGroups.MACHINES, Items.EXTERNAL_HEATER.stack(),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        DynaTechItems.STAINLESS_STEEL_INGOT, SlimefunItems.HARDENED_METAL_INGOT,
-                        DynaTechItems.STAINLESS_STEEL_INGOT,
+                        Items.STAINLESS_STEEL_INGOT.stack(), SlimefunItems.HARDENED_METAL_INGOT,
+                        Items.STAINLESS_STEEL_INGOT.stack(),
                         new ItemStack(Material.OBSIDIAN), new ItemStack(Material.OBSERVER),
                         new ItemStack(Material.OBSIDIAN),
                         new ItemStack(Material.OBSIDIAN), SlimefunItems.ENERGY_REGULATOR,
@@ -622,59 +413,31 @@ public class DynaTechItemsSetup {
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        new LiquidTank(DynaTechItems.DT_TOOLS, DynaTechItems.LIQUID_TANK, 16000, RecipeType.ENHANCED_CRAFTING_TABLE,
+        new LiquidTank(ItemGroups.TOOLS, Items.LIQUID_TANK.stack(), 16000, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        DynaTechItems.STAINLESS_STEEL_INGOT, new ItemStack(Material.BUCKET),
-                        DynaTechItems.STAINLESS_STEEL_INGOT,
+                        Items.STAINLESS_STEEL_INGOT.stack(), new ItemStack(Material.BUCKET),
+                        Items.STAINLESS_STEEL_INGOT.stack(),
                         new ItemStack(Material.BUCKET), new ItemStack(Material.BUCKET), new ItemStack(Material.BUCKET),
-                        DynaTechItems.STAINLESS_STEEL_INGOT, new ItemStack(Material.BUCKET),
-                        DynaTechItems.STAINLESS_STEEL_INGOT,
+                        Items.STAINLESS_STEEL_INGOT.stack(), new ItemStack(Material.BUCKET),
+                        Items.STAINLESS_STEEL_INGOT.stack(),
                 }).register(plugin);
 
-        // Generators
-        new HydroGenerator(DynaTechItems.DT_GENERATORS, 16, DynaTechItems.WATER_MILL,
+        new ChippingGenerator(ItemGroups.GENERATORS, Items.DURABILITY_GENERATOR.stack(),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        SlimefunItems.ALUMINUM_INGOT, SlimefunItems.SULFATE, SlimefunItems.ALUMINUM_INGOT,
-                        SlimefunItems.ALUMINUM_INGOT, SlimefunItems.ENERGY_CONNECTOR, SlimefunItems.ALUMINUM_INGOT,
-                        DynaTechItems.STAINLESS_STEEL_ROTOR_1, null, DynaTechItems.STAINLESS_STEEL_ROTOR_1
-                }).register(plugin);
-
-        new HydroGenerator(DynaTechItems.DT_GENERATORS, 64, DynaTechItems.WATER_TURBINE,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        DynaTechItems.WATER_MILL, SlimefunItems.REINFORCED_ALLOY_INGOT, DynaTechItems.WATER_MILL,
-                        SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.GOLD_8K,
-                        SlimefunItems.REINFORCED_ALLOY_INGOT,
-                        DynaTechItems.WATER_MILL, SlimefunItems.REINFORCED_ALLOY_INGOT, DynaTechItems.WATER_MILL
-                }).register(plugin);
-
-        new DragonEggGenerator(DynaTechItems.DT_GENERATORS, DynaTechItems.DRAGON_GENERATOR,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        new ItemStack(Material.CRYING_OBSIDIAN), new ItemStack(Material.END_STONE),
-                        new ItemStack(Material.CRYING_OBSIDIAN),
-                        new ItemStack(Material.CRYING_OBSIDIAN), SlimefunItems.LEAD_INGOT,
-                        new ItemStack(Material.CRYING_OBSIDIAN),
-                        SlimefunItems.LEAD_INGOT, SlimefunItems.MEDIUM_CAPACITOR, SlimefunItems.LEAD_INGOT
-                }).register(plugin);
-
-        new ChippingGenerator(DynaTechItems.DT_GENERATORS, Items.DURABILITY_GENERATOR.stack(),
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {
-                        DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.STAINLESS_STEEL_INGOT,
-                        DynaTechItems.STAINLESS_STEEL_INGOT,
-                        new ItemStack(Material.DIAMOND_AXE), DynaTechItems.ANCIENT_MACHINE_CORE,
+                        Items.STAINLESS_STEEL_INGOT.stack(), Items.STAINLESS_STEEL_INGOT.stack(),
+                        Items.STAINLESS_STEEL_INGOT.stack(),
+                        new ItemStack(Material.DIAMOND_AXE), Items.ANCIENT_MACHINE_CORE.stack(),
                         new ItemStack(Material.DIAMOND_AXE),
-                        DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.STAINLESS_STEEL_INGOT,
-                        DynaTechItems.STAINLESS_STEEL_INGOT,
+                        Items.STAINLESS_STEEL_INGOT.stack(), Items.STAINLESS_STEEL_INGOT.stack(),
+                        Items.STAINLESS_STEEL_INGOT.stack(),
                 })
                 .setEnergyCapacity(256)
                 .setEnergyProduction(8)
                 .setProcessingSpeed(1)
                 .register(plugin);
 
-        new CulinaryGenerator(DynaTechItems.DT_GENERATORS, Items.FOOD_GENERATOR.stack(),
+        new CulinaryGenerator(ItemGroups.GENERATORS, Items.FOOD_GENERATOR.stack(),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         SlimefunItems.ALUMINUM_BRASS_INGOT, SlimefunItems.ALUMINUM_BRASS_INGOT,
@@ -687,14 +450,14 @@ public class DynaTechItemsSetup {
                 .setEnergyProduction(16)
                 .register(plugin);
 
-        new StardustReactor(DynaTechItems.DT_GENERATORS, Items.STARDUST_GENERATOR.stack(),
+        new StardustReactor(ItemGroups.GENERATORS, Items.STARDUST_GENERATOR.stack(),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         new ItemStack(Material.FIRE_CHARGE), new ItemStack(Material.FIRE_CHARGE),
                         new ItemStack(Material.FIRE_CHARGE),
                         null, SlimefunItems.NUCLEAR_REACTOR, null,
-                        DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.ANCIENT_MACHINE_CORE,
-                        DynaTechItems.ADVANCED_MACHINE_SCRAP
+                        Items.ADVANCED_MACHINE_SCRAP.stack(), Items.ANCIENT_MACHINE_CORE.stack(),
+                        Items.ADVANCED_MACHINE_SCRAP.stack()
                 })
                 .setEnergyCapacity(32676)
                 .setEnergyProduction(1024)
@@ -702,64 +465,65 @@ public class DynaTechItemsSetup {
 
         // START Mechanical Components
 
-        final Recipe woodMachineCoreRecipe = Recipes.WOOD_MACHINE_CORE;
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.WOOD_MACHINE_CORE.stack(),
-                woodMachineCoreRecipe.getRecipeType(), woodMachineCoreRecipe.getInput()).register(plugin);
+        // final Recipe woodMachineCoreRecipe = Recipes.WOOD_MACHINE_CORE;
+        new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.WOOD_MACHINE_CORE.stack()).register(plugin);
+        // new UnplaceableBlock(ItemGroups.EXPERIMENTAL,
+        // Items.WOOD_MACHINE_CORE.stack()).register(plugin);
 
         final Recipe stoneMachineCoreRecipe = Recipes.STONE_MACHINE_CORE;
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.STONE_MACHINE_CORE.stack(),
+        new UnplaceableBlock(ItemGroups.EXPERIMENTAL, Items.STONE_MACHINE_CORE.stack(),
                 stoneMachineCoreRecipe.getRecipeType(), stoneMachineCoreRecipe.getInput()).register(plugin);
 
         final Recipe ironMachineCoreRecipe = Recipes.IRON_MACHINE_CORE;
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.IRON_MACHINE_CORE.stack(),
+        new UnplaceableBlock(ItemGroups.EXPERIMENTAL, Items.IRON_MACHINE_CORE.stack(),
                 ironMachineCoreRecipe.getRecipeType(), ironMachineCoreRecipe.getInput()).register(plugin);
 
         final Recipe diamondMachineCoreRecipe = Recipes.DIAMOND_MACHINE_CORE;
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.DIAMOND_MACHINE_CORE.stack(),
+        new UnplaceableBlock(ItemGroups.EXPERIMENTAL, Items.DIAMOND_MACHINE_CORE.stack(),
                 diamondMachineCoreRecipe.getRecipeType(), diamondMachineCoreRecipe.getInput()).register(plugin);
 
         final Recipe enchantedMachineCoreRecipe = Recipes.ENCHANTED_MACHINE_CORE;
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.ENCHANTED_MACHINE_CORE.stack(),
+        new UnplaceableBlock(ItemGroups.EXPERIMENTAL, Items.ENCHANTED_MACHINE_CORE.stack(),
                 enchantedMachineCoreRecipe.getRecipeType(), enchantedMachineCoreRecipe.getInput()).register(plugin);
 
         final Recipe energyStorageRecipe = Recipes.ENERGY_STORAGE_COMPONENT;
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.ENERGY_STORAGE_COMPONENT.stack(),
+        new UnplaceableBlock(ItemGroups.EXPERIMENTAL, Items.ENERGY_STORAGE_COMPONENT.stack(),
                 energyStorageRecipe.getRecipeType(), energyStorageRecipe.getInput()).register(plugin);
 
         final Recipe energyInputRecipe = Recipes.ENERGY_INPUT_COMPONENT;
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.ENERGY_INPUT_COMPONENT.stack(),
+        new UnplaceableBlock(ItemGroups.EXPERIMENTAL, Items.ENERGY_INPUT_COMPONENT.stack(),
                 energyInputRecipe.getRecipeType(), energyInputRecipe.getInput()).register(plugin);
 
         final Recipe energyOutputRecipe = Recipes.ENERGY_OUTPUT_COMPONENT;
-        new UnplaceableBlock(DynaTechItems.DT_EXPERIMENTAL, Items.ENERGY_OUTPUT_COMPONENT.stack(),
+        new UnplaceableBlock(ItemGroups.EXPERIMENTAL, Items.ENERGY_OUTPUT_COMPONENT.stack(),
                 energyOutputRecipe.getRecipeType(), energyOutputRecipe.getInput()).register(plugin);
 
         final Recipe degradedWaterMillRecipe = Recipes.DEGRADED_WATER_MILL;
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, Items.DEGRADED_WATER_MILL.stack(),
+        new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.DEGRADED_WATER_MILL.stack(),
                 degradedWaterMillRecipe.getRecipeType(), degradedWaterMillRecipe.getInput()).register(plugin);
 
         final Recipe degradedWaterMill2Recipe = Recipes.DEGRADED_WATER_MILL_2;
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, Items.DEGRADED_WATER_MILL_2.stack(),
+        new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.DEGRADED_WATER_MILL_2.stack(),
                 degradedWaterMill2Recipe.getRecipeType(),
                 degradedWaterMill2Recipe.getInput()).register(plugin);
 
         final Recipe degradedWindMillRecipe = Recipes.DEGRADED_WIND_MILL;
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, Items.DEGRADED_WIND_MILL.stack(),
+        new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.DEGRADED_WIND_MILL.stack(),
                 degradedWindMillRecipe.getRecipeType(),
                 degradedWindMillRecipe.getInput()).register(plugin);
 
         final Recipe degradedWindMill2Recipe = Recipes.DEGRADED_WIND_MILL_2;
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, Items.DEGRADED_WIND_MILL_2.stack(),
+        new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.DEGRADED_WIND_MILL_2.stack(),
                 degradedWindMill2Recipe.getRecipeType(),
                 degradedWindMill2Recipe.getInput()).register(plugin);
 
         final Recipe degradedEggMillRecipe = Recipes.DEGRADED_EGG_MILL;
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, Items.DEGRADED_EGG_MILL.stack(),
+        new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.DEGRADED_EGG_MILL.stack(),
                 degradedEggMillRecipe.getRecipeType(),
                 degradedEggMillRecipe.getInput()).register(plugin);
 
         final Recipe degradedEggMill2Recipe = Recipes.DEGRADED_EGG_MILL_2;
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, Items.DEGRADED_EGG_MILL_2.stack(),
+        new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.DEGRADED_EGG_MILL_2.stack(),
                 degradedEggMill2Recipe.getRecipeType(),
                 degradedEggMill2Recipe.getInput()).register(plugin);
 
@@ -768,27 +532,27 @@ public class DynaTechItemsSetup {
         // START Energy Generators
 
         final Recipe waterMillRecipe = Recipes.WATER_MILL;
-        new WaterMill(DynaTechItems.DT_EXPERIMENTAL, Items.WATER_MILL.stack(), waterMillRecipe, 64, 16, 2500)
+        new WaterMill(ItemGroups.EXPERIMENTAL, Items.WATER_MILL.stack(), waterMillRecipe, 64, 16, 2500)
                 .register(plugin);
 
         final Recipe waterMill2Recipe = Recipes.WATER_MILL_2;
-        new WaterMill(DynaTechItems.DT_EXPERIMENTAL, Items.WATER_MILL_2.stack(), waterMill2Recipe, 256, 64, 5000)
+        new WaterMill(ItemGroups.EXPERIMENTAL, Items.WATER_MILL_2.stack(), waterMill2Recipe, 256, 64, 5000)
                 .register(plugin);
 
         final Recipe windMillRecipe = Recipes.WIND_MILL;
-        new WindMill(DynaTechItems.DT_EXPERIMENTAL, Items.WIND_MILL.stack(), windMillRecipe, 64, 16, 256, 2500)
+        new WindMill(ItemGroups.EXPERIMENTAL, Items.WIND_MILL.stack(), windMillRecipe, 64, 16, 256, 2500)
                 .register(plugin);
 
         final Recipe windMill2Recipe = Recipes.WIND_MILL_2;
-        new WindMill(DynaTechItems.DT_EXPERIMENTAL, Items.WIND_MILL_2.stack(), windMill2Recipe, 256, 64, 1024, 5000)
+        new WindMill(ItemGroups.EXPERIMENTAL, Items.WIND_MILL_2.stack(), windMill2Recipe, 256, 64, 1024, 5000)
                 .register(plugin);
 
         final Recipe eggMillRecipe = Recipes.EGG_MILL;
-        new EggMill(DynaTechItems.DT_EXPERIMENTAL, Items.EGG_MILL.stack(), eggMillRecipe, 2500, 16, 64)
+        new EggMill(ItemGroups.EXPERIMENTAL, Items.EGG_MILL.stack(), eggMillRecipe, 2500, 16, 64)
                 .register(plugin);
 
         final Recipe eggMill2Recipe = Recipes.EGG_MILL_2;
-        new EggMill(DynaTechItems.DT_EXPERIMENTAL, Items.EGG_MILL_2.stack(), eggMill2Recipe, 5000, 64, 256)
+        new EggMill(ItemGroups.EXPERIMENTAL, Items.EGG_MILL_2.stack(), eggMill2Recipe, 5000, 64, 256)
                 .register(plugin);
 
         // END Energy Generators
@@ -796,56 +560,56 @@ public class DynaTechItemsSetup {
         // START Materials
 
         final Recipe stainlessSteelIngotRecipe = Recipes.STAINLESS_STEEL_INGOT;
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.STAINLESS_STEEL_INGOT,
+        new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.STAINLESS_STEEL_INGOT.stack(),
                 stainlessSteelIngotRecipe.getRecipeType(), stainlessSteelIngotRecipe.getInput()).register(plugin);
 
         final Recipe stainlessSteelRotorRecipe = Recipes.STAINLESS_STEEL_ROTOR;
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.STAINLESS_STEEL_ROTOR_1,
+        new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.STAINLESS_STEEL_ROTOR.stack(),
                 stainlessSteelRotorRecipe.getRecipeType(), stainlessSteelRotorRecipe.getInput()).register(plugin);
 
         final Recipe coalCokeRecipe = Recipes.COAL_TO_COAL_COKE;
-        new SlimefunItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.COAL_COKE, coalCokeRecipe.getRecipeType(),
+        new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.COAL_COKE.stack(), coalCokeRecipe.getRecipeType(),
                 coalCokeRecipe.getInput()).register(plugin);
 
         // END Materials
 
         // START Liquids
-        new LiquidContainerItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.LAVA_BOTTLE, RecipeType.NULL,
+        new LiquidContainerItem(ItemGroups.EXPERIMENTAL, Items.LAVA_BOTTLE.stack(), RecipeType.NULL,
                 new ItemStack[] {}, LiquidRegistry.getInstance().getByKey(NamespacedKey.minecraft("lava")), 250)
                 .register(plugin);
 
-        new LiquidContainerItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.HONEY_BUCKET, RecipeType.NULL,
+        new LiquidContainerItem(ItemGroups.EXPERIMENTAL, Items.HONEY_BUCKET.stack(), RecipeType.NULL,
                 new ItemStack[] {}, LiquidRegistry.getInstance().getByKey(NamespacedKey.minecraft("honey")), 1000)
                 .register(plugin);
 
-        new LiquidContainerItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.POTION_BUCKET, RecipeType.NULL,
+        new LiquidContainerItem(ItemGroups.EXPERIMENTAL, Items.POTION_BUCKET.stack(), RecipeType.NULL,
                 new ItemStack[] {}, LiquidRegistry.getInstance().getByKey(NamespacedKey.minecraft("potion")), 1000)
                 .register(plugin);
 
-        new LiquidContainerItem(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.MILK_BOTTLE, RecipeType.NULL,
+        new LiquidContainerItem(ItemGroups.EXPERIMENTAL, Items.MILK_BOTTLE.stack(), RecipeType.NULL,
                 new ItemStack[] {}, LiquidRegistry.getInstance().getByKey(NamespacedKey.minecraft("milk")), 1000)
                 .register(plugin);
         // END Liquids
 
         // START Tools
         final Recipe inventoryFilterRecipe = Recipes.INVENTORY_FILTER;
-        new InventoryFilter(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.INV_FILTER,
+        new InventoryFilter(ItemGroups.EXPERIMENTAL, Items.INVENTORY_FILTER.stack(),
                 inventoryFilterRecipe.getRecipeType(), inventoryFilterRecipe.getInput()).register(plugin);
 
-        new RecipeBook(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.RECIPE_BOOK, Recipes.RECIPE_BOOK).register(plugin);
+        new RecipeBook(ItemGroups.EXPERIMENTAL, Items.RECIPE_BOOK.stack(), Recipes.RECIPE_BOOK).register(plugin);
 
-        new AutoOutputUpgrade(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.AUTO_OUTPUT_UPGRADE,
+        new AutoOutputUpgrade(ItemGroups.EXPERIMENTAL, Items.AUTO_OUTPUT_UPGRADE.stack(),
                 Recipes.AUTO_OUTPUT_UGPRADE).register(plugin);
 
-        new AutoInputUpgrade(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.AUTO_INPUT_UPGRADE,
+        new AutoInputUpgrade(ItemGroups.EXPERIMENTAL, Items.AUTO_INPUT_UPGRADE.stack(),
                 Recipes.AUTO_INPUT_UPGRADE)
                 .register(plugin);
 
-        new FluidTank(DynaTechItems.DT_EXPERIMENTAL, DynaTechItems.FLUID_TANK).register(plugin);
+        new FluidTank(ItemGroups.EXPERIMENTAL, Items.FLUID_TANK.stack()).register(plugin);
         // END Tools
 
         // START Machines
-        new CokeOvenController(DynaTechItems.COKE_OVEN_CONTROLLER).register(plugin);
+        new CokeOvenController(Items.COAL_COKE_OVEN.stack()).register(plugin);
     }
 
     private static void registerMineralizedApiaries(MaterialHive hive, SlimefunAddon plugin) {
@@ -853,8 +617,11 @@ public class DynaTechItemsSetup {
             SlimefunItem item = SlimefunItem.getById(id);
 
             if (item != null) {
-                SlimefunItemStack apiary = new SlimefunItemStack(
-                        "DT_" + id.replace("_INGOT", "") + "_MINERALIZED_APIARY",
+
+                TypedKey<ItemWrapper> APIARY_KEY = TypedKey.create("dynatech",
+                        id.replace("_INGOT", "").toLowerCase() + "mineralized_apiary");
+                ItemWrapper APIARY = ItemWrapper.create(APIARY_KEY, new SlimefunItemStack(
+                        APIARY_KEY.asSlimefunId(),
                         Material.BEEHIVE,
                         "&f" + item.getItemName().replace(" Ingot", "") + " Mineralized Apiary",
                         "",
@@ -863,14 +630,21 @@ public class DynaTechItemsSetup {
                         "",
                         LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
                         LoreBuilder.powerBuffer(16384),
-                        LoreBuilderDynamic.powerPerTick(1024));
+                        LoreBuilderDynamic.powerPerTick(1024)));
 
-                new MineralizedApiary(DynaTechItems.DT_HIVES, apiary, RecipeType.ENHANCED_CRAFTING_TABLE,
-                        new ItemStack[] {
+                Recipe APIARY_RECIPE = Recipe.init()
+                        .setKey(APIARY_KEY.key())
+                        .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
+                        .setInput(new ItemStack[] {
                                 SlimefunItems.LARGE_CAPACITOR, item.getItem(), SlimefunItems.LARGE_CAPACITOR,
-                                item.getItem(), DynaTechItems.MATERIAL_HIVE, item.getItem(),
-                                DynaTechItems.MACHINE_SCRAP, DynaTechItems.VEX_GEM, DynaTechItems.MACHINE_SCRAP,
-                        }, item.getItem())
+                                item.getItem(), Items.MATERIAL_HIVE.stack(), item.getItem(),
+                                Items.MACHINE_SCRAP.stack(), Items.VEX_GEM.stack(), Items.MACHINE_SCRAP.stack(),
+                        })
+                        .setOutput(APIARY.stack())
+                        .register();
+
+                new MineralizedApiary(ItemGroups.HIVES, APIARY.stack(), APIARY_RECIPE.getRecipeType(),
+                        APIARY_RECIPE.getInput(), item.getItem())
                         .setCapacity(16384)
                         .setConsumption(1024)
                         .setProcessingSpeed(1)
@@ -880,8 +654,10 @@ public class DynaTechItemsSetup {
 
         for (String name : hive.vanillaItemsAccepted.getValue()) {
             ItemStack item = new ItemStack(Material.matchMaterial(name));
+            TypedKey<ItemWrapper> APIARY_KEY = TypedKey.create("dynatech",
+                    name.replace("_INGOT", "").toLowerCase() + "mineralized_apiary");
 
-            SlimefunItemStack apiary = new SlimefunItemStack("DT_" + name.replace("_INGOT", "") + "_MINERALIZED_APIARY",
+            ItemWrapper APIARY = ItemWrapper.create(APIARY_KEY, new SlimefunItemStack(APIARY_KEY.asSlimefunId(),
                     Material.BEEHIVE,
                     "&f" + ItemUtils.getItemName(item).replace(" Ingot", "") + " Mineralized Apiary",
                     "",
@@ -890,14 +666,21 @@ public class DynaTechItemsSetup {
                     "",
                     LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
                     LoreBuilder.powerBuffer(16384),
-                    LoreBuilderDynamic.powerPerTick(1024));
+                    LoreBuilderDynamic.powerPerTick(1024)));
 
-            new MineralizedApiary(DynaTechItems.DT_HIVES, apiary, RecipeType.ENHANCED_CRAFTING_TABLE,
-                    new ItemStack[] {
+            Recipe APIARY_RECIPE = Recipe.init()
+                    .setKey(APIARY_KEY.key())
+                    .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
+                    .setInput(new ItemStack[] {
                             SlimefunItems.LARGE_CAPACITOR, item, SlimefunItems.LARGE_CAPACITOR,
-                            item, DynaTechItems.MATERIAL_HIVE, item,
-                            DynaTechItems.MACHINE_SCRAP, DynaTechItems.VEX_GEM, DynaTechItems.MACHINE_SCRAP,
-                    }, item)
+                            item, Items.MATERIAL_HIVE.stack(), item,
+                            Items.MACHINE_SCRAP.stack(), Items.VEX_GEM.stack(), Items.MACHINE_SCRAP.stack(),
+                    })
+                    .setOutput(APIARY.stack())
+                    .register();
+
+            new MineralizedApiary(ItemGroups.HIVES, APIARY.stack(), APIARY_RECIPE.getRecipeType(),
+                    APIARY_RECIPE.getInput(), item)
                     .setCapacity(16384)
                     .setConsumption(1024)
                     .setProcessingSpeed(1)

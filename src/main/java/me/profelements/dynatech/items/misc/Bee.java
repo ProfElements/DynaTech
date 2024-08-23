@@ -10,10 +10,11 @@ import com.google.common.base.Preconditions;
 import org.bukkit.inventory.ItemStack;
 
 public class Bee extends UnplaceableBlock {
-    
+
     private int speedMultiplier;
 
-    public Bee(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, int speedMulitplier) {
+    public Bee(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe,
+            int speedMulitplier) {
         super(itemGroup, item, recipeType, recipe);
         this.speedMultiplier = speedMulitplier;
     }
@@ -23,8 +24,8 @@ public class Bee extends UnplaceableBlock {
     }
 
     public void setSpeedMultiplier(int speedMultiplier) {
-      Preconditions.checkArgument(speedMultiplier > 0, " The Speed multipler must be greater then 0");  
+        Preconditions.checkArgument(speedMultiplier > 0, " The Speed multipler must be greater then 0");
         this.speedMultiplier = speedMultiplier;
     }
-    
+
 }

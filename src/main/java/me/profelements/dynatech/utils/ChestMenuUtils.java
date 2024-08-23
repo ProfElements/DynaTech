@@ -9,6 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu.MenuClickHandler;
+import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.registries.Registries;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 
@@ -23,10 +24,6 @@ public class ChestMenuUtils {
         ChestMenu menu = new ChestMenu("Recipe Book");
         menu.setEmptySlotsClickable(false);
 
-        for (int i = 0; i < 9; i++) {
-            menu.addItem(i, BACKGROUND_ITEM, NO_CLICK);
-        }
-
         Set<Recipe> recipes = Registries.RECIPES.getEntries();
 
         Set<ItemStack> outputs = new HashSet<>();
@@ -35,8 +32,12 @@ public class ChestMenuUtils {
             outputs.add(recipe.getOutput()[0]);
         }
 
-        int iter = 9;
+        int iter = 0;
         for (ItemStack recipeOutput : outputs) {
+            if (iter == 54) {
+                break;
+            }
+
             menu.addItem(iter, recipeOutput, new MenuClickHandler() {
                 @Override
                 public boolean onClick(Player p, int slot, ItemStack item, ClickAction action) {
@@ -45,10 +46,6 @@ public class ChestMenuUtils {
                 }
             });
             iter++;
-        }
-
-        for (int i = 45; i < 54; i++) {
-            menu.addItem(i, BACKGROUND_ITEM, NO_CLICK);
         }
 
         menu.open(p);

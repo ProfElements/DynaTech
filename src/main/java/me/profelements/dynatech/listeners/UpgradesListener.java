@@ -19,13 +19,12 @@ import io.github.thebusybiscuit.slimefun4.api.events.AsyncMachineOperationFinish
 import io.github.thebusybiscuit.slimefun4.implementation.operations.CraftingOperation;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
-import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.profelements.dynatech.DynaTech;
-import me.profelements.dynatech.DynaTechItems;
 import me.profelements.dynatech.items.tools.AutoOutputUpgrade;
+import me.profelements.dynatech.registries.Items;
 
 public class UpgradesListener implements Listener {
 
@@ -106,11 +105,11 @@ public class UpgradesListener implements Listener {
         String upgrades = BlockStorage.getLocationInfo(l, "upgrades");
 
         if (upgrades != null && upgrades.contains("auto_output")) {
-            l.getWorld().dropItemNaturally(l, DynaTechItems.AUTO_OUTPUT_UPGRADE);
+            l.getWorld().dropItemNaturally(l, Items.AUTO_OUTPUT_UPGRADE.stack());
         }
 
         if (upgrades != null && upgrades.contains("auto_input")) {
-            l.getWorld().dropItemNaturally(l, DynaTechItems.AUTO_INPUT_UPGRADE);
+            l.getWorld().dropItemNaturally(l, Items.AUTO_INPUT_UPGRADE.stack());
         }
     }
 

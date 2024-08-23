@@ -3,6 +3,7 @@ package me.profelements.dynatech.registries;
 import java.util.Set;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -27,6 +28,15 @@ public class Registry<T> {
     static <T> Registry<T> create(TypedKey<Registry<T>> key) {
         Preconditions.checkNotNull(key);
         return new Registry<>(key);
+    }
+
+    static <T> Registry<T> withFiller(TypedKey<Registry<T>> key, Consumer<Registry<T>> fillFunc) {
+        Preconditions.checkNotNull(key);
+        Registry<T> registry = new Registry<>(key);
+
+        fillFunc.accept(registry);
+
+        return registry;
     }
 
     public void register(TypedKey<T> key, T entry) {

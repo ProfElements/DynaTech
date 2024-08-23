@@ -20,7 +20,6 @@ import org.bukkit.util.Vector;
 
 import io.github.bakedlibs.dough.blocks.BlockPosition;
 import io.github.bakedlibs.dough.collections.Pair;
-import io.github.bakedlibs.dough.inventory.InvUtils;
 import io.github.bakedlibs.dough.items.ItemUtils;
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -34,7 +33,10 @@ import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.profelements.dynatech.DynaTech;
-import me.profelements.dynatech.DynaTechItems;
+import me.profelements.dynatech.registries.ItemGroups;
+import me.profelements.dynatech.registries.Items;
+import me.profelements.dynatech.registries.RecipeTypes;
+import me.profelements.dynatech.registries.Registries;
 import me.profelements.dynatech.utils.Recipe;
 
 public class CokeOvenController extends SlimefunItem {
@@ -46,7 +48,7 @@ public class CokeOvenController extends SlimefunItem {
     static HashMap<BlockPosition, Integer> blockPosToTimeLeft = new HashMap<>();
 
     public CokeOvenController(SlimefunItemStack stack) {
-        super(DynaTechItems.DT_EXPERIMENTAL, stack, RecipeType.NULL, new ItemStack[] {});
+        super(ItemGroups.EXPERIMENTAL, stack, RecipeType.NULL, new ItemStack[] {});
 
         addItemHandler(onTick(), onUse(), onBreak());
     }
@@ -148,8 +150,9 @@ public class CokeOvenController extends SlimefunItem {
 
         if (maybeRecipe.isEmpty()) {
 
-            List<Recipe> maybeRecipes = DynaTech.getRecipeRegistry().getRecipesByRecipeType(DynaTechItems.DT_OVENING)
-                    .toList();
+            List<Recipe> maybeRecipes = Registries.RECIPES.getEntries().stream().filter((recipe) -> {
+                return recipe.getRecipeType().equals(RecipeTypes.OVENING);
+            }).toList();
 
             List<ItemStack> itemsToRemove = new ArrayList<>();
             Inventory brlInv = inputBarrelContainer.get().getInventory();
@@ -298,7 +301,7 @@ public class CokeOvenController extends SlimefunItem {
         }
 
         Predicate<Block> isControl = blk -> (BlockStorage.checkID(blk)
-                .equals(DynaTechItems.COKE_OVEN_CONTROLLER.getItemId()));
+                .equals(Items.COAL_COKE_OVEN.stack().getItemId()));
         pattern[2][1][0] = isControl;
 
         Predicate<Block> isBarrel = blk -> (blk.getType().equals(Material.BARREL));
