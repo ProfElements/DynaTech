@@ -553,7 +553,7 @@ public class Items {
 
     public static final ItemWrapper ORECHID = ItemWrapper.create(Keys.ORECHID,
             new SlimefunItemStack(Keys.ORECHID.asSlimefunId(),
-                    Material.END_ROD,
+                    Material.WITHER_ROSE,
                     "&6Orechid",
                     "",
                     "&fUsing Stone or Netherack and power, it makes their respective ores.",
