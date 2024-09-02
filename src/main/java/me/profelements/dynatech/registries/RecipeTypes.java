@@ -16,6 +16,7 @@ public class RecipeTypes {
         registry.register(Keys.BLOCK_DROP, BLOCK_DROP);
         registry.register(Keys.TREE_GROWTH_CHAMBER, TREE_GROWTH_CHAMBER);
         registry.register(Keys.MATERIAL_HIVE, MATERIAL_HIVE);
+        registry.register(Keys.PETAL_APOTHECARY, PETAL_APOTHECARY);
     }
 
     public static final RecipeType SCOOPING = new RecipeType(Keys.SCOOPING.key(),
@@ -37,6 +38,12 @@ public class RecipeTypes {
                 materialHive.getMachineRecipes().add(new MachineRecipe(1800, recipe, new ItemStack[] { output }));
             });
 
+    public static final RecipeType PETAL_APOTHECARY = new RecipeType(Keys.PETAL_APOTHECARY.key(),
+            Items.PETAL_APOTHECARY.stack(),
+            (recipe, output) -> {
+
+            });
+
     public static final class Keys {
         public static final TypedKey<RecipeType> SCOOPING = TypedKey.create("dynatech", "scooping");
         public static final TypedKey<RecipeType> OVENING = TypedKey.create("dynatech", "ovening");
@@ -44,5 +51,6 @@ public class RecipeTypes {
         public static final TypedKey<RecipeType> TREE_GROWTH_CHAMBER = TypedKey.create("dynatech",
                 "tree_growth_chamber");
         public static final TypedKey<RecipeType> MATERIAL_HIVE = TypedKey.create("dynatech", "material_hive");
+        public static final TypedKey<RecipeType> PETAL_APOTHECARY = TypedKey.create("dynatech", "petal_apothecary");
     }
 }

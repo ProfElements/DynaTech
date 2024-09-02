@@ -55,6 +55,7 @@ import me.profelements.dynatech.items.electric.transfer.WirelessEnergyBank;
 import me.profelements.dynatech.items.electric.transfer.WirelessEnergyPoint;
 import me.profelements.dynatech.items.electric.transfer.WirelessItemInput;
 import me.profelements.dynatech.items.electric.transfer.WirelessItemOutput;
+import me.profelements.dynatech.items.machines.PetalApothecary;
 import me.profelements.dynatech.items.misc.Bee;
 import me.profelements.dynatech.items.misc.ItemBand;
 import me.profelements.dynatech.items.misc.MobDropItem;
@@ -201,7 +202,7 @@ public class DynaTechItemsSetup {
 
         new WitherGolem(ItemGroups.TOOLS, Items.WITHER_SKELETON_GOLEM.stack()).register(plugin);
 
-        // Machines
+        // START Machines
         if (DynaTech.isExoticGardenInstalled()) {
             new KitchenAutoCrafter(ItemGroups.MACHINES, Items.KITCHEN_AUTO_CRAFTER.stack(),
                     Recipes.KITCHEN_AUTO_CRAFTER.getRecipeType(), Recipes.KITCHEN_AUTO_CRAFTER.getInput())
@@ -245,7 +246,6 @@ public class DynaTechItemsSetup {
                 .setConsumption(128)
                 .setProcessingSpeed(3)
                 .register(plugin);
-
         new GrowthChamberNether(ItemGroups.MACHINES, Items.GROWTH_CHAMBER_NETHER.stack(),
                 Recipes.GROWTH_CHAMBER_NETHER.getRecipeType(), Recipes.GROWTH_CHAMBER_NETHER.getInput())
                 .setCapacity(512)
@@ -413,6 +413,11 @@ public class DynaTechItemsSetup {
                 .setProcessingSpeed(1)
                 .register(plugin);
 
+        // START EXPERIMENTAL SHENANIGANS
+        new PetalApothecary(ItemGroups.EXPERIMENTAL,
+                Items.PETAL_APOTHECARY.stack()).register(plugin);
+        // END EXPERIMENTAL SHENANIGANS
+        // END Machines
         new LiquidTank(ItemGroups.TOOLS, Items.LIQUID_TANK.stack(), 16000, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         Items.STAINLESS_STEEL_INGOT.stack(), new ItemStack(Material.BUCKET),
@@ -422,6 +427,7 @@ public class DynaTechItemsSetup {
                         Items.STAINLESS_STEEL_INGOT.stack(),
                 }).register(plugin);
 
+        // START Generators
         new ChippingGenerator(ItemGroups.GENERATORS, Items.DURABILITY_GENERATOR.stack(),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
@@ -462,7 +468,7 @@ public class DynaTechItemsSetup {
                 .setEnergyCapacity(32676)
                 .setEnergyProduction(1024)
                 .register(plugin);
-
+        // END Generators
         // START Mechanical Components
 
         // final Recipe woodMachineCoreRecipe = Recipes.WOOD_MACHINE_CORE;

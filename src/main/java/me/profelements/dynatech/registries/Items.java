@@ -742,7 +742,18 @@ public class Items {
                     LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
                     LoreBuilder.speed(3),
                     LoreBuilderDynamic.powerPerSecond(128)));
+    // END Growth Chambers
 
+    public static final ItemWrapper PETAL_APOTHECARY = ItemWrapper.create(Keys.PETAL_APOTHECARY,
+            new SlimefunItemStack(Keys.PETAL_APOTHECARY.asSlimefunId(),
+                    Material.CAULDRON,
+                    "&dPetal Apothecary",
+                    "",
+                    "&fAdd sparks of nature to make powerful flowers",
+                    "",
+                    LoreBuilder.machine(MachineTier.BASIC, MachineType.MACHINE)));
+
+    // END Machines
     // START Fluid Containers
     public static final ItemWrapper LAVA_BOTTLE = ItemWrapper.create(Keys.LAVA_BOTTLE, new SlimefunItemStack(
             Keys.LAVA_BOTTLE.asSlimefunId(), Color.ORANGE, new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 1, 1),
@@ -959,6 +970,8 @@ public class Items {
         public static final TypedKey<ItemWrapper> GROWTH_CHAMBER_MK2_END = TypedKey.create("dynatech",
                 "end_growth_chamber_mark_2");
         // END Growth Chambers
+
+        public static final TypedKey<ItemWrapper> PETAL_APOTHECARY = TypedKey.create("dynatech", "petal_apothecary");
 
         // END Machines
         // START Fluid Containers

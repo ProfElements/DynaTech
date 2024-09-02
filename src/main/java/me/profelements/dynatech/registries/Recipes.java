@@ -32,6 +32,7 @@ public class Recipes {
     private static final ItemStack UNBREAKING_3_ENCHANTED_BOOK = new CustomItemStack(Material.ENCHANTED_BOOK, meta -> {
         meta.addEnchant(Enchantment.DURABILITY, 3, false);
     });
+
     private static final ItemStack GLASS = new ItemStack(Material.GLASS);
     private static final ItemStack CYAN_CONCRETE = new ItemStack(Material.LIGHT_BLUE_CONCRETE);
     private static final ItemStack PINK_CONCRETE = new ItemStack(Material.PINK_CONCRETE);
@@ -40,6 +41,10 @@ public class Recipes {
     private static final ItemStack END_STONE = new ItemStack(Material.END_STONE);
     private static final ItemStack CHORUS_FRUIT = new ItemStack(Material.CHORUS_FRUIT);
     private static final ItemStack BOOK = new ItemStack(Material.BOOK);
+    private static final ItemStack SMOOTH_STONE = new ItemStack(Material.SMOOTH_STONE);
+    private static final ItemStack SMOOTH_STONE_SLAB = new ItemStack(Material.SMOOTH_STONE_SLAB);
+    private static final ItemStack BUCKET = new ItemStack(Material.BUCKET);
+
     // END common use items
 
     public static void init(Registry<Recipe> registry) {
@@ -667,6 +672,7 @@ public class Recipes {
             .setOutput(Items.TESSERACT_BINDER.stack())
             .register();
 
+    // END Tools
     public static final Recipe KITCHEN_AUTO_CRAFTER = Recipe.init()
             .setKey(Keys.KITCHEN_AUTO_CRAFTER.key())
             .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
@@ -883,7 +889,27 @@ public class Recipes {
             .setOutput(Items.SEED_PLUCKER.stack())
             .register();
 
-    // END Tools
+    public static final Recipe PETAL_APOTHECARY = Recipe.init()
+            .setKey(Keys.PETAL_APOTHECARY.key())
+            .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
+            .setInput(new ItemStack[] {
+                    SMOOTH_STONE, BUCKET, SMOOTH_STONE,
+                    null, SMOOTH_STONE, null,
+                    SMOOTH_STONE_SLAB, SMOOTH_STONE_SLAB, SMOOTH_STONE_SLAB,
+            });
+
+    // START EXPERIMENTAL SHENANIGANS
+    public static final Recipe TEST_PETAL_APOTH_RECIPE = Recipe.init()
+            .setKey(new NamespacedKey("dynatech", "test_apoth"))
+            .setRecipeType(RecipeTypes.PETAL_APOTHECARY)
+            .setInput(new ItemStack[] { new ItemStack(Material.BONE), new ItemStack(Material.WHEAT_SEEDS) })
+            .setOutput(new ItemStack(Material.WHEAT))
+            .register();
+
+    // END EXPERIMETNAL SHENANIGANS
+
+    // END MACHINES
+
     public static final class Keys {
 
         // START Mechanical Components
@@ -1061,5 +1087,6 @@ public class Recipes {
 
         public static final TypedKey<Recipe> SEED_PLUCKER = TypedKey.create(Items.Keys.SEED_PLUCKER.key());
 
+        public static final TypedKey<Recipe> PETAL_APOTHECARY = TypedKey.create(Items.Keys.PETAL_APOTHECARY.key());
     }
 }
