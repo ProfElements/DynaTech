@@ -8,6 +8,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
 
 import com.google.common.base.Preconditions;
 
@@ -16,6 +17,7 @@ import me.profelements.dynatech.registries.events.RegistryFreezeEvent;
 import me.profelements.dynatech.registries.events.RegistryRemoveEvent;
 
 public class Registry<T> {
+    public static final Map<NamespacedKey, Registry<?>> registries = new ConcurrentHashMap<>();
     private final Map<TypedKey<T>, T> entries = new ConcurrentHashMap<>();
     private final TypedKey<Registry<T>> key;
     private boolean frozen;
@@ -27,7 +29,11 @@ public class Registry<T> {
 
     static <T> Registry<T> create(TypedKey<Registry<T>> key) {
         Preconditions.checkNotNull(key);
-        return new Registry<>(key);
+        var registry = new Registry<T>(key);
+
+        registries.put(key.key(), registry);
+
+        return registry;
     }
 
     static <T> Registry<T> withFiller(TypedKey<Registry<T>> key, Consumer<Registry<T>> fillFunc) {
@@ -70,7 +76,7 @@ public class Registry<T> {
         }
     }
 
-    boolean isFrozen() {
+    public boolean isFrozen() {
         return this.frozen;
     }
 
@@ -107,5 +113,9 @@ public class Registry<T> {
     public TypedKey<Registry<T>> getKey() {
         Preconditions.checkNotNull(this.key);
         return this.key;
+    }
+
+    public static <T> Registry<?> getByKey(TypedKey<Registry<T>> key) {
+        return registries.get(key.key());
     }
 }
