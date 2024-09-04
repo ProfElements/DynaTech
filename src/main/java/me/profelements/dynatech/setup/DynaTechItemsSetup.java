@@ -261,7 +261,7 @@ public class DynaTechItemsSetup {
                 .register(plugin);
 
         new GrowthChamberOcean(ItemGroups.MACHINES, Items.GROWTH_CHAMBER_OCEAN.stack(),
-                Recipes.GROWTH_CHAMBER_OCEAN.getRecipeType(), Recipes.GROWTH_CHAMBER_MK2_OCEAN.getInput())
+                Recipes.GROWTH_CHAMBER_OCEAN.getRecipeType(), Recipes.GROWTH_CHAMBER_OCEAN.getInput())
                 .setCapacity(512)
                 .setConsumption(32)
                 .setProcessingSpeed(1)
