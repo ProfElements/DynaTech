@@ -464,7 +464,7 @@ public class Recipes {
             .setKey(Keys.MACHINE_SCRAP.key())
             .setRecipeType(RecipeType.GRIND_STONE)
             .setInput(SlimefunItems.PROGRAMMABLE_ANDROID)
-            .setOutput(Items.MACHINE_SCRAP.stack())
+            .setOutput(Items.MACHINE_SCRAP.stack(), 8)
             .register();
 
     public static final Recipe ADVANCED_MACHINE_SCRAP = Recipe.init()
@@ -472,7 +472,7 @@ public class Recipes {
             .setKey(Keys.ADVANCED_MACHINE_SCRAP.key())
             .setRecipeType(RecipeType.GRIND_STONE)
             .setInput(SlimefunItems.PROGRAMMABLE_ANDROID_2)
-            .setOutput(Items.ADVANCED_MACHINE_SCRAP.stack())
+            .setOutput(Items.ADVANCED_MACHINE_SCRAP.stack(), 8)
             .register();
 
     public static final Recipe VEX_GEM = Recipe.init()

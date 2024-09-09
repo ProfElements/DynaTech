@@ -103,12 +103,12 @@ public class DynaTechItemsSetup {
                 Recipes.ANCIENT_MACHINE_CORE.getRecipeType(), Recipes.ANCIENT_MACHINE_CORE.getInput()).register(plugin);
 
         new SlimefunItem(ItemGroups.RESOURCES, Items.MACHINE_SCRAP.stack(), Recipes.MACHINE_SCRAP.getRecipeType(),
-                Recipes.MACHINE_SCRAP.getInput(), new SlimefunItemStack(Items.MACHINE_SCRAP.stack(), 8))
+                Recipes.MACHINE_SCRAP.getInput(), Recipes.MACHINE_SCRAP.getOutput()[0])
                 .register(plugin);
 
         new SlimefunItem(ItemGroups.RESOURCES, Items.ADVANCED_MACHINE_SCRAP.stack(),
                 Recipes.ADVANCED_MACHINE_SCRAP.getRecipeType(), Recipes.ADVANCED_MACHINE_SCRAP.getInput(),
-                new SlimefunItemStack(Items.ADVANCED_MACHINE_SCRAP.stack(), 8)).register(plugin);
+                Recipes.ADVANCED_MACHINE_SCRAP.getOutput()[0]).register(plugin);
 
         new VexGem(ItemGroups.RESOURCES, Items.VEX_GEM.stack(), Recipes.VEX_GEM.getRecipeType(),
                 Recipes.VEX_GEM.getInput()).register(plugin);

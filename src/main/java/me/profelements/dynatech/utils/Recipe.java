@@ -68,6 +68,14 @@ public class Recipe {
         return getInstance();
     }
 
+    public Recipe setOutput(ItemStack output, int amount) {
+        Preconditions.checkNotNull(output, "This recipe's output should not be null");
+        var actualOutput = output.clone();
+        actualOutput.setAmount(amount);
+        this.OUTPUT = new ItemStack[] { actualOutput };
+        return getInstance();
+    }
+
     public Recipe setOutput(ItemStack[] output) {
         Preconditions.checkNotNull(output, "This recipe's output should not be null");
         this.OUTPUT = output;
