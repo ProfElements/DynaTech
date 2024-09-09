@@ -211,6 +211,10 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
     }
 
     private void updateKnowledgePane(BlockMenu menu, int currentCharge) {
+        if (menu == null) {
+            return;
+        }
+
         ItemStack knowledgePane = menu.getItemInSlot(4);
         ItemMeta im = knowledgePane.getItemMeta();
         List<String> lore = im.hasLore() ? im.getLore() : new ArrayList<>();
