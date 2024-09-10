@@ -147,6 +147,13 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
             BlockMenu input = BlockStorage.getInventory(tesseractPair);
             BlockMenu output = BlockStorage.getInventory(b);
 
+            if (input == null) {
+                return;
+            }
+            if (output == null) {
+                return;
+            }
+
             updateKnowledgePane(output, getCharge(b.getLocation()));
 
             for (int i : getInputSlots()) {
