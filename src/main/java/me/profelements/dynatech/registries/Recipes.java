@@ -30,7 +30,7 @@ public class Recipes {
     private static final ItemStack DIAMOND_BLOCK = new ItemStack(Material.DIAMOND_BLOCK);
     private static final ItemStack CRYING_OBSIDIAN = new ItemStack(Material.CRYING_OBSIDIAN);
     private static final ItemStack UNBREAKING_3_ENCHANTED_BOOK = new CustomItemStack(Material.ENCHANTED_BOOK, meta -> {
-        meta.addEnchant(Enchantment.DURABILITY, 3, false);
+        meta.addEnchant(Enchantment.UNBREAKING, 3, false);
     });
 
     private static final ItemStack GLASS = new ItemStack(Material.GLASS);
