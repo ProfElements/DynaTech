@@ -53,7 +53,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
     private final EntityInteractHandler onEntityClick() {
         return (e, item, something) -> {
             if ((e.getRightClicked().getType() == EntityType.COW
-                    || e.getRightClicked().getType() == EntityType.MUSHROOM_COW)
+                    || e.getRightClicked().getType() == EntityType.MOOSHROOM)
                     && SlimefunUtils.isItemSimilar(item, Items.LIQUID_TANK.stack(), true)) {
                 e.setCancelled(true);
             }
