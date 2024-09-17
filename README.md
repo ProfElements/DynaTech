@@ -3,7 +3,7 @@ A set of item and machines that I made to make things easier for me and just for
 Most of these could possibly be overpowered or heavily underpowered.
 
 **THIS PLUGIN REQUIRES ATLEAST JAVA 11**
-**THIS PLUGIN REQUIRES ATLEAST MINECRAFT 1.20.3** 
+**THIS PLUGIN REQUIRES ATLEAST MINECRAFT 1.20.6** 
 
 DynaTech **never** tries to be backwards with older minecraft versions.
 I do not want to deal with the extra issues or development time that supporting older versions needs.
