@@ -1,10 +1,13 @@
 package me.profelements.dynatech.registries;
 
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.RandomizedSet;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import io.github.bakedlibs.dough.items.CustomItemStack;
 
 import me.profelements.dynatech.items.electric.MaterialHive;
+import me.profelements.dynatech.items.electric.machines.Orechid;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -17,6 +20,7 @@ public class RecipeTypes {
         registry.register(Keys.TREE_GROWTH_CHAMBER, TREE_GROWTH_CHAMBER);
         registry.register(Keys.MATERIAL_HIVE, MATERIAL_HIVE);
         registry.register(Keys.PETAL_APOTHECARY, PETAL_APOTHECARY);
+        registry.register(Keys.ORECHID, ORECHID);
     }
 
     public static final RecipeType SCOOPING = new RecipeType(Keys.SCOOPING.key(),
@@ -44,6 +48,15 @@ public class RecipeTypes {
 
             });
 
+    public static final RecipeType ORECHID = new RecipeType(Keys.ORECHID.key(), Items.ORECHID.stack(),
+            (recipe, output) -> {
+                // Grab first item for input
+                Material inputMaterial = recipe[0].getType();
+                RandomizedSet<ItemStack> set = Orechid.oreMap.getOrDefault(inputMaterial, new RandomizedSet<>());
+                set.add(output, output.getAmount());
+                Orechid.oreMap.put(inputMaterial, set);
+            });
+
     public static final class Keys {
         public static final TypedKey<RecipeType> SCOOPING = TypedKey.create("dynatech", "scooping");
         public static final TypedKey<RecipeType> OVENING = TypedKey.create("dynatech", "ovening");
@@ -52,5 +65,6 @@ public class RecipeTypes {
                 "tree_growth_chamber");
         public static final TypedKey<RecipeType> MATERIAL_HIVE = TypedKey.create("dynatech", "material_hive");
         public static final TypedKey<RecipeType> PETAL_APOTHECARY = TypedKey.create("dynatech", "petal_apothecary");
+        public static final TypedKey<RecipeType> ORECHID = TypedKey.create("dynatech", "orechid");
     }
 }

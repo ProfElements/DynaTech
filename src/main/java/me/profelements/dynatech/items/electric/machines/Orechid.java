@@ -27,7 +27,7 @@ import javax.annotation.Nonnull;
 
 public class Orechid extends AbstractElectricTicker implements RecipeDisplayItem {
 
-    private static final Map<Material, RandomizedSet<ItemStack>> oreMap = new EnumMap<>(Material.class);
+    public static final Map<Material, RandomizedSet<ItemStack>> oreMap = new EnumMap<>(Material.class);
     // private static final List<Material> END_ORES = new ArrayList<>();
 
     private static final Set<BlockFace> ignoredFaces = new HashSet<>();
@@ -103,30 +103,30 @@ public class Orechid extends AbstractElectricTicker implements RecipeDisplayItem
     }
 
     private static void registerDefaultOres() {
-        registerOre(Material.STONE, Material.COAL_ORE, 3);
-        registerOre(Material.STONE, Material.IRON_ORE, 2);
-        registerOre(Material.STONE, Material.GOLD_ORE, 2);
-        registerOre(Material.STONE, Material.DIAMOND_ORE, 1);
-        registerOre(Material.STONE, Material.EMERALD_ORE, 1);
-        registerOre(Material.STONE, Material.REDSTONE_ORE, 3);
-        registerOre(Material.STONE, Material.LAPIS_ORE, 3);
-        registerOre(Material.STONE, Material.COPPER_ORE, 3);
-
-        registerOre(Material.NETHERRACK, Material.NETHER_QUARTZ_ORE, 3);
-        registerOre(Material.NETHERRACK, Material.NETHER_GOLD_ORE, 3);
-        registerOre(Material.NETHERRACK, Material.ANCIENT_DEBRIS, 1);
-        registerOre(Material.NETHERRACK, Material.BASALT, 5);
-        registerOre(Material.NETHERRACK, Material.BLACKSTONE, 5);
-
-        registerOre(Material.DEEPSLATE, Material.DEEPSLATE_COAL_ORE, 3);
-        registerOre(Material.DEEPSLATE, Material.DEEPSLATE_IRON_ORE, 2);
-        registerOre(Material.DEEPSLATE, Material.DEEPSLATE_GOLD_ORE, 2);
-        registerOre(Material.DEEPSLATE, Material.DEEPSLATE_DIAMOND_ORE, 1);
-        registerOre(Material.DEEPSLATE, Material.DEEPSLATE_EMERALD_ORE, 1);
-        registerOre(Material.DEEPSLATE, Material.DEEPSLATE_REDSTONE_ORE, 3);
-        registerOre(Material.DEEPSLATE, Material.DEEPSLATE_LAPIS_ORE, 3);
-        registerOre(Material.DEEPSLATE, Material.DEEPSLATE_COPPER_ORE, 3);
-
+        // registerOre(Material.STONE, Material.COAL_ORE, 3);
+        // registerOre(Material.STONE, Material.IRON_ORE, 2);
+        // registerOre(Material.STONE, Material.GOLD_ORE, 2);
+        // registerOre(Material.STONE, Material.DIAMOND_ORE, 1);
+        // registerOre(Material.STONE, Material.EMERALD_ORE, 1);
+        // registerOre(Material.STONE, Material.REDSTONE_ORE, 3);
+        // registerOre(Material.STONE, Material.LAPIS_ORE, 3);
+        // registerOre(Material.STONE, Material.COPPER_ORE, 3);
+        //
+        // registerOre(Material.NETHERRACK, Material.NETHER_QUARTZ_ORE, 3);
+        // registerOre(Material.NETHERRACK, Material.NETHER_GOLD_ORE, 3);
+        // registerOre(Material.NETHERRACK, Material.ANCIENT_DEBRIS, 1);
+        // registerOre(Material.NETHERRACK, Material.BASALT, 5);
+        // registerOre(Material.NETHERRACK, Material.BLACKSTONE, 5);
+        //
+        // registerOre(Material.DEEPSLATE, Material.DEEPSLATE_COAL_ORE, 3);
+        // registerOre(Material.DEEPSLATE, Material.DEEPSLATE_IRON_ORE, 2);
+        // registerOre(Material.DEEPSLATE, Material.DEEPSLATE_GOLD_ORE, 2);
+        // registerOre(Material.DEEPSLATE, Material.DEEPSLATE_DIAMOND_ORE, 1);
+        // registerOre(Material.DEEPSLATE, Material.DEEPSLATE_EMERALD_ORE, 1);
+        // registerOre(Material.DEEPSLATE, Material.DEEPSLATE_REDSTONE_ORE, 3);
+        // registerOre(Material.DEEPSLATE, Material.DEEPSLATE_LAPIS_ORE, 3);
+        // registerOre(Material.DEEPSLATE, Material.DEEPSLATE_COPPER_ORE, 3);
+        //
     }
 
     @Nonnull

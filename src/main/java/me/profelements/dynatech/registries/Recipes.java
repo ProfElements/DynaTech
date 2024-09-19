@@ -2,7 +2,6 @@ package me.profelements.dynatech.registries;
 
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.misc.StarDustMeteor;
-import me.profelements.dynatech.registries.Items.Keys;
 import me.profelements.dynatech.utils.Recipe;
 import me.profelements.dynatech.utils.TimedRecipe;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -24,6 +23,7 @@ public class Recipes {
     private static final ItemStack REDSTONE_BLOCK = new ItemStack(Material.REDSTONE_BLOCK);
     private static final ItemStack BRICK = new ItemStack(Material.BRICK);
     private static final ItemStack STONE = new ItemStack(Material.STONE);
+    private static final ItemStack DEEPSLATE = new ItemStack(Material.DEEPSLATE);
     private static final ItemStack IRON_INGOT = new ItemStack(Material.IRON_INGOT);
     private static final ItemStack IRON_BLOCK = new ItemStack(Material.IRON_BLOCK);
     private static final ItemStack DIAMOND = new ItemStack(Material.DIAMOND);
@@ -910,6 +910,155 @@ public class Recipes {
 
     // END MACHINES
 
+    // START Orechid Recipes
+    public static final Recipe STONE_TO_COAL_ORE = Recipe.init()
+            .setKey(Recipes.Keys.STONE_TO_COAL_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(STONE)
+            .setOutput(new ItemStack(Material.COAL_ORE), 3)
+            .register();
+
+    public static final Recipe STONE_TO_IRON_ORE = Recipe.init()
+            .setKey(Recipes.Keys.STONE_TO_IRON_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(STONE)
+            .setOutput(new ItemStack(Material.IRON_ORE), 2)
+            .register();
+
+    public static final Recipe STONE_TO_GOLD_ORE = Recipe.init()
+            .setKey(Recipes.Keys.STONE_TO_GOLD_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(STONE)
+            .setOutput(new ItemStack(Material.GOLD_ORE), 2)
+            .register();
+
+    public static final Recipe STONE_TO_COPPER_ORE = Recipe.init()
+            .setKey(Recipes.Keys.STONE_TO_COPPER_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(STONE)
+            .setOutput(new ItemStack(Material.COPPER_ORE), 3)
+            .register();
+
+    public static final Recipe STONE_TO_LAPIS_ORE = Recipe.init()
+            .setKey(Recipes.Keys.STONE_TO_LAPIS_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(STONE)
+            .setOutput(new ItemStack(Material.LAPIS_ORE), 3)
+            .register();
+
+    public static final Recipe STONE_TO_REDSTONE_ORE = Recipe.init()
+            .setKey(Recipes.Keys.STONE_TO_REDSTONE_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(STONE)
+            .setOutput(new ItemStack(Material.REDSTONE_ORE), 3)
+            .register();
+
+    public static final Recipe STONE_TO_DIAMOND_ORE = Recipe.init()
+            .setKey(Recipes.Keys.STONE_TO_DIAMOND_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(STONE)
+            .setOutput(new ItemStack(Material.DIAMOND_ORE), 1)
+            .register();
+
+    public static final Recipe STONE_TO_EMERALD_ORE = Recipe.init()
+            .setKey(Recipes.Keys.STONE_TO_EMERALD_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(STONE)
+            .setOutput(new ItemStack(Material.EMERALD_ORE), 1)
+            .register();
+
+    public static final Recipe NETHERRACK_TO_QUARTZ_ORE = Recipe.init()
+            .setKey(Recipes.Keys.NETHERRACK_TO_QUARTZ_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(new ItemStack(Material.NETHERRACK))
+            .setOutput(new ItemStack(Material.NETHER_QUARTZ_ORE), 3)
+            .register();
+
+    public static final Recipe NETHERRACK_TO_GOLD_ORE = Recipe.init()
+            .setKey(Recipes.Keys.NETHERRACK_TO_GOLD_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(new ItemStack(Material.NETHERRACK))
+            .setOutput(new ItemStack(Material.NETHER_GOLD_ORE), 3)
+            .register();
+
+    public static final Recipe NETHERRACK_TO_ANCIENT_DEBRIS = Recipe.init()
+            .setKey(Recipes.Keys.NETHERRACK_TO_ANCIENT_DEBRIS.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(new ItemStack(Material.NETHERRACK))
+            .setOutput(new ItemStack(Material.ANCIENT_DEBRIS), 3)
+            .register();
+
+    public static final Recipe NETHERRACK_TO_BASALT = Recipe.init()
+            .setKey(Recipes.Keys.NETHERRACK_TO_BASALT.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(new ItemStack(Material.NETHERRACK))
+            .setOutput(new ItemStack(Material.BASALT), 5)
+            .register();
+
+    public static final Recipe NETHERRACK_TO_BLACKSTONE = Recipe.init()
+            .setKey(Recipes.Keys.NETHERRACK_TO_BLACKSTONE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(new ItemStack(Material.NETHERRACK))
+            .setOutput(new ItemStack(Material.BLACKSTONE), 5)
+            .register();
+
+    public static final Recipe DEEPSLATE_TO_COAL_ORE = Recipe.init()
+            .setKey(Recipes.Keys.DEEPSLATE_TO_COAL_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(DEEPSLATE)
+            .setOutput(new ItemStack(Material.DEEPSLATE_COAL_ORE), 3)
+            .register();
+
+    public static final Recipe DEEPSLATE_TO_IRON_ORE = Recipe.init()
+            .setKey(Recipes.Keys.DEEPSLATE_TO_IRON_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(DEEPSLATE)
+            .setOutput(new ItemStack(Material.DEEPSLATE_IRON_ORE), 2)
+            .register();
+
+    public static final Recipe DEEPSLATE_TO_GOLD_ORE = Recipe.init()
+            .setKey(Recipes.Keys.DEEPSLATE_TO_GOLD_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(DEEPSLATE)
+            .setOutput(new ItemStack(Material.DEEPSLATE_GOLD_ORE), 2)
+            .register();
+
+    public static final Recipe DEEPSLATE_TO_COPPER_ORE = Recipe.init()
+            .setKey(Recipes.Keys.DEEPSLATE_TO_COPPER_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(DEEPSLATE)
+            .setOutput(new ItemStack(Material.DEEPSLATE_COPPER_ORE), 3)
+            .register();
+
+    public static final Recipe DEEPSLATE_TO_LAPIS_ORE = Recipe.init()
+            .setKey(Recipes.Keys.DEEPSLATE_TO_LAPIS_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(DEEPSLATE)
+            .setOutput(new ItemStack(Material.DEEPSLATE_LAPIS_ORE), 3)
+            .register();
+
+    public static final Recipe DEEPSLATE_TO_REDSTONE_ORE = Recipe.init()
+            .setKey(Recipes.Keys.DEEPSLATE_TO_REDSTONE_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(DEEPSLATE)
+            .setOutput(new ItemStack(Material.DEEPSLATE_REDSTONE_ORE), 3)
+            .register();
+
+    public static final Recipe DEEPSLATE_TO_DIAMOND_ORE = Recipe.init()
+            .setKey(Recipes.Keys.DEEPSLATE_TO_DIAMOND_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(DEEPSLATE)
+            .setOutput(new ItemStack(Material.DEEPSLATE_DIAMOND_ORE), 1)
+            .register();
+
+    public static final Recipe DEEPSLATE_TO_EMERALD_ORE = Recipe.init()
+            .setKey(Recipes.Keys.DEEPSLATE_TO_EMERALD_ORE.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(DEEPSLATE)
+            .setOutput(new ItemStack(Material.DEEPSLATE_EMERALD_ORE), 1)
+            .register();
+    // END Orechid Recipes
+
     public static final class Keys {
 
         // START Mechanical Components
@@ -1088,5 +1237,61 @@ public class Recipes {
         public static final TypedKey<Recipe> SEED_PLUCKER = TypedKey.create(Items.Keys.SEED_PLUCKER.key());
 
         public static final TypedKey<Recipe> PETAL_APOTHECARY = TypedKey.create(Items.Keys.PETAL_APOTHECARY.key());
+
+        // Orechid Recipes
+        public static final TypedKey<Recipe> STONE_TO_COAL_ORE = TypedKey.create("dynatech", "stone_to_coal_ore");
+
+        public static final TypedKey<Recipe> STONE_TO_IRON_ORE = TypedKey.create("dynatech", "stone_to_iron_ore");
+
+        public static final TypedKey<Recipe> STONE_TO_GOLD_ORE = TypedKey.create("dynatech", "stone_to_gold_ore");
+
+        public static final TypedKey<Recipe> STONE_TO_COPPER_ORE = TypedKey.create("dynatech", "stone_to_copper_ore");
+
+        public static final TypedKey<Recipe> STONE_TO_LAPIS_ORE = TypedKey.create("dynatech", "stone_to_lapis_ore");
+
+        public static final TypedKey<Recipe> STONE_TO_REDSTONE_ORE = TypedKey.create("dynatech",
+                "stone_to_redstone_ore");
+        public static final TypedKey<Recipe> STONE_TO_DIAMOND_ORE = TypedKey.create("dynatech", "stone_to_diamond_ore");
+
+        public static final TypedKey<Recipe> STONE_TO_EMERALD_ORE = TypedKey.create("dynatech",
+                "stone_to_emerald_core");
+
+        public static final TypedKey<Recipe> NETHERRACK_TO_QUARTZ_ORE = TypedKey.create("dynatech",
+                "netherrack_to_quartz_ore");
+
+        public static final TypedKey<Recipe> NETHERRACK_TO_GOLD_ORE = TypedKey.create("dynatech",
+                "netherrack_to_gold_ore");
+
+        public static final TypedKey<Recipe> NETHERRACK_TO_ANCIENT_DEBRIS = TypedKey.create("dynatech",
+                "netherrack_to_ancient_debris");
+
+        public static final TypedKey<Recipe> NETHERRACK_TO_BASALT = TypedKey.create("dynatech", "netherrack_to_basalt");
+
+        public static final TypedKey<Recipe> NETHERRACK_TO_BLACKSTONE = TypedKey.create("dynatech",
+                "netherrack_to_blackstone");
+
+        public static final TypedKey<Recipe> DEEPSLATE_TO_COAL_ORE = TypedKey.create("dynatech",
+                "deepslate_to_coal_ore");
+
+        public static final TypedKey<Recipe> DEEPSLATE_TO_IRON_ORE = TypedKey.create("dynatech",
+                "deepslate_to_iron_ore");
+
+        public static final TypedKey<Recipe> DEEPSLATE_TO_GOLD_ORE = TypedKey.create("dynatech",
+                "deepslate_to_gold_ore");
+
+        public static final TypedKey<Recipe> DEEPSLATE_TO_COPPER_ORE = TypedKey.create("dynatech",
+                "deepslate_to_copper_ore");
+
+        public static final TypedKey<Recipe> DEEPSLATE_TO_LAPIS_ORE = TypedKey.create("dynatech",
+                "deepslate_to_lapis_ore");
+
+        public static final TypedKey<Recipe> DEEPSLATE_TO_REDSTONE_ORE = TypedKey.create("dynatech",
+                "deepslate_to_redstone_ore");
+        public static final TypedKey<Recipe> DEEPSLATE_TO_DIAMOND_ORE = TypedKey.create("dynatech",
+                "deepslate_to_diamond_ore");
+
+        public static final TypedKey<Recipe> DEEPSLATE_TO_EMERALD_ORE = TypedKey.create("dynatech",
+                "deepslate_to_emerald_core");
+
     }
 }
