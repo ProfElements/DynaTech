@@ -53,7 +53,7 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
 
         addItemHandler(onBlockBreak());
 
-        new BlockMenuPreset("TESSERACT", "Tesseract") {
+        new BlockMenuPreset(Items.Keys.TESSERACT.asSlimefunId(), "Tesseract") {
 
             @Override
             public void init() {
