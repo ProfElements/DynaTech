@@ -56,6 +56,10 @@ public class Orechid extends AbstractElectricTicker implements RecipeDisplayItem
 
     @Override
     public void tick(Block b, SlimefunItem sfItem) {
+        if (DynaTech.getInstance() == null) {
+            return;
+        }
+
         if (DynaTech.getInstance().getTickInterval() % 10 == 0) {
             for (BlockFace relative : BlockFace.values()) {
                 if (getCharge(b.getLocation()) < getEnergyConsumption()) {
