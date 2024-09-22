@@ -24,6 +24,7 @@ public class Recipes {
     private static final ItemStack BRICK = new ItemStack(Material.BRICK);
     private static final ItemStack STONE = new ItemStack(Material.STONE);
     private static final ItemStack DEEPSLATE = new ItemStack(Material.DEEPSLATE);
+    private static final ItemStack CALCITE = new ItemStack(Material.CALCITE);
     private static final ItemStack IRON_INGOT = new ItemStack(Material.IRON_INGOT);
     private static final ItemStack IRON_BLOCK = new ItemStack(Material.IRON_BLOCK);
     private static final ItemStack DIAMOND = new ItemStack(Material.DIAMOND);
@@ -1057,6 +1058,21 @@ public class Recipes {
             .setInput(DEEPSLATE)
             .setOutput(new ItemStack(Material.DEEPSLATE_EMERALD_ORE), 1)
             .register();
+
+    public static final Recipe CALCITE_TO_LIVINGROCK = Recipe.init()
+            .setKey(Recipes.Keys.CALCITE_TO_LIVINGROCK.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(CALCITE)
+            .setOutput(Items.LIVINGROCK.stack())
+            .register();
+
+    public static final Recipe DARK_OAK_TO_LIVINGWOOD = Recipe.init()
+            .setKey(Recipes.Keys.DARK_OAK_TO_LIVINGWOOD.key())
+            .setRecipeType(RecipeTypes.ORECHID)
+            .setInput(new ItemStack(Material.DARK_OAK_LOG))
+            .setOutput(Items.LIVINGWOOD.stack())
+            .register();
+
     // END Orechid Recipes
 
     public static final class Keys {
@@ -1293,5 +1309,10 @@ public class Recipes {
         public static final TypedKey<Recipe> DEEPSLATE_TO_EMERALD_ORE = TypedKey.create("dynatech",
                 "deepslate_to_emerald_core");
 
+        public static final TypedKey<Recipe> CALCITE_TO_LIVINGROCK = TypedKey.create("dynatech",
+                "calcite_to_livingrock");
+
+        public static final TypedKey<Recipe> DARK_OAK_TO_LIVINGWOOD = TypedKey.create("dynatech",
+                "dark_oak_to_livingwood");
     }
 }

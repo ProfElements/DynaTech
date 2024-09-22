@@ -577,6 +577,14 @@ public class DynaTechItemsSetup {
         new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.COAL_COKE.stack(), coalCokeRecipe.getRecipeType(),
                 coalCokeRecipe.getInput()).register(plugin);
 
+        final Recipe livingRockRecipe = Recipes.CALCITE_TO_LIVINGROCK;
+        new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.LIVINGROCK.stack(), livingRockRecipe.getRecipeType(),
+                livingRockRecipe.getInput()).register(plugin);
+
+        final Recipe livingWoodRecipe = Recipes.DARK_OAK_TO_LIVINGWOOD;
+        new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.LIVINGWOOD.stack(), livingRockRecipe.getRecipeType(),
+                livingRockRecipe.getInput()).register(plugin);
+
         // END Materials
 
         // START Liquids

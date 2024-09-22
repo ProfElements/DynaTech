@@ -2,8 +2,6 @@ package me.profelements.dynatech.registries;
 
 import me.profelements.dynatech.utils.ItemWrapper;
 
-import java.util.Map;
-
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.potion.PotionEffect;
@@ -267,6 +265,13 @@ public class Items {
     public static final ItemWrapper TESSERACTING_OBJ = ItemWrapper.create(Keys.TESSERACTING_OBJ,
             new SlimefunItemStack(Keys.TESSERACTING_OBJ.asSlimefunId(),
                     Material.MUSHROOM_STEM, "&6Tesseracting Object", "&f&oIt shimmers and shifts in your hands"));
+
+    public static final ItemWrapper LIVINGROCK = ItemWrapper.create(Keys.LIVINGROCK,
+            new SlimefunItemStack(Keys.LIVINGROCK.asSlimefunId(), Material.DEEPSLATE_TILES, "&6Livingrock"));
+
+    public static final ItemWrapper LIVINGWOOD = ItemWrapper.create(Keys.LIVINGWOOD,
+            new SlimefunItemStack(Keys.LIVINGWOOD.asSlimefunId(), Material.OAK_WOOD, "&6Livingwood"));
+
     // END Materials
     // START Tools
     public static final ItemWrapper ELECTRICAL_STIMULATOR = ItemWrapper.create(Keys.ELECTRICAL_STIMULATOR,
@@ -869,6 +874,10 @@ public class Items {
         public static final TypedKey<ItemWrapper> GHOSTLY_ESSENCE = TypedKey.create("dynatech", "ghostly_essence");
 
         public static final TypedKey<ItemWrapper> TESSERACTING_OBJ = TypedKey.create("dynatech", "tesseracting_object");
+
+        public static final TypedKey<ItemWrapper> LIVINGROCK = TypedKey.create("dynatech", "livingrock");
+
+        public static final TypedKey<ItemWrapper> LIVINGWOOD = TypedKey.create("dynatech", "livingwood");
         // END Materials
         // START Tools
         public static final TypedKey<ItemWrapper> ELECTRICAL_STIMULATOR = TypedKey.create("dynatech",
