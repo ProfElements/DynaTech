@@ -1,5 +1,6 @@
 package me.profelements.dynatech.items.electric.transfer;
 
+import io.github.bakedlibs.dough.blocks.BlockPosition;
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemHandler;
@@ -18,6 +19,8 @@ import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.registries.Items;
+import me.profelements.dynatech.utils.EnergyUtils;
+import net.kyori.adventure.text.Component;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
@@ -75,18 +78,16 @@ public class WirelessEnergyPoint extends SlimefunItem implements EnergyNetProvid
 
             if (BlockStorage.checkID(wirelessEnergyBank) != null && BlockStorage.checkID(wirelessEnergyBank)
                     .equals(Items.WIRELESS_ENERGY_BANK.stack().getItemId())) {
-                int bankCharge = getCharge(wirelessEnergyBank);
 
-                if (bankCharge > chargedNeeded) {
-                    if (chargedNeeded > getEnergyRate()) {
-                        removeCharge(wirelessEnergyBank, getEnergyRate());
-                        return getEnergyRate();
-                    }
-                    removeCharge(wirelessEnergyBank, chargedNeeded);
-                    return chargedNeeded;
+                String energyCharge = BlockStorage.getLocationInfo(l, "energy-charge");
+                if (energyCharge == null) {
+                    BlockStorage.addBlockInfo(l, "energy-charge", String.valueOf(0));
                 }
-            }
 
+                EnergyUtils.moveEnergyFromTo(new BlockPosition(wirelessEnergyBank), new BlockPosition(l),
+                        getEnergyRate(), getCapacity());
+            }
+            return 0;
         }
         return 0;
     }
@@ -163,17 +164,18 @@ public class WirelessEnergyPoint extends SlimefunItem implements EnergyNetProvid
 
     private void setItemLore(ItemStack item, Location l) {
         ItemMeta im = item.getItemMeta();
-        List<String> lore = im.getLore();
+        List<Component> lore = im.lore();
         for (int i = 0; i < lore.size(); i++) {
-            if (lore.get(i).contains("Location: ")) {
+            if (lore.get(i).contains(Component.text("Location: "))) {
                 lore.remove(i);
             }
         }
 
-        lore.add(ChatColor.WHITE + "Location: " + l.getWorld().getName() + " " + l.getBlockX() + " " + l.getBlockY()
-                + " " + l.getBlockZ());
+        lore.add(Component.text(
+                ChatColor.WHITE + "Location: " + l.getWorld().getName() + " " + l.getBlockX() + " " + l.getBlockY()
+                        + " " + l.getBlockZ()));
 
-        im.setLore(lore);
+        im.lore(lore);
         item.setItemMeta(im);
 
     }
