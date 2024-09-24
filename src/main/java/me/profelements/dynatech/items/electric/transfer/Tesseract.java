@@ -1,5 +1,6 @@
 package me.profelements.dynatech.items.electric.transfer;
 
+import io.github.bakedlibs.dough.blocks.BlockPosition;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemHandler;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -8,7 +9,6 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.inventory.InvUtils;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
@@ -22,6 +22,8 @@ import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.registries.Items;
+import me.profelements.dynatech.utils.EnergyUtils;
+import net.kyori.adventure.text.Component;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
@@ -144,28 +146,16 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
 
         if (BlockStorage.checkID(tesseractPair) != null
                 && BlockStorage.checkID(tesseractPair).equals(Items.TESSERACT.stack().getItemId())) {
-            BlockMenu input = BlockStorage.getInventory(tesseractPair);
-            BlockMenu output = BlockStorage.getInventory(b);
 
-            if (input == null) {
-                return;
-            }
-            if (output == null) {
+            BlockMenu toMenu = BlockStorage.getInventory(b.getLocation());
+
+            if (toMenu == null) {
                 return;
             }
 
-            updateKnowledgePane(output, getCharge(b.getLocation()));
-
-            for (int i : getInputSlots()) {
-                ItemStack itemStack = input.getItemInSlot(i);
-
-                if (itemStack != null && itemStack.getType() != Material.AIR
-                        && InvUtils.fitAll(output.toInventory(), new ItemStack[] { itemStack }, getOutputSlots())) {
-                    output.pushItem(itemStack, getOutputSlots());
-                    itemStack.setAmount(0);
-                }
-            }
-
+            updateKnowledgePane(toMenu, getCharge(b.getLocation()));
+            EnergyUtils.moveInventoryFromTo(new BlockPosition(tesseractPair), new BlockPosition(b), getInputSlots(),
+                    getOutputSlots());
         }
 
     }
@@ -193,27 +183,14 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
 
             if (BlockStorage.checkID(tesseractPair) != null
                     && BlockStorage.checkID(tesseractPair).equals(Items.TESSERACT.stack().getItemId())) {
-                int bankCharge = getCharge(tesseractPair);
 
-                if (bankCharge > chargedNeeded && bankCharge != 0) {
-                    if (chargedNeeded > getEnergyRate()) {
-                        removeCharge(tesseractPair, getEnergyRate());
-                        return getEnergyRate();
-                    }
-                    removeCharge(tesseractPair, chargedNeeded);
-                    return chargedNeeded;
-                } else if (bankCharge > 0) {
-                    if (chargedNeeded > getEnergyRate()) {
-                        removeCharge(tesseractPair, getEnergyRate());
-                        return getEnergyRate();
-                    }
-                    removeCharge(tesseractPair, bankCharge);
-                    return bankCharge;
-                }
-
+                return EnergyUtils.moveEnergyFromTo(new BlockPosition(tesseractPair), new BlockPosition(l),
+                        getEnergyRate(), getCapacity());
             }
 
+            return 0;
         }
+
         return 0;
     }
 
@@ -224,16 +201,17 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
 
         ItemStack knowledgePane = menu.getItemInSlot(4);
         ItemMeta im = knowledgePane.getItemMeta();
-        List<String> lore = im.hasLore() ? im.getLore() : new ArrayList<>();
+        List<Component> lore = im.hasLore() ? im.lore() : new ArrayList<>();
 
         lore.clear();
-        lore.add(" ");
-        lore.add(ChatColor.WHITE + "Current Power: " + currentCharge);
-        lore.add(ChatColor.WHITE + "Current Status: " + ChatColor.RED + "CONNECTED");
-        knowledgePane.setType(Material.RED_STAINED_GLASS_PANE);
+        lore.add(Component.text(" "));
+        lore.add(Component.text(ChatColor.WHITE + "Current Power: " + currentCharge));
+        lore.add(Component.text(ChatColor.WHITE + "Current Status: " + ChatColor.RED + "CONNECTED"));
 
-        im.setLore(lore);
+        im.lore(lore);
         knowledgePane.setItemMeta(im);
+
+        menu.replaceExistingItem(4, knowledgePane.withType(Material.RED_STAINED_GLASS_PANE));
     }
 
     // Boilerplate for machines.
@@ -278,17 +256,18 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
 
     public static void setItemLore(ItemStack item, Location l) {
         ItemMeta im = item.getItemMeta();
-        List<String> lore = im.getLore();
+        List<Component> lore = im.lore();
         for (int i = 0; i < lore.size(); i++) {
-            if (lore.get(i).contains("Location: ")) {
+            if (lore.get(i).contains(Component.text("Location: "))) {
                 lore.remove(i);
             }
         }
 
-        lore.add(ChatColor.WHITE + "Location: " + l.getWorld().getName() + " " + l.getBlockX() + " " + l.getBlockY()
-                + " " + l.getBlockZ());
+        lore.add(Component.text(
+                ChatColor.WHITE + "Location: " + l.getWorld().getName() + " " + l.getBlockX() + " " + l.getBlockY()
+                        + " " + l.getBlockZ()));
 
-        im.setLore(lore);
+        im.lore(lore);
         item.setItemMeta(im);
 
     }
