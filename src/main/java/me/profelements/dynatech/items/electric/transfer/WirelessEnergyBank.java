@@ -16,7 +16,8 @@ public class WirelessEnergyBank extends SlimefunItem implements EnergyNetCompone
     private final int capacity;
 
     @ParametersAreNonnullByDefault
-    public WirelessEnergyBank(ItemGroup itemGroup, int capacity, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public WirelessEnergyBank(ItemGroup itemGroup, int capacity, SlimefunItemStack item, RecipeType recipeType,
+            ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
 
         this.capacity = capacity;
@@ -32,5 +33,5 @@ public class WirelessEnergyBank extends SlimefunItem implements EnergyNetCompone
     public int getCapacity() {
         return capacity;
     }
-    
+
 }
