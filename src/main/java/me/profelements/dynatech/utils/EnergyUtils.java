@@ -11,7 +11,6 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.bakedlibs.dough.blocks.BlockPosition;
-import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 
@@ -24,7 +23,7 @@ public class EnergyUtils {
             int toEnergyMax) {
         Location fromLocation = from.toLocation();
         Location toLocation = to.toLocation();
-        String energyKey = "energy";
+        String energyKey = "energy-charge";
 
         String fromEnergyAmount = BlockStorage.getLocationInfo(fromLocation, energyKey);
         String toEnergyAmount = BlockStorage.getLocationInfo(toLocation, energyKey);
