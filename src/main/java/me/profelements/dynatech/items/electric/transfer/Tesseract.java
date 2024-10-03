@@ -47,8 +47,8 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
     private final int energyRate;
 
     public Tesseract(ItemGroup itemGroup, int capacity, int energyRate, SlimefunItemStack item, RecipeType recipeType,
-            ItemStack[] recipe) {
-        super(itemGroup, item, recipeType, recipe);
+            ItemStack[] recipe, ItemStack output) {
+        super(itemGroup, item, recipeType, recipe, output);
 
         this.capacity = capacity;
         this.energyRate = energyRate;

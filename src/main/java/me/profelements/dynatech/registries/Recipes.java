@@ -161,6 +161,7 @@ public class Recipes {
             .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
             .setInput(new ItemStack[] {
                     SlimefunItems.REDSTONE_ALLOY, CYAN_CONCRETE, SlimefunItems.REDSTONE_ALLOY,
+                    SlimefunItems.COPPER_WIRE, Items.IRON_MACHINE_CORE.stack(), SlimefunItems.COPPER_WIRE,
                     SlimefunItems.REDSTONE_ALLOY, CYAN_CONCRETE, SlimefunItems.REDSTONE_ALLOY
             })
             .setOutput(Items.ENERGY_OUTPUT_COMPONENT.stack())
@@ -890,6 +891,20 @@ public class Recipes {
             .setOutput(Items.SEED_PLUCKER.stack())
             .register();
 
+    public static final Recipe TESSERACT = Recipe.init()
+            .setKey(Keys.TESSERACT.key())
+            .setRecipeType(RecipeType.MAGIC_WORKBENCH)
+            .setInput(new ItemStack[] {
+                    Items.TESSERACTING_OBJ.stack(), Items.ENCHANTED_MACHINE_CORE.stack(),
+                    Items.TESSERACTING_OBJ.stack(),
+                    Items.WIRELESS_ENERGY_BANK.stack(), Items.ENERGY_INPUT_COMPONENT.stack(),
+                    Items.WIRELESS_ENERGY_POINT.stack(),
+                    Items.WIRELESS_ITEM_INPUT.stack(), Items.ENERGY_OUTPUT_COMPONENT.stack(),
+                    Items.WIRELESS_ITEM_OUTPUT.stack()
+            })
+            .setOutput(Items.TESSERACT.stack(), 2)
+            .register();
+
     public static final Recipe PETAL_APOTHECARY = Recipe.init()
             .setKey(Keys.PETAL_APOTHECARY.key())
             .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
@@ -1251,6 +1266,8 @@ public class Recipes {
         public static final TypedKey<Recipe> WIRELESS_CHARGER = TypedKey.create(Items.Keys.WIRELESS_CHARGER.key());
 
         public static final TypedKey<Recipe> SEED_PLUCKER = TypedKey.create(Items.Keys.SEED_PLUCKER.key());
+
+        public static final TypedKey<Recipe> TESSERACT = TypedKey.create(Items.Keys.TESSERACT.key());
 
         public static final TypedKey<Recipe> PETAL_APOTHECARY = TypedKey.create(Items.Keys.PETAL_APOTHECARY.key());
 

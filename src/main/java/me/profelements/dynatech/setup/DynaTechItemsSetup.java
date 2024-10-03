@@ -389,14 +389,9 @@ public class DynaTechItemsSetup {
                         SlimefunItems.CARGO_OUTPUT_NODE_2
                 }).register(plugin);
 
-        new Tesseract(ItemGroups.MACHINES, 65535, 1024, Items.TESSERACT.stack(), RecipeType.MAGIC_WORKBENCH,
-                new ItemStack[] {
-                        Items.WIRELESS_ENERGY_BANK.stack(), Items.TESSERACTING_OBJ.stack(),
-                        Items.WIRELESS_ITEM_INPUT.stack(),
-                        Items.TESSERACTING_OBJ.stack(), Items.GHOSTLY_ESSENCE.stack(), Items.TESSERACTING_OBJ.stack(),
-                        Items.WIRELESS_ITEM_OUTPUT.stack(), Items.TESSERACTING_OBJ.stack(),
-                        Items.WIRELESS_ENERGY_POINT.stack()
-                }).register(plugin);
+        new Tesseract(ItemGroups.MACHINES, 65535, 1024, Items.TESSERACT.stack(), Recipes.TESSERACT.getRecipeType(),
+                Recipes.TESSERACT.getInput(), Recipes.TESSERACT.getOutput()[0])
+                .register(plugin);
 
         new FurnaceController(ItemGroups.MACHINES, Items.EXTERNAL_HEATER.stack(),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
