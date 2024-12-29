@@ -22,14 +22,10 @@ public class Recipe {
         return new Recipe();
     }
 
-    protected Recipe getInstance() {
-        return this;
-    }
-
     public Recipe setKey(NamespacedKey key) {
         Preconditions.checkNotNull(key, "The recipe's namespaced key should not be null");
         this.KEY = key;
-        return getInstance();
+        return this;
     }
 
     public final NamespacedKey getKey() {
@@ -39,7 +35,7 @@ public class Recipe {
     public Recipe setRecipeType(RecipeType type) {
         Preconditions.checkNotNull(type, "The recipe's type should not be null");
         this.TYPE = type;
-        return getInstance();
+        return this;
     }
 
     public final RecipeType getRecipeType() {
@@ -49,13 +45,13 @@ public class Recipe {
     public Recipe setInput(ItemStack input) {
         Preconditions.checkNotNull(input, "This recipe's inputs should not be null");
         this.INPUT = new ItemStack[] { input };
-        return getInstance();
+        return this;
     }
 
     public Recipe setInput(ItemStack[] input) {
         Preconditions.checkNotNull(input, "This recipe's inputs should not be null");
         this.INPUT = input;
-        return getInstance();
+        return this;
     }
 
     public final ItemStack[] getInput() {
@@ -65,7 +61,7 @@ public class Recipe {
     public Recipe setOutput(ItemStack output) {
         Preconditions.checkNotNull(output, "This recipe's output should not be null");
         this.OUTPUT = new ItemStack[] { output };
-        return getInstance();
+        return this;
     }
 
     public Recipe setOutput(ItemStack output, int amount) {
@@ -73,13 +69,13 @@ public class Recipe {
         var actualOutput = output.clone();
         actualOutput.setAmount(amount);
         this.OUTPUT = new ItemStack[] { actualOutput };
-        return getInstance();
+        return this;
     }
 
     public Recipe setOutput(ItemStack[] output) {
         Preconditions.checkNotNull(output, "This recipe's output should not be null");
         this.OUTPUT = output;
-        return getInstance();
+        return this;
     }
 
     public final ItemStack[] getOutput() {
@@ -96,7 +92,7 @@ public class Recipe {
 
     public Recipe build() {
         this.validate();
-        return getInstance();
+        return this;
     }
 
     public Recipe register() {

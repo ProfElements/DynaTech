@@ -16,11 +16,6 @@ public class TimedRecipe extends Recipe {
         return new TimedRecipe();
     }
 
-    @Override
-    protected TimedRecipe getInstance() {
-        return this;
-    }
-
     public final int getTimeInTicks() {
         return this.TIME_IN_TICKS;
     }
